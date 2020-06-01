@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/membership/idSearch.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/step01.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/step02.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/step03.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/step04.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/cart.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/coupon.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/orderCheck.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/takeback_delivery.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/takeback_state.jsp=UTF-8

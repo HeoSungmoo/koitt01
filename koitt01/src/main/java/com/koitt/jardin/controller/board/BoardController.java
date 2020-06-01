@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BoardController {
 
-	// 공지사항 글 리스트
+	// 공지사항 글 리스트임
 	@RequestMapping("notice")
 	public String notice() {
 

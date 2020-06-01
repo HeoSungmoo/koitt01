@@ -110,7 +110,7 @@ $(document).ready(function() {
 					<li><a href="#">JOIN</a></li>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
-				</ul>
+				</ul> 
 
 				<div id="search">
 					<input type="text" class="searchType" />

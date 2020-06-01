@@ -12,13 +12,13 @@ public class BoardController {
 
 		return "board/notice";
 	}
-	
-	// 공지사항 글 보기
-		@RequestMapping("noticeView")
-		public String noticeView() {
 
-			return "board/noticeView";
-		}
+	// 공지사항 글 보기
+	@RequestMapping("noticeView")
+	public String noticeView() {
+
+		return "board/noticeView";
+	}
 
 	// 1:1문의 글 작성
 	@RequestMapping("inquiry")

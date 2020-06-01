@@ -34,12 +34,20 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";
+
 	}
 
+<<<<<<< HEAD
 	@RequestMapping("/step01")
 	public String step01() {
 
 		return "membership/step01";
+=======
+	@RequestMapping("list")
+	public String list() {
+
+		return "product/list";
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	}
 
 }

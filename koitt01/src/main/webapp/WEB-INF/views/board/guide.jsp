@@ -190,216 +190,37 @@ $(document).ready(function() {
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
-				<li>원두커피</li>
-				<li class="last">원두</li>
+				<li><a href="#">CUSTOMER</a></li>
+				<li class="last">이용안내</li>
 			</ol>
 		</div>
+		
+		<div id="outbox">		
+			<div id="left">
+				<div id="title2">CUSTOMER<span>고객센터</span></div>
+				<ul>	
+					<li><a href="#" id="leftNavi1">NOTICE</a></li>
+					<li><a href="#" id="leftNavi2">1:1문의</a></li>
+					<li><a href="#" id="leftNavi3">FAQ</span></a></li>
+					<li class="last"><a href="#" id="leftNavi4">이용안내</a></li>
+				</ul>			
+			</div><script type="text/javascript">initSubmenu(4,0);</script>
+
+
+			<!-- contents -->
+			<div id="contents">
+				<div id="customer">
+					<h2><strong>이용안내</strong><span>이용안내 페이지 입니다.</span></h2>
 					
-		<!-- maxcontents -->
-		<div id="maxcontents">
-			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
-			
-			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
 
-			<div class="brandTab">
-				<ul>
-					<li><a href="#" class="hover">드립커피백</a></li>
-					<li><a href="#">오리지널 커피백</a></li>
-					<li><a href="#">마일드 커피백</a></li>
-					<li><a href="#">카페모리</a></li>
-					<li><a href="#">카페포드</a></li>
-					<li><a href="#">카페리얼</a></li>
-					<li><a href="#">워터커피</a></li>
-					<li><a href="#">클래스</a></li>
-				</ul>
-			</div>
-
-			<div class="brandList">
-				<ul>
-					<!-- 반복 -->
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-					<!-- //반복 -->
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<!-- quickmenu -->
-			<div id="quick">
-				<div class="cart"><a href="#">장바구니</a></div>
-				<div class="wish">
-					<p class="title">위시 리스트</p>
 					
-					<div class="list">
-						<ul>	
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-						</ul>
-					</div>
-
-					<div class="total">
-						<a href="#none" class="wishLeft"><img src="images/btn/wish_left.gif" alt="" /></a>
-						 <span class="page">1</span> / <span class="sum">3</span>
-						<a href="#none" class="wishRight"><img src="images/btn/wish_right.gif" alt="" /></a>
-					</div>
+				
 
 				</div>
-
-				<div class="top"><a href="#">TOP&nbsp;&nbsp;<img src="images/ico/ico_top.gif" alt="" /></a></div>
 			</div>
-			<script type="text/javascript">
-			$(function(){
-				
-				$(window).scroll(function(){
-					var tg = $("div#quick");
-					var xg = $("div#maxcontents");
-					var limit = xg.height()- 165;
-					var tmp = $(window).scrollTop();
-
-					if (tmp > limit) {
-						tg.css({"position" : "absolute","right" : "-150px","bottom" : "208px","top" : "auto"});
-					}
-					else {
-						tg.css({"position" : "fixed","top" : "208px" , "margin-left" : "940px","right" : "auto"});
-					}
-				});
-
-			});
-			</script>
-			<!-- //quickmenu -->
+			<!-- //contents -->
 
 		</div>
-		<!-- //maxcontents -->
-
 	</div>
 	<!-- //container -->
 

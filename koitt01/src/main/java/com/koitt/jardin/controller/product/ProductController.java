@@ -9,13 +9,13 @@ public class ProductController {
 	@RequestMapping("list")
 	public String List() {
 
-		return "List";
+		return "product/List";
 	}
 
 	@RequestMapping("detail")
 	public String Detail() {
 
-		return "Detail";
+		return "product/Detail";
 	}
 
 }

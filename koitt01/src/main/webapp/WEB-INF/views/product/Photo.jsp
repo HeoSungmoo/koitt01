@@ -26,7 +26,7 @@ $(function() {
 		
 	<div class="inputBody">
 		<div class="title">포토리뷰 작성하기</div>
-		<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="../images/btn/btn_input_close.gif" alt="닫기" /></a></p>
+		<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="images/btn/btn_input_close.gif" alt="닫기" /></a></p>
 			
 		<div class="checkDivMt">
 			<table summary="분류, 구매여부, 작은이미지, 평가, 제목, 상세 내용 순으로 포토 리뷰를 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
@@ -79,45 +79,45 @@ $(function() {
 								<li>
 									<input type="radio" name="appraisal" id="starFive" checked="checked"/>
 									<label for="starFive" class="star">
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
 									</label>
 								</li>
 
 								<li>
 									<input type="radio" name="appraisal" id="starFour" />
 									<label for="starFour" class="star">
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
 									</label>
 								</li>
 
 								<li>
 									<input type="radio" name="appraisal" id="starThree" />
 									<label for="starThree" class="star">
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
 									</label>
 								</li>
 
 								<li>
 									<input type="radio" name="appraisal" id="startwo" />
 									<label for="startwo" class="star">
-										<img src="../images/ico/ico_star.gif" alt="별점" />
-										<img src="../images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
 									</label>
 								</li>
 
 								<li>
 									<input type="radio" name="appraisal" id="starOne" />
 									<label for="starOne" class="star">
-										<img src="../images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
 									</label>
 								</li>
 							</ul>

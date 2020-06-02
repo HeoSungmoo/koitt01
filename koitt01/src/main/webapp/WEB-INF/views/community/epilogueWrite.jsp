@@ -190,216 +190,162 @@ $(document).ready(function() {
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
-				<li>원두커피</li>
-				<li class="last">원두</li>
+				<li><a href="#">COMMUNITY</a></li>
+				<li class="last">사용 후기</li>
 			</ol>
 		</div>
+		
+		<div id="outbox">		
+			<div id="left">
+				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
+				<ul>	
+					<li><a href="#" id="leftNavi1">체험단</a></li>
+					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+				</ul>			
+			</div><script type="text/javascript">initSubmenu(2,0);</script>
+
+
+			<!-- contents -->
+			<div id="contents">
+				<div id="mypage">
+					<h2><strong>사용 후기</strong><span>쟈뎅 제품을 구매하신 회원님들의 소중한 후기입니다.</span></h2>
 					
-		<!-- maxcontents -->
-		<div id="maxcontents">
-			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
-			
-			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
-
-			<div class="brandTab">
-				<ul>
-					<li><a href="#" class="hover">드립커피백</a></li>
-					<li><a href="#">오리지널 커피백</a></li>
-					<li><a href="#">마일드 커피백</a></li>
-					<li><a href="#">카페모리</a></li>
-					<li><a href="#">카페포드</a></li>
-					<li><a href="#">카페리얼</a></li>
-					<li><a href="#">워터커피</a></li>
-					<li><a href="#">클래스</a></li>
-				</ul>
-			</div>
-
-			<div class="brandList">
-				<ul>
-					<!-- 반복 -->
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-					<!-- //반복 -->
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<!-- quickmenu -->
-			<div id="quick">
-				<div class="cart"><a href="#">장바구니</a></div>
-				<div class="wish">
-					<p class="title">위시 리스트</p>
-					
-					<div class="list">
-						<ul>	
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-						</ul>
+					<div class="productTab normaltab">
+						<ul>
+							<li><a href="#" class="on">포토 구매후기</a></li>
+							<li class="last"><a href="#">상품평</a></li>
+						</ul>						
 					</div>
 
-					<div class="total">
-						<a href="#none" class="wishLeft"><img src="images/btn/wish_left.gif" alt="" /></a>
-						 <span class="page">1</span> / <span class="sum">3</span>
-						<a href="#none" class="wishRight"><img src="images/btn/wish_right.gif" alt="" /></a>
+					<div class="checkDivTab">
+						<table summary="분류, 구매여부, 작은이미지, 평가, 제목, 상세 내용 순으로 포토 구매후기를 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
+							<caption>포토 구매후기 작성</caption>
+							<colgroup>
+							<col width="19%" class="tw30" />
+							<col width="*" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row"><span>분류</span></th>
+									<td>
+										<ul class="pta">
+											<li>
+												<select>
+													<option value="">카테고리</option>
+												</select>
+											</li>
+											<li class="pt5">
+												<select>
+													<option value="">카테고리</option>
+												</select>
+											</li>
+											<li class="pt5">
+												<select>
+													<option value="">카테고리</option>
+												</select>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>구매여부</span></th>
+									<td>
+										<select>
+											<option value="">구매했어요.</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>작은이미지</span></th>
+									<td>
+										<input type="file" class="fileType" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>평가</span></th>
+									<td>
+										<ul class="pta">
+											<li>
+												<input type="radio" name="appraisal" id="starFive" checked="checked"/>
+												<label for="starFive" class="star">
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+												</label>
+											</li>
+
+											<li>
+												<input type="radio" name="appraisal" id="starFour" />
+												<label for="starFour" class="star">
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+												</label>
+											</li>
+
+											<li>
+												<input type="radio" name="appraisal" id="starThree" />
+												<label for="starThree" class="star">
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+												</label>
+											</li>
+
+											<li>
+												<input type="radio" name="appraisal" id="startwo" />
+												<label for="startwo" class="star">
+													<img src="images/ico/ico_star.gif" alt="별점" />
+													<img src="images/ico/ico_star.gif" alt="별점" />
+												</label>
+											</li>
+
+											<li>
+												<input type="radio" name="appraisal" id="starOne" />
+												<label for="starOne" class="star">
+													<img src="images/ico/ico_star.gif" alt="별점" />
+												</label>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>제목</span></th>
+									<td>
+										<input type="text" class="wlong" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>상세 내용</span></th>
+									<td>
+										<textarea class="tta"></textarea>
+									</td>
+								</tr>								
+							</tbody>
+						</table>
 					</div>
 
+					<!-- Btn Area -->
+					<div class="btnArea">
+						<div class="bCenter">
+							<ul>																
+								<li><a href="#" class="nbtnbig">취소</a></li>
+								<li><a href="#" class="sbtnMini">확인</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Btn Area -->
+					
 				</div>
-
-				<div class="top"><a href="#">TOP&nbsp;&nbsp;<img src="images/ico/ico_top.gif" alt="" /></a></div>
 			</div>
-			<script type="text/javascript">
-			$(function(){
-				
-				$(window).scroll(function(){
-					var tg = $("div#quick");
-					var xg = $("div#maxcontents");
-					var limit = xg.height()- 165;
-					var tmp = $(window).scrollTop();
+			<!-- //contents -->
 
-					if (tmp > limit) {
-						tg.css({"position" : "absolute","right" : "-150px","bottom" : "208px","top" : "auto"});
-					}
-					else {
-						tg.css({"position" : "fixed","top" : "208px" , "margin-left" : "940px","right" : "auto"});
-					}
-				});
-
-			});
-			</script>
-			<!-- //quickmenu -->
 
 		</div>
-		<!-- //maxcontents -->
-
 	</div>
 	<!-- //container -->
 

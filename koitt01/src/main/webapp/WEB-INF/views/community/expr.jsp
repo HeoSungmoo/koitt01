@@ -190,216 +190,169 @@ $(document).ready(function() {
 		<div id="location">
 			<ol>
 				<li><a href="#">HOME</a></li>
-				<li>원두커피</li>
-				<li class="last">원두</li>
+				<li><a href="#">COMMUNITY</a></li>
+				<li class="last">사용 후기</li>
 			</ol>
 		</div>
+		
+		<div id="outbox">		
+			<div id="left">
+				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
+				<ul>	
+					<li><a href="#" id="leftNavi1">체험단</a></li>
+					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+				</ul>			
+			</div><script type="text/javascript">initSubmenu(1,0);</script>
+
+
+			<!-- contents -->
+			<div id="contents">
+				<div id="mypage">
+					<h2><strong>체험단</strong><span>쟈뎅샵에서 진행되는 무료체험 기회를 놓치지 마세요.</span></h2>
 					
-		<!-- maxcontents -->
-		<div id="maxcontents">
-			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
-			
-			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
+					<!-- 체험단 -->
+					<div class="imgListType">
+						<ul>
 
-			<div class="brandTab">
-				<ul>
-					<li><a href="#" class="hover">드립커피백</a></li>
-					<li><a href="#">오리지널 커피백</a></li>
-					<li><a href="#">마일드 커피백</a></li>
-					<li><a href="#">카페모리</a></li>
-					<li><a href="#">카페포드</a></li>
-					<li><a href="#">카페리얼</a></li>
-					<li><a href="#">워터커피</a></li>
-					<li><a href="#">클래스</a></li>
-				</ul>
-			</div>
+							<!-- List -->
+							<li>
+								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="txt">
+									<div class="subject">
+										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
+									</div>
+									<div class="star">
+										체험단 평점&nbsp;
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+									</div>
+									<div class="databox">
+										<span class="tit">모집 인원</span><span class="cont">15명</span>
+										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
+										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
+										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
+									</div>
+								</div>
+							</li>
+							<!-- //List -->
 
-			<div class="brandList">
-				<ul>
-					<!-- 반복 -->
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-					<!-- //반복 -->
 
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
+							<li>
+								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="txt">
+									<div class="subject">
+										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
+									</div>
+									<div class="star">
+										체험단 평점&nbsp;
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+									</div>
+									<div class="databox">
+										<span class="tit">모집 인원</span><span class="cont">15명</span>
+										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
+										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
+										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
+									</div>
+								</div>
+							</li>
 
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
+							<li>
+								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="txt">
+									<div class="subject">
+										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
+									</div>
+									<div class="star">
+										체험단 평점&nbsp;
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+									</div>
+									<div class="databox">
+										<span class="tit">모집 인원</span><span class="cont">15명</span>
+										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
+										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
+										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
+									</div>
+								</div>
+							</li>
 
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
+							<li>
+								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="txt">
+									<div class="subject">
+										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
+									</div>
+									<div class="star">
+										체험단 평점&nbsp;
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+									</div>
+									<div class="databox">
+										<span class="tit">모집 인원</span><span class="cont">15명</span>
+										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
+										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
+										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
+									</div>
+								</div>
+							</li>
 
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-							<div class="price">5,600원</div>
-						</a>
-					</li>
-				</ul>
-			</div>
-
-			<!-- quickmenu -->
-			<div id="quick">
-				<div class="cart"><a href="#">장바구니</a></div>
-				<div class="wish">
-					<p class="title">위시 리스트</p>
-					
-					<div class="list">
-						<ul>	
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
-							<li><a href="#"><img src="images/img/sample_wish.gif" alt="" /></a>
 						</ul>
 					</div>
 
-					<div class="total">
-						<a href="#none" class="wishLeft"><img src="images/btn/wish_left.gif" alt="" /></a>
-						 <span class="page">1</span> / <span class="sum">3</span>
-						<a href="#none" class="wishRight"><img src="images/btn/wish_right.gif" alt="" /></a>
+
+					<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+
+						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+						<strong>1</strong>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						</div>
+						<!-- //페이징이동1 -->
 					</div>
 
+					<div class="searchWrap">
+						<div class="search">
+							<ul>
+								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
+								<li class="se">
+									<select>
+										<option value="" />제목</option>
+									</select>
+								</li>
+								<li><input type="text" class="searchInput" /></li>
+								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //체험단 -->
+
+
 				</div>
-
-				<div class="top"><a href="#">TOP&nbsp;&nbsp;<img src="images/ico/ico_top.gif" alt="" /></a></div>
 			</div>
-			<script type="text/javascript">
-			$(function(){
-				
-				$(window).scroll(function(){
-					var tg = $("div#quick");
-					var xg = $("div#maxcontents");
-					var limit = xg.height()- 165;
-					var tmp = $(window).scrollTop();
-
-					if (tmp > limit) {
-						tg.css({"position" : "absolute","right" : "-150px","bottom" : "208px","top" : "auto"});
-					}
-					else {
-						tg.css({"position" : "fixed","top" : "208px" , "margin-left" : "940px","right" : "auto"});
-					}
-				});
-
-			});
-			</script>
-			<!-- //quickmenu -->
+			<!-- //contents -->
 
 		</div>
-		<!-- //maxcontents -->
-
 	</div>
 	<!-- //container -->
 

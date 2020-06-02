@@ -16,7 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<select id="category" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	
+	</select>
+	
+	<select id="categoryView" resultType="com.koitt.jardin.dto.product.CategoryDto">
 	
 	</select>
 	

@@ -9,9 +9,11 @@ public interface ProductDAO {
 
 	public List<ProductDTO> list();
 
-	public List<CategoryDto> CategoryList();
+	public List<CategoryDto> categoryList();
 
-	public ProductDTO detail(int product_No);
+	public CategoryDto categoryView();
+
+	public ProductDTO detail(int productNo);
 
 	public void inquiry(ProductDTO ProductDto);
 
@@ -19,6 +21,6 @@ public interface ProductDAO {
 
 	public void review(ProductDTO ProductDto);
 
-	public ProductDTO search(int product_No);
+	public ProductDTO search(int productNo);
 
 }

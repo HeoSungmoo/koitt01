@@ -9,12 +9,13 @@ public class ProductDTO {
 	private int title;
 	private int price;
 	private int point;
+	private String kcal;
 	private int grade;
+	private int volume;
 	private String thumbNail;
 	private String image1;
 	private String image2;
 	private String image3;
-	private String image4;
 	private String detail;
 	private Timestamp uploadDate;
 	private int productStock;
@@ -22,6 +23,22 @@ public class ProductDTO {
 
 	ProductDTO() {
 
+	}
+
+	public String getKcal() {
+		return kcal;
+	}
+
+	public void setKcal(String kcal) {
+		this.kcal = kcal;
+	}
+
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
 
 	public int getProductNo() {
@@ -102,14 +119,6 @@ public class ProductDTO {
 
 	public void setImage3(String image3) {
 		this.image3 = image3;
-	}
-
-	public String getImage4() {
-		return image4;
-	}
-
-	public void setImage4(String image4) {
-		this.image4 = image4;
 	}
 
 	public String getDetail() {

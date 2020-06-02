@@ -1,15 +1,22 @@
 package com.koitt.jardin.controller.community;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.koitt.jardin.service.community.CommunityService;
 
 @Controller
 public class CommunityController {
 
+	@Autowired
+	CommunityService communityService;
+
 	// 체험단 글 리스트
 	@RequestMapping("expr")
-	public String expr() {
-
+	public String expr(Model model) {
+		model.addAttribute("expr", communityService.expr());
 		return "community/expr";
 	}
 

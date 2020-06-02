@@ -12,7 +12,6 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
-	MembershipService membershipService;
 
 	// 공지사항 글 리스트임
 	@RequestMapping("notice")

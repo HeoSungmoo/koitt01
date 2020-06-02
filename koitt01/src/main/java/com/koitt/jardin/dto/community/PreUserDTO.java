@@ -1,5 +1,5 @@
 package com.koitt.jardin.dto.community;
 
-public class CommunityDTO {
+public class PreUserDTO {
 
 }

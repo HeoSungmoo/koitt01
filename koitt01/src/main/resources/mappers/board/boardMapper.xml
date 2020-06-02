@@ -17,7 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--1:1문의 글 쓰기 -->
 	<insert id="inquiry">
-	
 		insert into question
 	</insert>
 

@@ -1,1 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myPage">
+    
+    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
+    	select * from table	
+    </select>
+    
+    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
+    	select * from table where no = #{no}
+    </select>
+    
+</mapper>

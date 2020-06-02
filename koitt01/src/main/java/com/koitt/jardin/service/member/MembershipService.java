@@ -12,6 +12,4 @@ public interface MembershipService {
 	// 비밀번호 찾기
 	public abstract MemberDTO findPw(MemberDTO memberDto);
 
-	// 1:1 문의(inquiry) 리스트 출력
-	public abstract MemberDTO inquiryList();
 }

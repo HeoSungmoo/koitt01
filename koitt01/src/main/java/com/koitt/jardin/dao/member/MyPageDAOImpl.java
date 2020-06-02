@@ -17,7 +17,13 @@ public class MyPageDAOImpl implements MyPageDAO {
 	@Override
 	public List<InquiryDTO> inquiryList() {
 
-		return sqlSession.selectList();
+		return sqlSession.selectList("myPage.inquiryList");
+	}
+
+	@Override
+	public InquiryDTO inquiryView(int no) {
+
+		return sqlSession.selectOne("myPage.inquiryView", no);
 	}
 
 }

@@ -68,7 +68,7 @@ public class MyPageController {
 	// 1:1문의 글쓰기
 	@PostMapping("inquiryWrite")
 	public String inquiryWrite(Model model) {
-		"밥"
+
 		return "mypage/inquiryWrite";
 	}
 

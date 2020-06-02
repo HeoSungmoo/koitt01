@@ -20,17 +20,25 @@ public class CommunityController {
 		return "community/expr";
 	}
 
-	// 체험단 글 보기 및 체험단 리뷰 글 쓰기
+	// 체험단 글 보기 및 체험단 리뷰리스트
 	@RequestMapping("exprReview")
-	public String exprReview() {
-
+	public String exprReview(Model model, int preUserNo) {
+		model.addAttribute("exprReview", communityService.exprReview(preUserNo));
+		expr(model);
 		return "community/exprReview";
+	}
+
+	// 체험단 리뷰 작성
+	@RequestMapping("preUserReview")
+	public String preUserReview(int preUserApplyNo) {
+		communityService.preUserReview(preUserApplyNo);
+		return "preUserApply";
 	}
 
 	// 체험단 글 보기 및 체험단 신청
 	@RequestMapping("exprView")
-	public String exprView() {
-
+	public String exprView(Model model) {
+		model.addAttribute("exprView", communityService.exprView());
 		return "community/exprView";
 	}
 

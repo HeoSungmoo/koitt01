@@ -340,7 +340,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>
-								<li><a href="#" class="sbtnMini">리뷰작성</a></li>
+								<li><a href="preUserReview" class="sbtnMini">리뷰작성</a></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>								
 							</ul>
 						</div>

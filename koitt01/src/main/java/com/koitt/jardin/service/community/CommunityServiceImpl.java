@@ -14,9 +14,24 @@ public class CommunityServiceImpl implements CommunityService {
 	@Autowired
 	CommunityDAO communityDAO;
 
+	// 체험단 글 리스트
 	@Override
 	public List<PreUserDTO> expr() {
 
 		return communityDAO.expr();
+	}
+
+	// 체험단 글 보기
+	@Override
+	public PreUserDTO exprReview(int preUserNo) {
+
+		return communityDAO.exprReview(preUserNo);
+	}
+
+	// 체험단 리뷰 글쓰기
+	@Override
+	public void preUserReview(int preUserApplyNo) {
+		communityDAO.preUserReview(preUserApplyNo);
+
 	}
 }

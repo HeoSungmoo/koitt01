@@ -467,7 +467,7 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a href="#" class="sbtnMini">글쓰기</a></li>
+								<li><a href="commentWrite" class="sbtnMini">글쓰기</a></li>
 							</ul>
 						</div>
 

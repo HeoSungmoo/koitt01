@@ -285,7 +285,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>	
-								<li><a href="#" class="sbtnMini">신청하기</a></li>
+								<li><a href="preUserApply" class="sbtnMini">신청하기</a></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>

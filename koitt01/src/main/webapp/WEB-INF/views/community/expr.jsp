@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="exprView">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -220,7 +220,7 @@ $(document).ready(function() {
 								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
+										<a href="exprView">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
 									</div>
 									<div class="star">
 										체험단 평점&nbsp;

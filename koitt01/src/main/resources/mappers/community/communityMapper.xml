@@ -3,6 +3,10 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="">
+<mapper namespace="community">
+	
+	<select id="expr" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * from preuser
+	</select>
 	
 </mapper>

@@ -15,6 +15,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	
+	<select id="category" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	
+	</select>
+	
+	<insert id="inquiry">
+	
+	
+	</insert>
+	
+	
 	<insert id="photo">
 	
 	
@@ -29,6 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	</select>
+	
+	
 	
 	
 </mapper>

@@ -50,9 +50,9 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public EventDTO prizeWinner() {
-		
-		return eventDao.p
+	public EventDTO prizeWinnerView(int no) {
+
+		return eventDao.prizeWinnerView(no);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 
 @Repository
@@ -28,6 +29,13 @@ public class ProductDAOImpl implements ProductDAO {
 
 	// 구매후기 작성란
 	@Override
+	public void inquiry(ProductDTO ProductDto) {
+
+		sqlSession.insert("product.inquiry", ProductDto);
+
+	}
+
+	@Override
 	public void photo(ProductDTO ProductDto) {
 
 		sqlSession.insert("product.photo", ProductDto);
@@ -45,6 +53,18 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDTO search(int product_No) {
 
 		return sqlSession.selectOne("product.search", product_No);
+	}
+
+	@Override
+	public List<CategoryDto> categoryList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.categoryList");
+	}
+
+	@Override
+	public CategoryDto categoryView() {
+
+		return sqlSession.selectOne("product.categoryView");
 	}
 
 }

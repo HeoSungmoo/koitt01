@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="exprView">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">

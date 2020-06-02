@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -250,8 +250,8 @@ $(document).ready(function() {
 					<!-- Tab -->
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="#" class="on">체험단 신청</a></li>
-							<li class="last"><a href="#">체험 리뷰</a></li>
+							<li><a href="exprView" class="on">체험단 신청</a></li>
+							<li class="last"><a href="exprReview">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->

@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koitt.jardin.service.board.BoardService;
+import com.koitt.jardin.service.member.MyPageService;
 
 @Controller
 public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	MyPageService myPageService;
 
 	// 공지사항 글 리스트임
 	@RequestMapping("notice")
@@ -31,13 +33,6 @@ public class BoardController {
 	@RequestMapping("inquiryView")
 	public String inquiryView() {
 		return "board/inquiry";
-	}
-
-	// 1:1문의 글 작성 결과
-	@RequestMapping("inquiry")
-	public String inquiry() {
-		membershipService.inquiry();
-		return "mypage/inquiry";
 	}
 
 	// FAQ

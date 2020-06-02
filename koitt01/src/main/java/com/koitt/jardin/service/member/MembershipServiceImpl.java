@@ -32,10 +32,4 @@ public class MembershipServiceImpl implements MembershipService {
 		return memberDao.findPw(memberDto);
 	}
 
-	// 1:1 문의(inquiry) 리스트를 출력
-	@Override
-	public MemberDTO inquiryList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

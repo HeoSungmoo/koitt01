@@ -1,15 +1,22 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/HeoSungmoo/koitt01.git
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/community/commentView.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/membership/idSearch.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/join/step01.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/join/step02.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/join/step03.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/join/step04.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/membership/login.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/membership/step01.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/membership/step02.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/membership/step03.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/views/membership/step04.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/cart.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/changeInfo.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/coupon.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/getLeave.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/id.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/inquiry.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/inquiryView.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/mypage/inquiryWrite.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/joinOk.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/orderCheck.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/password.jsp=UTF-8

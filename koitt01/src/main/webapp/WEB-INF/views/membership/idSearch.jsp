@@ -219,7 +219,7 @@ $(document).ready(function() {
 								<li><input type="password" class="emailType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 							</ul>
 
-							<div class="btn"><a href="#" class="gbtn">아이디 찾기</a></div>
+							<div class="btn"><a href="findId" class="gbtn">아이디 찾기</a></div>
 						</div>
 					</div>
 
@@ -233,7 +233,7 @@ $(document).ready(function() {
 								<li><input type="text" class="emailType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" /></li>
 							</ul>
 
-							<div class="btn"><a href="#" class="gbtn">비밀번호 찾기</a></div>
+							<div class=""><a href="findPw" class="gbtn">비밀번호 찾기</a></div>
 						</div>
 					</div>
 

@@ -203,7 +203,7 @@ $(document).ready(function() {
 					<li><a href="#" id="leftNavi4">위시리스트</a></li>
 					<li><a href="#" id="leftNavi5">나의 쿠폰</a></li>
 					<li><a href="#" id="leftNavi6">나의 포인트</a></li>
-					<li><a href="#" id="leftNavi7">1:1문의</a></li>
+					<li><a href="inquiry" id="leftNavi7">1:1문의</a></li>
 					<li><a href="#" id="leftNavi8">회원정보 수정</a></li>
 					<li class="last"><a href="#" id="leftNavi9">회원 탈퇴</a></li>
 				</ul>			

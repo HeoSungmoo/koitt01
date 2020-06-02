@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.member.MemberDTO;
 
 @Repository
-public class MemberDAOImpl implements MemberDAO {
+public class MembershipDAOImpl implements MembershipDAO {
 
 	private SqlSession sqlSession;
 

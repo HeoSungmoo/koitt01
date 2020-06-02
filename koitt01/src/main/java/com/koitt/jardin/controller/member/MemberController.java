@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.koitt.jardin.dto.member.MemberDTO;
 import com.koitt.jardin.service.member.MembershipService;
+import com.koitt.jardin.service.member.MyPageService;
 
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MembershipService memberService;
+
+	@Autowired
+	private MyPageService myPageService;
 	// membership
 
 	// 회원가입 - 실명확인
@@ -124,7 +128,7 @@ public class MemberController {
 	// 1:1문의 리스트
 	@PostMapping("inquiry")
 	public String inquiry(Model model) {
-		memberService.inquiryList();
+		myPageSerivce.inquiryList();
 		return "mypage/inquiry";
 	}
 

@@ -199,9 +199,9 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">NOTICE</a></li>
-					<li><a href="#" id="leftNavi2">1:1문의</a></li>
-					<li><a href="#" id="leftNavi3">FAQ</span></a></li>
+					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
+					<li><a href="inquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="#" id="leftNavi4">이용안내</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(4,0);</script>

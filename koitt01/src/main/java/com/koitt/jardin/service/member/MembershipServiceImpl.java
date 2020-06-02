@@ -3,14 +3,14 @@ package com.koitt.jardin.service.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.koitt.jardin.dao.member.MemberDAO;
+import com.koitt.jardin.dao.member.MembershipDAO;
 import com.koitt.jardin.dto.member.MemberDTO;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
 
 	@Autowired
-	private MemberDAO memberDao;
+	private MembershipDAO memberDao;
 
 	// 회원가입 입력
 	@Override

@@ -12,6 +12,7 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	MembershipService membershipService;
 
 	// 공지사항 글 리스트임
 	@RequestMapping("notice")
@@ -22,29 +23,35 @@ public class BoardController {
 
 	// 공지사항 글 보기
 	@RequestMapping("noticeView")
-	public String noticeView() {
-
+	public String noticeView(Model model, int No) {
+		model.addAttribute("noticeView", boardService.noticeView(No));
 		return "board/noticeView";
 	}
 
-	// 1:1문의 글 작성
+	// 1:1 문의 글작성 페이지
+	@RequestMapping("inquiryView")
+	public String inquiryView() {
+		return "board/inquiry";
+	}
+
+	// 1:1문의 글 작성 결과
 	@RequestMapping("inquiry")
 	public String inquiry() {
-
-		return "board/inquiry";
+		membershipService.inquiry();
+		return "mypage/inquiry";
 	}
 
 	// FAQ
 	@RequestMapping("faq")
-	public String faq() {
-
+	public String faq(Model model) {
+		model.addAttribute("faq", boardService.faq());
 		return "board/faq";
 	}
 
 	// 이용안내
 	@RequestMapping("guide")
-	public String guide() {
-
+	public String guide(Model model) {
+		model.addAttribute("guide", boardService.guide());
 		return "board/guide";
 	}
 }

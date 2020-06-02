@@ -2,7 +2,7 @@ package com.koitt.jardin.dao.member;
 
 import com.koitt.jardin.dto.member.MemberDTO;
 
-public interface MemberDAO {
+public interface MembershipDAO {
 
 	// 회원가입 정보 입력
 	public abstract void join(MemberDTO memberDto);

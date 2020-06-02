@@ -1,15 +1,14 @@
 package com.koitt.jardin.service.board;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.board.BoardDAO;
-<<<<<<< HEAD
-=======
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -17,8 +16,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardDAO boardDao;
 
-<<<<<<< HEAD
-=======
 	// 공지사항 글 리스트
 	@Override
 	public List<NoticeDTO> notice() {
@@ -55,5 +52,4 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.guide();
 	}
 
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 }

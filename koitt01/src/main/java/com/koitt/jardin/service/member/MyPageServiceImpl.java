@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.member.MyPageDAO;
+import com.koitt.jardin.dto.member.MemberDTO;
 import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 
 @Service
@@ -24,7 +25,33 @@ public class MyPageServiceImpl implements MyPageService {
 	// 1:1 문의 글보기 출력
 	@Override
 	public InquiryDTO inquiryView(int no) {
-		myPageDao.inquiryView(no);
-		return null;
+
+		return myPageDao.inquiryView(no);
+	}
+
+	// 1:1 문의 글등록
+	@Override
+	public void writeComplete(InquiryDTO inquiryDto) {
+		myPageDao.writeComplete(inquiryDto);
+
+	}
+
+	// 회원 정보 수정
+	@Override
+	public MemberDTO changeInfoView(MemberDTO memberDto) {
+
+		return myPageDao.changeInfoView(memberDto);
+	}
+
+	@Override
+	public void changeInfo(String id) {
+		myPageDao.changeInfo(id);
+
+	}
+
+	@Override
+	public void delete(MemberDTO memberDto) {
+		myPageDao.delete(memberDto);
+
 	}
 }

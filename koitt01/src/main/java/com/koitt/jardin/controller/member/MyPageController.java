@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.koitt.jardin.dto.member.MemberDTO;
+import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 import com.koitt.jardin.service.member.MyPageService;
 
 @Controller
@@ -72,6 +74,14 @@ public class MyPageController {
 		return "mypage/inquiryWrite";
 	}
 
+	// 1:1문의 글따스고 글등록
+	@PostMapping("writeComplete")
+	public String writeComplete(Model model, InquiryDTO inquiryDto) {
+
+		myPageService.writeComplete(inquiryDto);
+		return "redirect:mypage/inquiry";
+	}
+
 	// 1:1문의 글보기
 	@PostMapping("inquiryView")
 	public String inquiryView(Model model, int no) {
@@ -79,18 +89,30 @@ public class MyPageController {
 		return "mypage/inquiryView";
 	}
 
-	// 회원정보수정
-	@PostMapping("changeInfo")
-	public String changeInfo(Model model) {
-
-		return "mypage/changeInfo";
+	// 회원정보수정하기위한 정보 출력
+	@PostMapping("changeInfoView")
+	public String changeInfoView(Model model, MemberDTO memberDto) {
+		model.addAttribute("changeInfoView", myPageService.changeInfoView(memberDto));
+		return "mypage/changeInfoView";
 	}
 
-	// 회원 탈퇴
+	// 회원정보수정
+	public String changeInfo(String id) {
+		myPageService.changeInfo(id);
+		return "메인페이지(로그아웃)";
+	}
+
+	// 회원 탈퇴 페이지 이동
 	@PostMapping("getLeave")
-	public String getLeave(Model model) {
+	public String getLeave() {
 
 		return "mypage/getLeave";
+	}
+
+	// 아이디와 비밀번호 탈퇴사유 입력후 탈퇴
+	public String Delete(MemberDTO memberDto) {
+		myPageService.delete(memberDto);
+		return "메인페이지(로그아웃)";
 	}
 
 	// -------------------------myPage 끝------------------------

@@ -267,7 +267,7 @@ $(document).ready(function() {
 						<div class="bCenter">
 							<ul>																
 								<li><a href="#" class="nbtnbig">취소</a></li>
-								<li><a href="#" class="sbtnMini">확인</a></li>
+								<li><a href="writeComplete" class="sbtnMini">확인</a></li>
 							</ul>
 						</div>
 					</div>

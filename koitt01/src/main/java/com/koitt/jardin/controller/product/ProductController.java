@@ -18,19 +18,24 @@ public class ProductController {
 	@RequestMapping("list")
 	public String list(Model model) {
 		model.addAttribute("list", productService.list());
+		model.addAttribute("CategoryDto", productService.CategoryList());
 		return "product/list";
 	}
+
+	// 카테고리
 
 	// 제품의 상세내용 ( condent_view)
 	@RequestMapping("detail")
 	public String detail(Model model, int product_No) {
 		model.addAttribute("detail", productService.detail(product_No));
+
 		return "product/detail";
 	}
 
 	// 질문과 답변 작성란 ::추후에
 	@RequestMapping("Pinquiry")
-	public String inquiry() {
+	public String inquiry(ProductDTO ProductDto) {
+		productService.inquiry(ProductDto);
 		return "product/inquiry";
 	}
 

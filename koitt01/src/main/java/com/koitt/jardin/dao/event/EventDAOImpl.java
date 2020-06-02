@@ -49,4 +49,10 @@ public class EventDAOImpl implements EventDAO {
 		return sqlSession.selectList("event.prizeWinner");
 	}
 
+	@Override
+	public EventDTO prizeWinnerView(int no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("event.finEventView", no);
+	}
+
 }

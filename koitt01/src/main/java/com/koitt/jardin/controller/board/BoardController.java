@@ -1,15 +1,22 @@
 package com.koitt.jardin.controller.board;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.koitt.jardin.service.board.BoardService;
 
 @Controller
 public class BoardController {
 
+	@Autowired
+	BoardService boardService;
+
 	// 공지사항 글 리스트임
 	@RequestMapping("notice")
-	public String notice() {
-
+	public String notice(Model model) {
+		model.addAttribute("notice", boardService.notice());
 		return "board/notice";
 	}
 

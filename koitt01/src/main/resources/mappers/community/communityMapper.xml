@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 <!-- 	체험단 신청 글 쓰기 -->
 	<insert id="preUserReview" >
-	insert into preuser_review 
+	insert into preuserReview 
+	</insert>
+	
+	<insert id="preUserApply" >
+	insert into preuserApply 
 	</insert>
 </mapper>

@@ -14,4 +14,8 @@ public interface CommunityService {
 
 	// 체험단 리뷰 글쓰기
 	public void preUserReview(int preUserApplyNo);
+
+	// 체험단 신청 글쓰기
+	public void preUserApply(int preUserApplyNo);
+
 }

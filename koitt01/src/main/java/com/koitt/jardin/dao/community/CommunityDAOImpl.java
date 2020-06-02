@@ -35,4 +35,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	}
 
+	// 체험단 신청 글쓰기
+	@Override
+	public void preUserApply(int preUserApplyNo) {
+		sqlSession.insert("community.preUserApply", preUserApplyNo);
+
+	}
+
 }

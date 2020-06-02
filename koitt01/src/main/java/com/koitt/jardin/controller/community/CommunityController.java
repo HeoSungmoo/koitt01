@@ -32,7 +32,7 @@ public class CommunityController {
 	@RequestMapping("preUserReview")
 	public String preUserReview(int preUserApplyNo) {
 		communityService.preUserReview(preUserApplyNo);
-		return "preUserApply";
+		return "community/exprReview";
 	}
 
 	// 체험단 글 보기 및 체험단 신청--------> exprReview와 exprView는 같은 글보기 상태에서 리뷰는 리뷰작성및 리뷰
@@ -43,10 +43,18 @@ public class CommunityController {
 		return "community/exprView";
 	}
 
-	// 포토구매후기 글 리스트
-	@RequestMapping("epilogue")
-	public String epilogue() {
+	@RequestMapping("preUserApply")
+	public String preUserApply(int preUserNo) {
+		communityService.preUserApply(preUserNo);
+		return "community/exprApplyResult";
+	}
 
+	// 포토구매후기 글
+	// 리스트--------------------------------------------------------------------2020-06-03
+	// 작업중 리뷰에 대한 부분 상의 필요
+	@RequestMapping("epilogue")
+	public String epilogue(Model model) {
+//		model.addAttribute("epilogue", communityService.epilogue());
 		return "community/epilogue";
 	}
 

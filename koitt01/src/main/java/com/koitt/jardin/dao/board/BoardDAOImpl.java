@@ -20,6 +20,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<NoticeDTO> notice() {
 
+		System.out.println(sqlSession.selectList("board.notice"));
 		return sqlSession.selectList("board.notice");
 	}
 

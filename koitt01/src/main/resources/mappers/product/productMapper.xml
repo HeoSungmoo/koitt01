@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" resultType="com.koitt.jardin.dto.product.ProductDTO">
 
-	select * from product order by productNo desc
+	select * from product
 			
 	</select>
 	

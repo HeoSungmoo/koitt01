@@ -18,10 +18,10 @@ public class ProductController {
 	@RequestMapping("list")
 	public String list(Model model) {
 		model.addAttribute("list", productService.list());
-		// 제품리스트 카테고리 리스트 제목 표시
-		model.addAttribute("categoryList", productService.categoryList());
-		// 제품리스트 카테고리 뷰 페이지
-		model.addAttribute("categoryView", productService.categoryView());
+//		// 제품리스트 카테고리 리스트 제목 표시
+//		model.addAttribute("categoryList", productService.categoryList());
+//		// 제품리스트 카테고리 뷰 페이지
+//		model.addAttribute("categoryView", productService.categoryView());
 		return "product/list";
 	}
 

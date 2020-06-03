@@ -8,6 +8,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/> 
       	<!-- select 결과값이 null라도 key생성 --> 
 		<setting name="callSettersOnNulls" value="true"/>
+		
 	</settings>
 	<typeAliases>
 	

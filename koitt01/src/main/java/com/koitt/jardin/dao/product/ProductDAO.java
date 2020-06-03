@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
+import com.koitt.jardin.dto.product.ProductInfoDTO;
 
 public interface ProductDAO {
 
@@ -14,6 +15,8 @@ public interface ProductDAO {
 	public CategoryDto categoryView();
 
 	public ProductDTO detail(int productNo);
+
+	public List<ProductInfoDTO> productInfoDto();
 
 	public void inquiry(ProductDTO ProductDto);
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
+import com.koitt.jardin.dto.product.ProductInfoDTO;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -63,6 +64,12 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO search(int productNo) {
 
 		return productDao.search(productNo);
+	}
+
+	@Override
+	public List<ProductInfoDTO> productInfoDto() {
+		// TODO Auto-generated method stub
+		return productDao.productInfoDto();
 	}
 
 }

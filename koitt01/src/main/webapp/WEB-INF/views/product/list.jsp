@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,27 +208,27 @@ $(document).ready(function() {
 
 			<div class="brandTab">
 				<ul>
-					<c:forEach var="CategoryDto" items="${CategoryList }">
-					<li><a href="#" class="hover">${CategoryList.name }</a></li>
-					</c:forEach>
+
+					<li><a href="#" class="hover">11</a></li>
+
 				</ul>
 			</div>
-		<c:forEach var="ProductDto" items="${list }">
+	<c:forEach var="ProductDto" items="${list }">
 			<div class="brandList">
 				<ul>
 					<!-- 반복 -->
 					<li>
 						<a href="#">
 							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">${ProductDto.title }</div>
-							<div class="price">${ProductDto.price }</div>
+	
+		
 						</a>
 					</li>
 				</ul>
 				
 			</div>
-
-		</c:forEach>
+	</c:forEach>
+	
 	
 			
 		

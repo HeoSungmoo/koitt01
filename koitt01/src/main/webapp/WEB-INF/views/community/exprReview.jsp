@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -199,8 +199,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">체험단</a></li>
-					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li><a href="expr" id="leftNavi1">체험단</a></li>
+					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
 					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
@@ -249,8 +249,8 @@ $(document).ready(function() {
 
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="#">체험단 신청</a></li>
-							<li class="last"><a href="#" class="on">체험 리뷰</a></li>
+							<li><a href="exprView">체험단 신청</a></li>
+							<li class="last"><a href="exprReview" class="on">체험 리뷰</a></li>
 						</ul>						
 					</div>
 
@@ -340,7 +340,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>
-								<li><a href="#" class="sbtnMini">리뷰작성</a></li>
+								<li><a href="preUserReview" class="sbtnMini">리뷰작성</a></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>								
 							</ul>
 						</div>

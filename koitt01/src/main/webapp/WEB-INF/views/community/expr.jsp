@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -199,8 +199,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">체험단</a></li>
-					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li><a href="expr" id="leftNavi1">체험단</a></li>
+					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
 					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
@@ -220,7 +220,7 @@ $(document).ready(function() {
 								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
+										<a href="exprView">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
 									</div>
 									<div class="star">
 										체험단 평점&nbsp;
@@ -241,74 +241,7 @@ $(document).ready(function() {
 							<!-- //List -->
 
 
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
-									</div>
-									<div class="star">
-										체험단 평점&nbsp;
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</div>
-									<div class="databox">
-										<span class="tit">모집 인원</span><span class="cont">15명</span>
-										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
-										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
-										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
-									</div>
-									<div class="star">
-										체험단 평점&nbsp;
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</div>
-									<div class="databox">
-										<span class="tit">모집 인원</span><span class="cont">15명</span>
-										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
-										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
-										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="finishbtn">종료</span></a>
-									</div>
-									<div class="star">
-										체험단 평점&nbsp;
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</div>
-									<div class="databox">
-										<span class="tit">모집 인원</span><span class="cont">15명</span>
-										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
-										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
-										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
-									</div>
-								</div>
-							</li>
+							
 
 						</ul>
 					</div>

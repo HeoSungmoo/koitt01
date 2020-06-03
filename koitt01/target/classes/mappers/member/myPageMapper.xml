@@ -32,7 +32,7 @@
     
     <!-- 회원탈퇴 -->
     <delete id = "delete">
-    	delete 
+    	delete member
     </delete>
     
 </mapper>

@@ -39,9 +39,11 @@
 
 		<beans:property name="mapperLocations" value="classpath:mappers/**/*.xml"/>
 
+
 		<beans:property name="mapperLocations" value="classpath:mappers/**.xml"/>
 
 		
+
 	</beans:bean>
 	
 	<!-- sqlSession -->

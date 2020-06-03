@@ -20,24 +20,41 @@ public class CommunityController {
 		return "community/expr";
 	}
 
-	// 체험단 글 보기 및 체험단 리뷰 글 쓰기
+	// 체험단 글 보기 및 체험단 리뷰리스트
 	@RequestMapping("exprReview")
-	public String exprReview() {
-
+	public String exprReview(Model model, int preUserNo) {
+		model.addAttribute("exprReview", communityService.exprReview(preUserNo));
+		expr(model);
 		return "community/exprReview";
 	}
 
-	// 체험단 글 보기 및 체험단 신청
-	@RequestMapping("exprView")
-	public String exprView() {
+	// 체험단 리뷰 작성
+	@RequestMapping("preUserReview")
+	public String preUserReview(int preUserApplyNo) {
+		communityService.preUserReview(preUserApplyNo);
+		return "community/exprReview";
+	}
 
+	// 체험단 글 보기 및 체험단 신청--------> exprReview와 exprView는 같은 글보기 상태에서 리뷰는 리뷰작성및 리뷰
+	// 리스트가 나오고 뷰는 체험단 신청이 나오는 차이가 있어서 exprReview를 호출했다.
+	@RequestMapping("exprView")
+	public String exprView(Model model, int preUserNo) {
+		exprReview(model, preUserNo);
 		return "community/exprView";
 	}
 
-	// 포토구매후기 글 리스트
-	@RequestMapping("epilogue")
-	public String epilogue() {
+	@RequestMapping("preUserApply")
+	public String preUserApply(int preUserNo) {
+		communityService.preUserApply(preUserNo);
+		return "community/exprApplyResult";
+	}
 
+	// 포토구매후기 글
+	// 리스트--------------------------------------------------------------------2020-06-03
+	// 작업중 리뷰에 대한 부분 상의 필요
+	@RequestMapping("epilogue")
+	public String epilogue(Model model) {
+//		model.addAttribute("epilogue", communityService.epilogue());
 		return "community/epilogue";
 	}
 

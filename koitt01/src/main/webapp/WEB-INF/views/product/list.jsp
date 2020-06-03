@@ -205,8 +205,8 @@ $(document).ready(function() {
 
 			<div class="brandTab">
 				<ul>
-					<c:forEach var="CategoryDto" items="${Category }">
-					<li><a href="#" class="hover">${Category.name }</a></li>
+					<c:forEach var="CategoryDto" items="${CategoryList }">
+					<li><a href="#" class="hover">${CategoryList.name }</a></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -218,7 +218,7 @@ $(document).ready(function() {
 						<a href="#">
 							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
 							<div class="name">${ProductDto.title }</div>
-							<div class="price">${ProductDto.title }</div>
+							<div class="price">${ProductDto.price }</div>
 						</a>
 					</li>
 				</ul>

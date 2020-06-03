@@ -9,9 +9,11 @@ public interface ProductService {
 
 	public List<ProductDTO> list();
 
-	public ProductDTO detail(int product_No);
+	public ProductDTO detail(int productNo);
 
-	public List<CategoryDto> CategoryList();
+	public List<CategoryDto> categoryList();
+
+	public CategoryDto categoryView();
 
 	public void inquiry(ProductDTO ProductDto);
 
@@ -19,5 +21,6 @@ public interface ProductService {
 
 	public void review(ProductDTO ProductDto);
 
-	public ProductDTO search(int product_No);
+	public ProductDTO search(int productNo);
+
 }

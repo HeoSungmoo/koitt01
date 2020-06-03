@@ -236,7 +236,7 @@ $(document).ready(function() {
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView">${noticeDto.title}</a>
+										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
 									<td>${noticeDto.uploadDate}</td>

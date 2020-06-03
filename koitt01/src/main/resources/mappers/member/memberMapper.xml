@@ -6,16 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 	<!-- 회원가입 정보 입력 insert구문 -->
 	<insert id ="join">
-		insert into table(id,name,password,mail,mailSend,zip,address,phone,sms,tel,birth,lunarSolar,deleteDate) values()
+		insert into member(id,name,password,mail,mailSend,zip,address,phone,sms,tel,birth,lunarSolar) values(#{id},#{name},#{password},#{mail},#{mailSend},#{zip},#{address},#{phone},#{sms},#{tel},#{birth},#{lunarSolar})
 	</insert>
 	
 	<!-- 아이디 찾기 -->
 	<select id = "findId" resultType = "com.koitt.jardin.dto.member.MemberDTO">
-		select id from table where name = #{name}, email = #{email}
+		select id from member where name = #{name}, email = #{email}
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
 	<select id = "findPw" resultType = "com.koitt.jardin.dto.member.MemberDTO">
-		select pw from table where id = #{id}, email = #{email}
+		select password from member where id = #{id}, email = #{email}
 	</select>
 </mapper>

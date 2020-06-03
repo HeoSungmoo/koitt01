@@ -63,6 +63,7 @@ public class MyPageController {
 	// 1:1문의 리스트
 	@PostMapping("inquiry")
 	public String inquiry(Model model) {
+
 		model.addAttribute("inquiryList", myPageService.inquiryList());
 		return "mypage/inquiry";
 	}
@@ -74,7 +75,7 @@ public class MyPageController {
 		return "mypage/inquiryWrite";
 	}
 
-	// 1:1문의 글따스고 글등록
+	// 1:1문의 글쓰고 글등록
 	@PostMapping("writeComplete")
 	public String writeComplete(Model model, InquiryDTO inquiryDto) {
 
@@ -85,6 +86,7 @@ public class MyPageController {
 	// 1:1문의 글보기
 	@PostMapping("inquiryView")
 	public String inquiryView(Model model, int no) {
+
 		model.addAttribute("inquiryView", myPageService.inquiryView(no));
 		return "mypage/inquiryView";
 	}

@@ -19,6 +19,7 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<InquiryDTO> inquiryList() {
 
+		// 페이지 네이션
 		return myPageDao.inquiryList();
 	}
 
@@ -36,19 +37,21 @@ public class MyPageServiceImpl implements MyPageService {
 
 	}
 
-	// 회원 정보 수정
+	// 회원 수정 정보출력
 	@Override
 	public MemberDTO changeInfoView(MemberDTO memberDto) {
 
 		return myPageDao.changeInfoView(memberDto);
 	}
 
+	// 회원 수정
 	@Override
 	public void changeInfo(String id) {
 		myPageDao.changeInfo(id);
 
 	}
 
+	// 회원 탈퇴
 	@Override
 	public void delete(MemberDTO memberDto) {
 		myPageDao.delete(memberDto);

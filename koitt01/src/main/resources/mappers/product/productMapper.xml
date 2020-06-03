@@ -7,20 +7,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" resultType="com.koitt.jardin.dto.product.ProductDTO">
 
+	select * from product order by productNo desc
 			
 	</select>
 	
 	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
+	select * from product where productNo=#{productNo}
 	
 	</select>
 	
 	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
 	
+	select * from category
+	
 	</select>
 	
 	<select id="categoryView" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	
+	select * from category where categoryCode=#{categoryCode}
+	
+	</select>
+	
+	<select id="productInfoDto" resultType="com.koitt.jardin.dto.product.ProductInfoDTO">
+	
+	select * from product_info
 	
 	</select>
 	
@@ -31,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<insert id="photo">
+	
 	
 	
 	</insert>

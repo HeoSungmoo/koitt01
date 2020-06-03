@@ -29,6 +29,8 @@ public class ProductController {
 	@RequestMapping("detail")
 	public String detail(Model model, int product_No) {
 		model.addAttribute("detail", productService.detail(product_No));
+		// 제품상세 제품 상세내용
+		model.addAttribute("productInfoDto", productService.productInfoDto());
 
 		return "product/detail";
 	}

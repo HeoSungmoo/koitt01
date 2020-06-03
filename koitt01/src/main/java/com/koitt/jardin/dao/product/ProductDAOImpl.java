@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
+import com.koitt.jardin.dto.product.ProductInfoDTO;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -27,7 +28,13 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectOne("product.detail", product_No);
 	}
 
+	@Override
+	public List<ProductInfoDTO> productInfoDto() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.productInfoDto");
+	}
 	// 구매후기 작성란
+
 	@Override
 	public void inquiry(ProductDTO ProductDto) {
 

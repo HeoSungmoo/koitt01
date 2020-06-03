@@ -6,12 +6,12 @@
 
 <mapper namespace="myPage">
     <!-- 1:1문의 리스트 출력 -->
-    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
-    	select * from question order by no asc;
+    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
+    	select * from question;
     </select>
     
     <!-- 1:1문의 내용 -->
-    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
+    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
     	select * from question where no = #{no}
     </select>
     

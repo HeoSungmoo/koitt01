@@ -62,7 +62,7 @@ public class MyPageController {
 	}
 
 	// 1:1문의 리스트
-	@GetMapping("inquiry")
+	@GetMapping("/inquiry")
 	public String inquiry(Model model) {
 
 		model.addAttribute("inquiryList", myPageService.inquiryList());
@@ -70,14 +70,14 @@ public class MyPageController {
 	}
 
 	// 1:1문의 글쓰기
-	@PostMapping("inquiryWrite")
+	@RequestMapping("inquiryWrite")
 	public String inquiryWrite(Model model) {
 
 		return "mypage/inquiryWrite";
 	}
 
 	// 1:1문의 글쓰고 글등록
-	@PostMapping("writeComplete")
+	@RequestMapping("/writeComplete")
 	public String writeComplete(Model model, InquiryDTO inquiryDto) {
 
 		myPageService.writeComplete(inquiryDto);
@@ -85,7 +85,7 @@ public class MyPageController {
 	}
 
 	// 1:1문의 글보기
-	@PostMapping("inquiryView")
+	@RequestMapping("/inquiryView")
 	public String inquiryView(Model model, int no) {
 
 		model.addAttribute("inquiryView", myPageService.inquiryView(no));

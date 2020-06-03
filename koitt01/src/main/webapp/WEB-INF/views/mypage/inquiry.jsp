@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
@@ -8,17 +10,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/top_navi.js"></script>
-<script type="text/javascript" src="../js/left_navi.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/top_navi.js"></script>
+<script type="text/javascript" src="js/left_navi.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="../js/html5.js"></script>
 <script type="text/javascript" src="../js/respond.min.js"></script>
@@ -92,8 +94,8 @@ $(document).ready(function() {
 		<div id="snbBox">
 			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
 			<div id="quickmenu">
-				<div id="mnaviOpen"><img src="../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
-				<div id="mnaviClose"><img src="../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
+				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
+				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
@@ -242,26 +244,26 @@ $(document).ready(function() {
 								<th scope="col">제목</th>
 								<th scope="col" class="tnone">등록일</th>
 								<th scope="col">처리상태</th>
-								<c:foreach var = "inquiryList" item = ${list}>
-									<td scope="col" class="tnone">${no}</td>
-									<td scope="col">분류${category}</td>
-									<td scope="col">제목</td>
-									<td scope="col" class="tnone">등록일</td>
-									<td scope="col">처리상태</td>
-								</c:foreach>
+								
+								
 							</thead>
+							
+									
+								
 							<tbody>
+							<c:forEach var = "inquiryList" items = "${inquiryList}">
 								<tr>
-									<td class="tnone">4</td>
-									<td>배송</td>
-									<td class="left"><a href="#">배송문의 드립니다!</a></td>
-									<td class="tnone">14-05-31</td>
+									<td class="tnone">${inquiryList.no}</td>
+									<td>${inquiryList.category}</td>
+									<td class="left"><a href="#">${inquiryList.title}</a></td>
+									<td class="tnone">${inquiryList.uploadDate}</td>
 									<td>
 										<ul class="state">
 											<li><div class="nbtnMini iw83">답변대기</div></li>
 										</ul>
 									</td>
 								</tr>
+							</c:forEach>
 
 								<tr>
 									<td class="tnone">3</td>

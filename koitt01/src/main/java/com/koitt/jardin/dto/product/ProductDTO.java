@@ -6,7 +6,7 @@ public class ProductDTO {
 
 	private int productNo;
 	private int categoryCode;
-	private int title;
+	private String title;
 	private int price;
 	private int point;
 	private String kcal;
@@ -23,6 +23,14 @@ public class ProductDTO {
 
 	ProductDTO() {
 
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getKcal() {
@@ -55,14 +63,6 @@ public class ProductDTO {
 
 	public void setCategoryCode(int categoryCode) {
 		this.categoryCode = categoryCode;
-	}
-
-	public int getTitle() {
-		return title;
-	}
-
-	public void setTitle(int title) {
-		this.title = title;
 	}
 
 	public int getPrice() {

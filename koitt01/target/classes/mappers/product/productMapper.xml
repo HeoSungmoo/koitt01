@@ -20,13 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
 	
-	select * from category
+	select * from category order by category_code asc
 	
 	</select>
 	
-	<select id="categoryView" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	<select id="SubCategoryDto" resultType="com.koitt.jardin.dto.product.SubCategoryDto">
 	
-	select * from category where categoryCode=#{categoryCode}
+	select * from sub_category where category_code=20
 	
 	</select>
 	

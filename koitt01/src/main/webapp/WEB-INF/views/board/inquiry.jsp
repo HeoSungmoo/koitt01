@@ -200,7 +200,7 @@ $(document).ready(function() {
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
 					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
-					<li><a href="inquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="bInquiryView" id="leftNavi2">1:1문의</a></li>
 					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 				</ul>			
@@ -220,32 +220,37 @@ $(document).ready(function() {
 							<col width="*" />
 							</colgroup>
 							<tbody>
+							<form action="inquiryWrite" name="inquiryWrite" method="post">
 								<tr>
 									<th scope="row"><span>분류</span></th>
 									<td>
-										<select>
-											<option value="">선택해주세요.</option>
+										<select name="category">
+											<option value="분류1">선택해주세요.</option>
+											<option value="분류2">선택해주세요.</option>
+											<option value="분류3">선택해주세요.</option>
+											
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" />
+										<input type="text" class="wlong" name="title" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>상세 내용</span></th>
 									<td>
-										<textarea class="tta"></textarea>
+										<textarea class="tta" name="content"></textarea>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>첨부파일</span></th>
 									<td>
-										<input type="file" class="fileType" />
+										<input type="file" class="fileType" name="fileName" />
 									</td>
 								</tr>
+							</form>
 							</tbody>
 						</table>
 					</div>

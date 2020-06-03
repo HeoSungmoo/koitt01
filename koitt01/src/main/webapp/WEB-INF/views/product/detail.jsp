@@ -227,23 +227,24 @@ $(document).ready(function() {
 				<!-- info -->
 				<div class="info">
 					<p class="title">
+					<!--카테고리 넣어야댐 -->
 						<span>[오리지널]</span>
-						쟈뎅 오리지널 콜롬비아 페레이라 원두커피백 15p
+						${detail.title }
 					</p>
 
 					<div class="priceInfo">
 						<ul>
 							<li>
-								<div class="stit">판매가</div> <div class="heavygray"><strong>4,330원</strong></div>
+								<div class="stit">판매가</div> <div class="heavygray"><strong>${detail.price }</strong></div>
 							</li>
 							<li>
-								<div class="stit">포인트</div> <div class="orange"><strong>216 Point</strong></div>
+								<div class="stit">포인트</div> <div class="orange"><strong>${detail.point }</strong></div>
 							</li>
 							<li>
-								<div class="stit">칼로리</div> <div>45kcal</div>
+								<div class="stit">칼로리</div> <div>${detail.kcal }</div>
 							</li>
 							<li>
-								<div class="stit">용량</div> <div>3.8kg+15p</div>
+								<div class="stit">용량</div> <div>${detail.volume }</div>
 							</li>
 							<li>
 								<div class="stit">수량</div> <div class="num"><input id="spinner" value="1" /></div>
@@ -318,48 +319,50 @@ $(document).ready(function() {
 							<col width="*" class="tw25" />
 							</colgroup>
 							<tbody>
+							<c:forEach var="productInfoDto" items="${productInfoDto }">
 								<tr>
 									<th scope="row" class="info"><span>제조명</span></th>
-									<td>원두커피백</td>
+									<td>${productInfoDto.name}</td>
 									<th scope="row" class="info"><span>내용량</u></span></th>
-									<td>일회용 원두커피 티백</td>
+									<td>${productInfoDto.capacity}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>제조원</span></th>
-									<td>JARDIN</td>
+									<td>${productInfoDto.manufacturer}</td>
 									<th scope="row" class="info"><span>포장재질</span></th>
-									<td>폴리에틸렌(내면)</td>
+									<td>${productInfoDto.material}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>유통기한</span></th>
-									<td>제조일로부터 OO개월</td>
+									<td>${productInfoDto.ShelfLisfe}</td>
 									<th scope="row" class="info"><span>고객<u>상담실</u></span></th>
-									<td>02-546-3881</td>
+									<td>${productInfoDto.serviceTel}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>식품의 <u>유형</u></span></th>
-									<td>인스턴트 커피</td>
+									<td>${productInfoDto.foodType}</td>
 									<th scope="row" class="info"><span>유통전문<u>판매원</u></span></th>
-									<td></td>
+									<td>${productInfoDto.salesOffice }</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>영양성분</span></th>
-									<td colspan="3">인스턴트 커피, 합성 헤이즐넛향</td>
+									<td colspan="3">${prodctInfoDto.nutrient }</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>원재료명 <u>및 함량</u></span></th>
-									<td colspan="3">열량 95kcal, 탄수화물 16g, 당류 11g, 단백질 1g, 지방 2.9g, 포화지방 2.8, 트랜스지방 0g, 콜레스테롤 0mg</td>
+									<td colspan="3">${productInfoDto.rawMaterials }</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>업소명 <u>및 소재지</u></span></th>
-									<td colspan="3">서울시 강남구 논현동 4-21번지 영 빌딩 (주)쟈뎅</td>
+									<td colspan="3">${productInfoDto.location}</td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

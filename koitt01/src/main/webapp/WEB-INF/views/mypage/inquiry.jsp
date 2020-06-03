@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
 <title> JARDIN SHOP </title>
@@ -241,6 +242,13 @@ $(document).ready(function() {
 								<th scope="col">제목</th>
 								<th scope="col" class="tnone">등록일</th>
 								<th scope="col">처리상태</th>
+								<c:foreach var = "inquiryList" item = ${list}>
+									<td scope="col" class="tnone">${no}</td>
+									<td scope="col">분류${category}</td>
+									<td scope="col">제목</td>
+									<td scope="col" class="tnone">등록일</td>
+									<td scope="col">처리상태</td>
+								</c:foreach>
 							</thead>
 							<tbody>
 								<tr>

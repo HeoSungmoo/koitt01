@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--공지사항 글 보기 -->
 	<select id="noticeView" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where No=#{No}
+		select * from notice where No=#{no}
 	</select>
 
 <!--1:1문의 글 쓰기 -->

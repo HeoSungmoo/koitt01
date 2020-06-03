@@ -23,4 +23,5 @@ public interface MyPageService {
 
 	// 회원탈퇴
 	public abstract void delete(MemberDTO memberDto);
+
 }

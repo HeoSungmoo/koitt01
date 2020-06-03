@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.member.MemberDTO;
-import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO {

@@ -2,8 +2,8 @@ package com.koitt.jardin.service.member;
 
 import java.util.List;
 
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.member.MemberDTO;
-import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 
 public interface MyPageService {
 	// 1:1 문의 리스트 출력

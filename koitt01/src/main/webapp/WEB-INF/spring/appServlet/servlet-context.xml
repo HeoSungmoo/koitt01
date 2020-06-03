@@ -36,11 +36,11 @@
 	<!-- mybatis -->
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/>
-<<<<<<< HEAD
+
 		<beans:property name="mapperLocations" value="classpath:mappers/**/*.xml"/>
-=======
+
 		<beans:property name="mapperLocations" value="classpath:mappers/**.xml"/>
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
+
 		
 	</beans:bean>
 	

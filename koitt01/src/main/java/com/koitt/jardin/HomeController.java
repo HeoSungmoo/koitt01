@@ -37,11 +37,4 @@ public class HomeController {
 
 	}
 
-	@RequestMapping("list")
-	public String list() {
-
-		return "product/list";
-
-	}
-
 }

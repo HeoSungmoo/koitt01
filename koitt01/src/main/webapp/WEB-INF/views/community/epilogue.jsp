@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -199,8 +199,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">체험단</a></li>
-					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li><a href="expr" id="leftNavi1">체험단</a></li>
+					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
 					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
@@ -213,8 +213,8 @@ $(document).ready(function() {
 					
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="#" class="on">포토 구매후기</a></li>
-							<li class="last"><a href="#">상품평</a></li>
+							<li><a href="epilogue" class="on">포토 구매후기</a></li>
+							<li class="last"><a href="comment">상품평</a></li>
 						</ul>						
 					</div>
 					

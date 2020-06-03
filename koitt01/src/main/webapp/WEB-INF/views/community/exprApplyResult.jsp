@@ -203,116 +203,65 @@ $(document).ready(function() {
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
 					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
-			</div><script type="text/javascript">initSubmenu(2,0);</script>
+			</div><script type="text/javascript">initSubmenu(1,0);</script>
 
 
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
-					<h2><strong>사용 후기</strong><span>쟈뎅 제품을 구매하신 회원님들의 소중한 후기입니다.</span></h2>
-					
-					<div class="productTab normaltab">
-						<ul>
-							<li><a href="#" class="on">포토 구매후기</a></li>
-							<li class="last"><a href="#">상품평</a></li>
-						</ul>						
+					<h2><strong>체험단</strong><span>쟈뎅샵에서 진행되는 무료체험 기회를 놓치지 마세요.</span></h2>					
+					<div class="viewDivMt">
+						<div class="viewHead">
+							<div class="subject">
+								<ul>
+									<li>카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span><span class="finishbtn">종료</span></li>
+								</ul>
+							</div>
+							<div class="day">
+								<p class="txt">리뷰 등록기간<span>2014-05-06 ~ 2014-06-30</span></p>
+								<p class="appraisal">
+									체험단 평점
+									<span>
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star.gif" alt="별점" />
+										<img src="images/ico/ico_star_off.gif" alt="별점" />
+									</span>
+								</p>
+							</div>
+							<div class="data">
+								<ul>
+									<li>모집 인원<span>15명</span></li>
+									<li class="dep">신청기간<span>2014-04-01 ~ 2014-04-25</span></li>
+									<li class="dep">체험단 발표<span>2014-04-30</span></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="viewContents">
+							안녕하세요.<br/>
+							쟈뎅샵 회원분들을 대상으로 카페모리 홍차라떼, 드립커피백 체험단 모집합니다.<br/>
+							쟈뎅의 대표 상품을 체험할 수 있는 기회를 놓치지 마세요!
+						</div>
 					</div>
 
+
+					<!-- Tab -->
+					<div class="productTab normaltab">
+						<p>해단 체험단 신청 완료되었습니다  감사합니다!</p>
+					</div>
+					<!-- //Tab -->
+
+
 					<div class="checkDivTab">
-						<table summary="분류, 구매여부, 작은이미지, 평가, 제목, 상세 내용 순으로 포토 구매후기를 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
-							<caption>포토 구매후기 작성</caption>
+						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
+							<caption>상품평 작성</caption>
 							<colgroup>
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
 							<tbody>
-								<tr>
-									<th scope="row"><span>분류</span></th>
-									<td>
-										<ul class="pta">
-											<li>
-												<select>
-													<option value="">카테고리</option>
-												</select>
-											</li>
-											<li class="pt5">
-												<select>
-													<option value="">카테고리</option>
-												</select>
-											</li>
-											<li class="pt5">
-												<select>
-													<option value="">카테고리</option>
-												</select>
-											</li>
-										</ul>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><span>구매여부</span></th>
-									<td>
-										<select>
-											<option value="">구매했어요.</option>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><span>작은이미지</span></th>
-									<td>
-										<input type="file" class="fileType" />
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><span>평가</span></th>
-									<td>
-										<ul class="pta">
-											<li>
-												<input type="radio" name="appraisal" id="starFive" checked="checked"/>
-												<label for="starFive" class="star">
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-												</label>
-											</li>
-
-											<li>
-												<input type="radio" name="appraisal" id="starFour" />
-												<label for="starFour" class="star">
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-												</label>
-											</li>
-
-											<li>
-												<input type="radio" name="appraisal" id="starThree" />
-												<label for="starThree" class="star">
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-												</label>
-											</li>
-
-											<li>
-												<input type="radio" name="appraisal" id="startwo" />
-												<label for="startwo" class="star">
-													<img src="images/ico/ico_star.gif" alt="별점" />
-													<img src="images/ico/ico_star.gif" alt="별점" />
-												</label>
-											</li>
-
-											<li>
-												<input type="radio" name="appraisal" id="starOne" />
-												<label for="starOne" class="star">
-													<img src="images/ico/ico_star.gif" alt="별점" />
-												</label>
-											</li>
-										</ul>
-									</td>
-								</tr>
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
@@ -320,7 +269,7 @@ $(document).ready(function() {
 									</td>
 								</tr>
 								<tr>
-									<th scope="row"><span>상세 내용</span></th>
+									<th scope="row"><span>내용</span></th>
 									<td>
 										<textarea class="tta"></textarea>
 									</td>
@@ -332,13 +281,14 @@ $(document).ready(function() {
 					<!-- Btn Area -->
 					<div class="btnArea">
 						<div class="bCenter">
-							<ul>																
-								<li><a href="#" class="nbtnbig">취소</a></li>
-								<li><a href="#" class="sbtnMini">확인</a></li>
+							<ul>	
+								<li><a href="preUserApply" class="sbtnMini">신청하기</a></li>
+								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>
 					</div>
 					<!-- //Btn Area -->
+
 					
 				</div>
 			</div>

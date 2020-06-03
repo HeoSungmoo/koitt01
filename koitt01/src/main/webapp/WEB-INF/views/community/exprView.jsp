@@ -98,7 +98,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="#">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -199,8 +199,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">COMMUNITY<span>커뮤니티</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">체험단</a></li>
-					<li><a href="#" id="leftNavi2">사용 후기</a></li>
+					<li><a href="expr" id="leftNavi1">체험단</a></li>
+					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
 					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
@@ -250,13 +250,13 @@ $(document).ready(function() {
 					<!-- Tab -->
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="#" class="on">체험단 신청</a></li>
-							<li class="last"><a href="#">체험 리뷰</a></li>
+							<li><a href="exprView" class="on">체험단 신청</a></li>
+							<li class="last"><a href="exprReview">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->
 
-
+<form action="preUserApply" name="preUserApply" method="post">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -268,13 +268,13 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" />
+										<input type="text" class="wlong" name="title" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
-										<textarea class="tta"></textarea>
+										<textarea class="tta" name="content"></textarea>
 									</td>
 								</tr>								
 							</tbody>
@@ -285,11 +285,12 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>	
-								<li><a href="#" class="sbtnMini">신청하기</a></li>
+								<li><a href="preUserApply" class="sbtnMini"><button type="submit">신청하기</button></a></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //Btn Area -->
 
 					

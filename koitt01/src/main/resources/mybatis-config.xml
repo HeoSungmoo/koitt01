@@ -10,6 +10,7 @@
 		<setting name="callSettersOnNulls" value="true"/>
 	</settings>
 	<typeAliases>
+	
 	</typeAliases>
 
 </configuration>

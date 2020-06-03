@@ -51,6 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id='review'>
 	
 	
+	
 	</insert>
 	
 	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">

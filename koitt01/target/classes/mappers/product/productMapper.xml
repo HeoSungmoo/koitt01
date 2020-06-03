@@ -3,6 +3,49 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="">
+<mapper namespace="product">
+	
+	<select id="list" resultType="com.koitt.jardin.dto.product.ProductDTO">
+
+			
+	</select>
+	
+	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	
+	</select>
+	
+	
+	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	
+	</select>
+	
+	<select id="categoryView" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	
+	</select>
+	
+	<insert id="inquiry">
+	
+	
+	</insert>
+	
+	
+	<insert id="photo">
+	
+	
+	</insert>
+	
+	<insert id='review'>
+	
+	
+	</insert>
+	
+	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	
+	</select>
+	
+	
+	
 	
 </mapper>

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.member.MyPageDAO;
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.member.MemberDTO;
-import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {

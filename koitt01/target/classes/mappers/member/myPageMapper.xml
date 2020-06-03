@@ -6,12 +6,12 @@
 
 <mapper namespace="myPage">
     <!-- 1:1문의 리스트 출력 -->
-    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
+    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
     	select * from question order by no asc;
     </select>
     
     <!-- 1:1문의 내용 -->
-    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.inquiry.InquiryDTO">
+    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
     	select * from question where no = #{no}
     </select>
     
@@ -27,12 +27,12 @@
     
     <!-- 회원정보 수정 -->
     <update id = "changeInfo">
-    	update member set  
+    	update member set password = #{password}, mail = #{mail}, mailSend = #{mailSend}, address = #{address}, phone = #{phone}, sms = #{sms}, tel = #{tel}, birth = #{birth}, lunarSolar = #{lunarSolar} where id = #{id}
     </update>
     
     <!-- 회원탈퇴 -->
     <delete id = "delete">
-    	delete member
+    	update member set name = "0", password = "0", mail = "0", mailSend = "0", zip = "0",address = "0",phone = '0',sms ='0', tel = '0', birth = sysdate, lunar_solar = "0", delete_date = sysdate where id = #{id}; 
     </delete>
     
 </mapper>

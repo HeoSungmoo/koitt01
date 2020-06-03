@@ -1,4 +1,4 @@
-package com.koitt.jardin.dto.member.inquiry;
+package com.koitt.jardin.dto.member;
 
 import java.sql.Timestamp;
 

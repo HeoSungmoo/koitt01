@@ -3,12 +3,13 @@ package com.koitt.jardin.controller.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.member.MemberDTO;
-import com.koitt.jardin.dto.member.inquiry.InquiryDTO;
 import com.koitt.jardin.service.member.MyPageService;
 
 @Controller
@@ -61,7 +62,7 @@ public class MyPageController {
 	}
 
 	// 1:1문의 리스트
-	@PostMapping("inquiry")
+	@GetMapping("inquiry")
 	public String inquiry(Model model) {
 
 		model.addAttribute("inquiryList", myPageService.inquiryList());

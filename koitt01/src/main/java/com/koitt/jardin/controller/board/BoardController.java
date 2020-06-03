@@ -28,11 +28,13 @@ public class BoardController {
 	@RequestMapping("noticeView")
 	public String noticeView(Model model, int No) {
 		model.addAttribute("noticeView", boardService.noticeView(No));
+		model.addAttribute("noticeViewPre", boardService.noticeView(No - 1));
+		model.addAttribute("noticeViewNext", boardService.noticeView(No + 1));
 		return "board/noticeView";
 	}
 
 	// 1:1 문의 글작성 페이지
-	@RequestMapping("inquiryView")
+	@RequestMapping("bInquiryView")
 	public String inquiryView() {
 		return "board/inquiry";
 	}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -228,15 +230,19 @@ $(document).ready(function() {
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
 							<tbody>
+							${notice.size() }	
+							<c:forEach var="noticeDto" items="${notice}">
+						
 								<tr>
-									<td class="tnone">1</td>
+									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView">쟈뎅 전문 쇼핑몰 쟈뎅샵이 리뉴얼 오픈합니다.</a>
+										<a href="noticeView?No=${noticeDto.no}">${noticeDto.title}</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
+									<td>${noticeDto.uploadDate}</td>
+									<td class="tnone right">${noticeDto.hit}</td>
 								</tr>
+								</c:forEach>
 
 								
 							</tbody>

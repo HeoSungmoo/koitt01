@@ -13,12 +13,14 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	@Autowired
 	MyPageService myPageService;
 
 	// 공지사항 글 리스트임
 	@RequestMapping("notice")
 	public String notice(Model model) {
 		model.addAttribute("notice", boardService.notice());
+
 		return "board/notice";
 	}
 

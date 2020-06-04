@@ -26,9 +26,9 @@ public class ProductDAOImpl implements ProductDAO {
 
 	// 제품의 상세내용 ( condent_view)
 	@Override
-	public ProductDTO detail(int product_No) {
+	public ProductDTO detail(int productNo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product.detail", product_No);
+		return sqlSession.selectOne("product.detail", productNo);
 	}
 
 	@Override
@@ -60,9 +60,9 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductDTO search(int product_No) {
+	public ProductDTO search(int productNo) {
 
-		return sqlSession.selectOne("product.search", product_No);
+		return sqlSession.selectOne("product.search", productNo);
 	}
 
 	@Override

@@ -28,10 +28,10 @@ public class ProductController {
 
 	// 제품의 상세내용 ( condent_view)
 	@RequestMapping("detail")
-	public String detail(Model model, int product_No) {
-		model.addAttribute("detail", productService.detail(product_No));
+	public String detail(Model model, int productNo) {
+		model.addAttribute("detail", productService.detail(productNo));
 		// 제품상세 제품 상세내용
-		model.addAttribute("productInfoDto", productService.productInfoDto());
+//		model.addAttribute("productInfoDto", productService.productInfoDto());
 
 		return "product/detail";
 	}

@@ -5,7 +5,7 @@ import java.security.Timestamp;
 public class ProductDTO {
 
 	private int productNo;
-	private int categoryCode;
+	private int subCategoryCode;
 	private String title;
 	private int price;
 	private int point;
@@ -57,12 +57,12 @@ public class ProductDTO {
 		this.productNo = productNo;
 	}
 
-	public int getCategoryCode() {
-		return categoryCode;
+	public int getSubCategoryCode() {
+		return subCategoryCode;
 	}
 
-	public void setCategoryCode(int categoryCode) {
-		this.categoryCode = categoryCode;
+	public void setSubCategoryCode(int subCategoryCode) {
+		this.subCategoryCode = subCategoryCode;
 	}
 
 	public int getPrice() {

@@ -146,7 +146,7 @@ $(document).ready(function() {
 <div id="allwrap">
 <div id="wrap">
 	<header>
-		<%@ include file="include/header.jsp"  %>
+		<%@ include file="../include/header.jsp"  %>
 	</header>
 	<!-- mainSection -->
 	<div id="mainSection">
@@ -442,7 +442,7 @@ $(document).ready(function() {
 
 
 	<footer>
-		<%@ include file="include/footer.jsp"  %>
+		<%@ include file="../include/footer.jsp"  %>
 	</footer>
 
 

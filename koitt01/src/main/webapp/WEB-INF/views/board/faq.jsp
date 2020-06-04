@@ -124,10 +124,10 @@ $(document).ready(function() {
 					
 					<div class="faqTab">
 						<ul>
-							<li><a href="#" class="on">전체</a></li>
-							<li class="dep"><a href="#">회원가입</a></li>
-							<li><a href="#">상품</a></li>
-							<li class="last"><a href="#">주문</a></li>
+							<li><a href="faq" class="on">전체</a></li>
+							<li class="dep"><a href="faqJoin">회원가입</a></li>
+							<li><a href="faqProduct">상품</a></li>
+							<li class="last"><a href="faqOrder">주문</a></li>
 						</ul>						
 					</div>	
 					
@@ -141,7 +141,7 @@ $(document).ready(function() {
 									<div class="question">
 										<div class="blet">Q</div>
 										<div class="category">${faq.category }</div>
-										<div class="title">주문 상품의 수량을 변경하고 싶어요.</div>
+										<div class="title">${faq.title }</div>
 									</div>
 								</a>
 
@@ -176,19 +176,21 @@ $(document).ready(function() {
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-
+					
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
+								<form action="faqSearch" name="search">
 									<select>
-										<option value="" />제목</option>
+										<option value="title" />제목</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li><input type="text" class="searchInput" name="search" /></li>
+								<li class="web"><button class="faqSearch"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
+								</form>
 							</ul>
 						</div>
 					</div>

@@ -39,6 +39,7 @@ legend, caption, .skip{position:absolute; left:-9999px; width:0; height:0; font-
 caption{position:static;}
 
 html, body,input,button{font-size:12px; color:#888; font-family:'Nanum Gothic'}
+.faqSearch{width:65px; height:20; boder:0; outline:0; background:#f1f1f1; border:0 solid #f1f1f1; cursor: pointer;}
 
 a {color:#a7a7a7; text-decoration:none;}
 a:hover {color:#a7a7a7; text-decoration:none;}

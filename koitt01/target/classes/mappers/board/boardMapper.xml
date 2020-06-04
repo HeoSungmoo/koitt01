@@ -45,5 +45,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="guide" resultType="com.koitt.jardin.dto.board.GuideDTO">
 		select * from guide
 	</select>
+	
+	<select id="pageNation" resultType="com.koitt.jardin.dto.board.pageNationDTO">
+		select count(*) listCount from notice
+	</select>
+	
+	
+	<!-- 공지사항 페이지 네이션! -->
+	<select id="pageNationList" resultType="com.koitt.jardin.dto.board.pageNationDTO">
+		select * 
+      from(
+               select row_number() over(order by b_no desc) as rnum, 
+                     no,title,content,hit from board order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
 
 </mapper>

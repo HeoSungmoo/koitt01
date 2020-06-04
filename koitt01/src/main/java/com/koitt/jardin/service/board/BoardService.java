@@ -22,4 +22,6 @@ public interface BoardService {
 
 	// 이용안내
 	public GuideDTO guide();
+	
+	
 }

@@ -16,7 +16,7 @@ public class BoardController {
 	@Autowired
 	MyPageService myPageService;
 
-	// 공지사항 글 리스트임
+	// 怨듭��궗�빆 湲� 由ъ뒪�듃�엫
 	@RequestMapping("notice")
 	public String notice(Model model) {
 		model.addAttribute("notice", boardService.notice());
@@ -24,7 +24,7 @@ public class BoardController {
 		return "board/notice";
 	}
 
-	// 공지사항 글 보기
+	// 怨듭��궗�빆 湲� 蹂닿린
 	@RequestMapping("noticeView")
 	public String noticeView(Model model, int No) {
 		model.addAttribute("noticeView", boardService.noticeView(No));
@@ -33,7 +33,7 @@ public class BoardController {
 		return "board/noticeView";
 	}
 
-	// 1:1 문의 글작성 페이지
+	// 1:1 臾몄쓽 湲��옉�꽦 �럹�씠吏�
 	@RequestMapping("bInquiryView")
 	public String inquiryView() {
 		return "board/inquiry";
@@ -46,10 +46,10 @@ public class BoardController {
 		return "board/faq";
 	}
 
-	// 이용안내
+	// �씠�슜�븞�궡
 	@RequestMapping("guide")
 	public String guide(Model model) {
-		model.addAttribute("guide", boardService.guide());
+//		model.addAttribute("guide", boardService.guide());
 		return "board/guide";
 	}
 }

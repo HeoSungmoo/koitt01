@@ -2,6 +2,7 @@
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/HeoSungmoo/koitt01.git
 eclipse.preferences.version=1
+encoding//src/main/java/com/koitt/jardin/controller/board/BoardController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/community/commentView.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/membership/idSearch.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/membership/join/step01.jsp=UTF-8

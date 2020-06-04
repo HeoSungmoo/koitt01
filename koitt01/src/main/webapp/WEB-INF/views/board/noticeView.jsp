@@ -33,9 +33,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-
-
-
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
@@ -200,7 +197,7 @@ $(document).ready(function() {
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
 					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
-					<li><a href="inquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="bInquiryView" id="leftNavi2">1:1문의</a></li>
 					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 				</ul>			
@@ -241,12 +238,15 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
+									
+									
+									<td><a href="noticeView?No=${noticeViewPre.no}">${noticeViewPre.title}</a></t>
+								
 								</tr>
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
+									<td><a href="noticeView?No=${noticeViewNext.no}">${noticeViewNext.title}</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -258,7 +258,7 @@ $(document).ready(function() {
 					<div class="btnArea btline">
 						<div class="bRight">
 							<ul>
-								<li><a href="#" class="sbtnMini mw">목록</a></li>
+								<li><a href="notice" class="sbtnMini mw">목록</a></li>
 							</ul>
 						</div>
 					</div>

@@ -19,30 +19,30 @@ public class MemberController {
 	// membership
 
 	// 회원가입 - 실명확인
-	@RequestMapping(method = RequestMethod.POST, value = "step01")
+	@RequestMapping(method = RequestMethod.GET, value = "step01")
 	public String step01(Model model) {
 
-		return "membership/step01";
+		return "membership/join/step01";
 	}
 
 	// 회원 가입 - 약관동의
-	@PostMapping("step02")
+	@RequestMapping("step02")
 	public String step02(Model model) {
-		return "membership/step02";
+		return "membership/join/step02";
 	}
 
 	// 회원 가입 - 회원정보입력 폼
-	@RequestMapping(method = RequestMethod.POST, value = "step03")
+	@RequestMapping(method = RequestMethod.GET, value = "step03")
 	public String step03(Model model) {
 
-		return "membership/step03";
+		return "membership/join/step03";
 	}
 
 	// 회원 가입 - 가입완료
-	@PostMapping("step04")
+	@RequestMapping("step04")
 	public String step04(Model model, MemberDTO memberDto) {
 		memberService.join(memberDto);
-		return "membership/step04";
+		return "membership/join/step04";
 	}
 
 	// 로그인 창

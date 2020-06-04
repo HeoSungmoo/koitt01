@@ -13,9 +13,9 @@ public interface ProductService {
 
 	public ProductDTO detail(int productNo);
 
-	public List<CategoryDto> categoryList();
+	public List<CategoryDto> categoryList(String name);
 
-	public List<SubCategoryDto> SubCategoryDto();
+	public List<SubCategoryDto> SubCategoryDto(String name);
 
 	public List<ProductInfoDTO> productInfoDto();
 

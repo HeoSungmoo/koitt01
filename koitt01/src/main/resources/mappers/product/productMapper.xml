@@ -18,11 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	
-	
 	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where productNo=#{productNo}
+	select * from product where product_no=#{product_no}
 	
 	</select>
 	
@@ -30,6 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	select * from sub_category
 	
+	</select>
+	
+	<select id="SubCategory20" resultType="com.koitt.jardin.dto.product.SubCategoryDto">
+	
+
 	</select>
 	
 	<select id="productInfoDto" resultType="com.koitt.jardin.dto.product.ProductInfoDTO">

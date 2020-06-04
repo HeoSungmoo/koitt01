@@ -25,9 +25,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<CategoryDto> categoryList() {
+	public List<CategoryDto> categoryList(String name) {
 		// TODO Auto-generated method stub
-		return productDao.categoryList();
+		return productDao.categoryList(name);
 	}
 
 	// 제품의 상세내용 ( condent_view)
@@ -68,9 +68,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<SubCategoryDto> SubCategoryDto() {
+	public List<SubCategoryDto> SubCategoryDto(String name) {
 		// TODO Auto-generated method stub
-		return productDao.SubCategoryDto();
+		return productDao.SubCategoryDto(name);
 	}
 
 }

@@ -232,6 +232,7 @@ $(document).ready(function() {
 					<p class="title">
 					<!--카테고리 넣어야댐 -->
 						<span>[오리지널]</span>
+						${detail.productNo }
 						${detail.title }
 					</p>
 

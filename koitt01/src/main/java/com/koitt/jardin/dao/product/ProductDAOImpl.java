@@ -66,15 +66,15 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<CategoryDto> categoryList() {
+	public List<CategoryDto> categoryList(String name) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.categoryList");
+		return sqlSession.selectList("product.categoryList", name);
 	}
 
 	@Override
-	public List<SubCategoryDto> SubCategoryDto() {
+	public List<SubCategoryDto> SubCategoryDto(String name) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.SubCategoryDto");
+		return sqlSession.selectList("product.SubCategoryDto", name);
 	}
 
 }

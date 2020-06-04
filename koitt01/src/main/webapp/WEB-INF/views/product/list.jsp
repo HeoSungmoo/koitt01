@@ -128,9 +128,9 @@ $(document).ready(function() {
 				<ul>
 					<!-- 반복 -->
 					<li>
-						<a href="#">
-							<div class="img"><a href="detail"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
-							<div class="title"><a href="detail">${ProductDto.title }</a></div>
+						<a href="detail">
+							<div class="img"><a href=""><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
+							<div class="title"><a href="detail?productNo=${ProductDto.productNo }">${ProductDto.title }</a></div>
 							<div class="price">	${ProductDto.price }</div>
 						
 						</a>

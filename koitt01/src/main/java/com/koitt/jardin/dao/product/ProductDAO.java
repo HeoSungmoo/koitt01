@@ -11,9 +11,9 @@ public interface ProductDAO {
 
 	public List<ProductDTO> list();
 
-	public List<CategoryDto> categoryList();
+	public List<CategoryDto> categoryList(String name);
 
-	public List<SubCategoryDto> SubCategoryDto();
+	public List<SubCategoryDto> SubCategoryDto(String name);
 
 	public ProductDTO detail(int productNo);
 

@@ -44,6 +44,27 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList("board.faq");
 
 	}
+	@Override
+	public List<FaqDTO> faqJoin() {
+		
+		return sqlSession.selectList("board.faqJoin");
+	}
+	
+	@Override
+	public List<FaqDTO> faqProduct() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.faqProduct");
+	}
+	
+	@Override
+	public List<FaqDTO> faqOrder() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.faqOrder");
+	}
+	// FAQ검색
+	public List<FaqDTO> faqSearch(String search) {
+		return sqlSession.selectList("board.faqSearch",search);
+	}
 
 	// 이용안내 글 가져오기
 	@Override
@@ -51,5 +72,6 @@ public class BoardDAOImpl implements BoardDAO {
 
 		return sqlSession.selectOne("board.guide");
 	}
+
 
 }

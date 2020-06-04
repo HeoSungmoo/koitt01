@@ -44,6 +44,29 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardDao.faq();
 	}
+	@Override
+	public List<FaqDTO> faqJoin() {
+		
+		return boardDao.faqJoin();
+	}
+	
+	@Override
+	public List<FaqDTO> faqProduct() {
+	
+		return boardDao.faqProduct();
+	}
+	
+	@Override
+	public List<FaqDTO> faqOrder() {
+		
+		return boardDao.faqOrder();
+	}
+	
+	@Override
+	public List<FaqDTO> faqSearch(String search) {
+		return boardDao.faqSearch(search);
+		
+	}
 
 	// 이용안내
 	@Override
@@ -51,5 +74,7 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardDao.guide();
 	}
+
+
 
 }

@@ -9,6 +9,7 @@ import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -27,12 +28,6 @@ public class ProductServiceImpl implements ProductService {
 	public List<CategoryDto> categoryList() {
 		// TODO Auto-generated method stub
 		return productDao.categoryList();
-	}
-
-	@Override
-	public CategoryDto categoryView() {
-		// TODO Auto-generated method stub
-		return productDao.categoryView();
 	}
 
 	// 제품의 상세내용 ( condent_view)
@@ -70,6 +65,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductInfoDTO> productInfoDto() {
 		// TODO Auto-generated method stub
 		return productDao.productInfoDto();
+	}
+
+	@Override
+	public List<SubCategoryDto> SubCategoryDto() {
+		// TODO Auto-generated method stub
+		return productDao.SubCategoryDto();
 	}
 
 }

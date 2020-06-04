@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+   <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -319,50 +322,50 @@ $(document).ready(function() {
 							<col width="*" class="tw25" />
 							</colgroup>
 							<tbody>
-							<c:forEach var="productInfoDto" items="${productInfoDto }">
+							
 								<tr>
 									<th scope="row" class="info"><span>제조명</span></th>
-									<td>${productInfoDto.name}</td>
+									<td>5</td>
 									<th scope="row" class="info"><span>내용량</u></span></th>
-									<td>${productInfoDto.capacity}</td>
+									<td>5</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>제조원</span></th>
-									<td>${productInfoDto.manufacturer}</td>
+									<td>4</td>
 									<th scope="row" class="info"><span>포장재질</span></th>
-									<td>${productInfoDto.material}</td>
+									<td>4</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>유통기한</span></th>
-									<td>${productInfoDto.ShelfLisfe}</td>
+									<td>4</td>
 									<th scope="row" class="info"><span>고객<u>상담실</u></span></th>
-									<td>${productInfoDto.serviceTel}</td>
+									<td>4</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>식품의 <u>유형</u></span></th>
-									<td>${productInfoDto.foodType}</td>
+									<td>3</td>
 									<th scope="row" class="info"><span>유통전문<u>판매원</u></span></th>
-									<td>${productInfoDto.salesOffice }</td>
+									<td>3</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>영양성분</span></th>
-									<td colspan="3">${prodctInfoDto.nutrient }</td>
+									<td colspan="3">2</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>원재료명 <u>및 함량</u></span></th>
-									<td colspan="3">${productInfoDto.rawMaterials }</td>
+									<td colspan="3">1</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>업소명 <u>및 소재지</u></span></th>
-									<td colspan="3">${productInfoDto.location}</td>
+									<td colspan="3">1</td>
 								</tr>
-								</c:forEach>
+								
 							</tbody>
 						</table>
 					</div>

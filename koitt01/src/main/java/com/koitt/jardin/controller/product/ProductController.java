@@ -17,20 +17,21 @@ public class ProductController {
 	// 제품리스트 목록페이지
 	@RequestMapping("list")
 	public String list(Model model) {
+
 		model.addAttribute("list", productService.list());
-//		// 제품리스트 카테고리 리스트 제목 표시
-//		model.addAttribute("categoryList", productService.categoryList());
-//		// 제품리스트 카테고리 뷰 페이지
-//		model.addAttribute("categoryView", productService.categoryView());
+		// 제품리스트 카테고리 리스트 제목 표시
+		model.addAttribute("categoryList", productService.categoryList());
+		// 제품리스트 카테고리 뷰 페이지
+		model.addAttribute("SubCategoryList", productService.SubCategoryDto());
 		return "product/list";
 	}
 
 	// 제품의 상세내용 ( condent_view)
 	@RequestMapping("detail")
-	public String detail(Model model, int product_No) {
-		model.addAttribute("detail", productService.detail(product_No));
+	public String detail(Model model, int productNo) {
+		model.addAttribute("detail", productService.detail(productNo));
 		// 제품상세 제품 상세내용
-		model.addAttribute("productInfoDto", productService.productInfoDto());
+//		model.addAttribute("productInfoDto", productService.productInfoDto());
 
 		return "product/detail";
 	}

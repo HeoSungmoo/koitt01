@@ -3,29 +3,32 @@ package com.koitt.jardin.dao.product;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
-
+	@Autowired
 	SqlSession sqlSession;
 
 	// 제품리스트 목록페이지
 	@Override
 	public List<ProductDTO> list() {
 		// TODO Auto-generated method stub
+
 		return sqlSession.selectList("product.list");
 	}
 
 	// 제품의 상세내용 ( condent_view)
 	@Override
-	public ProductDTO detail(int product_No) {
+	public ProductDTO detail(int productNo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product.detail", product_No);
+		return sqlSession.selectOne("product.detail", productNo);
 	}
 
 	@Override
@@ -57,9 +60,9 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductDTO search(int product_No) {
+	public ProductDTO search(int productNo) {
 
-		return sqlSession.selectOne("product.search", product_No);
+		return sqlSession.selectOne("product.search", productNo);
 	}
 
 	@Override
@@ -69,9 +72,9 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public CategoryDto categoryView() {
-
-		return sqlSession.selectOne("product.categoryView");
+	public List<SubCategoryDto> SubCategoryDto() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.SubCategoryDto");
 	}
 
 }

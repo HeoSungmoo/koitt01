@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--FAQ 글 리스트 가져오기 -->
 	<select id="faq" resultType="com.koitt.jardin.dto.board.FaqDTO">
-		select * from FAQ
+		select * from FAQ order by no desc
 	</select>
 
 <!--이용안내 글 가져오기 -->

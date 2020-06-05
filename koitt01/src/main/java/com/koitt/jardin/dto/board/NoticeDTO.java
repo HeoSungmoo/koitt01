@@ -8,7 +8,7 @@ public class NoticeDTO {
 	String title;
 	String content;
 	int hit;
-	Timestamp uploadDate;
+	Timestamp upload_date;
 
 	public int getNo() {
 		return no;
@@ -42,12 +42,12 @@ public class NoticeDTO {
 		this.hit = hit;
 	}
 
-	public Timestamp getUploadDate() {
-		return uploadDate;
+	public Timestamp getUpload_date() {
+		return upload_date;
 	}
 
-	public void setUploadDate(Timestamp uploadDate) {
-		this.uploadDate = uploadDate;
+	public void setUpload_date(Timestamp upload_date) {
+		this.upload_date = upload_date;
 	}
 
 }

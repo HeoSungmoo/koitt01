@@ -3,17 +3,25 @@ package com.koitt.jardin.dto.community;
 import java.sql.Timestamp;
 
 public class PreUserDTO {
-
+	int preuser_no;
 	String title; // 체험단 제목
 	String content; // 체험단 내용
 	String thumbnail; // 썸네일
 	int personnel; // 모집 인원
-	Timestamp applyStartDate; // 신청 시작일
-	Timestamp applyEndDate; // 신청 종료일
-	Timestamp reviewStartDate; // 리뷰 시작일
-	Timestamp reviewEndDate; // 리뷰 종료일
-	Timestamp announcementDate; // 체험단 발표
+	Timestamp apply_start_date; // 신청 시작일
+	Timestamp apply_end_date; // 신청 종료일
+	Timestamp review_start_date; // 리뷰 시작일
+	Timestamp review_end_date; // 리뷰 종료일
+	Timestamp announcement_date; // 체험단 발표
 	int grade; // 체험단 평점
+
+	public int getPreuser_no() {
+		return preuser_no;
+	}
+
+	public void setPreuser_no(int preuser_no) {
+		this.preuser_no = preuser_no;
+	}
 
 	public String getTitle() {
 		return title;
@@ -47,44 +55,44 @@ public class PreUserDTO {
 		this.personnel = personnel;
 	}
 
-	public Timestamp getApplyStartDate() {
-		return applyStartDate;
+	public Timestamp getApply_start_date() {
+		return apply_start_date;
 	}
 
-	public void setApplyStartDate(Timestamp applyStartDate) {
-		this.applyStartDate = applyStartDate;
+	public void setApply_start_date(Timestamp apply_start_date) {
+		this.apply_start_date = apply_start_date;
 	}
 
-	public Timestamp getApplyEndDate() {
-		return applyEndDate;
+	public Timestamp getApply_end_date() {
+		return apply_end_date;
 	}
 
-	public void setApplyEndDate(Timestamp applyEndDate) {
-		this.applyEndDate = applyEndDate;
+	public void setApply_end_date(Timestamp apply_end_date) {
+		this.apply_end_date = apply_end_date;
 	}
 
-	public Timestamp getReviewStartDate() {
-		return reviewStartDate;
+	public Timestamp getReview_start_date() {
+		return review_start_date;
 	}
 
-	public void setReviewStartDate(Timestamp reviewStartDate) {
-		this.reviewStartDate = reviewStartDate;
+	public void setReview_start_date(Timestamp review_start_date) {
+		this.review_start_date = review_start_date;
 	}
 
-	public Timestamp getReviewEndDate() {
-		return reviewEndDate;
+	public Timestamp getReview_end_date() {
+		return review_end_date;
 	}
 
-	public void setReviewEndDate(Timestamp reviewEndDate) {
-		this.reviewEndDate = reviewEndDate;
+	public void setReview_end_date(Timestamp review_end_date) {
+		this.review_end_date = review_end_date;
 	}
 
-	public Timestamp getAnnouncementDate() {
-		return announcementDate;
+	public Timestamp getAnnouncement_date() {
+		return announcement_date;
 	}
 
-	public void setAnnouncementDate(Timestamp announcementDate) {
-		this.announcementDate = announcementDate;
+	public void setAnnouncement_date(Timestamp announcement_date) {
+		this.announcement_date = announcement_date;
 	}
 
 	public int getGrade() {

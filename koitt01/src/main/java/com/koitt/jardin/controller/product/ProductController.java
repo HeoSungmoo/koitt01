@@ -19,6 +19,7 @@ public class ProductController {
 	public String list(Model model, String name) {
 
 		model.addAttribute("list", productService.list());
+
 		// 제품리스트 카테고리 리스트 제목 표시
 		model.addAttribute("categoryList", productService.categoryList(name));
 		// 제품리스트 카테고리 뷰 페이지
@@ -29,7 +30,9 @@ public class ProductController {
 
 	// 제품의 상세내용 (condent_view)
 	@RequestMapping("detail")
+
 	public String detail(Model model, int product_no) {
+
 		model.addAttribute("detail", productService.detail(product_no));
 
 		// 제품상세 제품 상세내용

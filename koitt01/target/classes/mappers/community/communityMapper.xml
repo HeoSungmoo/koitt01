@@ -6,11 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="community">
 <!-- 체험단 글 리스트 -->
 	<select id="expr" resultType="com.koitt.jardin.dto.community.PreUserDTO">
-		select * from preuser
+		select * from preuser order by preuser_no desc
 	</select>
-<!-- 	체험단 글 보기 -->
+<!-- 	체험단 글 보기 리뷰 -->
 	<select id="exprReview" resultType="com.koitt.jardin.dto.community.PreUserDTO">
 		select * from preuser where preUserNo=#{preUserNo}
+	</select>
+	
+<!-- 	체험단 글 보기 뷰-->
+	<select id="exprView" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * from preuser where preuser_no=#{preuser_no}
 	</select>
 <!-- 	체험단 신청 글 쓰기 -->
 	<insert id="preUserReview" >

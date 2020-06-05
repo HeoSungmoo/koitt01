@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,100 +90,9 @@ $(document).ready(function() {
 <div id="allwrap">
 <div id="wrap">
 
-	<div id="header">
-		
-		<div id="snbBox">
-			<h1><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
-			<div id="quickmenu">
-				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
-				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
-				<ul>
-					<li><a href="#">EVENT</a></li>
-					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="expr">COMMUNITY</a></li>
-				</ul>
-			</div>
-			<div id="snb">
-				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
-					<li><a href="#">MY PAGE</a></li>
-					<li><a href="#">CART</a></li>
-				</ul>
-
-				<div id="search">
-					<input type="text" class="searchType" />
-					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- GNB -->
-	<div id="gnb">
-		
-		<div id="top">
-			<ul>
-				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
-					<ul id="topSubm1">
-						<li><a href="#">클래스</a></li>
-						<li><a href="#">홈스타일 카페모리</a></li>
-						<li><a href="#">드립커피백</a></li>
-						<li><a href="#">카페리얼 커피</a></li>
-						<li><a href="#">오리지널커피백</a></li>
-						<li><a href="#">카페리얼 음료</a></li>
-						<li><a href="#">마일드커피백</a></li>
-						<li><a href="#">워터커피</a></li>
-						<li><a href="#">카페포드</a></li>
-						<li><a href="#">모히또파티</a></li>
-						<li><a href="#">테이크아웃 카페모리</a></li>
-						<li><a href="#">포타제</a></li>
-					</ul>
-				</li>
-				<li class="t2"><a href="#" id="topNavi2">원두</a>
-					<ul id="topSubm2">
-						<li><a href="#">클래스</a></li>
-						<li><a href="#">로스터리샵</a></li>
-						<li><a href="#">커피휘엘</a></li>
-						<li><a href="#">산지별 생두</a></li>
-					</ul>
-				</li>
-				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
-					<ul id="topSubm3">
-						<li><a href="#">드립커피 로스트</a></li>
-						<li><a href="#">오리지널커피백</a></li>
-						<li><a href="#">마일드커피백</a></li>
-					</ul>
-				</li>
-				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
-					<ul id="topSubm4">
-						<li><a href="#">까페모리</a></li>
-						<li><a href="#">홈스타일카페모리</a></li>
-						<li><a href="#">포타제</a></li>
-					</ul>
-				</li>
-				<li class="t1"><a href="#" id="topNavi5">음료</a>
-					<ul id="topSubm5">
-						<li><a href="#">까페리얼</a></li>
-						<li><a href="#">워터커피</a></li>
-						<li><a href="#">모히또</a></li>
-					</ul>
-				</li>
-				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
-					<ul id="topSubm6">
-						<li><a href="#">종이컵</a></li>
-						<li><a href="#">커피필터</a></li>
-						<li><a href="#">머신 등</a></li>
-					</ul>
-				</li>
-				<li class="t1"><a href="#" id="topNavi7">선물세트</a></li>
-				<li class="t2"><a href="#" id="topNavi8">대량구매</a></li>
-			</ul>
-		</div>
-
-		<script type="text/javascript">initTopMenu();</script>
-	</div>
+	<header>
+      <%@ include file="../include/header.jsp"  %>
+   </header>
 	<!-- //GNB -->
 
 	<!-- container -->
@@ -214,30 +125,62 @@ $(document).ready(function() {
 					<!-- 체험단 -->
 					<div class="imgListType">
 						<ul>
-
 							<!-- List -->
+							<c:set var="k" value="1"/> 
+							<c:forEach var="expr" items="${expr}">
+							
+							
 							<li>
 								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+							
 								<div class="txt">
 									<div class="subject">
-										<a href="exprView">카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span></a>
+									<jsp:useBean id="now" class="java.util.Date" />
+									
+									 <!-- 현재날짜 --> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+									   
+									<!-- 신청 시작날짜 !--> 
+									<fmt:formatDate value="${expr.apply_start_date}" pattern="yyyy-MM-dd" var="startDate" /> 
+										
+									<!-- 신청 마감날짜 !-->
+									<fmt:formatDate value="${expr.apply_end_date}" pattern="yyyy-MM-dd" var="endDate" />
+							
+									 
+									<c:choose>
+										<c:when test="${nowDate<endDate}">
+										<a href="exprView?preuser_no=${expr.preuser_no}">${expr.title } <span class="ingbtn">진행중</span></a>
+										</c:when>
+										<c:when test="${now>endDate}">
+										<a href="exprView?preuser_no=${expr.preuser_no}">${expr.title } <span class="ingbtn">종료</span></a>
+										</c:when>
+										</c:choose>
 									</div>
-									<div class="star">
-										체험단 평점&nbsp;
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</div>
+
+<div id="star${k=k+1}" class="star">
+
+</div>
+<script>
+    var innerHtml = "체험단 평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${expr.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
 									<div class="databox">
-										<span class="tit">모집 인원</span><span class="cont">15명</span>
-										<span class="tit">신청 기간</span><span>2014-04-01 ~ 2014-04-25</span>
-										<span class="tit">체험단 발표</span><span class="cont">2014-04-30</span>
-										<span class="tit">리뷰 등록기간</span><span>2014-05-06 ~ 2014-06-30</span>
+										<span class="tit">모집 인원</span><span class="cont">${expr.personnel}</span>
+										<span class="tit">신청 기간</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${expr.apply_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${expr.apply_end_date}"/></span>
+										<span class="tit">체험단 발표</span><span class="cont"><fmt:formatDate pattern="yyyy-MM-dd" value="${expr.announcement_date}"/></span>
+										<span class="tit">리뷰 등록기간</span><span><fmt:formatDate pattern="yyyy-MM-dd" value="${expr.review_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${expr.review_end_date}"/></span>
 									</div>
 								</div>
 							</li>
+							</c:forEach>
 							<!-- //List -->
 
 
@@ -290,38 +233,11 @@ $(document).ready(function() {
 	<!-- //container -->
 
 
+	 <footer>
+      <%@ include file="../include/footer.jsp"  %>
+   </footer>
 
-
-	<div id="footerWrap">
-		<div id="footer">
-			<div id="fnb">
-				<ul>
-					<li class="left"><a href="#">개인정보취급방침</a></li>
-					<li><a href="#">이용약관</a></li>
-					<li class="left"><a href="#">이메일무단수집거부</a></li>
-					<li><a href="#">고객센터</a></li>
-					<li class="left brand"><a href="#">쟈뎅 브랜드 사이트</a></li>
-				</ul>
-			</div>
-			
-			<div id="finfo">
-				<div id="flogo"><img src="images/txt/flogo.gif" alt="JARDIN THE COFFEE CREATOR, SINCE 1984" /></div>
-				<address>
-					<ul>
-						<li>㈜쟈뎅</li>
-						<li>대표자 윤영노</li>
-						<li class="tnone">주소 서울시 강남구 논현동 4-21번지 영 빌딩</li>
-						<li class="webnone">소비자상담실 02)546-3881</li>
-						<li>사업자등록번호 211-81-24727</li>
-						<li class="tnone">통신판매신고 제 강남 – 1160호</li>
-						<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL RIGHTS RESERVED.</span></li>
-					</ul>
-				</address>
-
-				<div id="inicis"><img src="images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
-			</div>
-		</div>
-	</div>
+	
 
 
 

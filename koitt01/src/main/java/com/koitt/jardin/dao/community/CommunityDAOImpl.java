@@ -17,15 +17,22 @@ public class CommunityDAOImpl implements CommunityDAO {
 	// 체험단 글 리스트
 	@Override
 	public List<PreUserDTO> expr() {
-		sqlSession.selectList("community.expr");
-		return null;
+
+		return sqlSession.selectList("community.expr");
 	}
 
-	// 체험단 글 보기
+	// 체험단 글 보기 리뷰
 	@Override
 	public PreUserDTO exprReview(int preUserNo) {
 
 		return sqlSession.selectOne("community.exprReview", preUserNo);
+	}
+
+	// 체험단 글 보기 뷰
+	@Override
+	public PreUserDTO exprView(int preuser_no) {
+
+		return sqlSession.selectOne("community.exprView", preuser_no);
 	}
 
 	// 체험단 리뷰 글 쓰기

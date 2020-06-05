@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
   
 <!DOCTYPE html>
 <html>
@@ -147,7 +148,7 @@ $(document).ready(function() {
 										<a href="noticeView?No=${noticeDto.no}">${noticeDto.title}</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
-									<td>${noticeDto.uploadDate}</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>
 									<td class="tnone right">${noticeDto.hit}</td>
 								</tr>
 								</c:forEach>

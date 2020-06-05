@@ -7,6 +7,7 @@ public class reviewDto {
 	private int reviewNo;
 	private int productNo;
 	private String id;
+	private String subCode;
 	private String title;
 	private String content;
 	private Timestamp reviewDate;
@@ -15,6 +16,14 @@ public class reviewDto {
 	private String thumbnail;
 	private String reply;
 	private Timestamp replyDate;
+
+	public String getSubCode() {
+		return subCode;
+	}
+
+	public void setSubCode(String subCode) {
+		this.subCode = subCode;
+	}
 
 	public int getReviewNo() {
 		return reviewNo;

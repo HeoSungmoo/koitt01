@@ -81,7 +81,7 @@ public class BoardController {
 	}
 
 	// 게시글 목록
-	@RequestMapping("아직 안건듬")
+	@RequestMapping("아직 안건")
 	public String noticePage(int curPage, Model model) {
 		PageNationDTO PDto = boardService.pageNation(curPage); // 게시글 수 저장
 		List<PageNationDTO> list = boardService.pageNationList(curPage);

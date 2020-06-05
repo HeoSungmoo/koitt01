@@ -239,16 +239,22 @@ $(document).ready(function() {
 							</div>
 							<div class="day">
 								<p class="txt">리뷰 등록기간<span><fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_end_date}"/></span></p>
-								<p class="appraisal">
-									체험단 평점
-									<span>
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</span>
-								</p>
+								<p id="star${k=k+1}" class="appraisal">
+					
+									</p>
+<script>
+    var innerHtml = "체험단 평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${exprView.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
+								
 							</div>
 							<div class="data">
 								<ul>

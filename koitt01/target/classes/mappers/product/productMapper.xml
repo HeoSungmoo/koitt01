@@ -26,18 +26,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="SubCategoryDto" resultType="com.koitt.jardin.dto.product.SubCategoryDto">
 	
-	select * from sub_category
+	select * from sub_category where sub_category_code=#{sub_category_code}
 	
 	</select>
 	
-	<select id="SubCategory20" resultType="com.koitt.jardin.dto.product.SubCategoryDto">
+	<select id="subCategoryList" resultType	="com.koitt.jardin.dto.product.SubCategoryDto">
 	
+	select * from sub_category
 
 	</select>
 	
 	<select id="productInfoDto" resultType="com.koitt.jardin.dto.product.ProductInfoDTO">
 	
-	select * from product_info
+	select * from product_info where product_no=#{product_no}
 	
 	</select>
 	

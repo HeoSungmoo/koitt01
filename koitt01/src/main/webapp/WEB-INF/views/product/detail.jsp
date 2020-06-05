@@ -232,7 +232,7 @@ $(document).ready(function() {
 					<p class="title">
 					<!--카테고리 넣어야댐 -->
 						<span>[오리지널]</span>
-						${detail.productNo }
+			
 						${detail.title }
 					</p>
 
@@ -322,13 +322,14 @@ $(document).ready(function() {
 							<col width="18%" class="tw22" />
 							<col width="*" class="tw25" />
 							</colgroup>
+				
 							<tbody>
-							
+				
 								<tr>
 									<th scope="row" class="info"><span>제조명</span></th>
-									<td>5</td>
+									<td>${ProductInfoDto.name }</td>
 									<th scope="row" class="info"><span>내용량</u></span></th>
-									<td>5</td>
+									<td>${ProductInfoDto.capacity}</td>
 								</tr>
 
 								<tr>
@@ -366,8 +367,8 @@ $(document).ready(function() {
 									<th scope="row" class="info"><span>업소명 <u>및 소재지</u></span></th>
 									<td colspan="3">1</td>
 								</tr>
-								
 							</tbody>
+								
 						</table>
 					</div>
 				</div>

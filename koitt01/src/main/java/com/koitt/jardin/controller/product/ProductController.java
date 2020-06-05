@@ -19,23 +19,36 @@ public class ProductController {
 	public String list(Model model, String name) {
 
 		model.addAttribute("list", productService.list());
-		System.out.println((productService.list()).size());
 		// 제품리스트 카테고리 리스트 제목 표시
 		model.addAttribute("categoryList", productService.categoryList(name));
 		// 제품리스트 카테고리 뷰 페이지
-		model.addAttribute("SubCategoryList", productService.SubCategoryDto(name));
+//		model.addAttribute("SubCategoryList", productService.SubCategoryDto(sub_category_code));
 
 		return "product/list";
 	}
 
 	// 제품의 상세내용 (condent_view)
 	@RequestMapping("detail")
-	public String detail(Model model, int productNo) {
-		model.addAttribute("detail", productService.detail(productNo));
-		System.out.println(productService.detail(productNo).getProductNo());
+	public String detail(Model model, int product_no) {
+		model.addAttribute("detail", productService.detail(product_no));
+
 		// 제품상세 제품 상세내용
-		// model.addAttribute("productInfoDto", productService.productInfoDto());
+		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		return "product/detail";
+	}
+
+	@RequestMapping("subcategory")
+	public String subcategory(Model model, int sub_category_code) {
+		model.addAttribute("SubCategoryList", productService.SubCategoryDto(sub_category_code));
+
+		return "product/list";
+	}
+
+	@RequestMapping("subcategoryList")
+	public String subcategoryList(Model model) {
+		model.addAttribute("subcategoryList", productService.SubCategoryDto());
+
+		return "product/list";
 	}
 
 	// 질문과 답변 작성란 ::추후에

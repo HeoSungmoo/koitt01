@@ -116,11 +116,16 @@ $(document).ready(function() {
 
 			<div class="brandTab">
 				<ul>
-			<c:forEach var="categoryList" items="${categoryList }">
+			
+				
+	<c:forEach var="subcategoryList" items="${subcategoryList }">
+		<li>${subcategoryList.sub_category_code }</li>
+		<li>${subcategoryList.categoryCode }</li>
+		<li>${subcategoryList.name }</li>
 	
-					<li><a href="#" class="hover">${categoryList.name }</a></li>
-
-				</c:forEach>
+	
+	</c:forEach>
+			
 				</ul>
 			</div>
 			<div class="brandList">
@@ -130,7 +135,7 @@ $(document).ready(function() {
 					<li>
 						<a href="detail">
 							<div class="img"><a href=""><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
-							<div class="title"><a href="detail?productNo=${ProductDto.productNo }">${ProductDto.title }</a></div>
+							<div class="title"><a href="detail?product_no=${ProductDto.product_no }">${ProductDto.product_no }//${ProductDto.title }</a></div>
 							<div class="price">	${ProductDto.price }</div>
 						
 						</a>
@@ -141,10 +146,7 @@ $(document).ready(function() {
 			</div>
 	
 	
-			
-		
-		
-		
+	
 			<!-- quickmenu -->
 			<div id="quick">
 				<div class="cart"><a href="#">장바구니</a></div>

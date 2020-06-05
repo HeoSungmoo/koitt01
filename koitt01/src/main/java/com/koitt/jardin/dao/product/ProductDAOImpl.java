@@ -27,16 +27,11 @@ public class ProductDAOImpl implements ProductDAO {
 
 	// 제품의 상세내용 ( condent_view)
 	@Override
-	public ProductDTO detail(int productNo) {
+	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product.detail", productNo);
+		return sqlSession.selectOne("product.detail", product_no);
 	}
 
-	@Override
-	public List<ProductInfoDTO> productInfoDto() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.productInfoDto");
-	}
 	// 구매후기 작성란
 
 	@Override
@@ -67,15 +62,27 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
+	public ProductInfoDTO productInfoDto(int product_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.productInfoDto", product_no);
+	}
+
+	@Override
 	public List<CategoryDto> categoryList(String name) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("product.categoryList", name);
 	}
 
 	@Override
-	public List<SubCategoryDto> SubCategoryDto(String name) {
+	public SubCategoryDto SubCategoryDto(int sub_category_code) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.SubCategoryDto", name);
+		return sqlSession.selectOne("product.SubCategoryDto", sub_category_code);
+	}
+
+	@Override
+	public List<SubCategoryDto> SubCategoryDto() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.subCategoryList");
 	}
 
 }

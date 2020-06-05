@@ -19,7 +19,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public List<EventDTO> event() {
 
-		return sqlSession.selectList("event.event");
+		return sqlSession.selectList("event.eventList");
 	}
 
 	// 진행중 이벤트 글내용

@@ -2,16 +2,16 @@ package com.koitt.jardin.dto.product;
 
 public class SubCategoryDto {
 
-	private int subCategoryCode;
+	private int sub_category_code;
 	private int categoryCode;
 	private String name;
 
-	public int getSubCategoryCode() {
-		return subCategoryCode;
+	public int getSub_category_code() {
+		return sub_category_code;
 	}
 
-	public void setSubCategoryCode(int subCategoryCode) {
-		this.subCategoryCode = subCategoryCode;
+	public void setSub_category_code(int sub_category_code) {
+		this.sub_category_code = sub_category_code;
 	}
 
 	public int getCategoryCode() {

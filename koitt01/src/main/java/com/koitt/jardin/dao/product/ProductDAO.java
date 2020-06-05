@@ -13,11 +13,13 @@ public interface ProductDAO {
 
 	public List<CategoryDto> categoryList(String name);
 
-	public List<SubCategoryDto> SubCategoryDto(String name);
+	public List<SubCategoryDto> SubCategoryDto();
 
-	public ProductDTO detail(int productNo);
+	public SubCategoryDto SubCategoryDto(int sub_category_code);
 
-	public List<ProductInfoDTO> productInfoDto();
+	public ProductDTO detail(int product_no);
+
+	public ProductInfoDTO productInfoDto(int product_no);
 
 	public void inquiry(ProductDTO ProductDto);
 

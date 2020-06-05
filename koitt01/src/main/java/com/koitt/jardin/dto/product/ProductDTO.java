@@ -4,8 +4,8 @@ import java.security.Timestamp;
 
 public class ProductDTO {
 
-	private int productNo;
-	private int subCategoryCode;
+	private int product_no;
+	private int sub_category_code;
 	private String title;
 	private int price;
 	private int point;
@@ -18,7 +18,7 @@ public class ProductDTO {
 	private String image3;
 	private String detail;
 	private Timestamp uploadDate;
-	private int productStock;
+	private int product_stock;
 	private int exposureState;
 
 	ProductDTO() {
@@ -49,20 +49,20 @@ public class ProductDTO {
 		this.volume = volume;
 	}
 
-	public int getProductNo() {
-		return productNo;
+	public int getProduct_no() {
+		return product_no;
 	}
 
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
 	}
 
-	public int getSubCategoryCode() {
-		return subCategoryCode;
+	public int getSub_category_code() {
+		return sub_category_code;
 	}
 
-	public void setSubCategoryCode(int subCategoryCode) {
-		this.subCategoryCode = subCategoryCode;
+	public void setSub_category_code(int sub_category_code) {
+		this.sub_category_code = sub_category_code;
 	}
 
 	public int getPrice() {
@@ -137,12 +137,12 @@ public class ProductDTO {
 		this.uploadDate = uploadDate;
 	}
 
-	public int getProductStock() {
-		return productStock;
+	public int getProduct_stock() {
+		return product_stock;
 	}
 
-	public void setProductStock(int productStock) {
-		this.productStock = productStock;
+	public void setProduct_stock(int product_stock) {
+		this.product_stock = product_stock;
 	}
 
 	public int getExposureState() {

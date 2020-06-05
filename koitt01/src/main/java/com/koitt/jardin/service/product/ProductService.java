@@ -11,13 +11,15 @@ public interface ProductService {
 
 	public List<ProductDTO> list();
 
-	public ProductDTO detail(int productNo);
+	public ProductDTO detail(int product_no);
 
 	public List<CategoryDto> categoryList(String name);
 
-	public List<SubCategoryDto> SubCategoryDto(String name);
+	public List<SubCategoryDto> SubCategoryDto();
 
-	public List<ProductInfoDTO> productInfoDto();
+	public SubCategoryDto SubCategoryDto(int sub_category_code);
+
+	public ProductInfoDTO productInfoDto(int product_no);
 
 	public void inquiry(ProductDTO ProductDto);
 

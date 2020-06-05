@@ -1,10 +1,13 @@
 package com.koitt.jardin.controller.event;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.koitt.jardin.dto.event.EventDTO;
 import com.koitt.jardin.service.event.EventService;
 
 @Controller
@@ -16,7 +19,14 @@ public class EventController {
 	// 진행중 이벤트 게시판 목록
 	@RequestMapping("event")
 	public String event(Model model) {
-		model.addAttribute("event", eventService.event());
+		List<EventDTO> event = eventService.event();
+
+		System.out.println(event.get(3).getEvent_no());
+		System.out.println(event.get(3).getTitle());
+		System.out.println(event.get(3).getStart_date() + "시작일");
+		System.out.println(event.get(3).getEnd_date() + "종료일");
+		model.addAttribute("event", event);
+
 		return "event/event";
 	}
 

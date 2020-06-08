@@ -217,7 +217,7 @@ $(document).ready(function() {
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">작성일<span>${noticeView.uploadDate}</span></p>
+								<p class="txt">작성일<span>${noticeView.upload_date}</span></p>
 							</div>
 						</div>
 
@@ -239,8 +239,7 @@ $(document).ready(function() {
 								<tr>
 									<th class="pre">PREV</th>
 									
-									
-									<td><a href="noticeView?No=${noticeViewPre.no}">${noticeViewPre.title}</a></t>
+									<td><a href="noticeView?No=${noticeViewPre.no}">${noticeViewPre.title}</a></td>
 								
 								</tr>
 

@@ -44,8 +44,8 @@ public class CommunityController {
 	}
 
 	@RequestMapping("preUserApply")
-	public String preUserApply(int preUserNo) {
-		communityService.preUserApply(preUserNo);
+	public String preUserApply(int preuser_no) {
+		communityService.preUserApply(preuser_no);
 		return "community/exprApplyResult";
 	}
 

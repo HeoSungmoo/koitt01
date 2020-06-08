@@ -36,6 +36,13 @@ public class BoardController {
 		return "board/noticeView";
 	}
 
+	// 공지사항 검색
+	@RequestMapping("noticeSearch")
+	public String noticeSearch(Model model, String option, String search) {
+		model.addAttribute("notice", boardService.noticeSearch(option, search));
+		return "board/notice";
+	}
+
 	// 1:1 문의
 	@RequestMapping("bInquiryView")
 	public String inquiryView() {

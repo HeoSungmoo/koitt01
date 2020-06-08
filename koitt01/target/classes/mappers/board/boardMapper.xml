@@ -14,6 +14,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="noticeView" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * from notice where No=#{No}
 	</select>
+	
+	<update id="noticeViewHit">
+	update notice set Hit=Hit+1 where No=#{no}
+	</update>
+	
+	
+	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
+		select * from notice where title like '%'||#{search}||'%'
+	</select>
+	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
+		select * from notice where content like '%'||#{search}||'%'
+	</select>
 
 <!--1:1문의 글 쓰기 -->
 	<insert id="inquiry">

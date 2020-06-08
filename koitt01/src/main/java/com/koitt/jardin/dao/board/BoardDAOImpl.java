@@ -28,8 +28,37 @@ public class BoardDAOImpl implements BoardDAO {
 	// 공지사항 글 보기
 	@Override
 	public NoticeDTO noticeView(int No) {
-
+//		sqlSession.update("board.noticeViewHit", No);
 		return sqlSession.selectOne("board.noticeView", No);
+	}
+
+	@Override
+	public List<NoticeDTO> noticeSearch(String option, String search) {
+
+		List<NoticeDTO> sList = null;
+
+		if (option.equals("title")) {
+
+			sList = sqlSession.selectList("board.noticeSearchT", search);
+			System.out.println(sList.size());
+		} else if (option.equals("content")) {
+			sList = sqlSession.selectList("board.noticeSearchC", search);
+			System.out.println(sList.size());
+		}
+		return sList;
+//		HashMap<String, Object> mam = new HashMap<String, Object>();
+//		mam.put("search", search);
+//		mam.put("optione", option);
+//
+//		Iterator<String> keys = mam.keySet().iterator();
+//		while (keys.hasNext()) {
+//			String key = keys.next();
+//			String value = (String) mam.get(key);
+//			System.out.println("키 : " + key + ", 값 : " + value);
+//			System.out.println(value.equals("title"));
+//
+//		}
+
 	}
 
 	// 1:1문의 글 쓰기

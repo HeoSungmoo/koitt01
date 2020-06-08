@@ -18,6 +18,6 @@ public interface CommunityService {
 	public void preUserReview(int preUserApplyNo);
 
 	// 체험단 신청 글쓰기
-	public void preUserApply(int preUserApplyNo);
+	public void preUserApply(int preuser_no);
 
 }

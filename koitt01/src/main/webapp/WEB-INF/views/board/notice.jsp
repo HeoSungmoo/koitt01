@@ -177,22 +177,28 @@ $(document).ready(function() {
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-
+				<form action="noticeSearch" name="search">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-									<select>
-										<option value="" />제목</option>
+									
+									<select name="option">
+										<option value="title" />제목</option>
+										<option value="content" />내용</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li><input type="text" class="searchInput" name="search" /></li>
+								<li class="web"><button class="faqSearch"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
-							</ul>
+							
+							
+							
+							
 						</div>
 					</div>
+					</form>
 					<!-- //포토 구매후기 -->
 
 

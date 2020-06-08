@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from review
 	</select>
 	
-	 <select id="enjoyCofee" resultType="com.koitt.jardin.dto.board.EnjoyCoffeeDTO">
-   		select * from enjoy_coffee
-   </select>
+<!-- 	 <select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffeeDTO"> -->
+<!--    		select * from enjoy_coffee -->
+<!--    	 </select> -->
 </mapper>

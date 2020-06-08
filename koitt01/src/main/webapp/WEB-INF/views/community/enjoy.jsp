@@ -22,10 +22,6 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
-<![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -53,8 +49,7 @@ $(document).ready(function() {
 		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
-<!--//익스레이어팝업-->
-<!--IE 6,7,8 사용자에게 브라우저 업데이터 설명 Div 관련 스크립트-->
+
  <script type="text/javascript">
 
      var settimediv = 200000; //지속시간(1000= 1초)
@@ -217,7 +212,7 @@ $(document).ready(function() {
 						<ul>
 
 							<!-- List -->
-							<c:forEach var="enjoy" items="enjoyCoffee">
+							<c:forEach var="enjoy" items="${enjoyCoffee}">
 							<li>
 								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
@@ -228,8 +223,8 @@ $(document).ready(function() {
 										${enjoy.content}
 									</div>
 									<div class="data">
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
+										<p>등록일 <span>${enjoy.upload_date }</span></p>
+										<p>조회수 <span>${enjoy.hit }</span></p>
 									</div>
 								</div>
 							</li>

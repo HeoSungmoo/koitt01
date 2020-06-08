@@ -59,7 +59,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	@Override
 	public List<EnjoyCoffeeDTO> enjoyCoffee() {
 
-		return sqlSession.selectList("community.enjoycoffee");
+		return sqlSession.selectList("community.enjoyCoffee");
 	}
 
 }

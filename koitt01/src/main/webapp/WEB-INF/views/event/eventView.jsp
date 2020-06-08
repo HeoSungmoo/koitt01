@@ -215,16 +215,17 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>까페모리 봄바람 커피한잔 30% 할인 이벤트!!</li>
+									<li>${eventView.title }</li>
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">이벤트 기간<span>2014-04-01 ~ 2014-04-29</span></p>
+								<p class="txt">이벤트 기간<span>${eventView.start_date } ~ ${eventView.end_date}</span></p>
 							</div>
 						</div>
 
 						<div class="viewContents">
 							<img src="images/img/sample_event_view.jpg" alt="" />
+							${eventView.content }
 						</div>
 					</div>
 
@@ -260,13 +261,12 @@ $(document).ready(function() {
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
-								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
-								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
+								<p class="txt">총 <span class="orange"></span> 개의 댓글이 달려있습니다.</p>
 								<textarea class="replyType"></textarea>
 							</li>
 							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
 						</ul>
-						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
+						
 					</div>
 
 					<div class="replyBox">

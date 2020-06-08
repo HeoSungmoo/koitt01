@@ -14,6 +14,8 @@ public interface EventDAO {
 
 	public EventCommentDto eventComment(int event_no);
 
+	public void eventCommentWrite(EventCommentDto eventCommentDto);
+
 	public List<EventDTO> finEvent();
 
 	public EventDTO finEventView(int event_no);

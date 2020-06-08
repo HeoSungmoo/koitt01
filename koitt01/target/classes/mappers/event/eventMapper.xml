@@ -22,6 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<insert id="eventCommentWrite">
+	
+	insert into 
+	
+	</insert>
+	
 	
 	<select id="finEvent" resultType="com.koitt.jardin.dto.event.EventDTO">
 	

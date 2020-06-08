@@ -62,4 +62,10 @@ public class EventDAOImpl implements EventDAO {
 		return sqlSession.selectOne("event.eventComment", event_no);
 	}
 
+	@Override
+	public void eventCommentWrite(EventCommentDto eventCommentDto) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -63,4 +63,11 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventComment(event_no);
 	}
 
+	@Override
+	public void eventCommentWrite(EventCommentDto eventCommentDto) {
+
+		eventDao.eventCommentWrite(eventCommentDto);
+
+	}
+
 }

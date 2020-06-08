@@ -95,8 +95,8 @@ public class CommunityController {
 
 	// Enjoy Coffee 글 리스트
 	@RequestMapping("enjoy")
-	public String enjoy() {
-
+	public String enjoy(Model model) {
+		model.addAttribute("enjoyCoffee", communityService.enjoyCoffee());
 		return "community/enjoy";
 	}
 

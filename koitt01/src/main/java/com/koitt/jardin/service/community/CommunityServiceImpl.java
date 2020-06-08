@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.community.CommunityDAO;
+import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 
 @Service
@@ -54,6 +55,13 @@ public class CommunityServiceImpl implements CommunityService {
 	public List<PreUserDTO> epilogue() {
 
 		return communityDAO.epilogue();
+	}
+
+	// enjoyCoffee
+	@Override
+	public List<EnjoyCoffeeDTO> enjoyCoffee() {
+
+		return communityDAO.enjoyCoffee();
 	}
 
 }

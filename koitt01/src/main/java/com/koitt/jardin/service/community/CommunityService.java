@@ -2,6 +2,7 @@ package com.koitt.jardin.service.community;
 
 import java.util.List;
 
+import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 
 public interface CommunityService {
@@ -23,5 +24,7 @@ public interface CommunityService {
 
 	// 이용후기
 	public List<PreUserDTO> epilogue();
+
+	public List<EnjoyCoffeeDTO> enjoyCoffee();
 
 }

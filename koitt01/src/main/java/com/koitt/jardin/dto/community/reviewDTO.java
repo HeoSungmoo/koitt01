@@ -4,18 +4,17 @@ import java.sql.Timestamp;
 
 public class reviewDTO {
 
-	int review_no;
-	int product_no; // 체험단 제목
-	String id; // 체험단 내용
-	int sub_code; // 썸네일
-	String title; // 모집 인원
-	String content; // 신청 시작일
-	Timestamp review_date; // 체험단 발표
-	int hit;
-	int grade;
-	String thumbnail;
-	String reply;
-	Timestamp reply_date;
+	int review_no;// 리뷰번호
+	int product_no; // 상품 번호
+	String id; // 작성아이디
+	String title; // 이용후기 제목
+	String content; // 이용후기 내용
+	Timestamp review_date; // 이용후기 작성일자
+	int hit; // 조회수
+	int grade; // 이용후기 평가
+	String thumbnail; // 이용후기 썸네일
+	String reply; // 이용후기 답변
+	Timestamp reply_date; // 이용후기 답변 등록날짜
 
 	public int getReview_no() {
 		return review_no;
@@ -39,14 +38,6 @@ public class reviewDTO {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public int getSub_code() {
-		return sub_code;
-	}
-
-	public void setSub_code(int sub_code) {
-		this.sub_code = sub_code;
 	}
 
 	public String getTitle() {

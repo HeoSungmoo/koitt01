@@ -18,6 +18,9 @@ public interface BoardDAO {
 	// 공지사항 글 보기
 	public NoticeDTO noticeView(int No);
 
+	// 공지사항 조회수
+	public void noticeViewHit(int No);
+
 	// 1:1문의
 	public void inquiry();
 

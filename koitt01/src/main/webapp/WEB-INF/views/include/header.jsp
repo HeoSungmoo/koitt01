@@ -25,7 +25,7 @@
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
+					<li><a href="login">LOGIN</a></li>
 					<li><a href="#">JOIN</a></li>
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>

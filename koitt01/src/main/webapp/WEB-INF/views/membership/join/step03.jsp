@@ -201,23 +201,6 @@ function check(){
 			return false;
 		}
 	  
-	  
-	  
-	// 라디오 유효성 검사
-	  var sms = document.getElementsByName("sms");
-		
-	  var chk = false;
-	  for(var i=0; i<sms.length; i++){
-	   if ((sms[i].checked)){
-	    chk = true; 
-	   }
-	  }
-	  if(!chk){
-	      alert('이메일 수신을 체크해주세요.');
-	     sms[0].checked=true;
-	   return false;
-	  }
-	  
 	// 유선전화 유효성 검사
 	if(userInfo.tel2.value == ""){
 		alert('전화번호를 입력해주세요.');
@@ -258,20 +241,22 @@ function check(){
 		return false;
 	}
 	
-	  var lunarSolar = document.getElementsByName("lunarSolar");
+	 // 양력 음력 
+	 var lunarSolar = document.getElementsByName("lunarSolar");
 		
-	  var chk = false;
-	  for(var i=0; i<sms.length; i++){
-	   if ((lunarSolar[i].checked)){
+	 var chk = false;
+	 for(var i=0; i<sms.length; i++){
+	 if ((lunarSolar[i].checked)){
 	    chk = true; 
-	   }
-	  }
-	  if(!chk){
-	      alert('양력, 음력을 체크해주세요.');
-	     lunarSolar[0].checked=true;
+	 	}
+	 }
+	 if(!chk){
+	   alert('양력, 음력을 체크해주세요.');
+	   lunarSolar[0].checked=true;
 	   return false;
-	  }
+	 }
 	
+	 return userInfo.submit();
 	
 	
 }
@@ -346,6 +331,7 @@ function check(){
         clearTimeout(msietimer);
      }
      
+     /*
      // 아이디 중복체크 화면
      function openIdChk(){
     	 
@@ -357,7 +343,7 @@ function check(){
      function inputIdChk(){
     	 document.userInfo.idDupliaction.value = "idUncheck";
      }
-     
+     */
      
      // 이메일 처리 소스
      function email_change(){
@@ -378,7 +364,7 @@ function check(){
 
     	  document.userInfo.email2.focus();
 
-    	 } else{
+    	 }else{
 
     	  document.userInfo.email2.disabled = true;
 
@@ -592,7 +578,7 @@ function check(){
 
 													<li class="r10"><input type="text" class="w134"
 														name="id" onkeydown="inputIdChk()"></li>
-													<input type="hidden" name="idDuplication" value="idUncheck">
+													
 													<li><input type="button" value="중복확인"
 														onclick="openIdChk()"></li>
 													<li class="pt5"><span class="mvalign">첫 글자는

@@ -18,7 +18,11 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Locale locale, Model model) {
 
-		model.addAttribute("banner", homeService.bannerList());
+		model.addAttribute("bannerList", homeService.bannerList());// 배너 리스트 불러오기
+		model.addAttribute("hitList", homeService.hitList());// 베스트셀러 리스트 불러오기
+		model.addAttribute("saleList", homeService.saleList());// 할인상품 리스트 불러오기
+		model.addAttribute("tel", homeService.tel());// 고객센터 전화번호 불러오기
+		model.addAttribute("notice", homeService.notice());// 공지사항 상위글 3개 불러오기
 		return "home/home";
 
 	}

@@ -2,6 +2,7 @@ package com.koitt.jardin.dao.community;
 
 import java.util.List;
 
+import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 
 public interface CommunityDAO {
@@ -23,5 +24,7 @@ public interface CommunityDAO {
 
 	// 이용후기 글 리스트
 	public List<PreUserDTO> epilogue();
+
+	public List<EnjoyCoffeeDTO> enjoyCoffee();
 
 }

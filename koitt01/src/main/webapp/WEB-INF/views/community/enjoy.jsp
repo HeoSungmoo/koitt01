@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+   <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -215,14 +217,15 @@ $(document).ready(function() {
 						<ul>
 
 							<!-- List -->
+							<c:forEach var="enjoy" items="enjoyCoffee">
 							<li>
 								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="#">쟈뎅,테이크아웃 ‘카페모리 즐기기</a>
+										<a href="#">${enjoy.title }</a>
 									</div>
 									<div class="conf">
-										27년 만의 기록적인 한파가 연일 지속되면서, 따뜻하고 달콤하게 즐길 수 있는 ‘핫초코’가 인기를 끌며 보다 맛있게 카페모리를 즐기는 법을 소개해 드리겠습니다.
+										${enjoy.content}
 									</div>
 									<div class="data">
 										<p>등록일 <span>2014-03-24</span></p>
@@ -230,55 +233,9 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</li>
+							</c:forEach>
 							<!-- //List -->
 
-							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">쟈뎅,테이크아웃 ‘카페모리 즐기기</a>
-									</div>
-									<div class="conf">
-										27년 만의 기록적인 한파가 연일 지속되면서, 따뜻하고 달콤하게 즐길 수 있는 ‘핫초코’가 인기를 끌며 보다 맛있게 카페모리를 즐기는 법을 소개해 드리겠습니다.
-									</div>
-									<div class="data">
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">쟈뎅,테이크아웃 ‘카페모리 즐기기</a>
-									</div>
-									<div class="conf">
-										27년 만의 기록적인 한파가 연일 지속되면서, 따뜻하고 달콤하게 즐길 수 있는 ‘핫초코’가 인기를 끌며 보다 맛있게 카페모리를 즐기는 법을 소개해 드리겠습니다.
-									</div>
-									<div class="data">
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#">쟈뎅,테이크아웃 ‘카페모리 즐기기</a>
-									</div>
-									<div class="conf">
-										27년 만의 기록적인 한파가 연일 지속되면서, 따뜻하고 달콤하게 즐길 수 있는 ‘핫초코’가 인기를 끌며 보다 맛있게 카페모리를 즐기는 법을 소개해 드리겠습니다.
-									</div>
-									<div class="data">
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
-									</div>
-								</div>
-							</li>
 
 						</ul>
 					</div>

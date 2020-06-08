@@ -29,4 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="epilogue" resultType="com.koitt.jardin.dto.community.reviewDTO">
 	select * from review
 	</select>
+	
+	 <select id="enjoyCofee" resultType="com.koitt.jardin.dto.board.EnjoyCoffeeDTO">
+   		select * from enjoy_coffee
+   </select>
 </mapper>

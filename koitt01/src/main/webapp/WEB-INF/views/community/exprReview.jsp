@@ -210,41 +210,53 @@ $(document).ready(function() {
 			<div id="contents">
 				<div id="mypage">
 					<h2><strong>체험단</strong><span>쟈뎅샵에서 진행되는 무료체험 기회를 놓치지 마세요.</span></h2>					
-					<div class="viewDivMt viewLine">
+					<div class="viewDivMt">
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>카페모리 홍차라떼, 드립커피백 체험단 모집 <span class="ingbtn">진행중</span><span class="finishbtn">종료</span></li>
+									<li>${exprView.title }
+									<c:choose>
+										<c:when test="${nowDate<endDate}">
+										 <span class="ingbtn">진행중</span>
+										</c:when>
+										<c:when test="${now>endDate}">
+										<span class="ingbtn">종료</span>
+										</c:when>
+										</c:choose>
+								
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">리뷰 등록기간<span>2014-05-06 ~ 2014-06-30</span></p>
-								<p class="appraisal">
-									체험단 평점
-									<span>
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</span>
-								</p>
+								<p class="txt">리뷰 등록기간<span><fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_end_date}"/></span></p>
+								<p id="star${k=k+1}" class="appraisal">
+									</p>
+<script>
+    var innerHtml = "체험단 평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${exprView.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
+								
 							</div>
 							<div class="data">
 								<ul>
-									<li>모집 인원<span>15명</span></li>
-									<li class="dep">신청기간<span>2014-04-01 ~ 2014-04-25</span></li>
-									<li class="dep">체험단 발표<span>2014-04-30</span></li>
+									<li>모집 인원<span>${exprView.personnel}</span></li>
+									<li class="dep">신청기간<span><fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.apply_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.apply_end_date}"/></span></li>
+									<li class="dep">체험단 발표<span><fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.announcement_date}"/></span></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							안녕하세요.<br/>
-							쟈뎅샵 회원분들을 대상으로 카페모리 홍차라떼, 드립커피백 체험단 모집합니다.<br/>
-							쟈뎅의 대표 상품을 체험할 수 있는 기회를 놓치지 마세요!
+							${exprView.content}
 						</div>
-					</div>					
+					</div>			
 
 
 					<div class="productTab normaltab">

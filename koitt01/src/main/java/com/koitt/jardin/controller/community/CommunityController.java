@@ -44,8 +44,8 @@ public class CommunityController {
 	}
 
 	@RequestMapping("preUserApply")
-	public String preUserApply(int preUserNo) {
-		communityService.preUserApply(preUserNo);
+	public String preUserApply(int preuser_no) {
+		communityService.preUserApply(preuser_no);
 		return "community/exprApplyResult";
 	}
 
@@ -54,7 +54,7 @@ public class CommunityController {
 	// 작업중 리뷰에 대한 부분 상의 필요
 	@RequestMapping("epilogue")
 	public String epilogue(Model model) {
-//		model.addAttribute("epilogue", communityService.epilogue());
+		model.addAttribute("epilogue", communityService.epilogue());
 		return "community/epilogue";
 	}
 

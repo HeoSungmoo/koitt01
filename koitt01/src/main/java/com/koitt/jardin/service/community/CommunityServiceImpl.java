@@ -44,9 +44,16 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 체험단 신청 글쓰기
 	@Override
-	public void preUserApply(int preUserApplyNo) {
-		communityDAO.preUserApply(preUserApplyNo);
+	public void preUserApply(int preuser_no) {
+		communityDAO.preUserApply(preuser_no);
 
+	}
+
+	// 이용후기 글 리스트
+	@Override
+	public List<PreUserDTO> epilogue() {
+
+		return communityDAO.epilogue();
 	}
 
 }

@@ -38,15 +38,22 @@ public class MemberController {
 		return "membership/join/step03";
 	}
 
+	// 아이디 중복 체크 폼
+	@RequestMapping("idCheck")
+	public String idCheck() {
+
+		return "membership/join/idCheck";
+	}
+
 	// 회원 가입 - 가입완료
-	@RequestMapping("step04")
+	@RequestMapping("userInfo")
 	public String step04(Model model, MemberDTO memberDto) {
 		memberService.join(memberDto);
 		return "membership/join/step04";
 	}
 
 	// 로그인 창
-	@PostMapping("login")
+	@RequestMapping("login")
 	public String login(Model model) {
 
 		return "membership/login";

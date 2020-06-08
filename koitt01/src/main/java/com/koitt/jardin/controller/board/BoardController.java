@@ -30,10 +30,18 @@ public class BoardController {
 	// 공지사항 글보기
 	@RequestMapping("noticeView")
 	public String noticeView(Model model, int No) {
+		boardService.noticeViewHit(No);
 		model.addAttribute("noticeView", boardService.noticeView(No));
 		model.addAttribute("noticeViewPre", boardService.noticeView(No - 1));
 		model.addAttribute("noticeViewNext", boardService.noticeView(No + 1));
 		return "board/noticeView";
+	}
+
+	// 공지사항 검색
+	@RequestMapping("noticeSearch")
+	public String noticeSearch(Model model, String option, String search) {
+		model.addAttribute("notice", boardService.noticeSearch(option, search));
+		return "board/notice";
 	}
 
 	// 1:1 문의

@@ -63,6 +63,7 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventComment(event_no);
 	}
 
+	// 진행중 이벤트 댓글작성
 	@Override
 	public void eventCommentWrite(EventCommentDto eventCommentDto) {
 

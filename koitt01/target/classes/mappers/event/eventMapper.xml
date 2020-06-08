@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="eventCommentWrite">
 	
-	insert into 
+	insert into event_comment values(event_seq.nextval,${event_no},${comment_content},0)
 	
 	</insert>
 	

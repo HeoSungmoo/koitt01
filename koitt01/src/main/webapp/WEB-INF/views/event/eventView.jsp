@@ -175,7 +175,7 @@ $(document).ready(function() {
 								<p class="txt">총 <span class="orange"></span> 개의 댓글이 달려있습니다.</p>
 								<textarea class="replyType" name="comment_content"></textarea>
 							</li>
-							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
+							<li class="btn"><a href="eventView?event_no=${eventComment.event_no }" class="replyBtn">등록</a></li>
 						</ul>
 						
 					</div>

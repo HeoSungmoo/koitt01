@@ -25,7 +25,36 @@
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<!--우편번호 API -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+             oncomplete: function(data) {
+            	
+            	 
+            	 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zip').value = data.zonecode;
+           		document.getElementById('address').value = addr;            
+                // 커서를 상세주소 필드로 이동한다.
+            } 
+        }).open();
+    }
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -33,68 +62,19 @@ $(document).ready(function() {
 
 });
 
-
-
-// 주소 API
-  function sample4_execDaumPostcode() {
-	
-new daum.Postcode({
-    oncomplete: function(data) {
-        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-    	 // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
-        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-        var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-        var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
-        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-            extraRoadAddr += data.bname;
-        }
-        // 건물명이 있고, 공동주택일 경우 추가한다.
-        if(data.buildingName !== '' && data.apartment === 'Y'){
-           extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-        }
-        // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-        if(extraRoadAddr !== ''){
-            extraRoadAddr = ' (' + extraRoadAddr + ')';
-        }
-        // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-        if(fullRoadAddr !== ''){
-            fullRoadAddr += extraRoadAddr;
-        }
-
-        // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
-        document.getElementById('sample4_roadAddress').value = fullRoadAddr;
-        document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
-
-        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-        if(data.autoRoadAddress) {
-            //예상되는 도로명 주소에 조합형 주소를 추가한다.
-            var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-            document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-
-        } else if(data.autoJibunAddress) {
-            var expJibunAddr = data.autoJibunAddress;
-            document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-
-        } else {
-            document.getElementById('guide').innerHTML = '';
-        }
-    }
-
-        
-    }
-}).open();
-}
-
 // 회원가입 폼 유효성 검사
 function check(){
 	
 	var nameChk = /^[가-힣]{2,6}$/;
 	var pwChk = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,20}$/;
+	var phoneChk = /^[0-9]{4}$/;
+	var telChk = /^[0-9]{3}$/;
+		
+
+
+		
+
+
 	
 	if(userInfo.name.value == ""){
 		alert('이름을 입력해주세요.');
@@ -154,8 +134,11 @@ function check(){
 	
 	if(userInfo.email2.value == ""){
 		alert('이메일 형식을 입력해주세요.');
+		userInfo.email2.focus();
+		return false;
 	}
 	
+	// 라디오 유효성 검사
 	var emailReceive = document.getElementsByName("receive");
 	
 	  var chk = false;
@@ -169,6 +152,133 @@ function check(){
 	     emailReceive[0].checked=true;
 	   return false;
 	  }
+	  
+	  // 라디오 유효성 검사
+	  var sms = document.getElementsByName("sms");
+		
+	  var chk = false;
+	  for(var i=0; i<emailReceive.length; i++){
+	   if ((emailReceive[i].checked)){
+	    chk = true; 
+	   }
+	  }
+	  if(!chk){
+	      alert('이메일 수신을 체크해주세요.');
+	     emailReceive[0].checked=true;
+	   return false;
+	  }
+	  
+	  if(userInfo.zip.value == ""){
+		  alert('우편번호를 입력해주세요.');
+		  userInfo.zip.focus();
+		  return false;
+	  }
+	  
+	  if(userInfo.phone2.value == ""){
+		  alert('휴대폰 번호를 입력해주세요.');
+		  userInfo.phone2.focus();
+		  return false;
+	  }
+	  
+	  if(!(phoneChk.test(userInfo.phone2.value))){
+			alert('핸드폰 번호는 숫자로 4자리 입력해주세요.');
+			userInfo.phone2.value = "";
+			userInfo.phone2.focus();
+			return false;
+		}
+	  
+	  if(userInfo.phone3.value == ""){
+		  alert('휴대폰 번호를 입력해주세요.');
+		  userInfo.phone3.focus();
+		  return false;
+	  }
+	  
+	  if(!(phoneChk.test(userInfo.phone3.value))){
+			alert('핸드폰 번호는 숫자로 4자리 입력해주세요.');
+			userInfo.phone3.value = "";
+			userInfo.phone3.focus();
+			return false;
+		}
+	  
+	  if(!(phoneChk.test(userInfo.phone3.value))){
+			alert('핸드폰 번호는 숫자만 입력해주세요.');
+			userInfo.phone3.value = "";
+			userInfo.phone3.focus();
+			return false;
+		}
+	  
+	  
+	  
+	// 라디오 유효성 검사
+	  var sms = document.getElementsByName("sms");
+		
+	  var chk = false;
+	  for(var i=0; i<sms.length; i++){
+	   if ((sms[i].checked)){
+	    chk = true; 
+	   }
+	  }
+	  if(!chk){
+	      alert('이메일 수신을 체크해주세요.');
+	     sms[0].checked=true;
+	   return false;
+	  }
+	  
+	// 유선전화 유효성 검사
+	if(userInfo.tel2.value == ""){
+		alert('전화번호를 입력해주세요.');
+		userInfo.tel2.focus();
+		return false;
+	}
+	
+	if(!(telChk.test(userInfo.tel2.value))){
+		alert('중간번호는 숫자로 3자리 입력해주세요.');
+		userInfo.tel2.value = "";
+		userInfo.tel2.focus();
+		return false;
+	}
+	
+	if(userInfo.tel3.value == ""){
+		alert('전화번호를 입력해주세요.');
+		userInfo.tel3.focus();
+		return false;
+	}
+	
+	if(!(phoneChk.test(userInfo.tel3.value))){
+		alert('마지막 번호는 숫자로 4글자 입력해주세요.');
+		userInfo.tel3.value = "";
+		userInfo.tel3.focus();
+		return false;
+	}
+	
+	if(userInfo.year.value == ""){
+		alert('생년월일을 입력해주세요.');
+		return false;
+	}
+	if(userInfo.month.value == ""){
+		alert('태어난 월을 입력해주세요.');
+		return false;
+	}
+	if(userInfo.day.value == ""){
+		alert('태어난 일을 입력해주세요.');
+		return false;
+	}
+	
+	  var lunarSolar = document.getElementsByName("lunarSolar");
+		
+	  var chk = false;
+	  for(var i=0; i<sms.length; i++){
+	   if ((lunarSolar[i].checked)){
+	    chk = true; 
+	   }
+	  }
+	  if(!chk){
+	      alert('양력, 음력을 체크해주세요.');
+	     lunarSolar[0].checked=true;
+	   return false;
+	  }
+	
+	
 	
 }
 </script>
@@ -241,6 +351,7 @@ function check(){
 		$("#ieUser").hide();
         clearTimeout(msietimer);
      }
+     
      // 아이디 중복체크 화면
      function openIdChk(){
     	 
@@ -252,7 +363,9 @@ function check(){
      function inputIdChk(){
     	 document.userInfo.idDupliaction.value = "idUncheck";
      }
-     // 이메일
+     
+     
+     // 이메일 처리 소스
      function email_change(){
 
     	 if(document.userInfo.email.options[document.userInfo.email.selectedIndex].value == '0'){
@@ -566,12 +679,10 @@ function check(){
 											<th scope="row"><span>주소 *</span></th>
 											<td>
 												<ul class="pta">
-													<li><input type="text" class="sample4_postcode"
-														placeholder="우편번호" />&nbsp;</li>
-													<li><input type="button"
-														onclick="joinAPI/sample4_execDaumPostcode()" class="addressBtn"
-														value="우편번호 찾기"></li>
-													<li class="pt5"><input type="text" class="addressType" /></li>
+													<li><input type="text" class="sample4_postcode" id="zip" name = "zip" placeholder="우편번호"/>&nbsp;</li>
+													<li><input type="button" onclick = "sample6_execDaumPostcode()" class="addressBtn" value="우편번호 찾기"></li>
+						
+													<li class="pt5"><input type="text" class="addressType" placeholder = "상세주소" id = "address" name = "address"/></li>
 													<li class="cb"><span class="mvalign">※ 상품 배송 시
 															받으실 주소입니다. 주소를 정확히 적어 주세요.</span></li>
 												</ul>
@@ -581,7 +692,7 @@ function check(){
 											<th scope="row"><span>휴대폰 *</span></th>
 											<td>
 												<ul class="pta">
-													<li><select>
+													<li><select name = "phone1">
 															<option value="010" selected="selected">010</option>
 															<option value="011">011</option>
 															<option value="016">016</option>
@@ -591,16 +702,16 @@ function check(){
 													</select></li>
 													<li>&nbsp;<span class="valign">-</span>&nbsp;
 													</li>
-													<li><input type="text" class="w74" maxlength="4" /> <span
+													<li><input type="text" name = "phone2" class="w74" maxlength="4" /> <span
 														class="valign">-</span>&nbsp;</li>
 													<li class="r10"><input type="text" class="w74"
-														maxlength="4" /></li>
+														maxlength="4" name = "phone3"/></li>
 													<li class="cb pt5"><span class="mvalign">※ SMS
 															서비스를 받아보시겠습니까?</span></li>
 													<li class="pt5">
 														<ul class="baseQues">
 															<li><input type="radio" name="sms" id="sms_yes"
-																class="radio_t" checked="checked" /><label
+																class="radio_t"/><label
 																for="sms_yes">예</label></li>
 															<li><input type="radio" name="sms" id="sms_no"
 																class="radio_t" /><label for="sms_no">아니오</label></li>
@@ -613,7 +724,7 @@ function check(){
 											<th scope="row"><span>유선전화</span></th>
 											<td>
 												<ul class="pta">
-													<li><select>
+													<li><select name = "tel">
 															<option value="02" selected="selected">02</option>
 															<option value="031">031</option>
 															<option value="032">032</option>
@@ -634,9 +745,9 @@ function check(){
 													</select></li>
 													<li>&nbsp;<span class="valign">-</span>&nbsp;
 													</li>
-													<li><input type="text" class="w74" maxlength="4" /> <span
+													<li><input type="text" class="w74" maxlength="4" name = "tel2"/> <span
 														class="valign">-</span>&nbsp;</li>
-													<li><input type="text" class="w74" maxlength="4" /></li>
+													<li><input type="text" class="w74" maxlength="4" name = "tel3"/></li>
 												</ul>
 											</td>
 										</tr>
@@ -644,27 +755,27 @@ function check(){
 											<th scope="row"><span>생년월일</span></th>
 											<td>
 												<ul class="pta">
-													<li><select>
+													<li><select name = "year">
 															<option value='' selected="selected">선택하세요</option>
 															<script type="text/javascript">
 													//<![CDATA[
 														for(var i=1940; i<=2014; i++){
-															document.write("<option value=''>" + i + "년"+ "</option>");	
+															document.write("<option value='year'>" + i + "년"+ "</option>");	
 														};
 													//]]>
 													</script>
 													</select></li>
 													<li>&nbsp;<span class="valign">년</span>&nbsp;&nbsp;&nbsp;
 													</li>
-													<li><select>
+													<li><select name = "month">
 															<option value='' selected="selected">선택하세요</option>
 															<script type="text/javascript">
 													//<![CDATA[
 														for(var i=1; i<=12; i++){
 															if(i<10){
-																document.write("<option value=''>0" + i + "월"+"</option>");
+																document.write("<option value='month'>0" + i + "월"+"</option>");
 															}else{
-																document.write("<option value=''>" + i + "월"+ "</option>");
+																document.write("<option value='month'>" + i + "월"+ "</option>");
 															};
 														};
 													//]]>
@@ -672,15 +783,15 @@ function check(){
 													</select></li>
 													<li>&nbsp;<span class="valign">월</span>&nbsp;&nbsp;&nbsp;
 													</li>
-													<li><select>
+													<li><select name = "day"> 
 															<option value='' selected="selected">선택하세요</option>
 															<script type="text/javascript">
 													//<![CDATA[
 														for(var i=1; i<=31; i++){
 															if(i<10){
-																document.write("<option value=''>0" + i + "일"+"</option>");
+																document.write("<option value='day'>0" + i + "일"+"</option>");
 															}else{
-																document.write("<option value=''>" + i + "일"+ "</option>");
+																document.write("<option value='day'>" + i + "일"+ "</option>");
 															};
 														};
 													//]]>
@@ -689,10 +800,10 @@ function check(){
 													<li class="r20">&nbsp;<span class="valign">일</span></li>
 													<li class="pt5">
 														<ul class="baseQues">
-															<li><input type="radio" name="birth" id="solar"
-																class="radio_t" checked="checked" /><label for="solar">양력</label>
+															<li><input type="radio" name="lunarSolar" id="solar"
+																class="radio_t"/><label for="solar">양력</label>
 															</li>
-															<li><input type="radio" name="birth" id="lunar"
+															<li><input type="radio" name="lunarSolar" id="lunar"
 																class="radio_t" /><label for="lunar">음력</label></li>
 														</ul>
 													</li>
@@ -776,7 +887,7 @@ $(function(){
 	}else{
 		var layerCheck = 320;
 	}
-
+/* 
 	$(".addressBtn").fancybox({
 		'autoDimensions'    : false,
 		'showCloseButton'	: false,
@@ -789,7 +900,7 @@ $(function(){
 			});
 		}
 	});
-
+ */
 
 });
 </script>

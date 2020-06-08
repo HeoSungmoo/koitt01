@@ -15,6 +15,8 @@ public class MembershipServiceImpl implements MembershipService {
 	// 회원가입 입력
 	@Override
 	public void join(MemberDTO memberDto) {
+		String phone = memberDto.getPhone1() + memberDto.getPhone2() + memberDto.getPhone3();
+		memberDto.setPhone(phone);
 		memberDao.join(memberDto);
 
 	}

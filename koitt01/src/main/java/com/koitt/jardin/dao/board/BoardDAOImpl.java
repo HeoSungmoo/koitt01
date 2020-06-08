@@ -46,18 +46,12 @@ public class BoardDAOImpl implements BoardDAO {
 			System.out.println(sList.size());
 		}
 		return sList;
-//		HashMap<String, Object> mam = new HashMap<String, Object>();
-//		mam.put("search", search);
-//		mam.put("optione", option);
-//
-//		Iterator<String> keys = mam.keySet().iterator();
-//		while (keys.hasNext()) {
-//			String key = keys.next();
-//			String value = (String) mam.get(key);
-//			System.out.println("키 : " + key + ", 값 : " + value);
-//			System.out.println(value.equals("title"));
-//
-//		}
+
+	}
+
+	@Override
+	public void noticeViewHit(int No) {
+		sqlSession.update("board.noticeViewHit", No);
 
 	}
 

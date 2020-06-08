@@ -46,7 +46,7 @@ public class MemberController {
 	}
 
 	// 로그인 창
-	@PostMapping("login")
+	@RequestMapping("login")
 	public String login(Model model) {
 
 		return "membership/login";

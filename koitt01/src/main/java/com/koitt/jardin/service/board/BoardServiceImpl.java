@@ -39,6 +39,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.noticeView(No);
 	}
 
+	// 공지사항 조회수
+	@Override
+	public void noticeViewHit(int No) {
+		boardDao.noticeViewHit(No);
+
+	}
+
 	// 1:1문의
 	@Override
 	public void inquiry() {

@@ -65,16 +65,10 @@ $(document).ready(function() {
 // 회원가입 폼 유효성 검사
 function check(){
 	
-	var nameChk = /^[가-힣]{2,6}$/;
-	var pwChk = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,20}$/;
-	var phoneChk = /^[0-9]{4}$/;
-	var telChk = /^[0-9]{3}$/;
-		
-
-
-		
-
-
+	var nameChk = /^[가-힣]{2,6}$/; // 이름 유효성검사
+	var pwChk = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,20}$/; // 비밀번호 유효성검사
+	var phoneChk = /^[0-9]{4}$/; // 핸드폰번호 유효성검사
+	var telChk = /^[0-9]{3}$/; // 유선전화 유효성 검사
 	
 	if(userInfo.name.value == ""){
 		alert('이름을 입력해주세요.');

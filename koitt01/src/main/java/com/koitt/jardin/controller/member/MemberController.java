@@ -59,7 +59,7 @@ public class MemberController {
 	public String login(Model model, MemberDTO memberDto, HttpSession session) {
 
 		return "membership/login";
-
+//
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "idSearch")

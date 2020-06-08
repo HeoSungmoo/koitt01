@@ -296,7 +296,7 @@ $(document).ready(function() {
 						</ul>
 					</div>
 					<!-- //댓글 -->
-
+11
 
 					<!-- Btn Area -->
 					<div class="btnArea">

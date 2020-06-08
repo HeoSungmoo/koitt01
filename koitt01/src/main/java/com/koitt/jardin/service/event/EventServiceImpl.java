@@ -57,11 +57,11 @@ public class EventServiceImpl implements EventService {
 	}
 
 	// 진행중 이벤트 댓글
-	@Override
-	public EventCommentDto eventComment(int event_no) {
-		// TODO Auto-generated method stub
-		return eventDao.eventComment(event_no);
-	}
+//	@Override
+//	public EventCommentDto eventComment(int event_no) {
+//		// TODO Auto-generated method stub
+//		return eventDao.eventComment(event_no);
+//	}
 
 	// 진행중 이벤트 댓글작성
 	@Override
@@ -69,6 +69,12 @@ public class EventServiceImpl implements EventService {
 
 		eventDao.eventCommentWrite(eventCommentDto);
 
+	}
+
+	@Override
+	public List<EventCommentDto> eventComment(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.eventComment(event_no);
 	}
 
 }

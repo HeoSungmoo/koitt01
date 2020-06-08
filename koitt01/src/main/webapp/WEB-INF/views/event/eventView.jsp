@@ -175,25 +175,26 @@ $(document).ready(function() {
 								<p class="txt">총 <span class="orange"></span> 개의 댓글이 달려있습니다.</p>
 								<textarea class="replyType" name="comment_content"></textarea>
 							</li>
-							<li class="btn"><a href="eventView?event_no=${eventComment.event_no }" class="replyBtn">등록</a></li>
+							<li class="btn"><a href="eventWrite" class="replyBtn">등록</a></li>
 						</ul>
 						
 					</div>
 
+					<c:forEach var="EventComment" items="${eventComment }">
 					<div class="replyBox">
 					
 
 						<ul>
 							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">${eventComment.comment_content }</li>
+							<li class="txt">${EventComment.comment_content }</li>
 							<li class="btn">
 								<a href="#" class="rebtn">수정</a>
 								<a href="#" class="rebtn">삭제</a>
 							</li>
 						</ul>
 
-					
 					</div>
+					</c:forEach>
 					<!-- //댓글 -->
 
 

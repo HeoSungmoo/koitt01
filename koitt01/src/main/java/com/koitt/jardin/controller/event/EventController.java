@@ -34,9 +34,7 @@ public class EventController {
 	// 진행중 이벤트 글내용
 	@RequestMapping("eventView")
 	public String eventView(Model model, int event_no) {
-		EventCommentDto eDto = eventService.eventComment(event_no);
-		System.out.println(eDto.getComment_content());
-		System.out.println(eDto.getEvent_no());
+
 		model.addAttribute("eventView", eventService.eventView(event_no));
 		model.addAttribute("eventComment", eventService.eventComment(event_no));
 
@@ -44,6 +42,11 @@ public class EventController {
 	}
 
 	// 진행중 이벤트 댓글 리스트
+	@RequestMapping("eventWrite")
+	public String eventWrite(EventCommentDto eventCommentDto) {
+		eventService.eventCommentWrite(eventCommentDto);
+		return "event/eventView";
+	}
 
 	// 종료된 이벤트 게시판 목록
 	@RequestMapping("finEvent")

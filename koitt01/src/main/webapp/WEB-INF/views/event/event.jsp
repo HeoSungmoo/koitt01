@@ -223,10 +223,10 @@ $(document).ready(function() {
 							<!-- 반복 -->
 							<li>
 								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
+									<a href="eventView?event_no=${Event.event_no }"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
 								</div>
 								<div class="txt">
-									<div class="subject">${Event.title }</div>
+									<div class="subject">${Event.event_no}//${Event.title }</div>
 									<div class="day">이벤트 기간 : ${Event.start_date } ~ ${Event.end_date } </div>
 
 								</div>

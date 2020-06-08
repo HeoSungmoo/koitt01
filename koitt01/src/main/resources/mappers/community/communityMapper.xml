@@ -25,4 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="preUserApply" >
 	insert into preuser_apply 
 	</insert>
+	
+	<select id="epilogue" resultType="com.koitt.jardin.dto.community.reviewDTO">
+	select * from review
+	</select>
 </mapper>

@@ -275,7 +275,7 @@ $(document).ready(function() {
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="exprView" class="on">체험단 신청</a></li>
-							<li class="last"><a href="exprReview">체험 리뷰</a></li>
+							<li class="last"><a href="exprReview?preuser_no">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->

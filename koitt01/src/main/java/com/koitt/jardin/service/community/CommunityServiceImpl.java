@@ -49,4 +49,11 @@ public class CommunityServiceImpl implements CommunityService {
 
 	}
 
+	// 이용후기 글 리스트
+	@Override
+	public List<PreUserDTO> epilogue() {
+
+		return communityDAO.epilogue();
+	}
+
 }

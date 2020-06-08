@@ -5,6 +5,7 @@ import java.util.List;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
+import com.koitt.jardin.dto.board.PageNationDTO;
 
 public interface BoardDAO {
 
@@ -17,10 +18,27 @@ public interface BoardDAO {
 	// 1:1문의
 	public void inquiry();
 
-	// FAQ 글리스트
+	// FAQ전체 리스트
 	public List<FaqDTO> faq();
+
+	// FAQ회원가입 리스트
+	public List<FaqDTO> faqJoin();
+
+	// FAQ상품 리스트
+	public List<FaqDTO> faqProduct();
+
+	// FAQ주문 리스트
+	public List<FaqDTO> faqOrder();
+
+	// FAQ검색
+	public List<FaqDTO> faqSearch(String search);
 
 	// 이용안내
 	public GuideDTO guide();
+
+	// 공지사항 페이지네이션
+	public PageNationDTO pageNation();
+
+	public List<PageNationDTO> pageNationList(int curPage);
 
 }

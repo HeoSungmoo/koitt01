@@ -4,7 +4,6 @@ public class CategoryDto {
 
 	private int categoryCode;
 	private String name;
-	private int subCode;
 
 	public int getCategoryCode() {
 		return categoryCode;
@@ -20,14 +19,6 @@ public class CategoryDto {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getSubCode() {
-		return subCode;
-	}
-
-	public void setSubCode(int subCode) {
-		this.subCode = subCode;
 	}
 
 }

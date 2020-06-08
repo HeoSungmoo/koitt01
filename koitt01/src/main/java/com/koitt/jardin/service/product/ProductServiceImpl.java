@@ -9,6 +9,7 @@ import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -23,23 +24,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.list();
 	}
 
-	@Override
-	public List<CategoryDto> categoryList() {
-		// TODO Auto-generated method stub
-		return productDao.categoryList();
-	}
-
-	@Override
-	public CategoryDto categoryView() {
-		// TODO Auto-generated method stub
-		return productDao.categoryView();
-	}
-
 	// 제품의 상세내용 ( condent_view)
 	@Override
-	public ProductDTO detail(int productNo) {
+	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
-		return productDao.detail(productNo);
+		return productDao.detail(product_no);
 	}
 
 	@Override
@@ -67,9 +56,27 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductInfoDTO> productInfoDto() {
+	public ProductInfoDTO productInfoDto(int product_no) {
 		// TODO Auto-generated method stub
-		return productDao.productInfoDto();
+		return productDao.productInfoDto(product_no);
+	}
+
+	@Override
+	public List<CategoryDto> categoryList(String name) {
+		// TODO Auto-generated method stub
+		return productDao.categoryList(name);
+	}
+
+	@Override
+	public SubCategoryDto SubCategoryDto(int sub_category_code) {
+		// TODO Auto-generated method stub
+		return productDao.SubCategoryDto(sub_category_code);
+	}
+
+	@Override
+	public List<SubCategoryDto> SubCategoryDto() {
+		// TODO Auto-generated method stub
+		return productDao.SubCategoryDto();
 	}
 
 }

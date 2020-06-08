@@ -3,36 +3,35 @@ package com.koitt.jardin.dao.product;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 
+	@Autowired
 	SqlSession sqlSession;
 
 	// 제품리스트 목록페이지
 	@Override
 	public List<ProductDTO> list() {
 		// TODO Auto-generated method stub
+
 		return sqlSession.selectList("product.list");
 	}
 
 	// 제품의 상세내용 ( condent_view)
 	@Override
-	public ProductDTO detail(int product_No) {
+	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product.detail", product_No);
+		return sqlSession.selectOne("product.detail", product_no);
 	}
 
-	@Override
-	public List<ProductInfoDTO> productInfoDto() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.productInfoDto");
-	}
 	// 구매후기 작성란
 
 	@Override
@@ -57,21 +56,33 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductDTO search(int product_No) {
+	public ProductDTO search(int productNo) {
 
-		return sqlSession.selectOne("product.search", product_No);
+		return sqlSession.selectOne("product.search", productNo);
 	}
 
 	@Override
-	public List<CategoryDto> categoryList() {
+	public ProductInfoDTO productInfoDto(int product_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.categoryList");
+		return sqlSession.selectOne("product.productInfoDto", product_no);
 	}
 
 	@Override
-	public CategoryDto categoryView() {
+	public List<CategoryDto> categoryList(String name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.categoryList", name);
+	}
 
-		return sqlSession.selectOne("product.categoryView");
+	@Override
+	public SubCategoryDto SubCategoryDto(int sub_category_code) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.SubCategoryDto", sub_category_code);
+	}
+
+	@Override
+	public List<SubCategoryDto> SubCategoryDto() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.subCategoryList");
 	}
 
 }

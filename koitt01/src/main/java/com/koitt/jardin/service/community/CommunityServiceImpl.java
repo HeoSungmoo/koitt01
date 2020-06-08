@@ -21,11 +21,18 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDAO.expr();
 	}
 
-	// 체험단 글 보기
+	// 체험단 글 보기 리뷰
 	@Override
 	public PreUserDTO exprReview(int preUserNo) {
 
 		return communityDAO.exprReview(preUserNo);
+	}
+
+	// 체험단 글보기 뷰
+	@Override
+	public PreUserDTO exprView(int preuser_no) {
+
+		return communityDAO.exprView(preuser_no);
 	}
 
 	// 체험단 리뷰 글쓰기
@@ -41,4 +48,5 @@ public class CommunityServiceImpl implements CommunityService {
 		communityDAO.preUserApply(preUserApplyNo);
 
 	}
+
 }

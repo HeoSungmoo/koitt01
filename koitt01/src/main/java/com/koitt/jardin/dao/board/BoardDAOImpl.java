@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
+import com.koitt.jardin.dto.board.PageNationDTO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -45,11 +46,46 @@ public class BoardDAOImpl implements BoardDAO {
 
 	}
 
+	@Override
+	public List<FaqDTO> faqJoin() {
+
+		return sqlSession.selectList("board.faqJoin");
+	}
+
+	@Override
+	public List<FaqDTO> faqProduct() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.faqProduct");
+	}
+
+	@Override
+	public List<FaqDTO> faqOrder() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("board.faqOrder");
+	}
+
+	// FAQ검색
+	public List<FaqDTO> faqSearch(String search) {
+		return sqlSession.selectList("board.faqSearch", search);
+	}
+
 	// 이용안내 글 가져오기
 	@Override
 	public GuideDTO guide() {
 
 		return sqlSession.selectOne("board.guide");
+	}
+
+	// 공지사항 페이지네이션
+	@Override
+	public PageNationDTO pageNation() {
+		return sqlSession.selectOne("board.pageNation");
+	}
+
+	@Override
+	public List<PageNationDTO> pageNationList(int curPage) {
+		return sqlSession.selectList("board.pageNationList");
+
 	}
 
 }

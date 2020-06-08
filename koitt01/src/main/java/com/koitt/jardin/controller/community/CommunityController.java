@@ -22,8 +22,8 @@ public class CommunityController {
 
 	// 체험단 글 보기 및 체험단 리뷰리스트
 	@RequestMapping("exprReview")
-	public String exprReview(Model model, int preUserNo) {
-		model.addAttribute("exprReview", communityService.exprReview(preUserNo));
+	public String exprReview(Model model, int preuser_no) {
+		model.addAttribute("exprReview", communityService.exprReview(preuser_no));
 		expr(model);
 		return "community/exprReview";
 	}
@@ -38,8 +38,8 @@ public class CommunityController {
 	// 체험단 글 보기 및 체험단 신청--------> exprReview와 exprView는 같은 글보기 상태에서 리뷰는 리뷰작성및 리뷰
 	// 리스트가 나오고 뷰는 체험단 신청이 나오는 차이가 있어서 exprReview를 호출했다.
 	@RequestMapping("exprView")
-	public String exprView(Model model, int preUserNo) {
-		exprReview(model, preUserNo);
+	public String exprView(Model model, int preuser_no) {
+		model.addAttribute("exprView", communityService.exprView(preuser_no));
 		return "community/exprView";
 	}
 

@@ -2,25 +2,37 @@ package com.koitt.jardin.dto.product;
 
 public class ProductInfoDTO {
 
-	private int productNo;
+	// 상품 번호
+	private int product_no;
+	// 제조명
 	private String name;
+	// 제조원
 	private String manufacturer;
+	// 유통기한
 	private String ShelfLife;
+	// 식품의 유형
 	private String foodType;
+	// 영양성분
 	private String nutrient;
+	// 원재료명 및 함량
 	private String rawMaterials;
+	// 업소명 및 소재지
 	private String location;
+	// 내용량
 	private String capacity;
+	// 포장재질
 	private String material;
+	// 고객상담실
 	private String serviceTel;
+	// 유통전문판매원
 	private String salesOffice;
 
-	public int getProductNo() {
-		return productNo;
+	public int getProduct_no() {
+		return product_no;
 	}
 
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
 	}
 
 	public String getName() {

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,6 +217,8 @@ $(document).ready(function() {
 					
 					<!-- list -->
 					<div class="eventList">
+							<c:forEach var="Event" items="${event }">
+			
 						<ul>
 							<!-- 반복 -->
 							<li>
@@ -220,42 +226,13 @@ $(document).ready(function() {
 									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
 								</div>
 								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-							<!-- //반복 -->
+									<div class="subject">${Event.title }</div>
+									<div class="day">이벤트 기간 : ${Event.start_date } ~ ${Event.end_date } </div>
 
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
 								</div>
 							</li>
 						</ul>
+							</c:forEach>
 					</div>
 					<!-- //list -->
 

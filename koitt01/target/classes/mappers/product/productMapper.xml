@@ -11,28 +11,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 	</select>
 	
-	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
-	
-	select * from product where productNo=#{productNo}
-	
-	</select>
-	
 	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
 	
-	select * from category
+	select * from category order by category_code asc
 	
 	</select>
 	
-	<select id="categoryView" resultType="com.koitt.jardin.dto.product.CategoryDto">
+	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from category where categoryCode=#{categoryCode}
+	select * from product where product_no=#{product_no}
 	
+	</select>
+	
+	<select id="SubCategoryDto" resultType="com.koitt.jardin.dto.product.SubCategoryDto">
+	
+	select * from sub_category where sub_category_code=#{sub_category_code}
+	
+	</select>
+	
+	<select id="subCategoryList" resultType	="com.koitt.jardin.dto.product.SubCategoryDto">
+	
+	select * from sub_category
+
 	</select>
 	
 	<select id="productInfoDto" resultType="com.koitt.jardin.dto.product.ProductInfoDTO">
 	
-
+	select * from product_info where product_no=#{product_no}
 	
 	</select>
 	

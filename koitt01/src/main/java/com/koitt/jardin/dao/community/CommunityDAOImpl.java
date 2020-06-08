@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 
 @Repository
@@ -44,9 +45,21 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 체험단 신청 글쓰기
 	@Override
-	public void preUserApply(int preUserApplyNo) {
-		sqlSession.insert("community.preUserApply", preUserApplyNo);
+	public void preUserApply(int preuser_no) {
+		sqlSession.insert("community.preUserApply", preuser_no);
 
+	}
+
+	@Override
+	public List<PreUserDTO> epilogue() {
+
+		return sqlSession.selectList("community.epilogue");
+	}
+
+	@Override
+	public List<EnjoyCoffeeDTO> enjoyCoffee() {
+
+		return sqlSession.selectList("community.enjoyCoffee");
 	}
 
 }

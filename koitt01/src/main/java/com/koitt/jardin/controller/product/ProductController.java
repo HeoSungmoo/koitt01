@@ -21,11 +21,20 @@ public class ProductController {
 		model.addAttribute("list", productService.list());
 
 		// 제품리스트 카테고리 리스트 제목 표시
-		model.addAttribute("categoryList", productService.categoryList(name));
+
 		// 제품리스트 카테고리 뷰 페이지
 //		model.addAttribute("SubCategoryList", productService.SubCategoryDto(sub_category_code));
 
 		return "product/list";
+	}
+
+	@RequestMapping("header")
+
+	public String header(Model model, String name) {
+		model.addAttribute("list", productService.list());
+		model.addAttribute("categoryList", productService.categoryList(name));
+
+		return "include/header";
 	}
 
 	// 제품의 상세내용 (condent_view)

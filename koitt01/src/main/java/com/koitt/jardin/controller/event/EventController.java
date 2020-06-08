@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.koitt.jardin.dto.event.EventCommentDto;
 import com.koitt.jardin.dto.event.EventDTO;
 import com.koitt.jardin.service.event.EventService;
 
@@ -21,10 +22,10 @@ public class EventController {
 	public String event(Model model) {
 		List<EventDTO> event = eventService.event();
 
-		System.out.println(event.get(3).getEvent_no());
-		System.out.println(event.get(3).getTitle());
-		System.out.println(event.get(3).getStart_date() + "시작일");
-		System.out.println(event.get(3).getEnd_date() + "종료일");
+		System.out.println(event.get(1).getEvent_no());
+		System.out.println(event.get(1).getTitle());
+		System.out.println(event.get(1).getStart_date() + "시작일");
+		System.out.println(event.get(1).getEnd_date() + "종료일");
 		model.addAttribute("event", event);
 
 		return "event/event";
@@ -32,9 +33,18 @@ public class EventController {
 
 	// 진행중 이벤트 글내용
 	@RequestMapping("eventView")
-	public String eventView(Model model, int eventNo) {
-		model.addAttribute("eventView", eventService.eventView(eventNo));
+	public String eventView(Model model, int event_no) {
 
+		model.addAttribute("eventView", eventService.eventView(event_no));
+		model.addAttribute("eventComment", eventService.eventComment(event_no));
+
+		return "event/eventView";
+	}
+
+	// 진행중 이벤트 댓글 리스트
+	@RequestMapping("eventWrite")
+	public String eventWrite(EventCommentDto eventCommentDto) {
+		eventService.eventCommentWrite(eventCommentDto);
 		return "event/eventView";
 	}
 

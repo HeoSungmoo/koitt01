@@ -239,16 +239,22 @@ $(document).ready(function() {
 							</div>
 							<div class="day">
 								<p class="txt">리뷰 등록기간<span><fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_start_date}"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${exprView.review_end_date}"/></span></p>
-								<p class="appraisal">
-									체험단 평점
-									<span>
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star.gif" alt="별점" />
-										<img src="images/ico/ico_star_off.gif" alt="별점" />
-									</span>
-								</p>
+								<p id="star${k=k+1}" class="appraisal">
+					
+									</p>
+<script>
+    var innerHtml = "체험단 평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${exprView.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
+								
 							</div>
 							<div class="data">
 								<ul>
@@ -269,12 +275,12 @@ $(document).ready(function() {
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="exprView" class="on">체험단 신청</a></li>
-							<li class="last"><a href="exprReview">체험 리뷰</a></li>
+							<li class="last"><a href="exprReview?preuser_no">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->
 
-<form action="preUserApply" name="preUserApply" method="post">
+<form action="preUserApply?preuser_no=${expr.preuser_no }" name="preUserApply" method="post">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -282,6 +288,7 @@ $(document).ready(function() {
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
+							<
 							<tbody>
 								<tr>
 									<th scope="row"><span>제목</span></th>

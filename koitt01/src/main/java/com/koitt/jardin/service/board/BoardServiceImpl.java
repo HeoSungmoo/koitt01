@@ -25,6 +25,13 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	// 공지사항 검색
+	@Override
+	public List<NoticeDTO> noticeSearch(String option, String search) {
+
+		return boardDao.noticeSearch(option, search);
+	}
+
 	// 공지사항 글 보기
 	@Override
 	public NoticeDTO noticeView(int No) {

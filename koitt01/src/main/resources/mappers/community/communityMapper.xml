@@ -23,6 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="preUserApply" >
-	insert into preuserApply 
+	insert into preuser_apply 
 	</insert>
 </mapper>

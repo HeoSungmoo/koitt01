@@ -280,7 +280,7 @@ $(document).ready(function() {
 					</div>
 					<!-- //Tab -->
 
-<form action="preUserApply" name="preUserApply" method="post">
+<form action="preUserApply?preuser_no=${expr.preuser_no }" name="preUserApply" method="post">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -288,6 +288,7 @@ $(document).ready(function() {
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
+							<
 							<tbody>
 								<tr>
 									<th scope="row"><span>제목</span></th>

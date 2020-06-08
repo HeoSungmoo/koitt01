@@ -12,4 +12,7 @@ public interface MembershipService {
 	// 비밀번호 찾기
 	public abstract MemberDTO findPw(MemberDTO memberDto);
 
+	// 로그인
+	public abstract MemberDTO login(MemberDTO memberDto);
+
 }

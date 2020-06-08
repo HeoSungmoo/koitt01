@@ -1,5 +1,7 @@
 package com.koitt.jardin.controller.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,10 +55,11 @@ public class MemberController {
 	}
 
 	// 로그인 창
-	@PostMapping("login")
-	public String login(Model model) {
+	@RequestMapping("login")
+	public String login(Model model, MemberDTO memberDto, HttpSession session) {
 
 		return "membership/login";
+
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "idSearch")

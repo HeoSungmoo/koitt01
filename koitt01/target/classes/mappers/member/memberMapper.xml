@@ -18,4 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "findPw" resultType = "com.koitt.jardin.dto.member.MemberDTO">
 		select password from member where id = #{id}, email = #{email}
 	</select>
+	
+	<select id = "login" resultType = "com.koitt.jardin.dto.member.MemberDTO">
+		select * from member where id = #{id}, password = #{password}
+	</select>
 </mapper>

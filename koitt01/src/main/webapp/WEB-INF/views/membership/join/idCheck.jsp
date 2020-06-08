@@ -53,7 +53,7 @@
 			<b><font size = "4" color = "gray">아이디 중복체크</font></b>
 			<hr size = "1" width = "460">
 			<form>
-				<input type = "text" name = "idInput" id = "userId">
+				<input type = "text" name = "idInput" id = "userId" readonly>
 				<input type = "button" value = "중복확인" onclick = "idCheck()">
 			</form>
 			

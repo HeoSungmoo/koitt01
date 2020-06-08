@@ -42,4 +42,10 @@ public class MembershipServiceImpl implements MembershipService {
 		return memberDao.findPw(memberDto);
 	}
 
+	@Override
+	public MemberDTO login(MemberDTO memberDto) {
+
+		return memberDao.login(memberDto);
+	}
+
 }

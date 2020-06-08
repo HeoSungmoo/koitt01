@@ -30,4 +30,12 @@ public class MembershipDAOImpl implements MembershipDAO {
 
 		return sqlSession.selectOne("member.findPw", memberDto);
 	}
+
+	// 로그인
+	@Override
+	public MemberDTO login(MemberDTO memberDto) {
+
+		return sqlSession.selectOne("member.login", memberDto);
+	}
+
 }

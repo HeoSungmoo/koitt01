@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,18 +156,11 @@ $(document).ready(function() {
 		<!-- main rolling -->
 		<div id="mainRoll">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<a href="#"><img src="${pageContext.request.contextPath}/images/img/main_visible01.jpg" alt="" /></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#"><img src="${pageContext.request.contextPath}/images/img/main_visible01.jpg" alt="" /></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#"><img src="${pageContext.request.contextPath}/images/img/main_visible01.jpg" alt="" /></a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#"><img src="${pageContext.request.contextPath}/images/img/main_visible01.jpg" alt="" /></a>
-				</div>
+				<c:forEach var="banner" items="${banner}">
+					<div class="swiper-slide">
+						<a href="detail?product_no=${ProductDto.product_no}"><img src="${pageContext.request.contextPath}/images/img/${banner.image}" alt="" /></a>
+					</div>
+				</c:forEach>
 			</div>
 			<div id="mainThum"></div>
 		</div>

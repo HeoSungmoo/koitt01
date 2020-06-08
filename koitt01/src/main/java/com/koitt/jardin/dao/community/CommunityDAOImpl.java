@@ -49,4 +49,10 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	}
 
+	@Override
+	public List<PreUserDTO> epilogue() {
+
+		return sqlSession.selectList("community.epilogue");
+	}
+
 }

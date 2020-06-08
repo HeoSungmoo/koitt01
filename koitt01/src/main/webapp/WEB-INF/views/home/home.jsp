@@ -156,9 +156,9 @@ $(document).ready(function() {
 		<!-- main rolling -->
 		<div id="mainRoll">
 			<div class="swiper-wrapper">
-				<c:forEach var="banner" items="${banner}">
+				<c:forEach var="bannerList" items="${bannerList}">
 					<div class="swiper-slide">
-						<a href="detail?product_no=${ProductDto.product_no}"><img src="${pageContext.request.contextPath}/images/img/${banner.image}" alt="" /></a>
+						<a href="detail?product_no=${bannerList.product_no}"><img src="${pageContext.request.contextPath}/images/img/${bannerList.image}" alt="" /></a>
 					</div>
 				</c:forEach>
 			</div>
@@ -174,21 +174,13 @@ $(document).ready(function() {
 			<div class="mtitle"><h2>JARDIN BEST SELLER</h2></div>
 			<div id="bestseller">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_best_seller.jpg" alt="Best seller 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">5,600원</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_best_seller.jpg" alt="Best seller 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">5,000원</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_best_seller.jpg" alt="Best seller 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</div>
+					<c:forEach var="hitList" items="${hitList}">
+						<div class="swiper-slide">
+							<div class="img"><a href="detail?product_no=${hitList.product_no}"><img src="${pageContext.request.contextPath}/images/img/${hitList.thumbnail}" alt="Best seller 상품" /></a></div>
+							<div class="name">${hitList.title}</div>
+							<div class="price">${hitList.price }</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="rollbtn">
@@ -202,13 +194,13 @@ $(document).ready(function() {
 			<div id="mainReview">
 				<ul>
 					<li class="roast">
-						<a href="#"><img src="${pageContext.request.contextPath}/images/img/img_fresh_roast_bean.jpg" alt="FRESH ROAST BEAN" /></a>
-						<p class="title">FRESH ROAST<br/>BEAN</p>
+						<a href="http://jardin.co.kr/main/"><img src="${pageContext.request.contextPath}/images/img/img_fresh_roast_bean.jpg" alt="FRESH ROAST BEAN" /></a>
+						<p class="title">쟈뎅 공식 온라인 몰</p>
 					</li>
-					<li class="review"><a href="#"><img src="${pageContext.request.contextPath}/images/img/img_review.jpg" alt="REVIEW" /></a></li>
+					<li class="review"><a href="epilogue"><img src="${pageContext.request.contextPath}/images/img/img_review.jpg" alt="REVIEW" /></a></li>
 					<li class="last">
-						<a href="#">
-							<p class="title">SPECIALTY<br/>COFFEE<span>스페셜티 커피 전문점 커피 휘엘</span></p>
+						<a href="http://jardinshop.co.kr/">
+							<p class="title">SPECIALTY<br/>COFFEE<span>쟈뎅 홈페이지</span></p>
 							<div class="fiel"><img src="${pageContext.request.contextPath}/images/img/img_coffee_fiel.jpg" alt="THE COFFEE CREAOR SINCE 1984" /></div>
 						</a>
 					</li>
@@ -256,36 +248,14 @@ $(document).ready(function() {
 			<div class="mtitle"><h2>SALE</h2></div>
 			<div id="mainSale">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_sale.jpg" alt="sale 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">5,600원</div>
-						<div class="discount">20%</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_sale.jpg" alt="sale 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">5,000원</div>
-						<div class="discount">20%</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_sale.jpg" alt="sale 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-						<div class="discount">20%</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_sale.jpg" alt="sale 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-						<div class="discount">20%</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_sale.jpg" alt="sale 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-						<div class="discount">20%</div>
-					</div>
+					<c:forEach var="saleList" items="${saleList}">
+						<div class="swiper-slide">
+							<div class="img"><a href="detail?product_no=${saleList.product_no}"><img src="${pageContext.request.contextPath}/images/img/${saleList.thumbnail}" alt="sale 상품" style="width:182px; height:152px;"/></a></div>
+							<div class="name">${saleList.title}</div>
+							<div class="price">${saleList.price}</div>
+							<div class="discount">${saleList.sale}%</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>	
 			<div class="rollbtn">
@@ -294,45 +264,7 @@ $(document).ready(function() {
 			</div>
 			<!-- //sale -->
 	
-			<!-- brand -->
-			<div class="mtitle"></div>
-			<div id="mainBrand">
-				<ul>
-					<li class="center">
-						<div class="banner">
-							<img src="${pageContext.request.contextPath}/images/img/main_brand_banner.jpg" alt="" />
-							<p>원두커피의 名家<span>JARDIN BRAND</span></p>
-						</div>
-					</li>
-					<li class="left">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_main_brand.png" alt="Brand 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</li>
-					<li class="right">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_main_brand.png" alt="Brand 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</li>
-					<li class="nor">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_main_brand.png" alt="Brand 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</li>
-					<li class="nor rewidth">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_main_brand.png" alt="Brand 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</li>
-					<li class="nor fn">
-						<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/img/sample_main_brand.png" alt="Brand 상품" /></a></div>
-						<div class="name">쟈뎅 바리스타 벨벳<br/>에스프레소 원두커피</div>
-						<div class="price">6,000원</div>
-					</li>
-				</ul>
-			</div>
-
-			<!-- //brand -->
+			
 
 			<!-- notice -->
 			<div class="mtitle"></div>
@@ -342,20 +274,20 @@ $(document).ready(function() {
 						<h3>NOTICE</h3>
 						<div class="img"><img src="${pageContext.request.contextPath}/images/img/sample_notice.jpg" alt="notice image" /></div>
 						<ul>
-							<li><a href="#">ㆍJARDIN UCC 투표 이벤트 참여해 주신…</a></li>
-							<li><a href="#">ㆍ회원 이용약관 및 개인정보취급방침 개…</a></li>
-							<li><a href="#">ㆍ8월 구매 사은행사 이벤트 당첨자 발표…</a></li>
+							<c:forEach var="notice" items="${notice}" >
+								<li><a href="noticeView?No=${notice.no}">${notice.title}</a></li>
+							</c:forEach>
 						</ul>
 					</li>
 					<li class="cln">
 						<h3 class="cen">CUSTOMER CENTER</h3>
 						<div class="custCenter">
-							<p class="phone">02.456.3881</p>
+							<p class="phone">${tel}</p>
 							<p class="day">오전 9시 ~ 오후 7시<br/>토/일요일 및 공휴일 제외</p>
 							<p class="link">
-								<a href="#">이용안내</a>
-								<a href="#">FAQ</a>
-								<a href="#">1:1문의</a>							
+								<a href="guide">이용안내</a>
+								<a href="faq">FAQ</a>
+								<a href="bInquiryView">1:1문의</a>							
 							</p>
 						</div>
 					</li>

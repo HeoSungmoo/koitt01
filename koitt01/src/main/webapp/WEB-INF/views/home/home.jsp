@@ -272,7 +272,7 @@ $(document).ready(function() {
 				<ul>
 					<li class="first">
 						<h3>NOTICE</h3>
-						<div class="img"><img src="${pageContext.request.contextPath}/images/img/sample_notice.jpg" alt="notice image" /></div>
+						<div class="img"><a href="notice"><img src="${pageContext.request.contextPath}/images/img/sample_notice.jpg" alt="notice image" /></a></div>
 						<ul>
 							<c:forEach var="notice" items="${notice}" >
 								<li><a href="noticeView?No=${notice.no}">${notice.title}</a></li>
@@ -293,8 +293,10 @@ $(document).ready(function() {
 					</li>
 					<li class="last">
 						<h3>ENJOY COFFEE</h3>
-						<div class="img"><img src="${pageContext.request.contextPath}/images/img/sample_enjoy.jpg" alt="enjoy coffee" /></div>
-						<p class="txt">커피를 언제 어디서나 맛있게 즐기는 방법을 소개해 드립니다!</p>
+						<div class="img"><a href="enjoy"><img src="${pageContext.request.contextPath}/images/img/sample_enjoy.jpg" alt="enjoy coffee" /></a></div>
+						<c:forEach var="enjoyCoffee" items="${enjoyCoffee}">
+							<a href="noticeView?No=${enjoyCoffee.no}"><p class="txt">${enjoyCoffee.title}</p></a>
+						</c:forEach>
 					</li>
 				</ul>
 			</div>

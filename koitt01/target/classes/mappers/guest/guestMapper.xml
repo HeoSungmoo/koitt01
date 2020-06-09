@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="guest">
+	<!-- 게스트 장바구니 불러오기 -->
+	<select id="cartList" resultType="com.koitt.jardin.dto.cart.CartDTO">
+		select thumbnail, title, price, count, cart_no
+		from guest_cart,product
+		where guest_ip = #{guest_ip} and guest_cart.product_no = product.product_no
+	</select>
+	
+	
+</mapper>

@@ -34,15 +34,24 @@ public class BoardServiceImpl implements BoardService {
 
 	// 공지사항 글 보기
 	@Override
-	public NoticeDTO noticeView(int rnum) {
+	public NoticeDTO noticeView(int no) {
+		return boardDao.noticeView(no);
+	}
 
-		return boardDao.noticeView(rnum);
+	@Override
+	public NoticeDTO noticeViewPre(int no) {
+		return boardDao.noticeViewPre(no);
+	}
+
+	@Override
+	public NoticeDTO noticeViewNext(int no) {
+		return boardDao.noticeViewNext(no);
 	}
 
 	// 공지사항 조회수
 	@Override
-	public void noticeViewHit(int No) {
-		boardDao.noticeViewHit(No);
+	public void noticeViewHit(int rnum) {
+		boardDao.noticeViewHit(rnum);
 
 	}
 

@@ -34,19 +34,19 @@ public class EventController {
 	// 진행중 이벤트 글내용
 	@RequestMapping("eventView")
 	public String eventView(Model model, int event_no, EventCommentDto eventCommentDto) {
-
-		eventService.eventCommentWrite(eventCommentDto);
 		model.addAttribute("eventView", eventService.eventView(event_no));
 		model.addAttribute("eventComment", eventService.eventComment(event_no));
 		return "event/eventView";
 	}
 
-//	// 진행중 이벤트 댓글 리스트 쓰기
-//	@RequestMapping("eventView")
-//	public String eventWrite() {
-//
-//		return "event/eventView";
-//	}
+	// 진행중 이벤트 댓글 리스트 쓰기
+	@RequestMapping("eventWrite")
+	public String eventWrite(Model model, EventCommentDto eventCommentDto, int event_no) {
+		eventService.eventCommentWrite(eventCommentDto);
+		model.addAttribute("eventView", eventService.eventView(event_no));
+//		model.addAttribute("eventView", eventService.eventView(event_no));
+		return "eventView";
+	}
 
 	// 종료된 이벤트 게시판 목록
 	@RequestMapping("finEvent")

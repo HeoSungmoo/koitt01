@@ -167,18 +167,20 @@ $(document).ready(function() {
 					</div>
 					<!-- //이전다음글 -->
 
-
+				<form action="eventWrite?event_no=${eventView.event_no}" method="get" name=eventCommentForm>
 					<!-- 댓글-->
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
 								<p class="txt">총 <span class="orange"></span> 개의 댓글이 달려있습니다.</p>
+								
 								<textarea class="replyType" name="comment_content"></textarea>
 							</li>
-							<li class="btn"><a href="eventView?event_no=${eventView.event_no}" class="replyBtn">등록</a></li>
+							<li class="btn"><input type="submit" class="replyBtn" value="등록">등록</li>
 						</ul>
 						
 					</div>
+					</form>
 
 					<c:forEach var="EventComment" items="${eventComment }">
 					<div class="replyBox">

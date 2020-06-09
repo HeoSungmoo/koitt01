@@ -60,8 +60,8 @@ public class CommunityController {
 
 	// 포토구매후기 글 보기
 	@RequestMapping("epilogueView")
-	public String epilogueView() {
-
+	public String epilogueView(Model model, int review_no) {
+		model.addAttribute("epilogueView", communityService.epilogueView(review_no));
 		return "community/epilogueView";
 	}
 
@@ -102,8 +102,8 @@ public class CommunityController {
 
 	// Enjoy Coffee 글 보기
 	@RequestMapping("enjoyView")
-	public String enjoyView() {
-
+	public String enjoyView(Model model, int no) {
+		model.addAttribute("enjoyView", communityService.enjoyView(no));
 		return "community/enjoyView";
 	}
 }

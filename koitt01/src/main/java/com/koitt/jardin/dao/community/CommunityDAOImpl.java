@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.ReViewDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 
 @Repository
 public class CommunityDAOImpl implements CommunityDAO {
@@ -53,14 +53,14 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 이용후기 글 리스트
 	@Override
-	public List<ReViewDTO> epilogue() {
+	public List<PreUserReviewDTO> epilogue() {
 
 		return sqlSession.selectList("community.epilogue");
 	}
 
 	// 이용후기 글 보기
 	@Override
-	public ReViewDTO epilogueView(int review_no) {
+	public PreUserReviewDTO epilogueView(int review_no) {
 
 		return sqlSession.selectOne("epilogueView", review_no);
 	}

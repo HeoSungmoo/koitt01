@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.ReViewDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 
 public interface CommunityService {
 
@@ -24,10 +24,10 @@ public interface CommunityService {
 	public void preUserApply(int preuser_no);
 
 	// 이용후기 글 리스트
-	public List<ReViewDTO> epilogue();
+	public List<PreUserReviewDTO> epilogue();
 
 	// 이용후기 글 보기
-	public ReViewDTO epilogueView(int review_no);
+	public PreUserReviewDTO epilogueView(int review_no);
 
 	// enjoy커피 글 리스트
 	public List<EnjoyCoffDTO> enjoyCoffee();

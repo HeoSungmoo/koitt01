@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
+import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.home.ProductTypeDTO;
 
@@ -49,7 +49,7 @@ public class HomeDAOImpl implements HomeDAO {
 
 	// 인조이 사위글 3개 불러오기
 	@Override
-	public List<EnjoyCoffeeDTO> enjoyCoffee() {
+	public List<EnjoyCoffDTO> enjoyCoffee() {
 		return sqlSession.selectList("home.enjoyCoffee");
 	}
 }

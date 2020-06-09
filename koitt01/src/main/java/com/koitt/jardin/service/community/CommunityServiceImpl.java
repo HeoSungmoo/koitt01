@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.koitt.jardin.dao.community.CommunityDAO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.ReViewDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -53,14 +53,14 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 이용후기 글 리스트
 	@Override
-	public List<ReViewDTO> epilogue() {
+	public List<PreUserReviewDTO> epilogue() {
 
 		return communityDAO.epilogue();
 	}
 
 	// 이용후기 글 보기
 	@Override
-	public ReViewDTO epilogueView(int review_no) {
+	public PreUserReviewDTO epilogueView(int review_no) {
 
 		return communityDAO.epilogueView(review_no);
 	}

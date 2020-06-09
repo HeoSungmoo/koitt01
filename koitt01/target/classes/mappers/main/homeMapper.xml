@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 인조이 사위글 3개 불러오기 -->
-	<select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffeeDTO">
+	<select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
 		<![CDATA[
 		select no,title
 		from enjoy_coffee

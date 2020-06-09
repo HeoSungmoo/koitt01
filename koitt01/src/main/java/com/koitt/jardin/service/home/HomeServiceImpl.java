@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.home.HomeDAO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
+import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.home.ProductTypeDTO;
 
@@ -65,7 +65,7 @@ public class HomeServiceImpl implements HomeService {
 
 	// 인조이 사위글 3개 불러오기
 	@Override
-	public List<EnjoyCoffeeDTO> enjoyCoffee() {
+	public List<EnjoyCoffDTO> enjoyCoffee() {
 		return homeDao.enjoyCoffee();
 	}
 

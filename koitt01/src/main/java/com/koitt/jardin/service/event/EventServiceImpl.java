@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.event.EventDAO;
+import com.koitt.jardin.dto.event.EventCommentDto;
 import com.koitt.jardin.dto.event.EventDTO;
 import com.koitt.jardin.dto.event.WinnerDTO;
 
@@ -24,9 +25,9 @@ public class EventServiceImpl implements EventService {
 
 	// 진행중 이벤트 글내용
 	@Override
-	public EventDTO eventView(int eventNo) {
+	public EventDTO eventView(int event_no) {
 		// TODO Auto-generated method stub
-		return eventDao.eventView(eventNo);
+		return eventDao.eventView(event_no);
 	}
 
 	// 종료된 이벤트 게시판 목록
@@ -38,9 +39,9 @@ public class EventServiceImpl implements EventService {
 
 	// 종료된 이벤트 글내용
 	@Override
-	public EventDTO finEventView(int eventNo) {
+	public EventDTO finEventView(int event_no) {
 		// TODO Auto-generated method stub
-		return eventDao.finEventView(eventNo);
+		return eventDao.finEventView(event_no);
 	}
 
 	@Override
@@ -53,6 +54,27 @@ public class EventServiceImpl implements EventService {
 	public EventDTO prizeWinnerView(int no) {
 
 		return eventDao.prizeWinnerView(no);
+	}
+
+	// 진행중 이벤트 댓글
+//	@Override
+//	public EventCommentDto eventComment(int event_no) {
+//		// TODO Auto-generated method stub
+//		return eventDao.eventComment(event_no);
+//	}
+
+	// 진행중 이벤트 댓글작성
+	@Override
+	public void eventCommentWrite(EventCommentDto eventCommentDto) {
+
+		eventDao.eventCommentWrite(eventCommentDto);
+
+	}
+
+	@Override
+	public List<EventCommentDto> eventComment(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.eventComment(event_no);
 	}
 
 }

@@ -23,6 +23,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="preUserApply" >
-	insert into preuserApply 
+	insert into preuser_apply 
 	</insert>
+	
+	<select id="epilogue" resultType="com.koitt.jardin.dto.community.reviewDTO">
+	select * from review
+	</select>
+	
+<!-- 	 <select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffeeDTO"> -->
+<!--    		select * from enjoy_coffee -->
+<!--    	 </select> -->
 </mapper>

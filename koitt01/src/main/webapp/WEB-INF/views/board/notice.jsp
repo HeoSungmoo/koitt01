@@ -100,7 +100,7 @@ $(document).ready(function() {
 
 		<div id="location">
 			<ol>
-				<li><a href="#">HOME</a></li>
+				<li><a href="">HOME</a></li>
 				<li><a href="#">CUSTOMER</a></li>
 				<li class="last">NOTICE</li>
 			</ol>

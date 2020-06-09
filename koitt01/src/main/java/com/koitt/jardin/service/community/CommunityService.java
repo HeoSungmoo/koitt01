@@ -2,8 +2,9 @@ package com.koitt.jardin.service.community;
 
 import java.util.List;
 
-import com.koitt.jardin.dto.community.EnjoyCoffeeDTO;
+import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.ReViewDTO;
 
 public interface CommunityService {
 
@@ -22,9 +23,15 @@ public interface CommunityService {
 	// 체험단 신청 글쓰기
 	public void preUserApply(int preuser_no);
 
-	// 이용후기
-	public List<PreUserDTO> epilogue();
+	// 이용후기 글 리스트
+	public List<ReViewDTO> epilogue();
 
-	public List<EnjoyCoffeeDTO> enjoyCoffee();
+	// 이용후기 글 보기
+	public ReViewDTO epilogueView(int review_no);
 
+	// enjoy커피 글 리스트
+	public List<EnjoyCoffDTO> enjoyCoffee();
+
+	// enjoy커피 글 보기
+	public EnjoyCoffDTO enjoyView(int no);
 }

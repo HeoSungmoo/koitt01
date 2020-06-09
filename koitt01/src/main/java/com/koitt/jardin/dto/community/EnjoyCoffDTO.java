@@ -2,7 +2,7 @@ package com.koitt.jardin.dto.community;
 
 import java.sql.Timestamp;
 
-public class EnjoyCoffeeDTO {
+public class EnjoyCoffDTO {
 
 	int no;
 	String title;

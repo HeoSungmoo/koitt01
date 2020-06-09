@@ -112,7 +112,7 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="expr" id="leftNavi1">체험단</a></li>
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
-					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+					<li class="last"><a href="enjoy" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
 

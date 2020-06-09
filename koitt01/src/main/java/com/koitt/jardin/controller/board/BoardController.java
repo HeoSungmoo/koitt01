@@ -29,11 +29,11 @@ public class BoardController {
 
 	// 공지사항 글보기
 	@RequestMapping("noticeView")
-	public String noticeView(Model model, int No) {
-		boardService.noticeViewHit(No);
-		model.addAttribute("noticeView", boardService.noticeView(No));
-		model.addAttribute("noticeViewPre", boardService.noticeView(No - 1));
-		model.addAttribute("noticeViewNext", boardService.noticeView(No + 1));
+	public String noticeView(Model model, int rnum) {
+		boardService.noticeViewHit(rnum);
+		model.addAttribute("noticeView", boardService.noticeView(rnum));
+		model.addAttribute("noticeViewPre", boardService.noticeView(rnum - 1));
+		model.addAttribute("noticeViewNext", boardService.noticeView(rnum + 1));
 		return "board/noticeView";
 	}
 

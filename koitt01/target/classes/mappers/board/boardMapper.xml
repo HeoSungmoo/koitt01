@@ -7,12 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--공지사항 글 리스트 가져오기 -->
 	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice
+		select rownum rnum,a.* from(select * from notice order by upload_date desc)a
 	</select>
 
 <!--공지사항 글 보기 -->
 	<select id="noticeView" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where No=#{No}
+		select * from(select rownum rnum,a.* from notice a) where rnum=${rnum}
 	</select>
 	
 	<update id="noticeViewHit">

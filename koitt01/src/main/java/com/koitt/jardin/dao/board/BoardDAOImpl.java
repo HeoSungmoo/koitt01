@@ -27,9 +27,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 공지사항 글 보기
 	@Override
-	public NoticeDTO noticeView(int No) {
+	public NoticeDTO noticeView(int rnum) {
 //		sqlSession.update("board.noticeViewHit", No);
-		return sqlSession.selectOne("board.noticeView", No);
+		return sqlSession.selectOne("board.noticeView", rnum);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public interface BoardDAO {
 	public List<NoticeDTO> noticeSearch(String option, String search);
 
 	// 공지사항 글 보기
-	public NoticeDTO noticeView(int No);
+	public NoticeDTO noticeView(int rnum);
 
 	// 공지사항 조회수
 	public void noticeViewHit(int No);

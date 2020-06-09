@@ -100,7 +100,7 @@ $(document).ready(function() {
 
 		<div id="location">
 			<ol>
-				<li><a href="#">HOME</a></li>
+				<li><a href="">HOME</a></li>
 				<li><a href="#">CUSTOMER</a></li>
 				<li class="last">NOTICE</li>
 			</ol>
@@ -145,7 +145,7 @@ $(document).ready(function() {
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView?No=${noticeDto.no}">${noticeDto.title}</a>
+										<a href="noticeView?rnum=${noticeDto.rnum}">${noticeDto.title}</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>

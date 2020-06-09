@@ -2,7 +2,7 @@ package com.koitt.jardin.dto.community;
 
 import java.sql.Timestamp;
 
-public class reviewDTO {
+public class ReViewDTO {
 
 	int review_no;// 리뷰번호
 	int product_no; // 상품 번호

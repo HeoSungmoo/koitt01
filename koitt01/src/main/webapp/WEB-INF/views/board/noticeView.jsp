@@ -148,13 +148,13 @@ $(document).ready(function() {
 								<tr>
 									<th class="pre">PREV</th>
 									
-									<td><a href="noticeView?No=${noticeViewPre.no}">${noticeViewPre.title}</a></td>
+									<td><a href="noticeViewPre?no=${noticeView.no}">${noticeViewPre.title}</a></td>
 								
 								</tr>
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td><a href="noticeView?No=${noticeViewNext.no}">${noticeViewNext.title}</a></td>
+									<td><a href="noticeViewNext?no=${noticeView.no}">${noticeViewNext.title}</a></td>
 								</tr>
 							</tbody>
 						</table>

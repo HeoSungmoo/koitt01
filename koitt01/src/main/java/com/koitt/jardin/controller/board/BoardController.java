@@ -29,11 +29,25 @@ public class BoardController {
 
 	// 공지사항 글보기
 	@RequestMapping("noticeView")
-	public String noticeView(Model model, int rnum) {
-		boardService.noticeViewHit(rnum);
-		model.addAttribute("noticeView", boardService.noticeView(rnum));
-		model.addAttribute("noticeViewPre", boardService.noticeView(rnum - 1));
-		model.addAttribute("noticeViewNext", boardService.noticeView(rnum + 1));
+	public String noticeView(Model model, int no) {
+		boardService.noticeViewHit(no);
+		model.addAttribute("noticeView", boardService.noticeView(no));
+		model.addAttribute("noticeViewPre", boardService.noticeViewPre(no));
+		model.addAttribute("noticeViewNext", boardService.noticeViewNext(no));
+		return "board/noticeView";
+	}
+
+	// 공지사항 이전페이지
+	@RequestMapping("noticeViewPre")
+	public String noticeViewPre(Model model, int no) {
+		model.addAttribute("noticeView", boardService.noticeViewPre(no));
+		return "board/noticeView";
+	}
+
+	// 공지사항 다음페이지
+	@RequestMapping("noticeViewNext")
+	public String noticeViewNext(Model model, int no) {
+		model.addAttribute("noticeView", boardService.noticeViewNext(no));
 		return "board/noticeView";
 	}
 

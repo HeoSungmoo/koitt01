@@ -145,7 +145,7 @@ $(document).ready(function() {
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView?rnum=${noticeDto.rnum}">${noticeDto.title}</a>
+										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>

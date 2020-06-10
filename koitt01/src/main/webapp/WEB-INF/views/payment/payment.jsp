@@ -129,47 +129,28 @@ $(document).ready(function() {
 								<th scope="col">합계</th>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="left">
-										<p class="img"><img src="${pageContext.request.contextPath}/images/img/sample_product.jpg" alt="상품" width="66" height="66" /></p>
-
-										<ul class="goods">
-											<li>
-												<a href="#">쟈뎅 오리지널 콜롬비아 페레이라 원두커피백 15p</a>
-											</li>
-										</ul>
-									</td>
-									<td class="tnone">
-										123,400 원
-
-										<!-- 회원일 시 -->
-										<br/><span class="pointscore">1,234 Point</span>
-										<!-- //회원일 시 -->
-									</td>
-									<td>1 개</td>
-									<td>123,400 원</td>
-								</tr>
-								
-								<tr>
-									<td class="left">
-										<p class="img"><img src="${pageContext.request.contextPath}/images/img/sample_product.jpg" alt="상품" width="66" height="66" /></p>
-
-										<ul class="goods">
-											<li>
-												<a href="#">가나다라마바사아자차카타파하 가나다라마바사아자차카타파하 가나다라마바사아자차카타파하</a>
-											</li>
-										</ul>
-									</td>
-									<td class="tnone">
-										123,400 원
-
-										<!-- 회원일 시 -->
-										<br/><span class="pointscore">1,234 Point</span>
-										<!-- //회원일 시 -->
-									</td>
-									<td>1 개</td>
-									<td>123,400 원</td>
-								</tr>
+								<c:forEach var="list" items="${list}">
+									<tr>
+										<td class="left">
+											<p class="img"><img src="${pageContext.request.contextPath}/images/img/${list.thumbnail}" alt="상품" width="66" height="66" /></p>
+	
+											<ul class="goods">
+												<li>
+													<a href="#">${list.title}</a>
+												</li>
+											</ul>
+										</td>
+										<td class="tnone">
+											${list.price}
+	
+											<!-- 회원일 시 -->
+											<br/><span class="pointscore">${list.point}</span>
+											<!-- //회원일 시 -->
+										</td>
+										<td>${list.count} 개</td>
+										<td>${list.count * list.price } 원</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -429,7 +410,7 @@ $(document).ready(function() {
 												<input type="text" class="w134" />&nbsp;&nbsp;
 												<span class="valign"><strong>원</strong></span>
 											</li>
-											<li class="r10"><span class="valign">( 보유 쿠폰 내역 : 7장 )&nbsp;</span></li>
+											<li class="r10"><span class="valign">( 보유 쿠폰 내역 : ${coupon.size} 장 )&nbsp;</span></li>
 											<li><a href="coupon_list.html" class="nbtn">쿠폰목록</a></li>
 										</ul>
 									</td>
@@ -446,7 +427,7 @@ $(document).ready(function() {
 											</li>
 											<li>
 												<span class="valign">( 사용 가능 포인트 : </span>
-												<span class="orange">15,000</span>
+												<span class="orange">${point}</span>
 												<span class="valign"> Point)</span>
 											</li>
 										</ul>

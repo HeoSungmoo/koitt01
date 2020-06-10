@@ -31,6 +31,8 @@ public class EventController {
 	@RequestMapping("eventView")
 	public String eventView(Model model, int event_no, EventCommentDto eventCommentDto) {
 		model.addAttribute("eventView", eventService.eventView(event_no));
+		model.addAttribute("eventViewPre", eventService.eventViewPre(event_no));
+		model.addAttribute("eventViewNext", eventService.eventViewNext(event_no));
 		model.addAttribute("eventComment", eventService.eventComment(event_no));
 		return "event/eventView";
 	}

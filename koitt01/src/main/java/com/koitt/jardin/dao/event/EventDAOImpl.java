@@ -109,4 +109,16 @@ public class EventDAOImpl implements EventDAO {
 
 	}
 
+	@Override
+	public EventDTO eventViewPre(int event_no) {
+
+		return sqlSession.selectOne("event.eventViewPre", event_no);
+	}
+
+	@Override
+	public EventDTO eventViewNext(int event_no) {
+
+		return sqlSession.selectOne("event.eventViewNext", event_no);
+	}
+
 }

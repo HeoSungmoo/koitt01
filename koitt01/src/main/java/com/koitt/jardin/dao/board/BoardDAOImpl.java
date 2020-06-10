@@ -115,15 +115,17 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.guide");
 	}
 
-	// 공지사항 페이지네이션
+	// 공지사항 페이지네이션 게시글 수
 	@Override
 	public PageNationDTO pageNation() {
 		return sqlSession.selectOne("board.pageNation");
 	}
 
+	// 공지사항 페이징 게시글 리스트
 	@Override
 	public List<PageNationDTO> pageNationList(int curPage) {
-		return sqlSession.selectList("board.pageNationList");
+		System.out.println("서비스 현재페이지" + curPage);
+		return sqlSession.selectList("board.pageNationList", curPage);
 
 	}
 

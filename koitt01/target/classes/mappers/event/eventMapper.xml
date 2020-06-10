@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="eventList" resultType="com.koitt.jardin.dto.event.EventDTO">
 	
-		select * from event
+		select * from event order by event_no desc
 	
 	</select>
 	
@@ -78,6 +78,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="eventSearchC" resultType="com.koitt.jardin.dto.event.EventDTO">
 	
 	select * from event where content like '%'||#{search}||'%'
+	
+	</select>
+	
+	<select id="eventViewPre"  resultType="com.koitt.jardin.dto.event.EventDTO">
+	<![CDATA[select * from event where event_no=(select max(event_no) from (select * from event where event_no < #{event_no} )) ]]>
+
+	</select>
+	
+	<select id="eventViewNext"  resultType="com.koitt.jardin.dto.event.EventDTO">
+	<![CDATA[select * from event where event_no=(select min(event_no) from (select * from event where event_no > #{event_no} )) ]]>
 	
 	</select>
 	

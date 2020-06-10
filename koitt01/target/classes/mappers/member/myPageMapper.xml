@@ -7,7 +7,7 @@
 <mapper namespace="myPage">
     <!-- 1:1문의 리스트 출력 -->
     <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
-    	select * from question
+    	select * from question where id = #{id} order by no desc 
     </select>
     
     <!-- 1:1문의 내용 -->
@@ -17,7 +17,7 @@
     
    <!-- 1:1문의 글등록 -->
     <insert id = "writeComplete">
-    	insert into question(no,id,category,title,content) values(question_seq.nextval,#{id},#{category},#{title},#{content});
+    	insert into question(no,id,category,title,content,file_name) values(question_seq.nextval,#{id},#{category},#{title},#{content},#{file_name})
     </insert>
     
     <!-- 회원정보 수정 정보 출력-->

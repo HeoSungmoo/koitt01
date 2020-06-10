@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.koitt.jardin.dto.board.PageNationDTO;
 import com.koitt.jardin.service.board.BoardService;
@@ -19,13 +20,13 @@ public class BoardController {
 	@Autowired
 	MyPageService myPageService;
 
-	// 공지사항 글 리스트
-	@RequestMapping("notice")
-	public String notice(Model model) {
-		model.addAttribute("notice", boardService.notice());
-
-		return "board/notice";
-	}
+//	// 공지사항 글 리스트
+//	@RequestMapping("notice")
+//	public String notice(Model model) {
+//		model.addAttribute("notice", boardService.notice());
+//
+//		return "board/notice";
+//	}
 
 	// 공지사항 글보기
 	@RequestMapping("noticeView")
@@ -34,20 +35,6 @@ public class BoardController {
 		model.addAttribute("noticeView", boardService.noticeView(no));
 		model.addAttribute("noticeViewPre", boardService.noticeViewPre(no));
 		model.addAttribute("noticeViewNext", boardService.noticeViewNext(no));
-		return "board/noticeView";
-	}
-
-	// 공지사항 이전페이지
-	@RequestMapping("noticeViewPre")
-	public String noticeViewPre(Model model, int no) {
-		model.addAttribute("noticeView", boardService.noticeViewPre(no));
-		return "board/noticeView";
-	}
-
-	// 공지사항 다음페이지
-	@RequestMapping("noticeViewNext")
-	public String noticeViewNext(Model model, int no) {
-		model.addAttribute("noticeView", boardService.noticeViewNext(no));
 		return "board/noticeView";
 	}
 
@@ -98,19 +85,27 @@ public class BoardController {
 	// 이용방법
 	@RequestMapping("guide")
 	public String guide(Model model) {
-		model.addAttribute("guide", boardService.guide());
+//		model.addAttribute("guide", boardService.guide());
 		return "board/guide";
 	}
 
 	// 게시글 목록
-	@RequestMapping("아직 안건")
-	public String noticePage(int curPage, Model model) {
+
+	@RequestMapping("notice")
+	public String noticePage(@RequestParam(value = "curPage", defaultValue = "1") int curPage, Model model) {
 		PageNationDTO PDto = boardService.pageNation(curPage); // 게시글 수 저장
 		List<PageNationDTO> list = boardService.pageNationList(curPage);
 
-		model.addAttribute("list", list);
+		model.addAttribute("notice", list);
 		model.addAttribute("pDto", PDto);
-		return "notice";
+		System.out.println("현재 블럭 시작페이지" + PDto.getStart_page());
+		System.out.println("현재 블럭 끝 페이지" + PDto.getEnd_page());
+		System.out.println("현재 페이지 위치" + PDto.getCur_page());
+		System.out.println("다음 블럭 버튼" + PDto.getNext_page());
+		System.out.println("현재 블럭 끝 페이지" + PDto.getEnd_page());
+		System.out.println("게시글 수" + PDto.getListCnt());
+
+		return "board/notice";
 	}
 
 }

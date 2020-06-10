@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -140,13 +142,31 @@ $(document).ready(function() {
 							</thead>
 							<tbody>
 							${notice.size() }	
-							<c:forEach var="noticeDto" items="${notice}">
+							<c:forEach  var="noticeDto" items="${notice}">
 						
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
 										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
-										<img src="images/ico/ico_new.gif" alt="NEW" />
+										<jsp:useBean id="now" class="java.util.Date" />
+										
+<!-- 									 현재날짜  -->
+									<!-- 오늘 -->
+									<c:set var="today" value="<%=new Date()%>"/>
+									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today"/>
+																	
+									<!-- 하루전   -->
+									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*10*1000)%>"/>
+									<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo"/>
+									
+									<c:choose>
+										<c:when test="${noticeDto.upload_date<=oneAgo}">
+										</c:when>
+										<c:when test="${noticeDto.upload_date>oneAgo}">
+										<img src="images/ico/ico_new.gif" alt="NEW" /> 
+										
+										</c:when>
+										</c:choose>
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>
 									<td class="tnone right">${noticeDto.hit}</td>
@@ -165,14 +185,28 @@ $(document).ready(function() {
 						<div class="allPageMoving1">
 
 						<a href="notice?curPage=1" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-						<a href="notice?" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="notice?curPage=${pDto.getStart_page()-1}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCur_page() eq index}">
+               				<a  href="notice?curPage=${index}" style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCur_page() ne index}">
+              				 <a href="notice?curPage=${index}">${index}</a>
+              			
+              				
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="notice?curPage=${pDto.getEnd_page()+1}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="notice?curPage=${PDto.getPage_cnt }" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
@@ -195,6 +229,7 @@ $(document).ready(function() {
 							
 							
 							
+						
 							
 						</div>
 					</div>

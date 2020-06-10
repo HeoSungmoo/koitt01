@@ -21,7 +21,6 @@ public class GuestController {
 
 	@RequestMapping("cart")
 	public String cart(HttpSession session, HttpServletRequest request, Model model) {
-		homeService.getIp(request, session);
 		return "guest/cart";
 	}
 }

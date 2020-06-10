@@ -21,8 +21,6 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {
 
-		// session.setAttribute("ip", request.getRemoteAddr());// 세션에 이이피 저장
-		homeService.getIp(request, session);
 		model.addAttribute("bannerList", homeService.bannerList());// 배너 리스트 불러오기
 		model.addAttribute("hitList", homeService.hitList());// 베스트셀러 리스트 불러오기
 		model.addAttribute("saleList", homeService.saleList());// 할인상품 리스트 불러오기

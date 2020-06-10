@@ -153,13 +153,13 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
+									<td><a href="eventView?event_no=${eventViewPre.event_no}">${eventViewPre.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
+									<td><a href="eventView?event_no=${eventViewNext.event_no}">${eventViewNext.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 							</tbody>

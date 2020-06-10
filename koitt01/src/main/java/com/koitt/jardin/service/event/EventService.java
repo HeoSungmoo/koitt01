@@ -16,6 +16,10 @@ public interface EventService {
 	// 진행중 이벤트 댓글 리스트
 	public List<EventCommentDto> eventComment(int event_no);
 
+	public EventDTO eventViewPre(int event_no);
+
+	public EventDTO eventViewNext(int event_no);
+
 	// 진행중 이벤트 댓글 작성
 	public void eventCommentWrite(EventCommentDto eventCommentDto);
 

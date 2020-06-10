@@ -108,4 +108,16 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventSearch(option, search);
 	}
 
+	@Override
+	public EventDTO eventViewPre(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.eventViewPre(event_no);
+	}
+
+	@Override
+	public EventDTO eventViewNext(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.eventViewNext(event_no);
+	}
+
 }

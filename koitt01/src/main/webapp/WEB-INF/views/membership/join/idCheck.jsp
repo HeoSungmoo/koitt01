@@ -29,6 +29,7 @@
 		// 아이디 입력 하고 중복체크 누르면 아이디가 넘어옴
 		document.getElementById("userId").value = opener.document.userInfo.id.value;
 	}
+	
 	// 사용하기 클릭시 부모창으로 값 전달
 	function sendCheckValue(){
 		
@@ -53,7 +54,7 @@
 			<b><font size = "4" color = "gray">아이디 중복체크</font></b>
 			<hr size = "1" width = "460">
 			<form>
-				<input type = "text" name = "idInput" id = "userId">
+				<input type = "text" name = "idInput" id = "userId" readonly>
 				<input type = "button" value = "중복확인" onclick = "idCheck()">
 			</form>
 			

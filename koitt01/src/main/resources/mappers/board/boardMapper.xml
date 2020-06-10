@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--공지사항 글 리스트 가져오기 -->
 	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select rownum rnum,a.* from(select * from notice order by upload_date desc)a
+		select * from (select * from notice order by upload_date desc)
 	</select>
 
 <!--공지사항 글 보기 -->
@@ -17,11 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 공지사항 글보기 이전글 -->
 	<select id="noticeViewPre" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} ))]]>
+	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} )) ]]>
 	</select>
 	<!-- 공지사항 글보기 다음글 -->
 	<select id="noticeViewNext" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} ))]]>
+	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} )) ]]>
 	</select>
 	
 	

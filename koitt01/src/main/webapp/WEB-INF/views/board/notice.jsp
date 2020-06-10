@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -146,7 +148,25 @@ $(document).ready(function() {
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
 										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
-										<img src="images/ico/ico_new.gif" alt="NEW" />
+										<jsp:useBean id="now" class="java.util.Date" />
+										
+<!-- 									 현재날짜  -->
+									<!-- 오늘 -->
+									<c:set var="today" value="<%=new Date()%>"/>
+									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today"/>
+																	
+									<!-- 하루전   -->
+									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*10*1000)%>"/>
+									<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo"/>
+									
+									<c:choose>
+										<c:when test="${noticeDto.upload_date<=oneAgo}">
+										</c:when>
+										<c:when test="${noticeDto.upload_date>oneAgo}">
+										<img src="images/ico/ico_new.gif" alt="NEW" /> 
+										
+										</c:when>
+										</c:choose>
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>
 									<td class="tnone right">${noticeDto.hit}</td>
@@ -195,6 +215,7 @@ $(document).ready(function() {
 							
 							
 							
+						
 							
 						</div>
 					</div>

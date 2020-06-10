@@ -98,7 +98,7 @@ public class BoardController {
 	// 이용방법
 	@RequestMapping("guide")
 	public String guide(Model model) {
-		model.addAttribute("guide", boardService.guide());
+//		model.addAttribute("guide", boardService.guide());
 		return "board/guide";
 	}
 

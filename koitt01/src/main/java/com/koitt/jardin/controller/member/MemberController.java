@@ -61,10 +61,11 @@ public class MemberController {
 
 	// 로그인 창
 	@RequestMapping("login")
-	public String login(Model model) {
-
-		return "membership/login";
-
+	public String login(Model model, HttpSession session) {
+		if (session.getAttribute("member") == null) {
+			return "membership/login";
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping("loginOk")
@@ -79,7 +80,7 @@ public class MemberController {
 			return "membership/login";
 		} else {
 			session.setAttribute("member", id);
-			return "membership/loginOk";
+			return "redirect:/";
 
 		}
 

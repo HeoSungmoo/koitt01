@@ -26,11 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into preuser_apply 
 	</insert>
 	<!-- 사용후기 -->
-	<select id="epilogue" resultType="com.koitt.jardin.dto.community.ReViewDTO">
+	<select id="epilogue" resultType="com.koitt.jardin.dto.community.PreUserReviewDTO">
 	select * from review
 	</select>
 	
-	<select id="epilogueView" resultType="com.koitt.jardin.dto.community.ReViewDTO">
+	<select id="epilogueView" resultType="com.koitt.jardin.dto.community.PreUserReviewDTO">
 	select * from review where review_no=#{review_no}
 	</select>
 	

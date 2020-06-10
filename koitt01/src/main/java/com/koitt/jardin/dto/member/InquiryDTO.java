@@ -9,10 +9,10 @@ public class InquiryDTO {
 	private String category; // 분류
 	private String title; // 제목
 	private String content; // 내용
-	private String fileName; // 첨부파일
-	private Timestamp uploadDate; // 첨부파일등록일
+	private String file_name; // 첨부파일
+	private Timestamp upload_date; // 첨부파일등록일
 	private String answer; // 답글
-	private Timestamp answerDate;
+	private Timestamp answer_date;
 
 	public int getNo() {
 		return no;
@@ -54,20 +54,20 @@ public class InquiryDTO {
 		this.content = content;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getFile_name() {
+		return file_name;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 
-	public Timestamp getUploadDate() {
-		return uploadDate;
+	public Timestamp getUpload_date() {
+		return upload_date;
 	}
 
-	public void setUploadDate(Timestamp uploadDate) {
-		this.uploadDate = uploadDate;
+	public void setUpload_date(Timestamp upload_Date) {
+		this.upload_date = upload_date;
 	}
 
 	public String getAnswer() {
@@ -78,12 +78,12 @@ public class InquiryDTO {
 		this.answer = answer;
 	}
 
-	public Timestamp getAnswerDate() {
-		return answerDate;
+	public Timestamp getAnswer_date() {
+		return answer_date;
 	}
 
-	public void setAnswerDate(Timestamp answerDate) {
-		this.answerDate = answerDate;
+	public void setAnswer_date(Timestamp answer_date) {
+		this.answer_date = answer_date;
 	}
 
 }

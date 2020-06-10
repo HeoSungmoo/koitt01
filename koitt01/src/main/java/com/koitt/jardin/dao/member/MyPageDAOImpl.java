@@ -17,9 +17,9 @@ public class MyPageDAOImpl implements MyPageDAO {
 
 	// 1:1 문의 리스트 출력
 	@Override
-	public List<InquiryDTO> inquiryList() {
+	public List<InquiryDTO> inquiryList(String id) {
 
-		return sqlSession.selectList("myPage.inquiryList");
+		return sqlSession.selectList("myPage.inquiryList", id);
 	}
 
 	// 1:1 문의 내용 출력

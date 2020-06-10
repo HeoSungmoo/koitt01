@@ -20,6 +20,7 @@
 				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
 				<ul>
 					<li><a href="#">EVENT</a></li>
+					
 					<li><a href="notice">CUSTOMER</a></li>
 					<li><a href="expr">COMMUNITY</a></li>
 				</ul>
@@ -27,8 +28,8 @@
 			<div id="snb">
 				<ul>
 					<li><a href="login">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
-					<li><a href="#">MY PAGE</a></li>
+					<li><a href="step01">JOIN</a></li>
+					<li><a href="orderCheck">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
 				</ul>
 

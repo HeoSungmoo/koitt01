@@ -22,9 +22,20 @@
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
-<script type="text/javascript" src="../js/html5.js"></script>
-<script type="text/javascript" src="../js/respond.min.js"></script>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
+<%
+	String id = (String)session.getAttribute("member");
+	if(id == null){
+%>
+		<script>alert("로그인을 먼저 해주세요.");
+		javascript:window.location="home";
+		</script>
+<%		
+	}	
+%>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -40,16 +51,16 @@ $(document).ready(function() {
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
-		<p class="img"><img src="../images/ico/ico_alert.gif" alt="알림" /></p>
+		<p class="img"><img src="images/ico/ico_alert.gif" alt="알림" /></p>
 		<p class="txt">IE버전이 낮아 홈페이지 이용에 불편함이 있으므로 <strong>IE9이상이나 다른 브라우저</strong>를 이용해 주세요. </p>
 		<ul>
-			<li><a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank"><img src="../images/ico/ico_ie.gif" alt="IE 최신브라우저 다운" ></a></li>
-			<li><a href="https://www.google.com/intl/ko/chrome/browser" target="_blank"><img src="../images/ico/ico_chrome.gif" alt="IE 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.mozilla.org/ko/firefox/new" target="_blank"><img src="../images/ico/ico_mozila.gif" alt="MOZILA 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.apple.com/safari" target="_blank"><img src="../images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="../images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
+			<li><a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank"><img src="images/ico/ico_ie.gif" alt="IE 최신브라우저 다운" ></a></li>
+			<li><a href="https://www.google.com/intl/ko/chrome/browser" target="_blank"><img src="images/ico/ico_chrome.gif" alt="IE 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.mozilla.org/ko/firefox/new" target="_blank"><img src="images/ico/ico_mozila.gif" alt="MOZILA 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.apple.com/safari" target="_blank"><img src="images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
 		</ul>
-		<p class="btn" onclick="msiehide();"><img src="../images/ico/ico_close.gif" alt="닫기" /></p>
+		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
 <!--//익스레이어팝업-->
@@ -92,7 +103,7 @@ $(document).ready(function() {
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><img src="../images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
+			<h1><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -104,15 +115,15 @@ $(document).ready(function() {
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
+					<li><%=id%>님 환영합니다.</li>
+					
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
 				</ul>
 
 				<div id="search">
 					<input type="text" class="searchType" />
-					<input type="image" src="../images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
+					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
 				</div>
 			</div>
 		</div>
@@ -249,14 +260,14 @@ $(document).ready(function() {
 							</thead>
 							
 									
-								
+							
 							<tbody>
 							<c:forEach var = "inquiryList" items = "${inquiryList}">
 								<tr>
 									<td class="tnone">${inquiryList.no}</td>
 									<td>${inquiryList.category}</td>
-									<td class="left"><a href="#">${inquiryList.title}</a></td>
-									<td class="tnone">${inquiryList.uploadDate}</td>
+									<td class="left"><a href="inquiryView?no=${inquiryList.no}">${inquiryList.title}</a></td>
+									<td class="tnone">${inquiryList.upload_date}</td>
 									<td>
 										<ul class="state">
 											<li><div class="nbtnMini iw83">답변대기</div></li>
@@ -265,41 +276,7 @@ $(document).ready(function() {
 								</tr>
 							</c:forEach>
 
-								<tr>
-									<td class="tnone">3</td>
-									<td>상품</td>
-									<td class="left"><a href="#">상품 재입고 언제 되나요? (1)</a></td>
-									<td class="tnone">14-05-31</td>
-									<td>
-										<ul class="state">
-											<li><div class="obtnMini iw83">답변완료</div></li>
-										</ul>
-									</td>
-								</tr>
 
-								<tr>
-									<td class="tnone">2</td>
-									<td>반품/교환</td>
-									<td class="left"><a href="#">문의드립니다. (1)</a></td>
-									<td class="tnone">14-05-31</td>
-									<td>
-										<ul class="state">
-											<li><div class="obtnMini iw83">답변완료</div></li>
-										</ul>
-									</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">1</td>
-									<td>기타</td>
-									<td class="left"><a href="#">상품 문의 드립니다 (1)</a></td>
-									<td class="tnone">14-05-31</td>
-									<td>
-										<ul class="state">
-											<li><div class="obtnMini iw83">답변완료</div></li>
-										</ul>
-									</td>
-								</tr>
 
 							</tbody>
 						</table>
@@ -314,20 +291,20 @@ $(document).ready(function() {
 						
 						<div class="bwright">
 							<ul>
-								<li><a href="#" class="writeBtn">글쓰기</a></li>
+								<li><a href="inquiryWrite" class="writeBtn">글쓰기</a></li>
 							</ul>
 						</div>
 
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="../images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="../images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
 						<strong>1</strong>
 						<a href="#">2</a>
 						<a href="#">3</a>
 						<a href="#">4</a>
 						<a href="#">5</a>
-						<a href="#" class="next"><img src="../images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="../images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
@@ -336,15 +313,15 @@ $(document).ready(function() {
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
-								<li class="web"><img src="../images/txt/txt_search.gif" alt="search" /></li>
+								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
 									<select>
 										<option value="" />제목</option>
 									</select>
 								</li>
 								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="../images/btn/btn_search.gif" alt="검색" /></a></li>
-								<li class="mobile"><a href="#"><img src="../images/btn/btn_search_m.gif" alt="검색" /></a></li>
+								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
 							</ul>
 						</div>
 					</div>
@@ -374,7 +351,7 @@ $(document).ready(function() {
 			</div>
 			
 			<div id="finfo">
-				<div id="flogo"><img src="../images/txt/flogo.gif" alt="JARDIN THE COFFEE CREATOR, SINCE 1984" /></div>
+				<div id="flogo"><img src="images/txt/flogo.gif" alt="JARDIN THE COFFEE CREATOR, SINCE 1984" /></div>
 				<address>
 					<ul>
 						<li>㈜쟈뎅</li>
@@ -387,7 +364,7 @@ $(document).ready(function() {
 					</ul>
 				</address>
 
-				<div id="inicis"><img src="../images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
+				<div id="inicis"><img src="images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
 			</div>
 		</div>
 	</div>

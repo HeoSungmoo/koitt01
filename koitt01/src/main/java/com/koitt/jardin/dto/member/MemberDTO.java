@@ -10,7 +10,9 @@ public class MemberDTO {
 	private String name; // 이름
 	private String password; // 비밀번호
 	private String mail; // 이메일
-	private int mailSend; // 메일 수신
+	private String email1;
+	private String email2;
+	private int mail_send; // 메일 수신
 	private String zip; // 우편번호
 	private String address; // 주소
 	private String phone; // 전화번호 합치기
@@ -26,7 +28,7 @@ public class MemberDTO {
 	private String year;
 	private String month;
 	private String day;
-	private int lunarSolar; // 양력,음력
+	private int lunar_solar; // 양력,음력
 	private Timestamp joinDate; // 회원 가입 날짜
 	private Timestamp deleteDate; // 회원 탈퇴 날짜
 
@@ -54,6 +56,22 @@ public class MemberDTO {
 		this.password = password;
 	}
 
+	public String getEmail1() {
+		return email1;
+	}
+
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -62,12 +80,12 @@ public class MemberDTO {
 		this.mail = mail;
 	}
 
-	public int getMailSend() {
-		return mailSend;
+	public int getMail_send() {
+		return mail_send;
 	}
 
-	public void setMailSend(int mailSend) {
-		this.mailSend = mailSend;
+	public void setMail_send(int mail_send) {
+		this.mail_send = mail_send;
 	}
 
 	public String getZip() {
@@ -190,12 +208,12 @@ public class MemberDTO {
 		this.day = day;
 	}
 
-	public int getLunarSolar() {
-		return lunarSolar;
+	public int getLunar_solar() {
+		return lunar_solar;
 	}
 
-	public void setLunarSolar(int lunarSolar) {
-		this.lunarSolar = lunarSolar;
+	public void setLunar_solar(int lunar_solar) {
+		this.lunar_solar = lunar_solar;
 	}
 
 	public Timestamp getJoinDate() {

@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -146,7 +147,22 @@ $(document).ready(function() {
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
 										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
-										<img src="images/ico/ico_new.gif" alt="NEW" />
+<%-- 										<jsp:useBean id="now" class="java.util.Date" /> --%>
+										
+<!-- 									 현재날짜  -->
+<%-- 									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDatet" /> --%>
+<%-- 									<fmt:parseDate value="${nowDate}" var="today" pattern="yyyyMMdd"/> --%>
+<%-- 									<fmt:parseNumber value="${(String)nowDate.time / (1000*60*60*24)}" integerOnly="true" var="today"/> --%>
+<%-- 									<fmt:parseDate value="${noticeDto.upload_date}" var="uploadDate" pattern="yyyy-MM-dd"/> --%>
+<%-- 									<fmt:parseNumber value="${(String)noticeDto.upload_date.time / (1000*60*60*24)}" integerOnly="true" var="uploadDate" scope="request"/> --%>
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${(today - uploadDate)>=1 }"> --%>
+<%-- 										</c:when> --%>
+<%-- 										<c:when test="${(today - uploadDate)<1}"> --%>
+										
+<%-- 										</c:when> --%>
+<%-- 										</c:choose> --%>
+										<img src="images/ico/ico_new.gif" alt="NEW" /> 
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>
 									<td class="tnone right">${noticeDto.hit}</td>
@@ -195,6 +211,7 @@ $(document).ready(function() {
 							
 							
 							
+						
 							
 						</div>
 					</div>

@@ -23,7 +23,7 @@ public class PaymentController {
 	public String payment(@RequestParam(value = "list", required = false) List<PaymentDTO> list, Model model,
 			HttpSession session) {
 		if (session.getAttribute("member") == null) {
-			return "membership/login";
+			return "redirect:/login";
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("membarInfo", paymentService.memberInfo((String) session.getAttribute("member")));

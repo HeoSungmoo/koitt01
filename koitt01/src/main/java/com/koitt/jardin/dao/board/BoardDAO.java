@@ -16,10 +16,16 @@ public interface BoardDAO {
 	public List<NoticeDTO> noticeSearch(String option, String search);
 
 	// 공지사항 글 보기
-	public NoticeDTO noticeView(int No);
+	public NoticeDTO noticeView(int no);
 
 	// 공지사항 조회수
-	public void noticeViewHit(int No);
+	public void noticeViewHit(int rnum);
+
+	// 공지사항 글보기 이전 글
+	public NoticeDTO noticeViewPre(int no);
+	// 공지사항 글보기 다음 글
+
+	public NoticeDTO noticeViewNext(int no);
 
 	// 1:1문의
 	public void inquiry();

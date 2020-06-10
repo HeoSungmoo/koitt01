@@ -54,14 +54,14 @@ public class CommunityController {
 	// 작업중 리뷰에 대한 부분 상의 필요
 	@RequestMapping("epilogue")
 	public String epilogue(Model model) {
-//		model.addAttribute("epilogue", communityService.epilogue());
+		model.addAttribute("epilogue", communityService.epilogue());
 		return "community/epilogue";
 	}
 
 	// 포토구매후기 글 보기
 	@RequestMapping("epilogueView")
-	public String epilogueView() {
-
+	public String epilogueView(Model model, int review_no) {
+		model.addAttribute("epilogueView", communityService.epilogueView(review_no));
 		return "community/epilogueView";
 	}
 
@@ -95,15 +95,15 @@ public class CommunityController {
 
 	// Enjoy Coffee 글 리스트
 	@RequestMapping("enjoy")
-	public String enjoy() {
-
+	public String enjoy(Model model) {
+		model.addAttribute("enjoyCoffee", communityService.enjoyCoffee());
 		return "community/enjoy";
 	}
 
 	// Enjoy Coffee 글 보기
 	@RequestMapping("enjoyView")
-	public String enjoyView() {
-
+	public String enjoyView(Model model, int no) {
+		model.addAttribute("enjoyView", communityService.enjoyView(no));
 		return "community/enjoyView";
 	}
 }

@@ -2,44 +2,20 @@ package com.koitt.jardin.dto.product;
 
 import java.security.Timestamp;
 
-public class reviewDto {
+public class ReviewDTO {
 
-	private int reviewNo;
-	private int productNo;
+	private int review_no;
+	private int product_no;
 	private String id;
-	private String subCode;
+	private String sub_Code;
 	private String title;
 	private String content;
-	private Timestamp reviewDate;
+	private Timestamp review_date;
 	private int hit;
 	private int grade;
 	private String thumbnail;
 	private String reply;
-	private Timestamp replyDate;
-
-	public String getSubCode() {
-		return subCode;
-	}
-
-	public void setSubCode(String subCode) {
-		this.subCode = subCode;
-	}
-
-	public int getReviewNo() {
-		return reviewNo;
-	}
-
-	public void setReviewNo(int reviewNo) {
-		this.reviewNo = reviewNo;
-	}
-
-	public int getProductNo() {
-		return productNo;
-	}
-
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
-	}
+	private Timestamp reply_date;
 
 	public String getId() {
 		return id;
@@ -63,14 +39,6 @@ public class reviewDto {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Timestamp getReviewDate() {
-		return reviewDate;
-	}
-
-	public void setReviewDate(Timestamp reviewDate) {
-		this.reviewDate = reviewDate;
 	}
 
 	public int getHit() {
@@ -105,12 +73,44 @@ public class reviewDto {
 		this.reply = reply;
 	}
 
-	public Timestamp getReplyDate() {
-		return replyDate;
+	public int getReview_no() {
+		return review_no;
 	}
 
-	public void setReplyDate(Timestamp replyDate) {
-		this.replyDate = replyDate;
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
+	}
+
+	public int getProduct_no() {
+		return product_no;
+	}
+
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
+
+	public String getSub_Code() {
+		return sub_Code;
+	}
+
+	public void setSub_Code(String sub_Code) {
+		this.sub_Code = sub_Code;
+	}
+
+	public Timestamp getReview_date() {
+		return review_date;
+	}
+
+	public void setReview_date(Timestamp review_date) {
+		this.review_date = review_date;
+	}
+
+	public Timestamp getReply_date() {
+		return reply_date;
+	}
+
+	public void setReply_date(Timestamp reply_date) {
+		this.reply_date = reply_date;
 	}
 
 }

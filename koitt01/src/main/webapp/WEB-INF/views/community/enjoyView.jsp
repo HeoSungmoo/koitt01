@@ -215,19 +215,19 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>쟈뎅,테이크아웃 ‘카페모리 즐기기</li>
+									<li>${enjoyView.title }</li>
 								</ul>
 							</div>
 							<div class="data">
 								<ul>
-									<li class="tnone">등록일<span>2014-03-24</span></li>
-									<li class="tnone">조회수<span>2146</span></li>
+									<li class="tnone">등록일<span>${enjoyView.upload_date }</span></li>
+									<li class="tnone">조회수<span>${enjoyView.hit }</span></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							27년 만의 기록적인 한파가 연일 지속되면서, 따뜻하고 달콤하게 즐길 수 있는 ‘핫초코’가 인기를 끌며<br/>보다 맛있게 카페모리를 즐기는 법을 소개해 드리겠습니다.
+						${enjoyView.content }
 						</div>
 					</div>
 
@@ -279,37 +279,9 @@ $(document).ready(function() {
 
 
 
-
-	<div id="footerWrap">
-		<div id="footer">
-			<div id="fnb">
-				<ul>
-					<li class="left"><a href="#">개인정보취급방침</a></li>
-					<li><a href="#">이용약관</a></li>
-					<li class="left"><a href="#">이메일무단수집거부</a></li>
-					<li><a href="#">고객센터</a></li>
-					<li class="left brand"><a href="#">쟈뎅 브랜드 사이트</a></li>
-				</ul>
-			</div>
-			
-			<div id="finfo">
-				<div id="flogo"><img src="images/txt/flogo.gif" alt="JARDIN THE COFFEE CREATOR, SINCE 1984" /></div>
-				<address>
-					<ul>
-						<li>㈜쟈뎅</li>
-						<li>대표자 윤영노</li>
-						<li class="tnone">주소 서울시 강남구 논현동 4-21번지 영 빌딩</li>
-						<li class="webnone">소비자상담실 02)546-3881</li>
-						<li>사업자등록번호 211-81-24727</li>
-						<li class="tnone">통신판매신고 제 강남 – 1160호</li>
-						<li class="copy">COPYRIGHT © 2014 JARDIN <span>ALL RIGHTS RESERVED.</span></li>
-					</ul>
-				</address>
-
-				<div id="inicis"><img src="images/ico/ico_inicis.png" alt="이니시스 결제시스템" /></div>
-			</div>
-		</div>
-	</div>
+<footer>
+      <%@ include file="../include/footer.jsp"  %>
+   </footer>
 
 
 

@@ -4,9 +4,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="home">
-	<select id="banner" resultType="com.koitt.jardin.dto.home.BannerDTO">
+	<!-- 배너 리스트 불러오기 -->
+	<select id="bannerList" resultType="com.koitt.jardin.dto.home.BannerDTO">
 		select * 
 		from banner
 		where exposure_state = 1
 	</select>
+	
+	<!-- 베스트셀러 리스트 불러오기 -->
+	<select id="hitList" resultType="com.koitt.jardin.dto.home.ProductTypeDTO">
+		select product_type.product_no product_no, thumbnail, title, price
+		from product_type, product
+		where product_type.hit = 1 and product_type.product_no = product.product_no
+	</select>
+	
+	<!-- 할인상품 리스트 불러오기 -->
+	<select id="saleList" resultType="com.koitt.jardin.dto.home.ProductTypeDTO">
+		<![CDATA[
+		select product_type.product_no product_no, thumbnail, title, price, sale
+		from product_type, product
+		where product_type.sale > 1  and product_type.product_no = product.product_no
+		]]>
+	</select>
+	
+	<!-- 고객센터 전화번호 불러오기 -->
+	<select id="tel" resultType="String">
+		select tel
+		from mall_info
+	</select>
+	
+	<!-- 공지사항 상위글 3개 불러오기 -->
+	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
+		<![CDATA[
+		select no,title
+		from notice
+		where  rownum < 4 
+		order by no desc
+		]]>
+	</select>
+	
+	<!-- 인조이 사위글 3개 불러오기 -->
+	<select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
+		<![CDATA[
+		select no,title
+		from enjoy_coffee
+		where  rownum < 4 
+		order by no desc
+		]]>
+	</select>
+	
 </mapper>

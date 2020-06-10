@@ -12,7 +12,11 @@ public interface EventService {
 
 	public EventDTO eventView(int event_no);
 
-	public EventCommentDto eventComment(int event_no);
+//	public EventCommentDto eventComment(int event_no);
+
+	public List<EventCommentDto> eventComment(int event_no);
+
+	public void eventCommentWrite(EventCommentDto eventCommentDto);
 
 	public List<EventDTO> finEvent();
 

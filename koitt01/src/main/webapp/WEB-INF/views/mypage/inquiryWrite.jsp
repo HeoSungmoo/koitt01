@@ -234,7 +234,7 @@ $(document).ready(function() {
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
-							//
+							
 							<tbody>
 								<tr>
 									<form name = "writeComplete" enctype = "multipart/form-data" action = "writeComplete" method = "get">

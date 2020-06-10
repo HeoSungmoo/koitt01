@@ -56,10 +56,22 @@ public class EventDAOImpl implements EventDAO {
 		return sqlSession.selectOne("event.finEventView", no);
 	}
 
+//	@Override
+//	public EventCommentDto eventComment(int event_no) {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectOne("event.eventComment", event_no);
+//	}
+
 	@Override
-	public EventCommentDto eventComment(int event_no) {
+	public void eventCommentWrite(EventCommentDto eventCommentDto) {
+		sqlSession.insert("event.eventCommentWrite", eventCommentDto);
+
+	}
+
+	@Override
+	public List<EventCommentDto> eventComment(int event_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("event.eventComment", event_no);
+		return sqlSession.selectList("event.eventComment", event_no);
 	}
 
 }

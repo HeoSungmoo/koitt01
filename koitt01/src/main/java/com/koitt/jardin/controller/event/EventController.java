@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.koitt.jardin.dto.event.EventCommentDto;
 import com.koitt.jardin.dto.event.EventDTO;
 import com.koitt.jardin.service.event.EventService;
 
@@ -32,13 +33,20 @@ public class EventController {
 
 	// 진행중 이벤트 글내용
 	@RequestMapping("eventView")
-	public String eventView(Model model, int event_no) {
+	public String eventView(Model model, int event_no, EventCommentDto eventCommentDto) {
 		model.addAttribute("eventView", eventService.eventView(event_no));
 		model.addAttribute("eventComment", eventService.eventComment(event_no));
 		return "event/eventView";
 	}
 
-	// 진행중 이벤트 댓글 리스트
+	// 진행중 이벤트 댓글 리스트 쓰기
+	@RequestMapping("eventWrite")
+	public String eventWrite(Model model, EventCommentDto eventCommentDto, int event_no) {
+		eventService.eventCommentWrite(eventCommentDto);
+		model.addAttribute("eventView", eventService.eventView(event_no));
+//		model.addAttribute("eventView", eventService.eventView(event_no));
+		return "eventView";
+	}
 
 	// 종료된 이벤트 게시판 목록
 	@RequestMapping("finEvent")

@@ -7,22 +7,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--공지사항 글 리스트 가져오기 -->
 	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice
+		select * from (select * from notice order by upload_date desc)
 	</select>
 
 <!--공지사항 글 보기 -->
 	<select id="noticeView" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where No=#{No}
+		select * from notice where no=#{no}
 	</select>
 	
+	<!-- 공지사항 글보기 이전글 -->
+	<select id="noticeViewPre" resultType="com.koitt.jardin.dto.board.NoticeDTO">
+	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} )) ]]>
+	</select>
+	<!-- 공지사항 글보기 다음글 -->
+	<select id="noticeViewNext" resultType="com.koitt.jardin.dto.board.NoticeDTO">
+	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} )) ]]>
+	</select>
+	
+	
+	<!-- 공지사항 조회수 -->
 	<update id="noticeViewHit">
 	update notice set Hit=Hit+1 where No=#{no}
 	</update>
 	
-	
+	<!-- 공지사항 검색 title-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * from notice where title like '%'||#{search}||'%'
 	</select>
+	<!-- 공지사항 검색 content-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * from notice where content like '%'||#{search}||'%'
 	</select>
@@ -72,5 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
+   
+  
 
 </mapper>

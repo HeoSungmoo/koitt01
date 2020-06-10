@@ -27,11 +27,26 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 공지사항 글 보기
 	@Override
-	public NoticeDTO noticeView(int No) {
+	public NoticeDTO noticeView(int no) {
 //		sqlSession.update("board.noticeViewHit", No);
-		return sqlSession.selectOne("board.noticeView", No);
+		return sqlSession.selectOne("board.noticeView", no);
 	}
 
+	// 공지사항 글보기 이전글
+	@Override
+	public NoticeDTO noticeViewPre(int no) {
+
+		return sqlSession.selectOne("board.noticeViewPre", no);
+	}
+
+	// 공지사항 글보기 다음글
+	@Override
+	public NoticeDTO noticeViewNext(int no) {
+
+		return sqlSession.selectOne("board.noticeViewNext", no);
+	}
+
+	// 공지사항 글 검색
 	@Override
 	public List<NoticeDTO> noticeSearch(String option, String search) {
 
@@ -49,9 +64,10 @@ public class BoardDAOImpl implements BoardDAO {
 
 	}
 
+	// 공지사항 조회수
 	@Override
-	public void noticeViewHit(int No) {
-		sqlSession.update("board.noticeViewHit", No);
+	public void noticeViewHit(int rnum) {
+		sqlSession.update("board.noticeViewHit", rnum);
 
 	}
 

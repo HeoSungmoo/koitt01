@@ -19,7 +19,13 @@ public interface BoardService {
 	public void noticeViewHit(int No);
 
 	// 공지사항 글 보기
-	public NoticeDTO noticeView(int No);
+	public NoticeDTO noticeView(int no);
+
+	// 공지사항 글보기 이전글
+	public NoticeDTO noticeViewPre(int no);
+
+	// 공지사항 글보기 이전글
+	public NoticeDTO noticeViewNext(int no);
 
 	// 1:1문의
 	public void inquiry();

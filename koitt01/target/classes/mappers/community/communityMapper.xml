@@ -25,12 +25,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="preUserApply" >
 	insert into preuser_apply 
 	</insert>
-	
-	<select id="epilogue" resultType="com.koitt.jardin.dto.community.reviewDTO">
+	<!-- 사용후기 -->
+	<select id="epilogue" resultType="com.koitt.jardin.dto.community.PreUserReviewDTO">
 	select * from review
 	</select>
 	
-	 <select id="enjoyCofee" resultType="com.koitt.jardin.dto.board.EnjoyCoffeeDTO">
+	<select id="epilogueView" resultType="com.koitt.jardin.dto.community.PreUserReviewDTO">
+	select * from review where review_no=#{review_no}
+	</select>
+	
+	
+	<!-- 인조이 커피 글 리스트-->
+	 <select id="enjoyCoffee" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
    		select * from enjoy_coffee
-   </select>
+   	 </select>
+   	 <!-- 인조이 커피 글 보기 -->
+   	  <select id="enjoyView" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
+   		select * from enjoy_coffee where no=#{no}
+   	 </select>
 </mapper>

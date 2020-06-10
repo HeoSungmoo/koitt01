@@ -72,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
-   >
+   
   
 
 </mapper>

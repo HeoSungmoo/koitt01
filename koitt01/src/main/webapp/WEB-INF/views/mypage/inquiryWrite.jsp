@@ -24,6 +24,7 @@
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -103,8 +104,8 @@ $(document).ready(function() {
 			</div>
 			<div id="snb">
 				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
+					<li>${member}님 환영합니다.</li>
+					
 					<li><a href="#">MY PAGE</a></li>
 					<li><a href="#">CART</a></li>
 				</ul>
@@ -233,9 +234,10 @@ $(document).ready(function() {
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
-							<input type = "hidden" name = "id" value = "${id}">
+							
 							<tbody>
 								<tr>
+									<form name = "writeComplete" enctype = "multipart/form-data" action = "writeComplete" method = "get">
 									<th scope="row"><span>분류</span></th>
 									<td>
 										<select name = "category">
@@ -248,6 +250,7 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
+										<input type = "hidden" name = "id" value = "${member}">
 										<input type="text" class="wlong" name = "title"/>
 									</td>
 								</tr>
@@ -260,7 +263,7 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>첨부파일</span></th>
 									<td>
-										<input type="file" class="fileType" name = "fileName"/>
+										<input type="file" class="fileType" name = "file_name"/>
 									</td>
 								</tr>
 							</tbody>
@@ -271,9 +274,10 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>																
-								<li><a href="#" class="nbtnbig">취소</a></li>
-								<li><a href="writeComplete?${id},${category},${title},${content}" class="sbtnMini">확인</a></li>
+								<li><a href="inquiry" class="nbtnbig">취소</a></li>
+								<li><input type = "submit" value = "확인" class="sbtnMini"></li>
 							</ul>
+							</form>
 						</div>
 					</div>
 					<!-- //Btn Area -->

@@ -1,5 +1,6 @@
 package com.koitt.jardin.controller.member;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,16 +51,38 @@ public class MemberController {
 	// 회원 가입 - 가입완료
 	@RequestMapping("userInfo")
 	public String step04(Model model, MemberDTO memberDto) {
+		System.out.println(memberDto.getId());
+		System.out.println(memberDto.getYear());
+		System.out.println(memberDto.getMonth());
+		System.out.println(memberDto.getDay());
 		memberService.join(memberDto);
 		return "membership/join/step04";
 	}
 
 	// 로그인 창
 	@RequestMapping("login")
-	public String login(Model model, MemberDTO memberDto, HttpSession session) {
+	public String login(Model model) {
 
 		return "membership/login";
-//
+
+	}
+
+	@RequestMapping("loginOk")
+	public String loginOk(Model model, MemberDTO memberDto, HttpServletRequest request) {
+
+		System.out.println(memberDto.getId());
+		System.out.println(memberDto.getPassword());
+		HttpSession session = request.getSession();
+		String id = memberService.login(memberDto);
+
+		if (id == null) {
+			return "membership/login";
+		} else {
+			session.setAttribute("member", id);
+			return "membership/loginOk";
+
+		}
+
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "idSearch")

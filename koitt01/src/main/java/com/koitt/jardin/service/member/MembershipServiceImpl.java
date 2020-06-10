@@ -17,14 +17,27 @@ public class MembershipServiceImpl implements MembershipService {
 	// 회원가입 입력
 	@Override
 	public void join(MemberDTO memberDto) {
-		String phone = memberDto.getPhone1() + memberDto.getPhone2() + memberDto.getPhone3();
+		// 휴대전화번호 합치기
+		String phone = memberDto.getPhone1() + "-" + memberDto.getPhone2() + "-" + memberDto.getPhone3();
 		memberDto.setPhone(phone);
-		String tel = memberDto.getTel1() + memberDto.getTel2() + memberDto.getTel3();
+
+		// 전화번호 합치기
+		String tel = memberDto.getTel1() + "-" + memberDto.getTel2() + "-" + memberDto.getTel3();
 		memberDto.setTel(tel);
-		// String을 timestamp로 변환
-		String strBirth = memberDto.getYear() + "-" + memberDto.getMonth() + "-" + memberDto.getDay();
+
+		// 이메일 합치기
+		String mail = memberDto.getEmail1() + "@" + memberDto.getEmail2();
+		memberDto.setMail(mail);
+
+		String strBirth = memberDto.getYear() + "-" + memberDto.getMonth() + "-" + memberDto.getDay() + " 00:00:00.0";
+		System.out.println(strBirth);
+		// 생년월일
 		Timestamp birth = Timestamp.valueOf(strBirth);
 		memberDto.setBirth(birth);
+		System.out.println(memberDto.getBirth());
+
+		//
+		// memberDto.setBirth(birth);
 		memberDao.join(memberDto);
 
 	}
@@ -42,8 +55,12 @@ public class MembershipServiceImpl implements MembershipService {
 		return memberDao.findPw(memberDto);
 	}
 
+	// 로그인
 	@Override
-	public MemberDTO login(MemberDTO memberDto) {
+	public String login(MemberDTO memberDto) {
+
+		System.out.println(memberDto.getId());
+		System.out.println(memberDto.getPassword());
 
 		return memberDao.login(memberDto);
 	}

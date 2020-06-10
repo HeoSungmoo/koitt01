@@ -29,6 +29,7 @@
 		// 아이디 입력 하고 중복체크 누르면 아이디가 넘어옴
 		document.getElementById("userId").value = opener.document.userInfo.id.value;
 	}
+	
 	// 사용하기 클릭시 부모창으로 값 전달
 	function sendCheckValue(){
 		

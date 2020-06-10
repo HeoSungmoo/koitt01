@@ -220,7 +220,7 @@ $(document).ready(function() {
 					<h3>회원 로그인</h3>
 					<div class="informbox">
 						<div class="inform">
-						<form name = "login">
+						<form name = "loginOk" action = "loginOk">
 							<ul>
 								<li><input type="text" class="loginType" name="id" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 								<li><input type="password" name = "password" class="passType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>

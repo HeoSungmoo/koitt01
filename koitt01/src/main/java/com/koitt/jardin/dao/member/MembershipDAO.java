@@ -14,5 +14,5 @@ public interface MembershipDAO {
 	public abstract MemberDTO findPw(MemberDTO memberDto);
 
 	// 로그인
-	public abstract MemberDTO login(MemberDTO memberDto);
+	public abstract String login(MemberDTO memberDto);
 }

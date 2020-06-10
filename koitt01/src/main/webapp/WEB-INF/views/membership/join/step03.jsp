@@ -133,7 +133,7 @@ function check(){
 	}
 	
 	// 라디오 유효성 검사
-	var emailReceive = document.getElementsByName("receive");
+	var emailReceive = document.getElementsByName("mail_send");
 	
 	  var chk = false;
 	  for(var i=0; i<emailReceive.length; i++){
@@ -151,14 +151,14 @@ function check(){
 	  var sms = document.getElementsByName("sms");
 		
 	  var chk = false;
-	  for(var i=0; i<emailReceive.length; i++){
-	   if ((emailReceive[i].checked)){
+	  for(var i=0; i<sms.length; i++){
+	   if ((sms[i].checked)){
 	    chk = true; 
 	   }
 	  }
 	  if(!chk){
 	      alert('이메일 수신을 체크해주세요.');
-	     emailReceive[0].checked=true;
+	     sms[0].checked=true;
 	   return false;
 	  }
 	  
@@ -242,7 +242,7 @@ function check(){
 	}
 	
 	 // 양력 음력 
-	 var lunarSolar = document.getElementsByName("lunarSolar");
+	 var lunarSolar = document.getElementsByName("lunar_solar");
 		
 	 var chk = false;
 	 for(var i=0; i<sms.length; i++){
@@ -331,7 +331,7 @@ function check(){
         clearTimeout(msietimer);
      }
      
-     /*
+     
      // 아이디 중복체크 화면
      function openIdChk(){
     	 
@@ -343,7 +343,7 @@ function check(){
      function inputIdChk(){
     	 document.userInfo.idDupliaction.value = "idUncheck";
      }
-     */
+     
      
      // 이메일 처리 소스
      function email_change(){
@@ -566,7 +566,7 @@ function check(){
 										<col width="*" />
 									</colgroup>
 									<tbody>
-										<form name="userInfo">
+										<form name="userInfo" action = "userInfo">
 										<tr>
 											<th scope="row"><span>이름 *</span></th>
 											<td><input type="text" name="name"></td>
@@ -578,7 +578,7 @@ function check(){
 
 													<li class="r10"><input type="text" class="w134"
 														name="id" onkeydown="inputIdChk()"></li>
-													
+													<input type = "hidden" name = "idDuplication" value = "idUncheck">
 													<li><input type="button" value="중복확인"
 														onclick="openIdChk()"></li>
 													<li class="pt5"><span class="mvalign">첫 글자는
@@ -645,11 +645,11 @@ function check(){
 											<td>
 												<p>쟈뎅에서 진행되는 이벤트와 쇼핑에 대한 정보를 이메일로 받아보시겠습니까?</p>
 												<ul class="question">
-													<li><input type="radio" name="receive"
-														id="receive_yes" class="radio_t" /><label
+													<li><input type="radio" name="mail_send"
+														id="receive_yes" class="radio_t" value = "0" /><label
 														for="receive_yes">예</label></li>
-													<li><input type="radio" name="receive" id="receive_no"
-														class="radio_t" /><label for="receive_no">아니오</label></li>
+													<li><input type="radio" name="mail_send" id="receive_no"
+														class="radio_t" value = "1" value = "mail_send"/><label for="receive_no">아니오</label></li>
 												</ul>
 												<p class="gray">* 거래관련 정보는 고객님의 거래안전을 위하여 이메일 수신거부와 관계없이
 													발송됩니다.</p>
@@ -691,10 +691,10 @@ function check(){
 													<li class="pt5">
 														<ul class="baseQues">
 															<li><input type="radio" name="sms" id="sms_yes"
-																class="radio_t"/><label
+																class="radio_t" value = "0"/><label
 																for="sms_yes">예</label></li>
 															<li><input type="radio" name="sms" id="sms_no"
-																class="radio_t" /><label for="sms_no">아니오</label></li>
+																class="radio_t" value = "1"/><label for="sms_no">아니오</label></li>
 														</ul>
 													</li>
 												</ul>
@@ -704,7 +704,7 @@ function check(){
 											<th scope="row"><span>유선전화</span></th>
 											<td>
 												<ul class="pta">
-													<li><select name = "tel">
+													<li><select name = "tel1">
 															<option value="02" selected="selected">02</option>
 															<option value="031">031</option>
 															<option value="032">032</option>
@@ -740,7 +740,7 @@ function check(){
 															<script type="text/javascript">
 													//<![CDATA[
 														for(var i=1940; i<=2014; i++){
-															document.write("<option value='year'>" + i + "년"+ "</option>");	
+															document.write("<option value= "+ i +">" + i + "년"+ "</option>");	
 														};
 													//]]>
 													</script>
@@ -753,9 +753,9 @@ function check(){
 													//<![CDATA[
 														for(var i=1; i<=12; i++){
 															if(i<10){
-																document.write("<option value='month'>0" + i + "월"+"</option>");
+																document.write("<option value="+i+">0" + i + "월"+"</option>");
 															}else{
-																document.write("<option value='month'>" + i + "월"+ "</option>");
+																document.write("<option value="+i+">" + i + "월"+ "</option>");
 															};
 														};
 													//]]>
@@ -769,9 +769,9 @@ function check(){
 													//<![CDATA[
 														for(var i=1; i<=31; i++){
 															if(i<10){
-																document.write("<option value='day'>0" + i + "일"+"</option>");
+																document.write("<option value="+i+">0" + i + "일"+"</option>");
 															}else{
-																document.write("<option value='day'>" + i + "일"+ "</option>");
+																document.write("<option value="+i+">" + i + "일"+ "</option>");
 															};
 														};
 													//]]>
@@ -780,11 +780,11 @@ function check(){
 													<li class="r20">&nbsp;<span class="valign">일</span></li>
 													<li class="pt5">
 														<ul class="baseQues">
-															<li><input type="radio" name="lunarSolar" id="solar"
-																class="radio_t"/><label for="solar">양력</label>
+															<li><input type="radio" name="lunar_solar" id="solar"
+																class="radio_t" value = "0"/><label for="solar">양력</label>
 															</li>
-															<li><input type="radio" name="lunarSolar" id="lunar"
-																class="radio_t" /><label for="lunar">음력</label></li>
+															<li><input type="radio" name="lunar_solar" id="lunar"
+																class="radio_t" value = "1"/><label for="lunar">음력</label></li>
 														</ul>
 													</li>
 												</ul>

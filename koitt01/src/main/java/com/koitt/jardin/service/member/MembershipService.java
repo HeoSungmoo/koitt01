@@ -13,6 +13,6 @@ public interface MembershipService {
 	public abstract MemberDTO findPw(MemberDTO memberDto);
 
 	// 로그인
-	public abstract MemberDTO login(MemberDTO memberDto);
+	public String login(MemberDTO memberDto);
 
 }

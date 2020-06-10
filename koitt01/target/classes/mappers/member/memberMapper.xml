@@ -6,9 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 	<!-- 회원가입 정보 입력 insert구문 -->
 	<insert id ="join">
-		insert into member(id,name,password,mail,mailSend,zip,address,phone,sms,tel,birth,lunarSolar) values(#{id},#{name},#{password},#{mail},#{mailSend},#{zip},#{address},#{phone},#{sms},#{tel},#{birth},#{lunarSolar})
+		insert into member(id,name,password,mail,mail_send,zip,address,phone,sms,tel,birth,lunar_solar) values(#{id},#{name},#{password},#{mail},#{mail_send},#{zip},#{address},#{phone},#{sms},#{tel},#{birth},#{lunar_solar})
 	</insert>
-	
+	<insert id = "joinPoint">
+		insert into point values(POINT_SEQ.nextval,#{id},'가입 축하 500point',500,sysdate,null,500)
+	</insert>
 	<!-- 아이디 찾기 -->
 	<select id = "findId" resultType = "com.koitt.jardin.dto.member.MemberDTO">
 		select id from member where name = #{name}, email = #{email}
@@ -19,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select password from member where id = #{id}, email = #{email}
 	</select>
 	
-	<select id = "login" resultType = "com.koitt.jardin.dto.member.MemberDTO">
-		select * from member where id = #{id}, password = #{password}
+	<select id = "login" resultType = "String">
+		select id from member where id = #{id} and password = #{password}
 	</select>
 </mapper>

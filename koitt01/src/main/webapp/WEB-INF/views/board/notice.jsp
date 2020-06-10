@@ -142,7 +142,7 @@ $(document).ready(function() {
 							</thead>
 							<tbody>
 							${notice.size() }	
-							<c:forEach var="noticeDto" items="${notice}">
+							<c:forEach  var="noticeDto" items="${notice}">
 						
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
@@ -185,14 +185,28 @@ $(document).ready(function() {
 						<div class="allPageMoving1">
 
 						<a href="notice?curPage=1" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-						<a href="notice?" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="notice?curPage=${pDto.getStart_page()-1}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCur_page() eq index}">
+               				<a  href="notice?curPage=${index}" style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCur_page() ne index}">
+              				 <a href="notice?curPage=${index}">${index}</a>
+              			
+              				
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="notice?curPage=${pDto.getEnd_page()+1}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="notice?curPage=${PDto.getPage_cnt }" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->

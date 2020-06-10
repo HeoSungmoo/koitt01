@@ -4,7 +4,7 @@ public class PageNationDTO {
 
 	private int page_size = 10; // 한 페이지에 담을 게시글 수
 	private int range_size = 5;// 한 블럭 에 담을 페이지 수
-	private int cur_page; // 현재 페이지 위치
+	private int cur_page = 1; // 현재 페이지 위치
 	private int cur_range; // 현재 블럭 위치
 	private int listCnt; // 게시글 수
 	private int page_cnt; // 페이지 수
@@ -70,11 +70,11 @@ public class PageNationDTO {
 		}
 	}
 
-	public int getList_cnt() {
+	public int getListCnt() {
 		return listCnt;
 	}
 
-	public void setList_cnt(int listCnt) {
+	public void setListCnt(int listCnt) {
 		this.listCnt = listCnt;
 	}
 
@@ -119,7 +119,7 @@ public class PageNationDTO {
 		if (cur_range == range_cnt) {
 			this.end_page = getPage_cnt();
 		} else {
-			this.end_page = cur_range * 10;
+			this.end_page = cur_range * 5;
 		}
 	}
 

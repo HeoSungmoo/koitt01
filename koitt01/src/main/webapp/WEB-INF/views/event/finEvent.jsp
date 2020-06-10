@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +99,7 @@ $(document).ready(function() {
 				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
 				<ul>
-					<li><a href="#">EVENT</a></li>
+					<li><a href="event">EVENT</a></li>
 					<li><a href="#">CUSTOMER</a></li>
 					<li><a href="#">COMMUNITY</a></li>
 				</ul>
@@ -199,8 +202,8 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">EVENT<span>이벤트</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">진행중 이벤트</a></li>
-					<li><a href="#" id="leftNavi2">종료된 이벤트</a></li>
+					<li><a href="event" id="leftNavi1">진행중 이벤트</a></li>
+					<li><a href="finEvent" id="leftNavi2">종료된 이벤트</a></li>
 					<li class="last"><a href="#" id="leftNavi3">당첨자 발표</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
@@ -213,52 +216,36 @@ $(document).ready(function() {
 					
 					<!-- list -->
 					<div class="eventList">
+						<c:forEach var="Event" items="${event }">
+			
 						<ul>
 							<!-- 반복 -->
+							<jsp:useBean id="now" class="java.util.Date" />
+									
+									 <!-- 현재날짜 --> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+									   
+									<!-- 신청 시작날짜 !--> 
+									<fmt:formatDate value="${Event.end_date}" pattern="yyyy-MM-dd" var="endDate" /> 	
+									 
+									<c:choose>
+										<c:when test="${nowDate>endDate}">
 							<li>
 								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
+									<a href="eventView?event_no=${Event.event_no }"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
 								</div>
 								<div class="txt">
-									<div class="subject">
-										<span class="finishbtn">종료</span>&nbsp;
-										까페모리 봄바람 커피한잔 30% 할인 이벤트!!까페모리 봄바람 커피한잔 30% 할인 이벤트!!
-									</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-							<!-- //반복 -->
+									<div class="subject">${Event.event_no}//${Event.title }</div>
+									<div class="day">이벤트 기간 :<fmt:formatDate pattern="yyyy-MM-dd" value="${Event.start_date }"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${Event.end_date }"/> </div>
 
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject"><span class="finishbtn">종료</span>&nbsp;까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
 								</div>
 							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject"><span class="finishbtn">종료</span>&nbsp;까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject"><span class="finishbtn">종료</span>&nbsp;까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
+										
+										</c:when>
+										</c:choose>
+							
 						</ul>
+							</c:forEach>
 					</div>
 					<!-- //list -->
 

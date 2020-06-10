@@ -22,10 +22,6 @@ public class EventController {
 	public String event(Model model) {
 		List<EventDTO> event = eventService.event();
 
-		System.out.println(event.get(1).getEvent_no());
-		System.out.println(event.get(1).getTitle());
-		System.out.println(event.get(1).getStart_date() + "시작일");
-		System.out.println(event.get(1).getEnd_date() + "종료일");
 		model.addAttribute("event", event);
 
 		return "event/event";
@@ -40,18 +36,42 @@ public class EventController {
 	}
 
 	// 진행중 이벤트 댓글 리스트 쓰기
-	@RequestMapping("eventWrite")
+	@RequestMapping("eventCommentWrite")
 	public String eventWrite(Model model, EventCommentDto eventCommentDto, int event_no) {
 		eventService.eventCommentWrite(eventCommentDto);
 		model.addAttribute("eventView", eventService.eventView(event_no));
 //		model.addAttribute("eventView", eventService.eventView(event_no));
-		return "eventView";
+		return "redirect:event";
+	}
+
+	// 진행중 이벤트 댓글 삭제
+	@RequestMapping("eventCommentDelete")
+	public String eventCommentDelete(Model model, int comment_no) {
+		eventService.eventCommentDelete(comment_no);
+		return "redirect:event";
+	}
+
+	@RequestMapping("eventCommentModifyView")
+	public String eventCommentModifyView(Model model, EventCommentDto eventCommentDto) {
+		model.addAttribute("eventCommentModifyView", eventService.eventCommentModifyView(eventCommentDto));
+
+		return "event/eventCommentModify";
+	}
+
+	@RequestMapping("eventCommentModify")
+	public String eventCommentModify(Model model, EventCommentDto eventCommentDto) {
+		eventService.eventCommentModify(eventCommentDto);
+
+		return "redirect:event";
 	}
 
 	// 종료된 이벤트 게시판 목록
 	@RequestMapping("finEvent")
 	public String finEvent(Model model) {
-		model.addAttribute("finEvent", eventService.finEvent());
+		List<EventDTO> event = eventService.event();
+
+		model.addAttribute("event", event);
+
 		return "event/finEvent";
 	}
 
@@ -65,15 +85,28 @@ public class EventController {
 	// 당첨자 발표 게시판 목록
 	@RequestMapping("prizeWinner")
 	public String prizeWinner(Model model) {
-		model.addAttribute("prizeWinner");
+		model.addAttribute("prizeWinner", eventService.prizeWinner());
 		return "event/prizeWinner";
 	}
 
 	// 당첨자 발표 글내용
 	@RequestMapping("prizeWinnerView")
-	public String prizeWinnerView() {
+	public String prizeWinnerView(int no, Model model) {
+
+		eventService.upHit(no);
+		model.addAttribute("prizeWinnerView", eventService.prizeWinnerView(no));
 
 		return "event/prizeWinnerView";
+	}
+
+	// 진행중 이벤트 검색
+	@RequestMapping("eventSearch")
+	public String eventSearch(Model model, String search, String option) {
+
+		model.addAttribute("event", eventService.eventSearch(option, search));
+
+		return "event/event";
+
 	}
 
 }

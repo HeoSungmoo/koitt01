@@ -215,33 +215,19 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li>[11월 체험단 발표] 까페모리 홍차라떼 체험단</li>
+									<li>${prizeWinnerView.title }</li>
 								</ul>
 							</div>
 							<div class="data">
 								<ul>
-									<li>등록일<span>2014-03-24</span></li>
-									<li>조회수<span>99,999</span></li>
+									<li>등록일<span>${prizeWinnerView.upload_date }</span></li>
+									<li>조회수<span>${prizeWinnerView.hit }</span></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							안녕하세요^^ 쟈뎅입니다.<br/><br/>
-
-							지난 11월 18일부터 진행된 까페모리 홍차 라떼&드립 커피 로스트의 체험단 당첨자를 발표합니다~!<br/><br/>
-
-							당첨되신 분은 총 15분이며, 당첨되신 분께는 홍차 라떼와 드립 커피 로스트를 구매하실 수 있는<br/>
-							쟈뎅샵 적립금 15,000점을 적립해드렸습니다.<br/><br/>
-
-							혹시, 체험단에 당첨되지 않으셨더라도<br/>
-							11월 문화이벤트인 '오! 당신이 잠든 사이'이벤트 페이지를 확인하시고,<br/>
-							후기를 예쁘게 작성하셔서 댓글로 URL을 남겨주세요~<br/>
-							추첨을 통해 뮤지컬 티켓 2매를 선물로 드릴 예정입니다.<br/><br/>
-
-							올겨울, 따뜻하고 달콤한 까페모리와 드립 커피 로스트의 진한 커피향에 흠뻑 빠져보세요~!<br/><br/>
-
-							감사합니다.
+							${prizeWinnerView.content }
 						</div>
 					</div>
 

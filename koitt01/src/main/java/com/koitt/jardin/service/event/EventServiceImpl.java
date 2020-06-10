@@ -32,36 +32,30 @@ public class EventServiceImpl implements EventService {
 
 	// 종료된 이벤트 게시판 목록
 	@Override
-	public List<EventDTO> finEvent() {
+	public List<EventDTO> finEvent(EventDTO eventDto) {
 
-		return eventDao.finEvent();
+		return eventDao.finEvent(eventDto);
 	}
 
 	// 종료된 이벤트 글내용
 	@Override
 	public EventDTO finEventView(int event_no) {
-		// TODO Auto-generated method stub
+
 		return eventDao.finEventView(event_no);
 	}
 
+	// 당첨자 페이지
 	@Override
 	public List<WinnerDTO> prizeWinner() {
-		// TODO Auto-generated method stub
+
 		return eventDao.prizeWinner();
 	}
 
 	@Override
-	public EventDTO prizeWinnerView(int no) {
+	public WinnerDTO prizeWinnerView(int no) {
 
 		return eventDao.prizeWinnerView(no);
 	}
-
-	// 진행중 이벤트 댓글
-//	@Override
-//	public EventCommentDto eventComment(int event_no) {
-//		// TODO Auto-generated method stub
-//		return eventDao.eventComment(event_no);
-//	}
 
 	// 진행중 이벤트 댓글작성
 	@Override
@@ -71,10 +65,47 @@ public class EventServiceImpl implements EventService {
 
 	}
 
+	// 댓글 리스트 출력
 	@Override
 	public List<EventCommentDto> eventComment(int event_no) {
-		// TODO Auto-generated method stub
+
 		return eventDao.eventComment(event_no);
+	}
+
+	// 진행중 이벤트 댓글 삭제
+	@Override
+	public void eventCommentDelete(int comment_no) {
+		// TODO Auto-generated method stub
+		eventDao.eventCommentDelete(comment_no);
+	}
+
+	// 진행중 이벤트 댓글 수정
+	@Override
+	public void eventCommentModify(EventCommentDto eventCommentDto) {
+		// TODO Auto-generated method stub
+		eventDao.eventCommentModify(eventCommentDto);
+
+	}
+
+	// 진행중 이벤트 댓글 수정 뷰페이지
+	@Override
+	public EventCommentDto eventCommentModifyView(EventCommentDto eventCommentDto) {
+		// TODO Auto-generated method stub
+		return eventDao.eventCommentModifyView(eventCommentDto);
+	}
+
+	// 당첨자 게시글 조회수 증가
+	@Override
+	public void upHit(int no) {
+		eventDao.upHit(no);
+
+	}
+
+	// 이벤트 검색
+	@Override
+	public List<EventDTO> eventSearch(String option, String search) {
+		// TODO Auto-generated method stub
+		return eventDao.eventSearch(option, search);
 	}
 
 }

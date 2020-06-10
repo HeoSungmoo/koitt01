@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="eventList" resultType="com.koitt.jardin.dto.event.EventDTO">
 	
-	select * from event
+		select * from event
 	
 	</select>
 	
@@ -28,21 +28,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<delete id="eventCommentDelete">
 	
-	<select id="finEvent" resultType="com.koitt.jardin.dto.event.EventDTO">
+	delete from event_comment where comment_no=#{comment_no}
+	
+	</delete>
+	
+	
+	<select id="eventCommentModifyView" resultType="com.koitt.jardin.dto.event.EventCommentDto">
+	
+	select * from event_comment where comment_no=#{comment_no}
 	
 	</select>
 	
-	<select id="finEventView" resultType="com.koitt.jardin.dto.event.EventDTO">
 	
-	</select>
+	<update id="eventCommentModify">
+	
+	update event_comment set comment_content=#{comment_content} where comment_no = ${comment_no} 
+	
+	</update>
+	
 	
 	<select id="prizeWinner" resultType="com.koitt.jardin.dto.event.WinnerDTO">
+	
+	select * from winner
+	
 	
 	</select>
 	
 	<select id="prizeWinnerView" resultType="com.koitt.jardin.dto.event.WinnerDTO">
 	
+	
+	select * from winner where no=#{no}
+	
 	</select>
+	
+	<update id="upHit">
+	
+	update winner set hit=hit+1 where no=#{no}
+	
+	</update>
+	
+	<select id="eventSearchT" resultType="com.koitt.jardin.dto.event.EventDTO">
+	
+	select * from event where title like '%'||#{search}||'%'
+	
+	</select>
+	
+	<select id="eventSearchC" resultType="com.koitt.jardin.dto.event.EventDTO">
+	
+	select * from event where content like '%'||#{search}||'%'
+	
+	</select>
+	
 	
 </mapper>

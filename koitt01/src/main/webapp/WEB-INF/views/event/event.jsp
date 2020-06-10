@@ -203,9 +203,9 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">EVENT<span>이벤트</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">진행중 이벤트</a></li>
-					<li><a href="#" id="leftNavi2">종료된 이벤트</a></li>
-					<li class="last"><a href="#" id="leftNavi3">당첨자 발표</a></li>
+					<li><a href="event" id="leftNavi1">진행중 이벤트</a></li>
+					<li><a href="finEvent" id="leftNavi2">종료된 이벤트</a></li>
+					<li class="last"><a href="prizeWinner" id="leftNavi3">당첨자 발표</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
 
@@ -221,16 +221,30 @@ $(document).ready(function() {
 			
 						<ul>
 							<!-- 반복 -->
+							<jsp:useBean id="now" class="java.util.Date" />
+									
+									 <!-- 현재날짜 --> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+									   
+									<!-- 신청 시작날짜 !--> 
+									<fmt:formatDate value="${Event.end_date}" pattern="yyyy-MM-dd" var="endDate" /> 	
+									 
+									<c:choose>
+										<c:when test="${nowDate<endDate}">
 							<li>
 								<div class="img">
 									<a href="eventView?event_no=${Event.event_no }"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
 								</div>
 								<div class="txt">
 									<div class="subject">${Event.event_no}//${Event.title }</div>
-									<div class="day">이벤트 기간 : ${Event.start_date } ~ ${Event.end_date } </div>
+									<div class="day">이벤트 기간 :<fmt:formatDate pattern="yyyy-MM-dd" value="${Event.start_date }"/> ~ <fmt:formatDate pattern="yyyy-MM-dd" value="${Event.end_date }"/> </div>
 
 								</div>
 							</li>
+										
+										</c:when>
+										</c:choose>
+							
 						</ul>
 							</c:forEach>
 					</div>
@@ -251,23 +265,25 @@ $(document).ready(function() {
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-					
+					<form action="eventSearch" method="post" name="SearchName">
 					<!-- 검색 -->
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-									<select>
-										<option value="" />제목</option>
+									<select name="option">
+										<option value="title">제목</option>
+										<option value="content">내용</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li><input type="text" class="searchInput" name="search"/></li>
+								<li class="web"><input type="submit" name="button123"></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //검색 -->
 
 				</div>

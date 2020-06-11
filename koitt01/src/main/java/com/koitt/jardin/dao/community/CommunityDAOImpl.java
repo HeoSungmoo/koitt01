@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Repository
 public class CommunityDAOImpl implements CommunityDAO {
@@ -26,7 +27,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	// 체험단 글 보기 리뷰
 	@Override
 	public PreUserDTO exprReview(int preUserNo) {
-
+		PreUserDTO pd = sqlSession.selectOne("community.exprReview", preUserNo);
 		return sqlSession.selectOne("community.exprReview", preUserNo);
 	}
 
@@ -60,8 +61,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 이용후기 글 보기
 	@Override
-	public PreUserReviewDTO epilogueView(int review_no) {
-
+	public ReviewDTO epilogueView(int review_no) {
+		ReviewDTO rd = sqlSession.selectOne("epilogueView", review_no);
+		System.out.println(rd.getReview_date());
+		System.out.println(rd.getGrade());
+		System.out.println(rd.getContent());
 		return sqlSession.selectOne("epilogueView", review_no);
 	}
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
      <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+     
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +23,6 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
-<![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -176,7 +173,7 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a href="#" class="sbtnMini">글쓰기</a></li>
+								<li><a href="epilogueWrite" class="sbtnMini">글쓰기</a></li>
 							</ul>
 						</div>
 

@@ -10,6 +10,7 @@ import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
 import com.koitt.jardin.dto.board.PageNationDTO;
+import com.koitt.jardin.dto.board.SearchValue;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -48,16 +49,16 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 공지사항 글 검색
 	@Override
-	public List<NoticeDTO> noticeSearch(String option, String search) {
+	public List<NoticeDTO> noticeSearch(SearchValue sv) {
 
 		List<NoticeDTO> sList = null;
 
-		if (option.equals("title")) {
+		if (sv.getOption().equals("title")) {
 
-			sList = sqlSession.selectList("board.noticeSearchT", search);
-			System.out.println(sList.size());
-		} else if (option.equals("content")) {
-			sList = sqlSession.selectList("board.noticeSearchC", search);
+			sList = sqlSession.selectList("board.noticeSearchT", sv);
+			System.out.println(+sList.size());
+		} else if (sv.getOption().equals("content")) {
+			sList = sqlSession.selectList("board.noticeSearchC", sv);
 			System.out.println(sList.size());
 		}
 		return sList;

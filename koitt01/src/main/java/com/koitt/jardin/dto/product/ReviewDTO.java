@@ -1,6 +1,6 @@
 package com.koitt.jardin.dto.product;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class ReviewDTO {
 

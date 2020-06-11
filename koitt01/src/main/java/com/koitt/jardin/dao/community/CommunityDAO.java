@@ -5,6 +5,7 @@ import java.util.List;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 
 public interface CommunityDAO {
 
@@ -27,7 +28,7 @@ public interface CommunityDAO {
 	public List<PreUserReviewDTO> epilogue();
 
 	// 이용후기 글 보기
-	public PreUserReviewDTO epilogueView(int review_no);
+	public ReviewDTO epilogueView(int review_no);
 
 	// 인조이 커피 글 리스트
 	public List<EnjoyCoffDTO> enjoyCoffee();

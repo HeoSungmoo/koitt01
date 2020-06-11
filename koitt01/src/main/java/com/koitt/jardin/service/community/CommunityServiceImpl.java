@@ -9,6 +9,7 @@ import com.koitt.jardin.dao.community.CommunityDAO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -60,7 +61,7 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 이용후기 글 보기
 	@Override
-	public PreUserReviewDTO epilogueView(int review_no) {
+	public ReviewDTO epilogueView(int review_no) {
 
 		return communityDAO.epilogueView(review_no);
 	}

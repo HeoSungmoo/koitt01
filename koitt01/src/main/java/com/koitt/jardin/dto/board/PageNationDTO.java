@@ -4,7 +4,7 @@ public class PageNationDTO {
 
 	private int page_size = 10; // 한 페이지에 담을 게시글 수
 	private int range_size = 5;// 한 블럭 에 담을 페이지 수
-	private int cur_page = 1; // 현재 페이지 위치
+	private int curPage; // 현재 페이지 위치
 	private int cur_range; // 현재 블럭 위치
 	private int listCnt; // 게시글 수
 	private int page_cnt; // 페이지 수
@@ -18,19 +18,19 @@ public class PageNationDTO {
 	private String keyword; // (상품)검색어
 
 	// 이전 페이지, 다음 페이지 설정
-	public void prevnext(int cur_page) {
+	public void prevnext(int curPage) {
 		if (getRange_cnt() == 1) {
 			setPrev_page(false);
 			setNext_page(false);
-		} else if (cur_page > 0 && cur_page < 11) {
+		} else if (curPage > 0 && curPage < 6) {
 			setPrev_page(false);
 			setNext_page(true);
-		} else if (getRange_cnt() * 10 - 10 < cur_page) {
+		} else if (getRange_cnt() * 10 - 10 < curPage) {
 			setPrev_page(true);
 			setNext_page(false);
 		} else {
 			setPrev_page(true);
-			setNext_page(true);
+			setNext_page(false);
 		}
 	}
 
@@ -50,23 +50,23 @@ public class PageNationDTO {
 		this.range_size = range_size;
 	}
 
-	public int getCur_page() {
-		return cur_page;
+	public int getCurPage() {
+		return curPage;
 	}
 
-	public void setCur_page(int cur_page) {
-		this.cur_page = cur_page;
+	public void setCurPage(int curPage) {
+		this.curPage = curPage;
 	}
 
 	public int getCur_range() {
 		return cur_range;
 	}
 
-	public void setCur_range(int cur_page) {
-		if (cur_page % 10 == 0) {
-			this.cur_range = cur_page / 10;
+	public void setCur_range(int curPage) {
+		if (curPage % 5 == 0) {
+			this.cur_range = curPage / 5;
 		} else {
-			this.cur_range = cur_page / 10 + 1;
+			this.cur_range = curPage / 5 + 1;
 		}
 	}
 
@@ -107,8 +107,9 @@ public class PageNationDTO {
 		return start_page;
 	}
 
-	public void setStart_page(int cur_range) {
-		this.start_page = cur_range * 10 - 9;
+	public void setStart_page(int cur_range, int range_size) {
+		this.start_page = ((cur_range - 1) * range_size) + 1;
+
 	}
 
 	public int getEnd_page() {

@@ -31,4 +31,5 @@ public class PaymentController {
 		model.addAttribute("point", paymentService.memberPoint((String) session.getAttribute("member")));
 		return "payment/payment";
 	}
+
 }

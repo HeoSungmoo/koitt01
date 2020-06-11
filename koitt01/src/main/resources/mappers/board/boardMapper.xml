@@ -7,7 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--공지사항 글 리스트 가져오기 -->
 	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from (select * from notice order by upload_date desc)
+		select * 
+      from(
+               select row_number() over(order by b_no desc) as rnum, 
+                     no,title,content,hit,upload_date from notice order by upload_date desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
 	</select>
 
 <!--공지사항 글 보기 -->
@@ -71,16 +76,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="pageNation" resultType="com.koitt.jardin.dto.board.PageNationDTO">
-		select count(*) listCount from notice
+		select count(*) listCnt from notice
 	</select>
 	
 	
 	<!-- 공지사항 페이지 네이션! -->
-	<select id="pageNationList" resultType="com.koitt.jardin.dto.board.PageNationDTO">
+	<select id="pageNationList" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * 
       from(
-               select row_number() over(order by b_no desc) as rnum, 
-                     no,title,content,hit from board order by no desc
+               select row_number() over(order by no desc) as rnum, 
+                     no,title,content,hit,upload_date from notice order by upload_date desc
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>

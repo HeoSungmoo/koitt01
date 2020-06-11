@@ -48,8 +48,8 @@ public interface BoardService {
 	// 이용안내
 	public GuideDTO guide();
 
-	public List<PageNationDTO> pageNationList(int curPage);
-
 	public PageNationDTO pageNation(int curPage);
+
+	public List<PageNationDTO> pageNationList(int curPage);
 
 }

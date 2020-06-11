@@ -114,15 +114,22 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public PageNationDTO pageNation(int curPage) {
+		System.out.println("서비스 현재페이지" + curPage);
 		PageNationDTO pDto = boardDao.pageNation();
+		System.out.println("서비스페이지에서 블럭시작페이지 " + pDto.getStart_page());
+		System.out.println("서비스페이지에서 블럭 끝 페이지 " + pDto.getEnd_page());
+
 		pDto.setCur_page(curPage);
-		pDto.setPage_cnt(pDto.getList_cnt()); // 페이지 수 저장
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
 		pDto.setCur_page(curPage); // 현재 페이지 위치
 		pDto.setCur_range(curPage); // 현재 블럭 위치
 		pDto.prevnext(curPage); // 이전 블럭, 다음 블럭 설정
 		pDto.setStart_page(pDto.getCur_range()); // 현재 블럭 시작 페이지
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+
+		System.out.println("서비스페이지에서 블럭시작페이지 " + pDto.getStart_page());
+		System.out.println("서비스페이지에서 블럭 끝 페이지 " + pDto.getEnd_page());
 		return pDto;
 	}
 

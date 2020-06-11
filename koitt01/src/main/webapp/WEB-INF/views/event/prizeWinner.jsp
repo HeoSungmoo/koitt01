@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,9 +202,9 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">EVENT<span>이벤트</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">진행중 이벤트</a></li>
-					<li><a href="#" id="leftNavi2">종료된 이벤트</a></li>
-					<li class="last"><a href="#" id="leftNavi3">당첨자 발표</a></li>
+					<li><a href="event" id="leftNavi1">진행중 이벤트</a></li>
+					<li><a href="finEvent" id="leftNavi2">종료된 이벤트</a></li>
+					<li class="last"><a href="prizeWinner" id="leftNavi3">당첨자 발표</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(3,0);</script>
 
@@ -227,96 +230,18 @@ $(document).ready(function() {
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
 							<tbody>
+							<c:forEach var="winner" items="${prizeWinner }">
 								<tr>
-									<td class="tnone">1</td>
+									<td class="tnone">${winner.no }</td>
 									<td class="left">
-										<a href="#">까페모리 봄바람 커파힌잔 30% 할인 이벤트 당첨자 발표</a>
+										<a href="prizeWinnerView?no=${winner.no }">${winner.title }</a>
 										<img src="images/ico/ico_new.gif" alt="NEW" />
 									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
+									<td>${winner.upload_date }</td>
+									<td class="tnone right">${winner.hit }</td>
 								</tr>
 
-								<tr>
-									<td class="tnone">2</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">3</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">4</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">5</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">6</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">7</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">8</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">9</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
-
-								<tr>
-									<td class="tnone">10</td>
-									<td class="left">
-										<a href="#" class="lightgray">[11월 체험단 발표] 까모리 홍차라떼 체험단</a>
-									</td>
-									<td>14-01-28</td>
-									<td class="tnone right">9999</td>
-								</tr>
+							</c:forEach>	
 							</tbody>
 						</table>
 					</div>

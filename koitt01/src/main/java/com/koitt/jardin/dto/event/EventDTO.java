@@ -1,6 +1,6 @@
 package com.koitt.jardin.dto.event;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class EventDTO {
 

@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 공지사항 검색 title-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where title,content like '%'||#{search}||'%'
+		select * from notice where title like '%'||#{search}||'%'
 	</select>
 	<!-- 공지사항 검색 content-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">

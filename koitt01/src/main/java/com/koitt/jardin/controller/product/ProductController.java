@@ -28,6 +28,8 @@ public class ProductController {
 		return "product/list";
 	}
 
+	// 카테고리 설정
+
 	@RequestMapping("header")
 
 	public String header(Model model, String name) {

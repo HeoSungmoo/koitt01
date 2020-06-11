@@ -22,16 +22,64 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.anchor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/memberInfo.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/html5.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-$(document).ready(function() {
-	
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+// 이메일 선택 
+$(function(){	
+	$(document).ready(function(){
+		$('select[name=emailList]').change(function() {
+			if($(this).val()=="1"){
+				$('#orderMail2').val("");
+				$("#orderMail2").attr("readonly", false);
+			} else {
+				$('#orderMail2').val($(this).val());
+				$("#orderMail2").attr("readonly", true);
+			}
+		});
 
 
+		$("#ordersame").click(function(){
+			$("#recipientName").val($("#orderName").val());
+			$("#recipientZip").val($("#orderZip").val());
+			$("#recipientAddress").val($("#orderAddress").val());
+			$("#recipientPhone").val($("#orderPhone").val());
+			$("#recipientTel").val($("#orderTel").val());
+		});
+		
+	});
 });
+
+  function sample6_execDaumPostcode() {
+        new daum.Postcode({
+             oncomplete: function(data) {
+            	
+            	 
+            	 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('orderZip').value = data.zonecode;
+           		document.getElementById('orderAddress').value = addr;            
+                // 커서를 상세주소 필드로 이동한다.
+            } 
+        }).open();
+    }
+</script>
 </script>
 </head>
 <body>
@@ -129,6 +177,7 @@ $(document).ready(function() {
 								<th scope="col">합계</th>
 							</thead>
 							<tbody>
+								<c:set var="sum" value="0"/>
 								<c:forEach var="list" items="${list}">
 									<tr>
 										<td class="left">
@@ -149,6 +198,8 @@ $(document).ready(function() {
 										</td>
 										<td>${list.count} 개</td>
 										<td>${list.count * list.price } 원</td>
+										<c:set var= "sum" value="${sum + list.count*list.price}"/>
+
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -156,20 +207,19 @@ $(document).ready(function() {
 					</div>
 					<div class="poroductTotal">
 						<ul>	
-							<li>상품 합계금액 <strong>1,132,310</strong> 원</li>
+							<li>상품 합계금액 <strong><c:out value="${sum}"/></strong> 원</li>
 							<li>+ 배송비 <strong>2,500</strong> 원</li>
-							<li>= 총 합계 <strong>1,134,810</strong> 원</li>
+							<li>= 총 합계 <strong><c:out value="${sum+2500}"/></strong> 원</li>
 						</ul>
 					</div>
 					<!-- //주문 상품 -->
 					
 
 			<!-- 주문자 주소 입력 -->
-					<h3 class="diviLeft">주문자 주소 입력</h3>
+					<h3 class="diviLeft">주문자 정보 입력</h3>
 					<div class="diviRight">
 						<ul>
-							<li>수정 내용을 회원정보에도 반영합니다.&nbsp;&nbsp;</li>
-							<li><a href="#">회원정보반영</a></li>
+							<li><a onclick=memberInfo('${memberInfo}')>회원정보반영</a></li>
 						</ul>
 					</div>
 
@@ -183,7 +233,7 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th scope="row"><span>이름</span></th>
-									<td><input type="text" class="w134" value="홍길동" /></td>
+									<td><input type="text" class="w134" id="orderName"/></td>
 								</tr>
 
 								<tr>
@@ -191,11 +241,10 @@ $(document).ready(function() {
 									<td>
 										<ul class="pta">
 											<li>
-												<input type="text" class="w134" />&nbsp;
+												<input type="text" class="w134" id="orderZip" />&nbsp;
 											</li>
-											<li><a href="../member/zip.html" class="addressBtn"><span>우편번호 찾기</span></a></li>
-											<li class="pt5"><input type="text" class="addressType2" /></li>
-											<li class="pt5"><input type="text" class="addressType2" /></li>
+											<li><a class="addressBtn" onclick = "sample6_execDaumPostcode()"><span>우편번호 찾기</span></a></li>
+											<li class="pt5"><input type="text" class="addressType2" id="orderAddress"/></li>
 										</ul>
 									</td>
 								</tr>
@@ -203,12 +252,12 @@ $(document).ready(function() {
 									<th scope="row"><span>이메일</span></th>
 									<td>
 										<ul class="pta">
-											<li><input type="text" class="w134" /></li>
+											<li><input type="text" class="w134" id="orderMail1"/></li>
 											<li><span class="valign">&nbsp;@&nbsp;</span></li>
-											<li class="r10"><input type="text" class="w134" /></li>
+											<li class="r10"><input type="text" class="w134" id="orderMail2"/></li>
 											<li>
-												<select id="emailList">
-													<option value="#" selected="selected">직접입력</option>
+												<select id="emailList" name="emailList">
+													<option value="1" selected="selected">직접입력</option>
 													<option value="naver.com">naver.com</option>
 													<option value="daum.net">daum.net</option>
 													<option value="hanmail.net">hanmail.net</option>
@@ -233,19 +282,7 @@ $(document).ready(function() {
 									<th scope="row"><span>휴대폰 번호</span></th>
 									<td>
 										<ul class="pta">
-											<li>
-												<select>
-													<option value="010" selected="selected">010</option>
-													<option value="011">011</option>
-													<option value="016">016</option>
-													<option value="017">017</option>
-													<option value="018">018</option>    
-													<option value="019">019</option>    
-												</select>
-											</li>
-											<li>&nbsp;<span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /> <span class="valign">-</span>&nbsp;</li>
-											<li class="r10"><input type="text" class="w74" maxlength="4" /></li>
+											<li class="r10"><input type="text" class="hsmTel" maxlength="11" id="orderPhone" /></li>
 										</ul>
 									</td>
 								</tr>
@@ -253,36 +290,9 @@ $(document).ready(function() {
 									<th scope="row"><span>전화번호</span></th>
 									<td>
 										<ul class="pta">
-											<li>
-												<select>
-													<option value="02" selected="selected">02</option>
-													<option value="031">031</option>
-													<option value="032">032</option>
-													<option value="033">033</option>
-													<option value="041">041</option>
-													<option value="042">042</option>
-													<option value="043">043</option>
-													<option value="051">051</option>
-													<option value="052">052</option>
-													<option value="053">053</option>
-													<option value="054">054</option>
-													<option value="055">055</option>
-													<option value="061">061</option>
-													<option value="062">062</option>
-													<option value="063">063</option>
-													<option value="064">064</option>
-													<option value="070">070</option>
-												</select>
-											</li>
-											<li>&nbsp;<span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /> <span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /></li>
+											<li><input type="text" class="hsmTel" maxlength="11" id="orderTel"/></li>
 										</ul>
 									</td>
-								</tr>
-								<tr>
-									<th scope="row"><span>비밀번호</span></th>
-									<td><input type="password" class="w134" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -292,14 +302,13 @@ $(document).ready(function() {
 
 			<!-- 수취자 주소 입력 -->
 					<h3 class="dep">
-						수취자 주소 입력
+						수취자 정보 입력
 						
-						<input type="checkbox" id="infosame"/>
-						<label for="infosame">회원정보와 동일</label>
+						<label id="ordersame">주문자 정보와 동일</label>
 					</h3>
 					<div class="checkDiv">
 						<table summary="수취자 주소를 입력할 수 있는 란으로 이름, 주소, 이메일, 휴대폰 번호, 전화번호 순으로 입력 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
-							<caption>수취자 주소 입력</caption>
+							<caption>수취자 정보 입력</caption>
 							<colgroup>
 							<col width="22%" class="tw30" />
 							<col width="*" />
@@ -307,7 +316,7 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th scope="row"><span>이름</span></th>
-									<td><input type="text" class="w134" value="홍길동" /></td>
+									<td><input type="text" class="w134" id="recipientName"/></td>
 								</tr>
 
 								<tr>
@@ -315,11 +324,10 @@ $(document).ready(function() {
 									<td>
 										<ul class="pta">
 											<li>
-												<input type="text" class="w134" />&nbsp;
+												<input type="text" class="w134" id="recipientZip"/>&nbsp;
 											</li>
-											<li><a href="../member/zip.html" class="addressBtn"><span>우편번호 찾기</span></a></li>
-											<li class="pt5"><input type="text" class="addressType2" /></li>
-											<li class="pt5"><input type="text" class="addressType2" /></li>
+											<li><a class="addressBtn"><span>우편번호 찾기</span></a></li>
+											<li class="pt5"><input type="text" class="addressType2" id="recipientAddress"/></li>
 										</ul>
 									</td>
 								</tr>
@@ -327,19 +335,7 @@ $(document).ready(function() {
 									<th scope="row"><span>휴대폰 번호</span></th>
 									<td>
 										<ul class="pta">
-											<li>
-												<select>
-													<option value="010" selected="selected">010</option>
-													<option value="011">011</option>
-													<option value="016">016</option>
-													<option value="017">017</option>
-													<option value="018">018</option>    
-													<option value="019">019</option>    
-												</select>
-											</li>
-											<li>&nbsp;<span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /> <span class="valign">-</span>&nbsp;</li>
-											<li class="r10"><input type="text" class="w74" maxlength="4" /></li>
+											<li class="r10"><input type="text" class="hsmTel" maxlength="11" id="recipientPhone"/></li>
 										</ul>
 									</td>
 								</tr>
@@ -347,30 +343,7 @@ $(document).ready(function() {
 									<th scope="row"><span>전화번호</span></th>
 									<td>
 										<ul class="pta">
-											<li>
-												<select>
-													<option value="02" selected="selected">02</option>
-													<option value="031">031</option>
-													<option value="032">032</option>
-													<option value="033">033</option>
-													<option value="041">041</option>
-													<option value="042">042</option>
-													<option value="043">043</option>
-													<option value="051">051</option>
-													<option value="052">052</option>
-													<option value="053">053</option>
-													<option value="054">054</option>
-													<option value="055">055</option>
-													<option value="061">061</option>
-													<option value="062">062</option>
-													<option value="063">063</option>
-													<option value="064">064</option>
-													<option value="070">070</option>
-												</select>
-											</li>
-											<li>&nbsp;<span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /> <span class="valign">-</span>&nbsp;</li>
-											<li><input type="text" class="w74" maxlength="4" /></li>
+											<li><input type="text" class="hsmTel" maxlength="11" id="recipientTel"/></li>
 										</ul>
 									</td>
 								</tr>
@@ -396,7 +369,7 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th scope="row"><span>총 주문금액</span></th>
-									<td>1,132,310 원</td>
+									<td> 원</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>배송비</span></th>
@@ -410,8 +383,7 @@ $(document).ready(function() {
 												<input type="text" class="w134" />&nbsp;&nbsp;
 												<span class="valign"><strong>원</strong></span>
 											</li>
-											<li class="r10"><span class="valign">( 보유 쿠폰 내역 : ${coupon.size} 장 )&nbsp;</span></li>
-											<li><a href="coupon_list.html" class="nbtn">쿠폰목록</a></li>
+											<li><a href="couponList.jpg" class="nbtn">쿠폰목록</a></li>
 										</ul>
 									</td>
 								</tr>
@@ -677,6 +649,7 @@ $(document).ready(function() {
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery.fancybox-1.3.4.css" />
 <script type="text/javascript">
 $(function(){
+
 	// select, radio - display check
 
 	// 1 Step Radio
@@ -736,19 +709,6 @@ $(function(){
 		var layerCheck = 320;
 		var couponCheck = 320;
 	}
-
-	$(".addressBtn").fancybox({
-		'autoDimensions'    : false,
-		'showCloseButton'	: false,
-		'width' : layerCheck,
-		'padding' : 0,
-		'type'			: 'iframe',
-		'onComplete' : function() {
-			$('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
-			$('#fancybox-content').height($(this).contents().find('body').height());
-			});
-		}
-	});
 
 	$(".nbtn").fancybox({
 		'autoDimensions'    : false,

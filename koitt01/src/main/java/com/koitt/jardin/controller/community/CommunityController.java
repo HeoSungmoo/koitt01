@@ -68,8 +68,8 @@ public class CommunityController {
 	// 포토구매후기 글 쓰기
 	@RequestMapping("epilogueWrite")
 	public String epilogueWrite() {
-
-		return "community/epilogueWrite";
+//		communityService.epilogueView(review_no)
+		return "community/epilogue";
 	}
 
 	// 상품평 글 리스트

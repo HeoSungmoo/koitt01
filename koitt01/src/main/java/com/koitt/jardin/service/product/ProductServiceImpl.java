@@ -79,4 +79,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.SubCategoryDto();
 	}
 
+	@Override
+	public List<ProductDTO> categoryList(String category1, String category2, int page) {
+		// TODO Auto-generated method stub
+		return productDao.categoryList(category1, category2, page);
+	}
+
 }

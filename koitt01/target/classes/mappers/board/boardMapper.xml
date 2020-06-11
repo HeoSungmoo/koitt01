@@ -37,7 +37,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 공지사항 검색 title-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where title like '%'||#{search}||'%'
+		
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,title,content,hit,upload_date from notice where title like '%'||#{search}||'%' order by upload_date desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10 
+		
 	</select>
 	<!-- 공지사항 검색 content-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">

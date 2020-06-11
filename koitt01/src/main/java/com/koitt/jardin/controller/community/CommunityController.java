@@ -1,10 +1,15 @@
 package com.koitt.jardin.controller.community;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.service.community.CommunityService;
 
 @Controller
@@ -53,7 +58,10 @@ public class CommunityController {
 	// 리스트--------------------------------------------------------------------2020-06-03
 	// 작업중 리뷰에 대한 부분 상의 필요
 	@RequestMapping("epilogue")
-	public String epilogue(Model model) {
+	public String epilogue(Model model, HttpSession session) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		String memberId = mapper.writeValueAsString((String) session.getAttribute("member"));
+		model.addAttribute("memberId", memberId);
 		model.addAttribute("epilogue", communityService.epilogue());
 		return "community/epilogue";
 	}
@@ -67,8 +75,9 @@ public class CommunityController {
 
 	// 포토구매후기 글 쓰기
 	@RequestMapping("epilogueWrite")
-	public String epilogueWrite() {
-//		communityService.epilogueView(review_no)
+	public String epilogueWrite(ReviewDTO rd, HttpSession session, int review_no) {
+		rd.setId((String) session.getAttribute("member"));
+
 		return "community/epilogue";
 	}
 

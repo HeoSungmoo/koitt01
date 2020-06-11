@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
      <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-     
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +23,20 @@
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-	
+
+function memberId (memberId){
+const member= JSON.parse(memberId);
+	if(member == null){
+		alert("ㄹ호후ㅏㅅ용간ㅇ");
+		
+	} else{
+		ㅁㄴㅇㄹ
+	}
 
 
-});
+
+
+}
 </script>
 </head>
 <body>
@@ -173,7 +181,7 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a href="epilogueWrite" class="sbtnMini">글쓰기</a></li>
+								<li><a onclick=memberId('${memberId}') class="sbtnMini">글쓰기</a></li>
 							</ul>
 						</div>
 

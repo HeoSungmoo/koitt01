@@ -111,14 +111,30 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public EventDTO eventViewPre(int event_no) {
+		EventDTO ed = sqlSession.selectOne("event.eventViewPre", event_no);
 
 		return sqlSession.selectOne("event.eventViewPre", event_no);
 	}
 
 	@Override
 	public EventDTO eventViewNext(int event_no) {
+		EventDTO ed = sqlSession.selectOne("event.eventViewNext", event_no);
 
 		return sqlSession.selectOne("event.eventViewNext", event_no);
+	}
+
+	@Override
+	public EventDTO finEventViewPre(int event_no) {
+		EventDTO ed = sqlSession.selectOne("event.finEventViewPre", event_no);
+
+		return sqlSession.selectOne("event.finEventViewPre", event_no);
+	}
+
+	@Override
+	public EventDTO finEventViewNext(int event_no) {
+		EventDTO ed = sqlSession.selectOne("event.finEventViewNext", event_no);
+
+		return sqlSession.selectOne("event.finEventViewNext", event_no);
 	}
 
 }

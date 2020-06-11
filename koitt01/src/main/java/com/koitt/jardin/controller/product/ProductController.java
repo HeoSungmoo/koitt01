@@ -1,8 +1,11 @@
 package com.koitt.jardin.controller.product;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -27,6 +30,16 @@ public class ProductController {
 
 		return "product/list";
 	}
+
+	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
+	public String category_list(@PathVariable("category1") String category1,
+			@PathVariable("category2") String category2, @PathVariable Optional<Integer> page_, Model model) {
+		int page = page_.isPresent() ? page_.get() : 1;
+		model.addAttribute("product", productService.categoryList(category1, category2, page));
+
+		return "product/list";
+	}
+	// 카테고리 설정1
 
 	@RequestMapping("header")
 

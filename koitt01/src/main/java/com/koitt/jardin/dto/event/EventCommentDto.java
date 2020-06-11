@@ -9,6 +9,15 @@ public class EventCommentDto {
 	private String comment_content;
 	private Timestamp comment_data;
 	private int secret;
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public int getComment_no() {
 		return comment_no;

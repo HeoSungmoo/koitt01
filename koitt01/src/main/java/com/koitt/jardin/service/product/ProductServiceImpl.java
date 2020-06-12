@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
@@ -80,15 +81,15 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.SubCategoryDto();
 	}
 
-//	@Override
-//	public void categoryList(Model model) {
-//
-//		String category1 = model.asMap().get("category1").toString();
-//		String category2 = model.asMap().get("category2").toString();
-//		// TODO Auto-generated method stub
-//
-//		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
-//	}
+	@Override
+	public void categoryList(Model model) {
+
+		String category1 = model.asMap().get("category1").toString();
+		String category2 = model.asMap().get("category2").toString();
+		// TODO Auto-generated method stub
+
+		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
+	}
 
 //	@Overrideso
 //	public ProductDTO categoryList() {

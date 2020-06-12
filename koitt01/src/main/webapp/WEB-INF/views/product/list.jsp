@@ -182,12 +182,12 @@ $(document).ready(function() {
 				<ul>
 			
 				
-<!-- 	<c:forEach var="category" items="${categoryTest }"> -->
-<!-- 		<li>${category.title }</li> -->
+	<c:forEach var="category" items="${categoryTest }">
+		<li>${category.title }</li>
 		
 	
-<!-- 	s -->
-<!-- 	</c:forEach> -->
+	
+	</c:forEach>
 			
 				</ul>
 			</div>

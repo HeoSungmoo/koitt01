@@ -57,7 +57,7 @@ public class ProductController {
 
 		return "product/list";
 	}
-	// 카테고리 설정1
+	// 카테고리 설정111
 
 	@RequestMapping("header")
 

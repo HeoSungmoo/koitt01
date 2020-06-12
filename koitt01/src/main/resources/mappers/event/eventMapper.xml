@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="eventCommentWrite">
 	
-	insert into event_comment(comment_no,event_no,comment_content,secret) values(event_seq.nextval,#{event_no},#{comment_content},1)
+	insert into event_comment(comment_no,event_no,comment_content,secret,id) values(event_seq.nextval,#{event_no},#{comment_content},1,#{id})
 	
 	</insert>
 	
@@ -80,16 +80,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from event where content like '%'||#{search}||'%'
 	
 	</select>
-	
+	<!-- 진행중 이벤트 이전글 -->
 	<select id="eventViewPre"  resultType="com.koitt.jardin.dto.event.EventDTO">
-	<![CDATA[select * from event where event_no=(select max(event_no) from (select * from event where event_no < #{event_no} )) ]]>
+	<![CDATA[select * from event where event_no=(select max(event_no) from (select * from event where event_no < #{event_no} and end_date > sysdate)) ]]>
 
 	</select>
-	
+	<!-- 진행중 이벤트 다음글 -->
 	<select id="eventViewNext"  resultType="com.koitt.jardin.dto.event.EventDTO">
-	<![CDATA[select * from event where event_no=(select min(event_no) from (select * from event where event_no > #{event_no} )) ]]>
+	<![CDATA[select * from event where event_no=(select min(event_no) from (select * from event where event_no > #{event_no} and end_date > sysdate)) ]]>
 	
 	</select>
+	<!-- 종료된 이벤트 이전글 -->
+	<select id="finEventViewPre"  resultType="com.koitt.jardin.dto.event.EventDTO">
+	<![CDATA[select * from event where event_no=(select max(event_no) from (select * from event where event_no < #{event_no} and end_date > sysdate)) ]]>
+
+	</select>
+	<!-- 종료중 이벤트 다음글 -->
+	<select id="finEventViewNext"  resultType="com.koitt.jardin.dto.event.EventDTO">
+	<![CDATA[select * from event where event_no=(select min(event_no) from (select * from event where event_no > #{event_no} and end_date > sysdate)) ]]>
 	
+	</select>
 	
 </mapper>

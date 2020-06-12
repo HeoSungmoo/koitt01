@@ -1,5 +1,6 @@
 package com.koitt.jardin.dao.product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -84,5 +85,22 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("product.subCategoryList");
 	}
+
+	@Override
+	public List<ProductDTO> categoryList(String category1, String category2, int page) {
+		// TODO Auto-generated method stub
+		ArrayList list = new ArrayList();
+		list.add(category1);
+		list.add(category2);
+		list.add(page);
+
+		return sqlSession.selectList("product.categoryList", list);
+	}
+
+//	@Override
+//	public ProductDTO categoryList() {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectOne("product.categoryList");
+//	}
 
 }

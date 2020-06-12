@@ -48,7 +48,7 @@ public class ProductController {
 //		return "product/list";
 //	}
 
-	@RequestMapping("/jardin/product/{category1}/{category2}")
+	@RequestMapping("/product/{category1}/{category2}")
 	public String category_list(@PathVariable("category1") String category1,
 			@PathVariable("category2") String category2, Model model) {
 //		int page = page_.isPresent() ? page_.get() : 1;

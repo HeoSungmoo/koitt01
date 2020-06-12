@@ -5,8 +5,8 @@ import java.util.List;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.PageNationDTO;
 import com.koitt.jardin.dto.board.SearchValue;
+import com.koitt.jardin.dto.page.PageNationDTO;
 
 public interface BoardService {
 
@@ -49,8 +49,40 @@ public interface BoardService {
 	// 이용안내
 	public GuideDTO guide();
 
+//공지사항 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
 	public PageNationDTO pageNation(int curPage);
 
+	// 페이징 글 리스트 가져오기
 	public List<PageNationDTO> pageNationList(int curPage);
 
+//FAQ 페이징------------------------------------------------------------------	
+	// FAQ 페이징 게시글 수
+	public PageNationDTO faqPageNation(int curPage);
+
+	// FAQ 페이징 글 리스트 가져오기
+	public List<PageNationDTO> faqPageNationList(int curPage);
+
+//FAQJoin 페이징------------------------------------------------------------------	
+	// FAQJoin 페이징 게시글 수
+	public PageNationDTO faqJoinPageNation(int curPage);
+
+	// FAQJoin 페이징 글 리스트 가져오기
+	public List<PageNationDTO> faqJoinPageNationList(int curPage);
+
+	// FAQProduct
+//FAQProduct 페이징------------------------------------------------------------------
+	// FAQProduct 페이징 게시글 수
+	public PageNationDTO faqProductPageNation(int curPage);
+
+	// FAQProduct 페이징 글 리스트 가져오기
+	public List<PageNationDTO> faqProductPageNationList(int curPage);
+
+	// FAQProduct
+	// 페이징------------------------------------------------------------------
+	// FAQProduct 페이징 게시글 수
+	public PageNationDTO faqOrderPageNation(int curPage);
+
+	// FAQProduct 페이징 글 리스트 가져오기
+	public List<PageNationDTO> faqOrderPageNationList(int curPage);
 }

@@ -182,12 +182,32 @@ $(document).ready(function() {
 				<ul>
 			
 				
+<<<<<<< HEAD
 	<c:forEach var="category" items="${categoryTest }">
 		<li>${category.title }</li>
+=======
+
+ 	<c:forEach var="category" items="${productList }"> 
+		<li>${category.title }</li> 
+
+<!-- 	<c:forEach var="category" items="${categoryTest }"> -->
+<!-- 		<li>${category.title }</li> -->
+
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 		
 	
+<<<<<<< HEAD
 	
 	</c:forEach>
+=======
+
+			
+ 	</c:forEach> 
+
+<!-- 	s -->
+<!-- 	</c:forEach> -->
+
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 			
 				</ul>
 			</div>

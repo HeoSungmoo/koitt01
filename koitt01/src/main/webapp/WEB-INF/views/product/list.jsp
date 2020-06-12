@@ -182,12 +182,22 @@ $(document).ready(function() {
 				<ul>
 			
 				
+
  	<c:forEach var="category" items="${productList }"> 
 		<li>${category.title }</li> 
+
+<!-- 	<c:forEach var="category" items="${categoryTest }"> -->
+<!-- 		<li>${category.title }</li> -->
+
 		
 	
+
 			
  	</c:forEach> 
+
+<!-- 	s -->
+<!-- 	</c:forEach> -->
+
 			
 				</ul>
 			</div>
@@ -198,8 +208,8 @@ $(document).ready(function() {
 					<li>
 						<a href="#">
 							<div class="img"><img src="../images/img/sample_brand.jpg" alt="제품이미지" /></div>
-							<div class="name">${categoryList.title }</div>
-							<div class="price">${categoryList.price }</div>
+							<div class="name"></div>
+							<div class="price"></div>
 						</a>
 					</li>
 		</ul>

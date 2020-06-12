@@ -13,8 +13,10 @@ public interface BoardDAO {
 	// 공지사항 글 리스트
 	public List<NoticeDTO> notice();
 
+	public PageNationDTO noticeSearchPageNation(SearchValue sv);
+
 	// 공지사항 검색
-	public List<NoticeDTO> noticeSearch(SearchValue sv);
+	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv);
 
 	// 공지사항 글 보기
 	public NoticeDTO noticeView(int no);

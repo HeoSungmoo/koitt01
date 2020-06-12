@@ -13,8 +13,13 @@ public interface BoardService {
 	// 공지사항 글 리스트
 	public List<NoticeDTO> notice();
 
-	// 공지사항 검색
-	public List<NoticeDTO> noticeSearch(SearchValue sv);
+// 공지사항 검색-----------------------------------------------------------------------------
+	// 검색글 페이징 게시글 수
+	public PageNationDTO noticeSearchPageNation(SearchValue sv);
+
+	// 검색글 페이징 글 리스트
+	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv);
+//-----------------------------------------------------------------------------------------
 
 	// 공지사항 조회수
 	public void noticeViewHit(int No);

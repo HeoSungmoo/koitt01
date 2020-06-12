@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.page.ExprPageNationDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
@@ -87,7 +88,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	// 체험단 페이징------------------------------------------------------------------
 	// 페이징 게시글 수
 	@Override
-	public PageNationDTO exprPageNation() {
+	public ExprPageNationDTO exprPageNation() {
 		return sqlSession.selectOne("community.exprPageNation");
 	}
 

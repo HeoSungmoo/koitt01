@@ -47,9 +47,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.noticeViewNext", no);
 	}
 
-	// 공지사항 글 검색
+	// 공지사항 글 리스트
 	@Override
-	public List<NoticeDTO> noticeSearch(SearchValue sv) {
+	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv) {
 
 		List<NoticeDTO> sList = null;
 
@@ -62,7 +62,13 @@ public class BoardDAOImpl implements BoardDAO {
 			System.out.println(sList.size());
 		}
 		return sList;
+	}
 
+	// 공지사항 검색 게시글 수
+	@Override
+	public PageNationDTO noticeSearchPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("board.noticeSearchN", sv);
 	}
 
 	// 공지사항 조회수
@@ -179,4 +185,5 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<PageNationDTO> faqOrderPageNationList(int curPage) {
 		return sqlSession.selectList("board.faqOrderPageNationList", curPage);
 	}
+
 }

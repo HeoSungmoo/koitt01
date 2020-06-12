@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.koitt.jardin.dto.page.ExprPageNationDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.service.community.CommunityService;
 
@@ -25,7 +26,7 @@ public class CommunityController {
 	@RequestMapping("expr")
 	public String expr(@RequestParam(value = "curPage", defaultValue = "1") int curPage, Model model) {
 //		model.addAttribute("expr", communityService.expr());
-		PageNationDTO PDto = communityService.exprPageNation(curPage); // 게시글 수 저장
+		ExprPageNationDTO PDto = communityService.exprPageNation(curPage); // 게시글 수 저장
 		List<PageNationDTO> list = communityService.exprPageNationList(curPage);
 		model.addAttribute("expr", list);
 		model.addAttribute("pDto", PDto);
@@ -37,7 +38,7 @@ public class CommunityController {
 		System.out.println("expr페이지 수page_cnt: " + PDto.getPage_cnt());
 		System.out.println("expr현재 블럭위치cur_range: " + PDto.getCur_range());
 		System.out.println("expr블럭수range_cnt: " + PDto.getRange_cnt());
-		System.out.println("과연" + PDto.getPage_cnt() % 10);
+		System.out.println("과연" + 5 % 10);
 		return "community/expr";
 	}
 

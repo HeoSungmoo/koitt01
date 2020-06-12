@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.koitt.jardin.dto.board.NoticeDTO;
 import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.service.board.BoardService;
@@ -33,13 +34,18 @@ public class BoardController {
 
 	// 공지사항 검색
 	@RequestMapping("noticeSearch")
-	public String noticeSearch(Model model, SearchValue sv) {
+	public String noticeSearch(@RequestParam(value = "curPage", defaultValue = "1") SearchValue sv, Model model) {
+		PageNationDTO PDto = boardService.noticeSearchPageNation(sv); // 게시글 수 저장
+		List<NoticeDTO> list = boardService.noticeSearchPageNationList(sv);
+		model.addAttribute("noticeSearch", list);
+		model.addAttribute("pDto", PDto);
+		model.addAttribute("sv", sv);
 //		System.out.println("1" + sv.getOption());
 //		System.out.println("2" + sv.getSearch());
 //		System.out.println("3" + sv.getCurPage());
-		PageNationDTO PDto = boardService.pageNation(sv.getCurPage());
-		model.addAttribute("pDto", PDto);
-		model.addAttribute("notice", boardService.noticeSearch(sv));
+//		PageNationDTO PDto = boardService.pageNation(sv.getCurPage());
+//		model.addAttribute("pDto", PDto);
+//		model.addAttribute("notice", boardService.noticeSearch(sv));
 		return "board/notice";
 	}
 
@@ -116,7 +122,6 @@ public class BoardController {
 //		System.out.println("페이지 수page_cnt: " + PDto.getPage_cnt());
 //		System.out.println("현재 블럭위치cur_range: " + PDto.getCur_range());
 //		System.out.println("블럭수range_cnt: " + PDto.getRange_cnt());
-
 		return "board/notice";
 	}
 

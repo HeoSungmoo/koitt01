@@ -1,6 +1,6 @@
 package com.koitt.jardin.dto.page;
 
-public class ExprPageNationDTO2 {
+public class ExprPageNationDTO {
 
 	private int page_size = 10; // 한 페이지에 담을 게시글 수
 	private int range_size = 5;// 한 블럭 에 담을 페이지 수
@@ -96,7 +96,7 @@ public class ExprPageNationDTO2 {
 	}
 
 	public void setRange_cnt(int page_cnt) {
-		if (page_cnt % 10 == 0) {
+		if (page_cnt % 5 == 0) {
 			this.range_cnt = page_cnt / getRange_size();
 		} else {
 			this.range_cnt = page_cnt / getRange_size() + 1;

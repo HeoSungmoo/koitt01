@@ -22,10 +22,6 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
-<![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -38,7 +34,7 @@ $(document).ready(function() {
 
 
 
-<!--익스레이어팝업-->
+
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
 		<p class="img"><img src="images/ico/ico_alert.gif" alt="알림" /></p>
@@ -228,7 +224,7 @@ $(document).ready(function() {
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
 									<select>
-										<option value="" />제목</option>
+										<option value="">제목</option>
 									</select>
 								</li>
 								<li><input type="text" class="searchInput" /></li>
@@ -238,8 +234,6 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<!-- //체험단 -->
-
-
 				</div>
 			</div>
 			<!-- //contents -->

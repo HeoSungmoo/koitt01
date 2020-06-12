@@ -9,6 +9,7 @@ import com.koitt.jardin.dao.community.CommunityDAO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.page.ExprPageNationDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
@@ -74,7 +75,7 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDAO.enjoyView(no);
 	}
 
-//FAQ 페이징------------------------------------------------------------------
+//체험단 페이징------------------------------------------------------------------
 	// 페이징 글 리스트 가져오기
 	@Override
 	public List<PageNationDTO> exprPageNationList(int curPage) {
@@ -83,8 +84,8 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 페이징 게시글 수 및 값 세팅
 	@Override
-	public PageNationDTO exprPageNation(int curPage) {
-		PageNationDTO pDto = communityDAO.exprPageNation();
+	public ExprPageNationDTO exprPageNation(int curPage) {
+		ExprPageNationDTO pDto = communityDAO.exprPageNation();
 
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장

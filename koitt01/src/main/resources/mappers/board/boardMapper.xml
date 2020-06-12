@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update notice set Hit=Hit+1 where No=#{no}
 	</update>
 	
-	<!-- 공지사항 검색 title-->
+	<!-- 공지사항 검색 title 글 리스트-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		
 		select * 
@@ -36,9 +36,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where rnum between #{curPage}*10-9 and #{curPage}*10 
 		
 	</select>
-	<!-- 공지사항 검색 content-->
+	
+	<!-- 공지사항 검색 content 글 리스트-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where content like '%'||#{search}||'%'
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,title,content,hit,upload_date from notice where content like '%'||#{search}||'%' order by upload_date desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10 
+	</select>
+	
+	<!-- 공지사항 content 검색 글 수 -->
+	<select id="noticeSearchN"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
+		select count(*) from notice
+		<where>
+		<if test="option='title'">
+		title like '%'||#{search}||'%'
+		</if>
+		<if test="option='content'">
+		content like '%'||#{search}||'%'
+		</if>
+		</where>
+
+
+<!-- 		<choose> -->
+<!-- 		<when test = "#{option}='title'"> -->
+<!-- 		select count(*) from notice where title like '%'||#{search}||'%' order by upload_date desc -->
+<!-- 		</when> -->
+<!-- 		<when test = "#{option}='content'"> -->
+<!-- 		select count(*) from notice where content like '%'||#{search}||'%' order by upload_date desc -->
+<!-- 		</when> -->
+<!-- 		</choose> -->
 	</select>
 
 <!--1:1문의 글 쓰기 -->

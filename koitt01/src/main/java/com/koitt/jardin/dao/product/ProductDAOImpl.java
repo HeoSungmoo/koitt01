@@ -1,6 +1,5 @@
 package com.koitt.jardin.dao.product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.ProductMapper;
 import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Repository
@@ -17,6 +17,9 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	SqlSession sqlSession;
+
+	@Autowired
+	ProductMapper productMapper;
 
 	// 제품리스트 목록페이지
 	@Override
@@ -87,14 +90,10 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<ProductDTO> categoryList(String category1, String category2, int page) {
+	public List<ProductDTO> categoryList(String category1, String category2) {
 		// TODO Auto-generated method stub
-		ArrayList list = new ArrayList();
-		list.add(category1);
-		list.add(category2);
-		list.add(page);
 
-		return sqlSession.selectList("product.categoryList", list);
+		return productMapper.categoryTest(category1, category2);
 	}
 
 //	@Override

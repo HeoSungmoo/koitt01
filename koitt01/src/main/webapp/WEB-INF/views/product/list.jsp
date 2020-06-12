@@ -101,7 +101,7 @@ $(document).ready(function() {
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
-						<li><a href="">클래스</a></li>
+						<li><a href="/product/">클래스</a></li>
 						<li><a href="#">홈스타일 카페모리</a></li>
 						<li><a href="#">드립커피백</a></li>
 						<li><a href="#">카페리얼 커피</a></li>
@@ -117,7 +117,7 @@ $(document).ready(function() {
 				</li>
 				<li class="t2"><a href="#" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="categoryList">클래스</a></li>
+						<li><a href="/product/원두/클래스">클래스</a></li>
 						<li><a href="#">로스터리샵</a></li>
 						<li><a href="#">커피휘엘</a></li>
 						<li><a href="#">산지별 생두</a></li>
@@ -182,10 +182,9 @@ $(document).ready(function() {
 				<ul>
 			
 				
-	<c:forEach var="subcategoryList" items="${subcategoryList }">
-		<li>${subcategoryList.sub_category_code }</li>
-		<li>${subcategoryList.categoryCode }</li>
-		<li>${subcategoryList.name }</li>
+	<c:forEach var="category" items="${categoryTest }">
+		<li>${category.title }</li>
+		
 	
 	
 	</c:forEach>

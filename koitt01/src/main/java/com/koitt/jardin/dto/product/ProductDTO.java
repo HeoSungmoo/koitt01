@@ -12,16 +12,16 @@ public class ProductDTO {
 	private String kcal;
 	private int grade;
 	private int volume;
-	private String thumbNail;
+	private String thumb_nail;
 	private String image1;
 	private String image2;
 	private String image3;
 	private String detail;
-	private Timestamp uploadDate;
+	private Timestamp upload_date;
 	private int product_stock;
-	private int exposureState;
+	private int exposure_state;
 
-	ProductDTO() {
+	public ProductDTO() {
 
 	}
 
@@ -89,14 +89,6 @@ public class ProductDTO {
 		this.grade = grade;
 	}
 
-	public String getThumbNail() {
-		return thumbNail;
-	}
-
-	public void setThumbNail(String thumbNail) {
-		this.thumbNail = thumbNail;
-	}
-
 	public String getImage1() {
 		return image1;
 	}
@@ -129,14 +121,6 @@ public class ProductDTO {
 		this.detail = detail;
 	}
 
-	public Timestamp getUploadDate() {
-		return uploadDate;
-	}
-
-	public void setUploadDate(Timestamp uploadDate) {
-		this.uploadDate = uploadDate;
-	}
-
 	public int getProduct_stock() {
 		return product_stock;
 	}
@@ -145,12 +129,28 @@ public class ProductDTO {
 		this.product_stock = product_stock;
 	}
 
-	public int getExposureState() {
-		return exposureState;
+	public String getThumb_nail() {
+		return thumb_nail;
 	}
 
-	public void setExposureState(int exposureState) {
-		this.exposureState = exposureState;
+	public void setThumb_nail(String thumb_nail) {
+		this.thumb_nail = thumb_nail;
+	}
+
+	public Timestamp getUpload_date() {
+		return upload_date;
+	}
+
+	public void setUpload_date(Timestamp upload_date) {
+		this.upload_date = upload_date;
+	}
+
+	public int getExposure_state() {
+		return exposure_state;
+	}
+
+	public void setExposure_state(int exposure_state) {
+		this.exposure_state = exposure_state;
 	}
 
 }

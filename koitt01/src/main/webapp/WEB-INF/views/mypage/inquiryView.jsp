@@ -230,19 +230,18 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									<li class="cate">[기타]</li>
-									<li>문의 드립니다.</li>
+									<li class="cate">${inquiryView.category}</li>
+									<li>${inquiryView.title}</li>
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">등록일<span>14.01.28</span></p>
+								<p class="txt">등록일<span>${inquiry.upload_date}</span></p>
 								<p class="btn"><span class="obtnMini">답변완료</span></p>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							문의드립니다.<br/>
-							빠른 답변 부탁드립니다
+							${inquiryView.content}
 						</div>
 					</div>
 

@@ -7,13 +7,13 @@ import com.koitt.jardin.dto.member.MemberDTO;
 
 public interface MyPageDAO {
 	// 1:1문의 리스트 출력
-	public abstract List<InquiryDTO> inquiryList();
+	public abstract List<InquiryDTO> inquiryList(String id);
 
 	// 1:1문의 내용 출력
 	public abstract InquiryDTO inquiryView(int no);
 
 	// 1:1문의 글등록
-	public abstract void writeComplete(InquiryDTO inquiryDto);
+	public abstract void writeComplete(InquiryDTO inquritDto);
 
 	// 회원정보 수정을 위한 정보 출력
 	public abstract MemberDTO changeInfoView(MemberDTO memberDto);

@@ -17,6 +17,10 @@ public interface ProductService {
 
 	public List<SubCategoryDto> SubCategoryDto();
 
+//	public void categoryList(Model model);
+
+//	public ProductDTO categoryList();
+
 	public SubCategoryDto SubCategoryDto(int sub_category_code);
 
 	public ProductInfoDTO productInfoDto(int product_no);

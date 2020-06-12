@@ -144,10 +144,16 @@ $(document).ready(function() {
 									<li>작성자<span>${epilogueView.id}</span></li>
 									<li class="tnone">등록일<span><fmt:formatDate pattern="yyyy-MM-dd" value="${epilogueView.review_date}"/></span></li>
 									<li class="tnone">조회수<span>${epilogueView.hit}</span></li>
+									
+									<li class="last" >평점
+										<span id="star${k=k+1}" class="star">
+											
+										</span>
+									</li>
 									<script>
-    var innerHtml = "체험단 평점&nbsp;";
+    var innerHtml = "";
     for (var i = 0; i < 5; i++) {
-        if (i < ${epilogueView.grade}) {
+        if (i < 3) {
             innerHtml += '<img src="images/ico/ico_star.gif"/>'
         } else {
             innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
@@ -156,17 +162,12 @@ $(document).ready(function() {
     var star = document.getElementById('star${k}');
     star.innerHTML = innerHtml;
 </script>
-									<li class="last">평점
-										<span id="star${k=k+1}" class="star">
-											
-										</span>
-									</li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							${epilogue.content }
+							${epilogueView.content }
 						</div>
 					</div>
 

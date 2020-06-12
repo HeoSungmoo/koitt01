@@ -25,6 +25,7 @@
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -32,6 +33,7 @@ $(document).ready(function() {
 
 });
 </script>
+
 </head>
 <body>
 
@@ -211,23 +213,26 @@ $(document).ready(function() {
 
 
 			<!-- contents -->
+			
 			<div id="contents">
 				<div id="member">
 					<h2><strong>로그인</strong><span>로그인 후 주문하시면 다양한 혜택을 받으실 수 있습니다.</span></h2>
 					<h3>회원 로그인</h3>
 					<div class="informbox">
 						<div class="inform">
+						<form name = "loginOk" action = "loginOk">
 							<ul>
-								<li><input type="text" class="loginType" name="" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
-								<li><input type="password" class="passType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="text" class="loginType" name="id" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="password" name = "password" class="passType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='passType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
 							</ul>
 
-							<div class="btn"><a href="#" class="sbtn">로그인</a></div>
+							<div class="btn"><input type = "submit" value = "로그인" class="sbtn"></div>
 							<div class="chk"><input type="checkbox" id="idsave"/><label for="idsave">아이디 저장</label></div>							
 
 							<div class="point">
 								<p>아이디와 비밀번호를 잊으셨나요?</p>
 								<a href="#" class="nbtn">아이디/비밀번호 찾기</a>
+							</form>
 							</div>
 						</div>
 					</div>

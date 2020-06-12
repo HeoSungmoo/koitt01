@@ -17,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDAO productDao;
 
+//	@Autowired
+//	ProductTestMapper productMapper;
+
 	// 제품리스트 목록페이지
 	@Override
 	public List<ProductDTO> list() {
@@ -71,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
 	public SubCategoryDto SubCategoryDto(int sub_category_code) {
 		// TODO Auto-generated method stub
 		return productDao.SubCategoryDto(sub_category_code);
+
 	}
 
 	@Override
@@ -78,5 +82,21 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return productDao.SubCategoryDto();
 	}
+
+//	@Override
+//	public void categoryList(Model model) {
+//
+//		String category1 = model.asMap().get("category1").toString();
+//		String category2 = model.asMap().get("category2").toString();
+//		// TODO Auto-generated method stub
+//
+//		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
+//	}
+
+//	@Overrideso
+//	public ProductDTO categoryList() {
+//		// TODO Auto-generated method stub
+//		return productDao.categoryList();
+//	}
 
 }

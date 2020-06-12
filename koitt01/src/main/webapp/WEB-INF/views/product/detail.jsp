@@ -269,7 +269,7 @@ $(document).ready(function() {
 					<!-- 판매중 -->
 					<div class="infobtn">
 						<ul>
-							<li><a href="#" class="ty1">바로 <span>구매하기</span></a></li>
+							<li><a href="payment?product_no=${detail.product_no }" class="ty1">바로 <span>구매하기</span></a></li>
 							<li><a href="#" class="ty2">장바구니 <span>담기</span></a></li>
 							<li class="last"><a href="#" class="ty3">위시 <span>리스트</span></a></li>
 						</ul>

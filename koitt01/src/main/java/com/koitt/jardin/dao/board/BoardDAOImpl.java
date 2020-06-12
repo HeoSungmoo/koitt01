@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.PageNationDTO;
+import com.koitt.jardin.dto.board.SearchValue;
+import com.koitt.jardin.dto.page.PageNationDTO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -46,22 +47,28 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.noticeViewNext", no);
 	}
 
-	// 공지사항 글 검색
+	// 공지사항 글 리스트
 	@Override
-	public List<NoticeDTO> noticeSearch(String option, String search) {
+	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv) {
 
 		List<NoticeDTO> sList = null;
 
-		if (option.equals("title")) {
+		if (sv.getOption().equals("title")) {
 
-			sList = sqlSession.selectList("board.noticeSearchT", search);
-			System.out.println(sList.size());
-		} else if (option.equals("content")) {
-			sList = sqlSession.selectList("board.noticeSearchC", search);
+			sList = sqlSession.selectList("board.noticeSearchT", sv);
+			System.out.println(+sList.size());
+		} else if (sv.getOption().equals("content")) {
+			sList = sqlSession.selectList("board.noticeSearchC", sv);
 			System.out.println(sList.size());
 		}
 		return sList;
+	}
 
+	// 공지사항 검색 게시글 수
+	@Override
+	public PageNationDTO noticeSearchPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("board.noticeSearchN", sv);
 	}
 
 	// 공지사항 조회수
@@ -115,16 +122,68 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.guide");
 	}
 
-	// 공지사항 페이지네이션
+//공지사항 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
 	@Override
 	public PageNationDTO pageNation() {
 		return sqlSession.selectOne("board.pageNation");
 	}
 
+	// 페이징 글 리스트 가져오기
 	@Override
 	public List<PageNationDTO> pageNationList(int curPage) {
-		return sqlSession.selectList("board.pageNationList");
+		System.out.println("서비스 현재페이지" + curPage);
+		return sqlSession.selectList("board.pageNationList", curPage);
 
+	}
+
+//FAQ 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
+	@Override
+	public PageNationDTO faqPageNation() {
+		return sqlSession.selectOne("board.faqPageNation");
+	}
+
+	// 페이징 글 리스트 가져오기
+	@Override
+	public List<PageNationDTO> faqPageNationList(int curPage) {
+		return sqlSession.selectList("board.faqPageNationList", curPage);
+	}
+
+	// faqJoin 페이징 게시글 수
+	@Override
+	public PageNationDTO faqJoinPageNation() {
+		return sqlSession.selectOne("board.faqJoinPageNation");
+	}
+
+	// faqJoin 페이징 글 리스트 가져오기
+	@Override
+	public List<PageNationDTO> faqJoinPageNationList(int curPage) {
+		return sqlSession.selectList("board.faqJoinPageNationList", curPage);
+	}
+
+	// faqProduct 페이징 게시글 수
+	@Override
+	public PageNationDTO faqProductPageNation() {
+		return sqlSession.selectOne("board.faqProductPageNation");
+	}
+
+	// faqProdcut 페이징 글 리스트 가져오기
+	@Override
+	public List<PageNationDTO> faqProductPageNationList(int curPage) {
+		return sqlSession.selectList("board.faqProductPageNationList", curPage);
+	}
+
+	// faqOrder 페이징 게시글 수
+	@Override
+	public PageNationDTO faqOrderPageNation() {
+		return sqlSession.selectOne("board.faqOrderPageNation");
+	}
+
+	// faqOrder 페이징 글 리스트 가져오기
+	@Override
+	public List<PageNationDTO> faqOrderPageNationList(int curPage) {
+		return sqlSession.selectList("board.faqOrderPageNationList", curPage);
 	}
 
 }

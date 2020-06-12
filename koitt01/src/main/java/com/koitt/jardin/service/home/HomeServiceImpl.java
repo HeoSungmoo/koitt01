@@ -2,9 +2,6 @@ package com.koitt.jardin.service.home;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +16,6 @@ public class HomeServiceImpl implements HomeService {
 
 	@Autowired
 	HomeDAO homeDao;
-
-	// 아이피 가져오기
-	@Override
-	public void getIp(HttpServletRequest request, HttpSession session) {
-		if (session.getAttribute("ip") == null) {
-			session.setAttribute("ip", request.getRemoteAddr());
-		}
-	}
 
 	// 배너 리스트 불러오기
 	@Override

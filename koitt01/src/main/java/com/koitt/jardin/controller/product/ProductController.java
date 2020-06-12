@@ -1,5 +1,7 @@
 package com.koitt.jardin.controller.product;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,10 +52,10 @@ public class ProductController {
 
 	@RequestMapping("/product/{category1}/{category2}")
 	public String category_list(@PathVariable("category1") String category1,
-			@PathVariable("category2") String category2, Model model) {
-//		int page = page_.isPresent() ? page_.get() : 1;
+			@PathVariable("category2") String category2, Model model, @PathVariable Optional<Integer> page_) {
+		int page = page_.isPresent() ? page_.get() : 1;
 //		model.addAttribute("product", productService.categoryList(category1, category2, page));
-		productTestService.categoryList(category1, category2, model);
+		productTestService.categoryList(category1, category2, model, page);
 
 		return "product/list";
 	}

@@ -6,6 +6,6 @@ import com.koitt.jardin.dto.product.ProductDTO;
 
 public interface ProductTestMapper {
 
-	public ArrayList<ProductDTO> categoryTest(String category1, String category2);
+	public ArrayList<ProductDTO> categoryTest(String category1, String category2, int page);
 
 }

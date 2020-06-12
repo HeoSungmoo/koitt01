@@ -42,10 +42,10 @@ $(document).ready(function() {
 	<div id="header">
 		
 		<div id="snbBox">
-			<h1><a href="${pageContext.request.contextPath}"><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
+			<h1><a href="${pageContext.request.contextPath}"><img src="../../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
-				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
-				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
+				<div id="mnaviOpen"><img src="../../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
+				<div id="mnaviClose"><img src="../../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
 				<ul>
 
 					<li><a href="event">EVENT</a></li>
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
 				<div id="search">
 					<input type="text" class="searchType" />
-					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
+					<input type="image" src="../../images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
 				</div>
 			</div>
 		</div>

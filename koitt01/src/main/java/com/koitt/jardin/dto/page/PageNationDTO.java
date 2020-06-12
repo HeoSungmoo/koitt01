@@ -1,4 +1,4 @@
-package com.koitt.jardin.dto.board;
+package com.koitt.jardin.dto.page;
 
 public class PageNationDTO {
 

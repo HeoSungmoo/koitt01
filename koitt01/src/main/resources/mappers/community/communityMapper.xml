@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="community">
 <!-- 체험단 글 리스트 -->
-	<select id="expr" resultType="com.koitt.jardin.dto.community.PreUserDTO">
-		select * from preuser order by preuser_no desc
-	</select>
+<!-- 	<select id="expr" resultType="com.koitt.jardin.dto.community.PreUserDTO"> -->
+<!-- 		select * from preuser order by preuser_no desc -->
+<!-- 	</select> -->
 <!-- 	체험단 글 보기 리뷰 -->
 	<select id="exprReview" resultType="com.koitt.jardin.dto.community.PreUserDTO">
 		select * from preuser where preUserNo=#{preUserNo}
@@ -43,4 +43,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	  <select id="enjoyView" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
    		select * from enjoy_coffee where no=#{no}
    	 </select>
+<!-- 체험단 페이징 -->
+   	 <!-- 페이징 게시글 수 -->
+	<select id="exprPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from preuser
+	</select>
+	<!--  페이징 글 리스트 가져오기 -->
+	<select id="exprPageNationList" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * 
+      from(
+               select row_number() over(order by preuser_no desc) as rnum, 
+                     preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
+                     review_end_date,announcement_date,grade from preuser order by preuser_no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+ 		
+   	 
 </mapper>

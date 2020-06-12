@@ -27,10 +27,10 @@
 function memberId (memberId){
 const member= JSON.parse(memberId);
 	if(member == null){
-		alert("ㄹ호후ㅏㅅ용간ㅇ");
+		alert("로그인하세요");
 		
 	} else{
-		ㅁㄴㅇㄹ
+		location.href="epilogueWrite";
 	}
 
 

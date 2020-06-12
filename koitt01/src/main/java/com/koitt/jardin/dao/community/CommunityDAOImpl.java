@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Repository
@@ -18,11 +19,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 	SqlSession sqlSession;
 
 	// 체험단 글 리스트
-	@Override
-	public List<PreUserDTO> expr() {
-
-		return sqlSession.selectList("community.expr");
-	}
+//	@Override
+//	public List<PreUserDTO> expr() {
+//
+//		return sqlSession.selectList("community.expr");
+//	}
 
 	// 체험단 글 보기 리뷰
 	@Override
@@ -81,6 +82,19 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public EnjoyCoffDTO enjoyView(int no) {
 
 		return sqlSession.selectOne("community.enjoyView", no);
+	}
+
+	// 체험단 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
+	@Override
+	public PageNationDTO exprPageNation() {
+		return sqlSession.selectOne("community.exprPageNation");
+	}
+
+	// 체험단 페이징 글 리스트 가져오기
+	@Override
+	public List<PageNationDTO> exprPageNationList(int curPage) {
+		return sqlSession.selectList("community.exprPageNationList", curPage);
 	}
 
 }

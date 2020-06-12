@@ -50,7 +50,10 @@ public class ProductController {
 	public String category_list(@PathVariable("category1") String category1,
 			@PathVariable("category2") String category2, @PathVariable Optional<Integer> page_, Model model) {
 		int page = page_.isPresent() ? page_.get() : 1;
-		model.addAttribute("product", productService.categoryList(category1, category2, page));
+//		model.addAttribute("product", productService.categoryList(category1, category2, page));
+		model.addAttribute("category1", category1);
+		model.addAttribute("category2", category2);
+		productService.categoryList(model);
 
 		return "product/list";
 	}

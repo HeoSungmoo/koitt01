@@ -19,17 +19,32 @@ public class ProductController {
 
 	// 제품리스트 목록페이지
 	@RequestMapping("list")
-	public String list(Model model, String name) {
+	public String list(Model model) {
 
 		model.addAttribute("list", productService.list());
-
-		// 제품리스트 카테고리 리스트 제목 표시
-
-		// 제품리스트 카테고리 뷰 페이지
-//		model.addAttribute("SubCategoryList", productService.SubCategoryDto(sub_category_code));
-
 		return "product/list";
 	}
+
+//	@RequestMapping("category")
+//	public String category(Model model, HttpServletRequest request) {
+//		String category1 = request.getParameter("category1");
+//		String category2 = null;
+//
+//		if (request.getParameter("category2") == null) {
+//			model.addAttribute("product", productService.categoryList(category1));
+//		} else {
+//			model.addAttribute("product", productService.categoryList(category2));
+//		}
+//
+//		return "product/list";
+//	}
+
+//	@RequestMapping("category")
+//	public String category(Model model) {
+//		model.addAttribute("categoryList", productService.categoryList());
+//
+//		return "product/list";
+//	}
 
 	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
 	public String category_list(@PathVariable("category1") String category1,

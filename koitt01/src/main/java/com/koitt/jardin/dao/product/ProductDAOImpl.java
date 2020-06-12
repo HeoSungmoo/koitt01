@@ -97,4 +97,10 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectList("product.categoryList", list);
 	}
 
+//	@Override
+//	public ProductDTO categoryList() {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectOne("product.categoryList");
+//	}
+
 }

@@ -85,4 +85,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.categoryList(category1, category2, page);
 	}
 
+//	@Override
+//	public ProductDTO categoryList() {
+//		// TODO Auto-generated method stub
+//		return productDao.categoryList();
+//	}
+
 }

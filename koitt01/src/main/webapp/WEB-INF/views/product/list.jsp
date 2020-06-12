@@ -101,7 +101,7 @@ $(document).ready(function() {
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
-						<li><a href="#">클래스</a></li>
+						<li><a href="">클래스</a></li>
 						<li><a href="#">홈스타일 카페모리</a></li>
 						<li><a href="#">드립커피백</a></li>
 						<li><a href="#">카페리얼 커피</a></li>
@@ -117,7 +117,7 @@ $(document).ready(function() {
 				</li>
 				<li class="t2"><a href="#" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="product/원두/클래스">클래스</a></li>
+						<li><a href="categoryList">클래스</a></li>
 						<li><a href="#">로스터리샵</a></li>
 						<li><a href="#">커피휘엘</a></li>
 						<li><a href="#">산지별 생두</a></li>
@@ -193,20 +193,20 @@ $(document).ready(function() {
 				</ul>
 			</div>
 			<div class="brandList">
-		<c:forEach var="ProductDto" items="${list }">
-				<ul>
+		
+		<ul>
 					<!-- 반복 -->
 					<li>
-						<a href="detail">
-							<div class="img"><a href=""><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
-							<div class="title"><a href="detail?product_no=${ProductDto.product_no }">${ProductDto.product_no }//${ProductDto.title }</a></div>
-							<div class="price">	${ProductDto.price }</div>
-						
+						<a href="#">
+							<div class="img"><img src="../images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="name">${categoryList.title }</div>
+							<div class="price">${categoryList.price }</div>
 						</a>
 					</li>
-				</ul>
-				
-	</c:forEach>
+		</ul>
+		
+		
+		
 			</div>
 	
 	

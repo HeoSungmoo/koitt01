@@ -15,14 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where no=#{no}
 	</select>
 	
-	<!-- 공지사항 글보기 이전글 -->
+	<!--  공지사항 글보기 이전글 
 	<select id="noticeViewPre" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} ))]]>
 	</select>
-	<!-- 공지사항 글보기 다음글 -->
+	공지사항 글보기 다음글 
 	<select id="noticeViewNext" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} ))]]>
-	</select>
+ 	</select> -->
 	
 	
 	<!-- 공지사항 조회수 -->

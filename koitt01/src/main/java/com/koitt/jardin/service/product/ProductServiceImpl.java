@@ -17,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDAO productDao;
 
+//	@Autowired
+//	ProductTestMapper productMapper;
+
 	// 제품리스트 목록페이지
 	@Override
 	public List<ProductDTO> list() {

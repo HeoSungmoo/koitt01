@@ -23,14 +23,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.anchor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/memberInfo.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/html5.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 <![endif]-->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-// 이메일 선택 
 $(function(){	
+	//이메일 선택 , 직접입력
 	$(document).ready(function(){
 		$('select[name=emailList]').change(function() {
 			if($(this).val()=="1"){
@@ -40,46 +40,83 @@ $(function(){
 				$('#orderMail2').val($(this).val());
 				$("#orderMail2").attr("readonly", true);
 			}
-		});
-
-
-		$("#ordersame").click(function(){
-			$("#recipientName").val($("#orderName").val());
-			$("#recipientZip").val($("#orderZip").val());
-			$("#recipientAddress").val($("#orderAddress").val());
-			$("#recipientPhone").val($("#orderPhone").val());
-			$("#recipientTel").val($("#orderTel").val());
+		});   
+		
+		// 주문자 정보와 동일
+		$("#infosame").change(function(){
+	        if($("#infosame").is(":checked")){
+				$("#recipientName").val($("#orderName").val());
+				$("#recipientZip").val($("#orderZip").val());
+				$("#recipientAddress").val($("#orderAddress").val());
+				$("#recipientPhone").val($("#orderPhone").val());
+				$("#recipientTel").val($("#orderTel").val());
+	        }else{
+				$("#recipientName").val("");
+				$("#recipientZip").val("");
+				$("#recipientAddress").val("");
+				$("#recipientPhone").val("");
+				$("#recipientTel").val("");
+	        }
+	    });
+		
+		// 포인트 값 변경 감지
+		$("#usePoint").bind("propertychange change keyup paste", function() {
+		    var usePoint = Number($("#usePoint").val());
+		    var savePoint = Number($("#savePoint").html());
+		    if(usePoint > savePoint) {
+		        $("#usePoint").val(savePoint);
+		    }
 		});
 		
+		
+
 	});
 });
 
-  function sample6_execDaumPostcode() {
-        new daum.Postcode({
-             oncomplete: function(data) {
-            	
-            	 
-            	 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+//쿠폰 페이지
+function couponList(){
+	 
+	 window.open("couponList","payment/couponList.jsp","width=800, height=800, resizable = no, scrollbars = yes");
+	 
+}
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('orderZip').value = data.zonecode;
-           		document.getElementById('orderAddress').value = addr;            
-                // 커서를 상세주소 필드로 이동한다.
-            } 
-        }).open();
-    }
-</script>
+//다음 주소 api
+function orderAddress() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			var addr = ''; // 주소 변수
+			var extraAddr = ''; // 참고항목 변수
+			//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+			if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+			    addr = data.roadAddress;
+			} else { // 사용자가 지번 주소를 선택했을 경우(J)
+			    addr = data.jibunAddress;
+			}
+			// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			document.getElementById('orderZip').value = data.zonecode;
+			document.getElementById('orderAddress').value = addr;            
+			// 커서를 상세주소 필드로 이동한다.
+		} 
+	}).open();
+}
+function recipientAddress() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			var addr = ''; // 주소 변수
+			var extraAddr = ''; // 참고항목 변수
+			//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+			if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+			    addr = data.roadAddress;
+			} else { // 사용자가 지번 주소를 선택했을 경우(J)
+			    addr = data.jibunAddress;
+			}
+			// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			document.getElementById('recipientZip').value = data.zonecode;
+			document.getElementById('recipientAddress').value = addr;            
+			// 커서를 상세주소 필드로 이동한다.
+		} 
+	}).open();
+}
 </script>
 </head>
 <body>
@@ -219,7 +256,7 @@ $(function(){
 					<h3 class="diviLeft">주문자 정보 입력</h3>
 					<div class="diviRight">
 						<ul>
-							<li><a onclick=memberInfo('${memberInfo}')>회원정보반영</a></li>
+							<li><a style="cursor:pointer;" onclick=memberInfo('${memberInfo}')>회원정보반영</a></li>
 						</ul>
 					</div>
 
@@ -243,7 +280,7 @@ $(function(){
 											<li>
 												<input type="text" class="w134" id="orderZip" />&nbsp;
 											</li>
-											<li><a class="addressBtn" onclick = "sample6_execDaumPostcode()"><span>우편번호 찾기</span></a></li>
+											<li><a  style="cursor:pointer;" class="addressBtn" onclick = "orderAddress()"><span>우편번호 찾기</span></a></li>
 											<li class="pt5"><input type="text" class="addressType2" id="orderAddress"/></li>
 										</ul>
 									</td>
@@ -304,7 +341,8 @@ $(function(){
 					<h3 class="dep">
 						수취자 정보 입력
 						
-						<label id="ordersame">주문자 정보와 동일</label>
+						<input type="checkbox" id="infosame" />
+						<label for="infosame">주문자 정보와 동일</label>
 					</h3>
 					<div class="checkDiv">
 						<table summary="수취자 주소를 입력할 수 있는 란으로 이름, 주소, 이메일, 휴대폰 번호, 전화번호 순으로 입력 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
@@ -326,7 +364,7 @@ $(function(){
 											<li>
 												<input type="text" class="w134" id="recipientZip"/>&nbsp;
 											</li>
-											<li><a class="addressBtn"><span>우편번호 찾기</span></a></li>
+											<li><a  style="cursor:pointer;" class="addressBtn" onclick = "recipientAddress()"><span>우편번호 찾기</span></a></li>
 											<li class="pt5"><input type="text" class="addressType2" id="recipientAddress"/></li>
 										</ul>
 									</td>
@@ -380,10 +418,10 @@ $(function(){
 									<td>
 										<ul class="pta">
 											<li class="r10">
-												<input type="text" class="w134" />&nbsp;&nbsp;
+												<input type="text" class="w134" readonly/>&nbsp;&nbsp;
 												<span class="valign"><strong>원</strong></span>
 											</li>
-											<li><a href="couponList.jpg" class="nbtn">쿠폰목록</a></li>
+											<li><a style="cursor:pointer;" onclick="couponList()" class="nbtn">쿠폰목록</a></li>
 										</ul>
 									</td>
 								</tr>
@@ -394,12 +432,12 @@ $(function(){
 									<td>
 										<ul class="pta">
 											<li class="r10">
-												<input type="text" class="w134" />&nbsp;&nbsp;
+												<input type="text" id="usePoint" class="w134" />&nbsp;&nbsp;
 												<span class="valign"><strong>Point</strong></span>
 											</li>
 											<li>
 												<span class="valign">( 사용 가능 포인트 : </span>
-												<span class="orange">${point}</span>
+												<span id="savePoint" class="orange">${point}</span>
 												<span class="valign"> Point)</span>
 											</li>
 										</ul>
@@ -709,7 +747,7 @@ $(function(){
 		var layerCheck = 320;
 		var couponCheck = 320;
 	}
-
+/*
 	$(".nbtn").fancybox({
 		'autoDimensions'    : false,
 		'showCloseButton'	: false,
@@ -719,12 +757,12 @@ $(function(){
 		'onComplete' : function() {
 			$('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
 			$('#fancybox-content').height($(this).contents().find('body').height());
-			$('#fancybox-wrap').css('top','400px');
+			$('#fancybox-wrap').css('top','800px');
 			$('html,body').animate({ scrollTop: 400 }, 500);
 			});
 		}
 	});
-
+*/
 
 });
 </script>

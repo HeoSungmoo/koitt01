@@ -15,6 +15,8 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	PaymentDAO paymentDao;
 
+//	
+
 	@Override
 	public MemberDTO memberInfo(String id) {
 		return paymentDao.memberInfo(id);

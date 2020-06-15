@@ -5,11 +5,13 @@ import java.util.List;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
+import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 
 public interface CommunityDAO {
 
 	// 체험단 글 리스트
-	public List<PreUserDTO> expr();
+//	public List<PreUserDTO> expr();
 
 	// 체험 단 글 보기 리뷰
 	public PreUserDTO exprReview(int preUserNo);
@@ -27,12 +29,19 @@ public interface CommunityDAO {
 	public List<PreUserReviewDTO> epilogue();
 
 	// 이용후기 글 보기
-	public PreUserReviewDTO epilogueView(int review_no);
+	public ReviewDTO epilogueView(int review_no);
 
 	// 인조이 커피 글 리스트
 	public List<EnjoyCoffDTO> enjoyCoffee();
 
 	// 인조이 커피 글 보기
 	public EnjoyCoffDTO enjoyView(int no);
+
+// 체험단 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO exprPageNation();
+
+	// 페이징 글 리스트 가져오기
+	public List<PageNationDTO> exprPageNationList(int curPage);
 
 }

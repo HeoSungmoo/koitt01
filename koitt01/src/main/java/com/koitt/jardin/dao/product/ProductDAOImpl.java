@@ -85,4 +85,18 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectList("product.subCategoryList");
 	}
 
+//	@Override
+//	public List<ProductDTO> categoryList(String category1, String category2) {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectList("product.categoryList,category1");
+////		return productMapper.categoryTest(category1, category2);
+//	}
+
+//	@Override
+//	public List<ProductDTO> categoryList(String category1, String category2) {
+//		// TODO Auto-generated method stub
+//
+//		return productMapper.categoryTest(category1, category2);
+//	}
+
 }

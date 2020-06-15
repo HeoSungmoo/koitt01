@@ -156,7 +156,7 @@ $(document).ready(function() {
 									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today"/>
 																	
 									<!-- 하루전   -->
-									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*10*1000)%>"/>
+									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
 									<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo"/>
 									
 									<c:choose>
@@ -191,10 +191,10 @@ $(document).ready(function() {
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
-            				<c:if test="${pDto.getCur_page() eq index}">
-               				<a  href="notice?curPage=${index}" style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="notice?curPage=${index} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
-            				<c:if test="${pDto.getCur_page() ne index}">
+            				<c:if test="${pDto.getCurPage() ne index}">
               				 <a href="notice?curPage=${index}">${index}</a>
               			
               				
@@ -206,17 +206,18 @@ $(document).ready(function() {
          					</c:if>
          					
 						
-						<a href="notice?curPage=${PDto.getPage_cnt }" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="notice?curPage=${pDto.getPage_cnt()}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-				<form action="noticeSearch" name="search">
+				<form action="noticeSearch?curPage=${pDto.getCurPage() }" name="search">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
+								
 									
 									<select name="option">
 										<option value="title" />제목</option>

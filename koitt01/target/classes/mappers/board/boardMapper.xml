@@ -5,16 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="board">
 
-<!--공지사항 글 리스트 가져오기 -->
-	<select id="notice" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * 
-      from(
-               select row_number() over(order by b_no desc) as rnum, 
-                     no,title,content,hit,upload_date from notice order by upload_date desc
-          )
-      where rnum between #{curPage}*10-9 and #{curPage}*10
-	</select>
-
 <!--공지사항 글 보기 -->
 	<select id="noticeView" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * from notice where no=#{no}
@@ -37,7 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 공지사항 검색 title-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select * from notice where title like '%'||#{search}||'%'
+		
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,title,content,hit,upload_date from notice where title like '%'||#{search}||'%' order by upload_date desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10 
+		
 	</select>
 	<!-- 공지사항 검색 content-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
@@ -48,19 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="inquiry">
 		insert into question
 	</insert>
-
-<!--FAQ 글 리스트 가져오기 -->
-	<select id="faq" resultType="com.koitt.jardin.dto.board.FaqDTO">
-		select * from FAQ order by no desc 
-	</select>
-	<!--FAQ 회원가입 글 리스트 가져오기 -->
-	<select id="faqJoin" resultType="com.koitt.jardin.dto.board.FaqDTO">
-		select * from faq  where category='회원가입' order by no
-	</select>
-	<!--FAQ 상품 글 리스트 가져오기 -->
-	<select id="faqProduct" resultType="com.koitt.jardin.dto.board.FaqDTO">
-		select * from faq  where category='상품' order by no
-	</select>
+	
 	<!--FAQ 주문 글 리스트 가져오기 -->
 	<select id="faqOrder" resultType="com.koitt.jardin.dto.board.FaqDTO">
 		select * from faq  where category='주문' order by no
@@ -74,13 +59,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="guide" resultType="com.koitt.jardin.dto.board.GuideDTO">
 		select * from guide
 	</select>
-	
-	<select id="pageNation" resultType="com.koitt.jardin.dto.board.PageNationDTO">
+
+<!-- 공지사항 페이징 -->
+	<!-- 페이징 게시글 수 -->
+	<select id="pageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
 		select count(*) listCnt from notice
 	</select>
-	
-	
-	<!-- 공지사항 페이지 네이션! -->
+	<!--  페이징 글 리스트 가져오기 -->
 	<select id="pageNationList" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		select * 
       from(
@@ -89,7 +74,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
-   
-  
-
+<!-- faq페이징 -->
+   <!-- 페이징 게시글 수 -->
+	<select id="faqPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from faq
+	</select>
+	<!--  페이징 글 리스트 가져오기 -->
+	<select id="faqPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,category,title,content from faq order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+ <!-- faqJoin페이징 게시글 수 -->
+	<select id="faqJoinPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from faq where category='회원가입' order by no
+	</select>
+<!-- faqJoin 페이징 글 리스트 가져오기 -->
+	<select id="faqJoinPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,category,title,content from faq where category='회원가입' order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+<!-- faqProduct페이징 게시글 수 -->
+	<select id="faqProductPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from faq where category='상품' order by no
+	</select>
+<!-- faqProduct 페이징 글 리스트 가져오기 -->
+	<select id="faqProductPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,category,title,content from faq where category='상품' order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   <!-- faqOrder페이징 게시글 수 -->
+	<select id="faqOrderPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from faq where category='주문' order by no
+	</select>
+<!-- faqOrder 페이징 글 리스트 가져오기 -->
+	<select id="faqOrderPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
+		select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,category,title,content from faq where category='주문' order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
 </mapper>

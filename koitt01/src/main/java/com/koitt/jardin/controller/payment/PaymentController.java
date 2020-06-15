@@ -39,8 +39,11 @@ public class PaymentController {
 		return "payment/payment";
 	}
 
+<<<<<<< HEAD
 	@RequestMapping("couponList")
 	public String couponList() {
 		return "payment/couponList";
 	}
+=======
+>>>>>>> refs/remotes/origin/master
 }

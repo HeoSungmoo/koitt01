@@ -12,11 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
+
 	
-	select * from category order by category_code asc
+	<select id="categoryList" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	select * from product where category1=#{category1} and category2=#{category2}
 	
 	</select>
+	
 	
 	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	

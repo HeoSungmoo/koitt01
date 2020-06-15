@@ -28,6 +28,7 @@
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
+
 $(document).ready(function() {
 	
 
@@ -153,13 +154,13 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th class="pre">PREV</th>
-									<td><a href="eventView?event_no=${eventViewPre.event_no}">${eventViewPre.title}</a></td>
+									<td><a href="eventView?event_no=${eventViewPre.event_no} ">${eventViewPre.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td><a href="eventView?event_no=${eventViewNext.event_no}">${eventViewNext.title}</a></td>
+									<td><a href="eventView?event_no=${eventViewNext.event_no} & end_date=${eventViewNext.end_date}">${eventViewNext.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 							</tbody>
@@ -176,7 +177,7 @@ $(document).ready(function() {
 								
 								<textarea class="replyType" name="comment_content"></textarea>
 							</li>
-							<li class="btn"><input type="submit" class="replyBtn" value="등록"></li>
+							<li class="btn"><input class="replyBtn" id="writeBtn" value="등록"></li>
 						</ul>
 						
 					</div>
@@ -187,11 +188,11 @@ $(document).ready(function() {
 					
 
 						<ul>
-							<li class="name">jjabcde <span>${EventComment.comment_data }</span></li>
+							<li class="name">${EventComment.id }<span>${EventComment.comment_data }</span></li>
 							<li class="txt">${EventComment.comment_content }</li>
 							<li class="btn">
-								<a href="eventCommentModifyView?comment_no=${EventComment.comment_no }" class="rebtn">수정</a>
-								<a href="eventCommentDelete?comment_no=${EventComment.comment_no }" class="rebtn">삭제</a>
+								<a href="eventCommentModifyView?comment_no=${EventComment.comment_no }&event_no=${eventView.event_no}" class="rebtn">수정</a>
+								<a href="eventCommentDelete?comment_no=${EventComment.comment_no }&event_no=${eventView.event_no}" class="rebtn">삭제</a>
 							</li>
 						</ul>
 

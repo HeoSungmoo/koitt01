@@ -22,16 +22,21 @@
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
-<![endif]-->
 <script type="text/javascript">
-$(document).ready(function() {
-	
+
+function memberId (memberId){
+const member= JSON.parse(memberId);
+	if(member == null){
+		alert("로그인하세요");
+		
+	} else{
+		location.href="epilogueWrite";
+	}
 
 
-});
+
+
+}
 </script>
 </head>
 <body>
@@ -176,7 +181,7 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a href="#" class="sbtnMini">글쓰기</a></li>
+								<li><a onclick=memberId('${memberId}') class="sbtnMini">글쓰기</a></li>
 							</ul>
 						</div>
 

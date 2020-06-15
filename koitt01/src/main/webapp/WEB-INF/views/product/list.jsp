@@ -12,17 +12,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../../css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../../css/content.css?v=Y" />
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/top_navi.js"></script>
+<script type="text/javascript" src="../../js/left_navi.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<li><a href="http://www.apple.com/safari" target="_blank"><img src="images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
 			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
 		</ul>
-		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
+		<p class="btn" onclick="msiehide();"><img src="../../images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
 <!--//익스레이어팝업-->
@@ -94,13 +94,74 @@ $(document).ready(function() {
 	<header>
       <%@ include file="../include/header.jsp"  %>
    </header>
+   
+   	<div id="gnb">
+		
+		<div id="top">
+			<ul>
+				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
+					<ul id="topSubm1">
+						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리">홈스타일 카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">카페리얼 커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">카페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						
+					</ul>
+				</li>
+				<li class="t2"><a href="#" id="topNavi2">원두</a>
+					<ul id="topSubm2">
+						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+					</ul>
+				</li>
+				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
+					<ul id="topSubm3">
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+					</ul>
+				</li>
+				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
+					<ul id="topSubm4">
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
+					</ul>
+				</li>
+				<li class="t1"><a href="#" id="topNavi5">음료</a>
+					<ul id="topSubm5">
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
+					</ul>
+				</li>
+				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
+					<ul id="topSubm6">
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/종이컵">종이컵</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/커피필터">커피필터</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/머신 등">머신 등</a></li>
+					</ul>
+				</li>
+				<li class="t1"><a href="${pageContext.request.contextPath}/product/선물세트" id="topNavi7">선물세트</a></li>
+				<li class="t2"><a href="${pageContext.request.contextPath}/product/대량구매" id="topNavi8">대량구매</a></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">initTopMenu();</script>
+	</div>
 
 	<!-- container -->
 	<div id="container">
 
 		<div id="location">
 			<ol>
-				<li><a href="#">HOME</a></li>
+				<li><a href="#">HOME1</a></li>
 				<li>원두커피</li>
 				<li class="last">원두</li>
 			</ol>
@@ -110,39 +171,40 @@ $(document).ready(function() {
 		
 		<div id="maxcontents">
 		
-			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
+			<div class="banner"><img src="../../images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
 			
 			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
 
 			<div class="brandTab">
 				<ul>
-			
-				
-	<c:forEach var="subcategoryList" items="${subcategoryList }">
-		<li>${subcategoryList.sub_category_code }</li>
-		<li>${subcategoryList.categoryCode }</li>
-		<li>${subcategoryList.name }</li>
-	
-	
-	</c:forEach>
-			
+					<li><a href="#" class="hover">드립커피백</a></li>
+					<li><a href="#">오리지널 커피백</a></li>
+					<li><a href="#">마일드 커피백</a></li>
+					<li><a href="#">카페모리</a></li>
+					<li><a href="#">카페포드</a></li>
+					<li><a href="#">카페리얼</a></li>
+					<li><a href="#">워터커피</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
 				</ul>
 			</div>
 			<div class="brandList">
-		<c:forEach var="ProductDto" items="${list }">
-				<ul>
+		
+		<ul>
 					<!-- 반복 -->
+		
+					 	<c:forEach var="productList" items="${productList }">
 					<li>
-						<a href="detail">
-							<div class="img"><a href=""><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
-							<div class="title"><a href="detail?product_no=${ProductDto.product_no }">${ProductDto.product_no }//${ProductDto.title }</a></div>
-							<div class="price">	${ProductDto.price }</div>
-						
+						<a href="detail?product_no=${productList.product_no }">
+							<div class="img"><img src="../../images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="name">${productList.title }</div>
+							<div class="price">${productList.price }</div>
 						</a>
 					</li>
-				</ul>
-				
-	</c:forEach>
+						</c:forEach> 
+		</ul>
+		
+		
+		
 			</div>
 	
 	

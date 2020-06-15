@@ -108,16 +108,30 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventSearch(option, search);
 	}
 
+	// 이벤트 이전글
 	@Override
 	public EventDTO eventViewPre(int event_no) {
 		// TODO Auto-generated method stub
 		return eventDao.eventViewPre(event_no);
 	}
 
+	// 이벤트 다음글
 	@Override
 	public EventDTO eventViewNext(int event_no) {
 		// TODO Auto-generated method stub
 		return eventDao.eventViewNext(event_no);
+	}
+
+	@Override
+	public EventDTO finEventViewPre(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.finEventViewPre(event_no);
+	}
+
+	@Override
+	public EventDTO finEventViewNext(int event_no) {
+		// TODO Auto-generated method stub
+		return eventDao.finEventViewNext(event_no);
 	}
 
 }

@@ -2,8 +2,6 @@ package com.koitt.jardin.service.product;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
-
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -19,7 +17,7 @@ public interface ProductService {
 
 	public List<SubCategoryDto> SubCategoryDto();
 
-	public void categoryList(Model model);
+//	public void categoryList(Model model);
 
 //	public ProductDTO categoryList();
 

@@ -161,7 +161,7 @@ $(document).ready(function() {
 
 		<div id="location">
 			<ol>
-				<li><a href="#">HOME</a></li>
+				<li><a href="#">HOME1</a></li>
 				<li>원두커피</li>
 				<li class="last">원두</li>
 			</ol>

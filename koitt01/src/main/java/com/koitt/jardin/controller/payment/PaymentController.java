@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.koitt.jardin.dto.payment.PaymentDTO;
 import com.koitt.jardin.service.payment.PaymentService;
 
 @Controller
@@ -22,7 +21,7 @@ public class PaymentController {
 	PaymentService paymentService;
 
 	@RequestMapping("payment")
-	public String payment(@RequestParam(value = "list", required = false) List<PaymentDTO> list, Model model,
+	public String payment(@RequestParam(value = "list", required = false) List<Integer> product_no, Model model,
 			HttpSession session) throws JsonProcessingException {
 		/*
 		 * if (list == null) { return "redirect:/"; } 테스트 종료시 활성화
@@ -34,9 +33,14 @@ public class PaymentController {
 		String memberInfo = mapper
 				.writeValueAsString(paymentService.memberInfo((String) session.getAttribute("member")));
 		model.addAttribute("memberInfo", memberInfo);
-		model.addAttribute("list", list);
+		// model.addAttribute("list", paymentService.productList(product_no.get(i)));
 		model.addAttribute("counpon", paymentService.memberCoupon((String) session.getAttribute("member")));
 		model.addAttribute("point", paymentService.memberPoint((String) session.getAttribute("member")));
 		return "payment/payment";
+	}
+
+	@RequestMapping("couponList")
+	public String couponList() {
+		return "payment/couponList";
 	}
 }

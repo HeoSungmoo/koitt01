@@ -19,7 +19,7 @@ public class GuestController {
 	@Autowired
 	HomeService homeService;
 
-	@RequestMapping("cart")
+	@RequestMapping("guest/cart")
 	public String cart(HttpSession session, HttpServletRequest request, Model model) {
 		return "guest/cart";
 	}

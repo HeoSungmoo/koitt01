@@ -334,38 +334,38 @@ $(document).ready(function() {
 
 								<tr>
 									<th scope="row" class="info"><span>제조원</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.manufacturer}</td>
 									<th scope="row" class="info"><span>포장재질</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.material}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>유통기한</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.shelf_life}</td>
 									<th scope="row" class="info"><span>고객<u>상담실</u></span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.service_tel}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>식품의 <u>유형</u></span></th>
-									<td>3</td>
+									<td>${ProductInfoDto.food_type}</td>
 									<th scope="row" class="info"><span>유통전문<u>판매원</u></span></th>
-									<td>3</td>
+									<td>${ProductInfoDto.sales_office}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>영양성분</span></th>
-									<td colspan="3">2</td>
+									<td colspan="3">${ProductInfoDto.nutrient}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>원재료명 <u>및 함량</u></span></th>
-									<td colspan="3">1</td>
+									<td colspan="3">${ProductInfoDto.raw_materials}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>업소명 <u>및 소재지</u></span></th>
-									<td colspan="3">1</td>
+									<td colspan="3">${ProductInfoDto.location}</td>
 								</tr>
 							</tbody>
 								

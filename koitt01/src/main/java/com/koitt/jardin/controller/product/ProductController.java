@@ -56,22 +56,10 @@ public class ProductController {
 		int page = page_.isPresent() ? page_.get() : 1;
 //		model.addAttribute("product", productService.categoryList(category1, category2, page));
 
-		productTestService.categoryList(category1, category2, model);
+		productTestService.categoryList(category1, category2, model, page);
 
-		return "product/list";
+		return "product/categoryList";
 	}
-	// 카테고리 설정1
-
-	@RequestMapping("/product/{category1}/{category2}")
-	public String category_list(@PathVariable("category1") String category1,
-			@PathVariable("category2") String category2, Model model) {
-//		int page = page_.isPresent() ? page_.get() : 1;
-//		model.addAttribute("product", productService.categoryList(category1, category2, page));
-		productTestService.categoryList(category1, category2, model);
-
-		return "product/list";
-	}
-	// 카테고리 설정111
 
 	@RequestMapping("header")
 
@@ -83,7 +71,7 @@ public class ProductController {
 	}
 
 	// 제품의 상세내용 (condent_view)
-	@RequestMapping("detail")
+	@RequestMapping("/detail")
 
 	public String detail(Model model, int product_no) {
 

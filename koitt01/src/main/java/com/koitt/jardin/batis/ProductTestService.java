@@ -9,8 +9,8 @@ public class ProductTestService {
 	@Autowired
 	ProductTestMapper productTestMapper;
 
-	public void categoryList(String category1, String category2, Model model) {
-		model.addAttribute("productList", productTestMapper.categoryTest(category1, category2));
+	public void categoryList(String category1, String category2, Model model, int page) {
+		model.addAttribute("productList", productTestMapper.categoryTest(category1, category2, page));
 
 	}
 }

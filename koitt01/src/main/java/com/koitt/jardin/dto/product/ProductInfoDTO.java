@@ -9,13 +9,13 @@ public class ProductInfoDTO {
 	// 제조원
 	private String manufacturer;
 	// 유통기한
-	private String ShelfLife;
+	private String shelf_life;
 	// 식품의 유형
-	private String foodType;
+	private String food_type;
 	// 영양성분
 	private String nutrient;
 	// 원재료명 및 함량
-	private String rawMaterials;
+	private String raw_materials;
 	// 업소명 및 소재지
 	private String location;
 	// 내용량
@@ -23,9 +23,9 @@ public class ProductInfoDTO {
 	// 포장재질
 	private String material;
 	// 고객상담실
-	private String serviceTel;
+	private String service_tel;
 	// 유통전문판매원
-	private String salesOffice;
+	private String sales_office;
 
 	public int getProduct_no() {
 		return product_no;
@@ -51,36 +51,12 @@ public class ProductInfoDTO {
 		this.manufacturer = manufacturer;
 	}
 
-	public String getShelfLife() {
-		return ShelfLife;
-	}
-
-	public void setShelfLife(String shelfLife) {
-		ShelfLife = shelfLife;
-	}
-
-	public String getFoodType() {
-		return foodType;
-	}
-
-	public void setFoodType(String foodType) {
-		this.foodType = foodType;
-	}
-
 	public String getNutrient() {
 		return nutrient;
 	}
 
 	public void setNutrient(String nutrient) {
 		this.nutrient = nutrient;
-	}
-
-	public String getRawMaterials() {
-		return rawMaterials;
-	}
-
-	public void setRawMaterials(String rawMaterials) {
-		this.rawMaterials = rawMaterials;
 	}
 
 	public String getLocation() {
@@ -107,20 +83,44 @@ public class ProductInfoDTO {
 		this.material = material;
 	}
 
-	public String getServiceTel() {
-		return serviceTel;
+	public String getShelf_life() {
+		return shelf_life;
 	}
 
-	public void setServiceTel(String serviceTel) {
-		this.serviceTel = serviceTel;
+	public void setShelf_life(String shelf_life) {
+		this.shelf_life = shelf_life;
 	}
 
-	public String getSalesOffice() {
-		return salesOffice;
+	public String getFood_type() {
+		return food_type;
 	}
 
-	public void setSalesOffice(String salesOffice) {
-		this.salesOffice = salesOffice;
+	public void setFood_type(String food_type) {
+		this.food_type = food_type;
+	}
+
+	public String getRaw_materials() {
+		return raw_materials;
+	}
+
+	public void setRaw_materials(String raw_materials) {
+		this.raw_materials = raw_materials;
+	}
+
+	public String getService_tel() {
+		return service_tel;
+	}
+
+	public void setService_tel(String service_tel) {
+		this.service_tel = service_tel;
+	}
+
+	public String getSales_office() {
+		return sales_office;
+	}
+
+	public void setSales_office(String sales_office) {
+		this.sales_office = sales_office;
 	}
 
 }

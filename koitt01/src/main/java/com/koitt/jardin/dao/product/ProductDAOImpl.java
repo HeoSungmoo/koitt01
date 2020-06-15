@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Repository
@@ -86,6 +87,12 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<SubCategoryDto> SubCategoryDto() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("product.subCategoryList");
+	}
+
+	@Override
+	public ReviewDTO review_view(int product_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.review_view", product_no);
 	}
 
 //	@Override

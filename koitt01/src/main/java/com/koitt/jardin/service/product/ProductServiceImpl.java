@@ -9,6 +9,7 @@ import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Service
@@ -81,6 +82,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<SubCategoryDto> SubCategoryDto() {
 		// TODO Auto-generated method stub
 		return productDao.SubCategoryDto();
+	}
+
+	@Override
+	public ReviewDTO review_view(int product_no) {
+		// TODO Auto-generated method stub
+		return productDao.review_view(product_no);
 	}
 
 //	@Override

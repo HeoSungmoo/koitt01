@@ -54,6 +54,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	
+	<select id="review_view" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	
+	select * from review where product_no=#{product_no}
+	
+	</select>
+	
 	<insert id='review'>
 	
 	insert into review()

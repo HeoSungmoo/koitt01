@@ -50,11 +50,7 @@ $(function() {
 										<option value="">카테고리</option>
 									</select>
 								</li>
-								<li class="pt5">
-									<select>
-										<option value="">카테고리</option>
-									</select>
-								</li>
+							
 							</ul>
 						</td>
 					</tr>					

@@ -111,9 +111,9 @@ public class ProductController {
 	}
 
 	// 구매후기 작성란
-	@RequestMapping("review")
-	public String review(ProductDTO ProductDto) {
-		productService.review(ProductDto);
+	@RequestMapping("review_view")
+	public String review(ProductDTO ProductDto, int product_no) {
+		productService.review_view(product_no);
 		return "product/review";
 	}
 

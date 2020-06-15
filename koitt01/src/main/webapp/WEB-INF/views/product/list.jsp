@@ -101,18 +101,15 @@ $(document).ready(function() {
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
-						<li><a href="/product/">클래스</a></li>
-						<li><a href="#">홈스타일 카페모리</a></li>
-						<li><a href="#">드립커피백</a></li>
-						<li><a href="#">카페리얼 커피</a></li>
-						<li><a href="#">오리지널커피백</a></li>
-						<li><a href="#">카페리얼 음료</a></li>
-						<li><a href="#">마일드커피백</a></li>
-						<li><a href="#">워터커피</a></li>
-						<li><a href="#">카페포드</a></li>
-						<li><a href="#">모히또파티</a></li>
-						<li><a href="#">테이크아웃 카페모리</a></li>
-						<li><a href="#">포타제</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리">홈스타일 카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">카페리얼 커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">카페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi2">원두</a>
@@ -197,7 +194,7 @@ $(document).ready(function() {
 		
 					 	<c:forEach var="productList" items="${productList }">
 					<li>
-						<a href="#">
+						<a href="detail?product_no=${productList.product_no }">
 							<div class="img"><img src="../../images/img/sample_brand.jpg" alt="제품이미지" /></div>
 							<div class="name">${productList.title }</div>
 							<div class="price">${productList.price }</div>

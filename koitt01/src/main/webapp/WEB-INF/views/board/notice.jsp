@@ -147,7 +147,7 @@ $(document).ready(function() {
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView?no=${noticeDto.no}">${noticeDto.title}</a>
+										<a href="noticeView?no=${noticeDto.no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}">${noticeDto.title}</a>
 										<jsp:useBean id="now" class="java.util.Date" />
 										
 <!-- 									 현재날짜  -->
@@ -184,34 +184,34 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="notice?curPage=1" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<a href="notice?curPage=1&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
-           				 <a href="notice?curPage=${pDto.getStart_page()-1}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="notice?curPage=${pDto.getStart_page()-1}&option=${sv.option }&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
             				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="notice?curPage=${index} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+               				<a  href="notice?curPage=${index}&option=${sv.option }&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="notice?curPage=${index}">${index}</a>
+              				 <a href="notice?curPage=${index}&option=${sv.option }&search=${sv.search}">${index}</a>
               			
               				
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${pDto.getNext_page()}">
-            				<a href="notice?curPage=${pDto.getEnd_page()+1}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="notice?curPage=${pDto.getEnd_page()+1}&option=${sv.option }&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="notice?curPage=${pDto.getPage_cnt()}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="notice?curPage=${pDto.getPage_cnt()}&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-				<form action="noticeSearch?curPage=${pDto.getCurPage() }" name="search">
+				<form action="notice?curPage=${pDto.getCurPage() }" name="search">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>

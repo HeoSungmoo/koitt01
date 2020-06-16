@@ -63,17 +63,17 @@ public interface BoardService {
 
 //FAQ 페이징------------------------------------------------------------------	
 	// FAQ 페이징 게시글 수
-	public PageNationDTO faqPageNation(int curPage);
+	public PageNationDTO faqPageNation(SearchValue sv);
 
 	// FAQ 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqPageNationList(int curPage);
+	public List<FaqDTO> faqPageNationList(SearchValue sv);
 
 //FAQJoin 페이징------------------------------------------------------------------	
 	// FAQJoin 페이징 게시글 수
-	public PageNationDTO faqJoinPageNation(int curPage);
+	public PageNationDTO faqJoinPageNation(SearchValue sv);
 
 	// FAQJoin 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqJoinPageNationList(int curPage);
+	public List<PageNationDTO> faqJoinPageNationList(SearchValue sv);
 
 	// FAQProduct
 //FAQProduct 페이징------------------------------------------------------------------

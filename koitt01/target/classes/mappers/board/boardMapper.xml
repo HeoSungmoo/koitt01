@@ -10,20 +10,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where no=#{no}
 	</select>
 	
-	<!--  공지사항 글보기 이전글 
+<!-- 	 공지사항 글보기 이전글  -->
 	<select id="noticeViewPre" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} )) ]]>
 	</select>
-	공지사항 글보기 다음글 
+<!-- 	공지사항 글보기 다음글  -->
 	<select id="noticeViewNext" resultType="com.koitt.jardin.dto.board.NoticeDTO">
-<<<<<<< HEAD
+
 	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} ))]]>
- 	</select> -->
-=======
-	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} )) ]]>
-	</select>
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
-	
+ 	</select>
+
 	
 	<!-- 공지사항 조회수 -->
 	<update id="noticeViewHit">
@@ -52,27 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where rnum between #{curPage}*10-9 and #{curPage}*10 
 	</select>
 	
-	<!-- 공지사항 content 검색 글 수 -->
-	<select id="noticeSearchN"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
-		select count(*) from notice
-		<where>
-		<if test="option='title'">
-		title like '%'||#{search}||'%'
-		</if>
-		<if test="option='content'">
-		content like '%'||#{search}||'%'
-		</if>
-		</where>
-
-
-<!-- 		<choose> -->
-<!-- 		<when test = "#{option}='title'"> -->
-<!-- 		select count(*) from notice where title like '%'||#{search}||'%' order by upload_date desc -->
-<!-- 		</when> -->
-<!-- 		<when test = "#{option}='content'"> -->
-<!-- 		select count(*) from notice where content like '%'||#{search}||'%' order by upload_date desc -->
-<!-- 		</when> -->
-<!-- 		</choose> -->
+<!-- 	공지사항 content 검색 글 수 -->
+	<select id="noticeSearchCN"  resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*)listCnt from notice where content like '%'||#{search}||'%'
+	</select>
+	<select id="noticeSearchTN"  resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*)listCnt from notice where title like '%'||#{search}||'%'
 	</select>
 
 <!--1:1문의 글 쓰기 -->
@@ -108,32 +89,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
+   
 <!-- faq페이징 -->
    <!-- 페이징 게시글 수 -->
 	<select id="faqPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
-		select count(*) listCnt from faq
+		select count(*) listCnt from faq where title like '%'||#{search}||'%'
 	</select>
 	<!--  페이징 글 리스트 가져오기 -->
 	<select id="faqPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
 		select * 
       from(
                select row_number() over(order by no desc) as rnum, 
-                     no,category,title,content from faq order by no desc
+                     no,category,title,content from faq where title like '%'||#{search}||'%'  order by no desc
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
+   
  <!-- faqJoin페이징 게시글 수 -->
 	<select id="faqJoinPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
-		select count(*) listCnt from faq where category='회원가입' order by no
+		select count(*) listCnt from faq where title like '%'|| #{search}||'%' and category=#{category} order by no desc
 	</select>
 <!-- faqJoin 페이징 글 리스트 가져오기 -->
 	<select id="faqJoinPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
+<choose>
+	<when test='search==""'>
+	select * 
+      from(
+               select row_number() over(order by no desc) as rnum, 
+                     no,category,title,content from faq where category=#{category} order by no desc
+          )
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+	</when>
+	<otherwise>
 		select * 
       from(
                select row_number() over(order by no desc) as rnum, 
-                     no,category,title,content from faq where category='회원가입' order by no desc
+                     no,category,title,content from faq where title like '%'|| #{search}||'%' and category=#{category} order by no desc
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
+	</otherwise>
+</choose>	
+		
    </select>
 <!-- faqProduct페이징 게시글 수 -->
 	<select id="faqProductPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">

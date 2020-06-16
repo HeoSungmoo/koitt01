@@ -25,12 +25,12 @@ public class PageNationDTO {
 		} else if (curPage > 0 && curPage < 6) {
 			setPrev_page(false);
 			setNext_page(true);
-		} else if (getRange_cnt() * 10 - 10 < curPage) {
+		} else if (getRange_cnt() * 5 - 5 < curPage) {
 			setPrev_page(true);
 			setNext_page(false);
 		} else {
 			setPrev_page(true);
-			setNext_page(false);
+			setNext_page(true);
 		}
 	}
 
@@ -96,7 +96,7 @@ public class PageNationDTO {
 	}
 
 	public void setRange_cnt(int page_cnt) {
-		if (page_cnt % 10 == 0) {
+		if (page_cnt % 5 == 0) {
 			this.range_cnt = page_cnt / getRange_size();
 		} else {
 			this.range_cnt = page_cnt / getRange_size() + 1;

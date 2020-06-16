@@ -82,6 +82,13 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectList("product.review_view", product_no);
 	}
 
+	@Override
+	public void review_delete(int review_no) {
+
+		sqlSession.delete("product.review_delete", review_no);
+
+	}
+
 //	@Override
 //	public List<ProductDTO> categoryList(String category1, String category2) {
 //		// TODO Auto-generated method stub

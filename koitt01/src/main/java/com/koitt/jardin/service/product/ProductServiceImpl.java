@@ -86,4 +86,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.review_view(product_no);
 	}
 
+	@Override
+	public void review_delete(int review_no) {
+
+		productDao.review_delete(review_no);
+
+	}
+
 }

@@ -513,10 +513,22 @@ $(document).ready(function() {
 									<div class="writer">[ezlin****]</div>
 									<div class="day">
 										<p>${review_view.review_date }</p>
+										
 										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
+										<span class="ty" id="star${k=k+1 }">
+											</span>
+										<script>
+    var innerHtml = "평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${review_view.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
 										</p>
 									</div>
 								</div>
@@ -543,7 +555,7 @@ $(document).ready(function() {
 
 									<div class="modify">
 										<a href="#">수정</a>
-										<a href="#">삭제</a>
+										<a href="review_delete?review_no=${review_view.review_no }&product_no=${review_view.product_no}">삭제</a>
 									</div>
 
 								</div>

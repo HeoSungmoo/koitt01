@@ -108,13 +108,21 @@ public class ProductController {
 	}
 
 	// 구매후기 작성
-	@RequestMapping("review")
+	@RequestMapping("/review")
 	public String review(ReviewDTO reviewDto, int product_no, Model model, HttpSession session) {
 		reviewDto.setId((String) session.getAttribute("member"));
 		productService.review(reviewDto);
 
 		model.addAttribute("product_no", product_no);
-		return "product/list";
+		return "redirect:/detail?product_no=" + product_no;
+	}
+
+	@RequestMapping("/review_delete")
+	public String review_delete(HttpSession session, ReviewDTO reviewDto, int review_no, int product_no) {
+		reviewDto.setId((String) session.getAttribute("member"));
+		productService.review_delete(review_no);
+
+		return "redirect:/detail?product_no=" + product_no;
 	}
 
 	@RequestMapping("search")

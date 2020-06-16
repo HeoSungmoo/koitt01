@@ -25,6 +25,8 @@ public interface ProductService {
 
 	public List<ReviewDTO> review_view(int product_no);
 
+	public void review_delete(int review_no);
+
 	public ProductDTO search(int productNo);
 
 }

@@ -7,7 +7,6 @@ public class ReviewDTO {
 	private int review_no;
 	private int product_no;
 	private String id;
-	private String sub_Code;
 	private String title;
 	private String content;
 	private Timestamp review_date;
@@ -87,14 +86,6 @@ public class ReviewDTO {
 
 	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
-	}
-
-	public String getSub_Code() {
-		return sub_Code;
-	}
-
-	public void setSub_Code(String sub_Code) {
-		this.sub_Code = sub_Code;
 	}
 
 	public Timestamp getReview_date() {

@@ -181,7 +181,7 @@ const member= JSON.parse(memberId);
 					<div class="btnAreaList">
 						<div class="bwright">
 							<ul>
-								<li><a onclick=memberId('${memberId}') class="sbtnMini">글쓰기</a></li>
+								<li><a onclick=memberId("${memberId}") class="sbtnMini">글쓰기</a></li>
 							</ul>
 						</div>
 

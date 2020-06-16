@@ -9,8 +9,8 @@ import com.koitt.jardin.dao.board.BoardDAO;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -26,8 +26,9 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
-	// 공지사항 검색 게시글 수
+	// 공지사항 검색
 	@Override
+<<<<<<< HEAD
 	public PageNationDTO noticeSearchPageNation(SearchValue sv) {
 		System.out.println(sv.getCurPage());
 		System.out.println(sv.getOption());
@@ -43,11 +44,11 @@ public class BoardServiceImpl implements BoardService {
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
 	}
+=======
+	public List<NoticeDTO> noticeSearch(SearchValue sv) {
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 
-	// 공지사항 검색 게시글 리스트
-	@Override
-	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv) {
-		return boardDao.noticeSearchPageNationList(sv);
+		return boardDao.noticeSearch(sv);
 	}
 
 	// 공지사항 글 보기

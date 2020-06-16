@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 					<li><a href="list">List</a></li>
 
-					<li><a href="#">EVENT</a></li>
+					<li><a href="list">EVENT</a></li>
 
 					
 

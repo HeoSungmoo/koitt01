@@ -7,12 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" resultType="com.koitt.jardin.dto.product.ProductDTO">
 
-	select * from product
+	select * from product order by product_no desc
 			
 	</select>
-	
-	
-
 	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
@@ -57,11 +54,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+
+	
 	<insert id='review'>
 	
-	insert into review()
+	insert into review(review_no,product_no,id,title,content,grade) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade})
 	
 	</insert>
+	
+	<select id="review_view" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	
+	select * from review where product_no=#{product_no}
+	
+	</select>
+	
+	<delete id="review_delete">
+	
+	delete from review where review_no=#{review_no}
+	
+	
+	</delete>
 	
 	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	

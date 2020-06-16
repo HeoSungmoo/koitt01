@@ -5,18 +5,16 @@ import java.util.List;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 public interface BoardDAO {
 
 	// 공지사항 글 리스트
 	public List<NoticeDTO> notice();
 
-	public PageNationDTO noticeSearchPageNation(SearchValue sv);
-
 	// 공지사항 검색
-	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv);
+	public List<NoticeDTO> noticeSearch(SearchValue sv);
 
 	// 공지사항 글 보기
 	public NoticeDTO noticeView(int no);

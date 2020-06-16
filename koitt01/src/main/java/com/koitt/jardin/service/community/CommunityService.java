@@ -3,11 +3,12 @@ package com.koitt.jardin.service.community;
 import java.util.List;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
+import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
-import com.koitt.jardin.dto.page.ExprPageNationDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 public interface CommunityService {
 
@@ -24,7 +25,7 @@ public interface CommunityService {
 	public void preUserReview(int preUserApplyNo);
 
 	// 체험단 신청 글쓰기
-	public void preUserApply(int preuser_no);
+	public void preUserApply(PreUserApplyDTO pDto);
 
 	// 이용후기 글 리스트
 	public List<PreUserReviewDTO> epilogue();
@@ -38,11 +39,25 @@ public interface CommunityService {
 	// enjoy커피 글 보기
 	public EnjoyCoffDTO enjoyView(int no);
 
-// 체험단 페이징------------------------------------------------------------------
+// 체험단 페이징 및 검색------------------------------------------------------------------
 	// 페이징 게시글 수
-	public ExprPageNationDTO exprPageNation(int curPage);
+	public PageNationDTO exprPageNation(int curPage);
 
 	// 페이징 글 리스트 가져오기
 	public List<PageNationDTO> exprPageNationList(int curPage);
+
+// enjoy 페이징 및 검색------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO enjoyPageNation(SearchValue sv);
+
+	// 페이징 글 리스트 가져오기
+	public List<EnjoyCoffDTO> enjoyPageNationList(SearchValue sv);
+
+// 체험단 페이징 및 검색------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO exprPageNation(SearchValue sv);
+
+	// 페이징 글 리스트 가져오기
+	public List<PreUserDTO> exprPageNationList(SearchValue sv);
 
 }

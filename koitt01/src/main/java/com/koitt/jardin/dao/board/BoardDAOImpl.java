@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -47,9 +47,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.noticeViewNext", no);
 	}
 
-	// 공지사항 글 리스트
+	// 공지사항 글 검색
 	@Override
-	public List<NoticeDTO> noticeSearchPageNationList(SearchValue sv) {
+	public List<NoticeDTO> noticeSearch(SearchValue sv) {
 
 		List<NoticeDTO> sList = null;
 
@@ -66,8 +66,8 @@ public class BoardDAOImpl implements BoardDAO {
 			System.out.println(sList.size());
 		}
 		return sList;
-	}
 
+<<<<<<< HEAD
 	// 공지사항 검색 게시글 수
 	@Override
 	public PageNationDTO noticeSearchPageNation(SearchValue sv) {
@@ -86,6 +86,8 @@ public class BoardDAOImpl implements BoardDAO {
 			pDto = sqlSession.selectOne("board.noticeSearchTN", sv);
 		}
 		return pDto;
+=======
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	}
 
 	// 공지사항 조회수
@@ -227,5 +229,4 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<PageNationDTO> faqOrderPageNationList(int curPage) {
 		return sqlSession.selectList("board.faqOrderPageNationList", curPage);
 	}
-
 }

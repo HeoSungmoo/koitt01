@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
+
+
     
    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -12,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/top_navi.js"></script>
+<script type="text/javascript" src="../js/left_navi.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -91,101 +94,70 @@ $(document).ready(function() {
 <div id="allwrap">
 <div id="wrap">
 
-	<div id="header">
-		
-		<div id="snbBox">
-			<h1><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></h1>
-			<div id="quickmenu">
-				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
-				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
-				<ul>
-					<li><a href="#">EVENT</a></li>
-					<li><a href="#">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
-				</ul>
-			</div>
-			<div id="snb">
-				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
-					<li><a href="#">MY PAGE</a></li>
-					<li><a href="#">CART</a></li>
-				</ul>
-
-				<div id="search">
-					<input type="text" class="searchType" />
-					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- GNB -->
-	<div id="gnb">
+<header>
+      <%@ include file="../include/header.jsp"  %>
+   </header>
+   
+   	<div id="gnb">
 		
 		<div id="top">
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
-						<li><a href="#">클래스</a></li>
-						<li><a href="#">홈스타일 카페모리</a></li>
-						<li><a href="#">드립커피백</a></li>
-						<li><a href="#">카페리얼 커피</a></li>
-						<li><a href="#">오리지널커피백</a></li>
-						<li><a href="#">카페리얼 음료</a></li>
-						<li><a href="#">마일드커피백</a></li>
-						<li><a href="#">워터커피</a></li>
-						<li><a href="#">카페포드</a></li>
-						<li><a href="#">모히또파티</a></li>
-						<li><a href="#">테이크아웃 카페모리</a></li>
-						<li><a href="#">포타제</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리">홈스타일 카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">카페리얼 커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">카페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="#">클래스</a></li>
-						<li><a href="#">로스터리샵</a></li>
-						<li><a href="#">커피휘엘</a></li>
-						<li><a href="#">산지별 생두</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
 				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="#">드립커피 로스트</a></li>
-						<li><a href="#">오리지널커피백</a></li>
-						<li><a href="#">마일드커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
 					<ul id="topSubm4">
-						<li><a href="#">까페모리</a></li>
-						<li><a href="#">홈스타일카페모리</a></li>
-						<li><a href="#">포타제</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
 					</ul>
 				</li>
 				<li class="t1"><a href="#" id="topNavi5">음료</a>
 					<ul id="topSubm5">
-						<li><a href="#">까페리얼</a></li>
-						<li><a href="#">워터커피</a></li>
-						<li><a href="#">모히또</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
 					<ul id="topSubm6">
-						<li><a href="#">종이컵</a></li>
-						<li><a href="#">커피필터</a></li>
-						<li><a href="#">머신 등</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/종이컵">종이컵</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/커피필터">커피필터</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/머신 등">머신 등</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="#" id="topNavi7">선물세트</a></li>
-				<li class="t2"><a href="#" id="topNavi8">대량구매</a></li>
+				<li class="t1"><a href="${pageContext.request.contextPath}/product/선물세트" id="topNavi7">선물세트</a></li>
+				<li class="t2"><a href="${pageContext.request.contextPath}/product/대량구매" id="topNavi8">대량구매</a></li>
 			</ul>
 		</div>
 
 		<script type="text/javascript">initTopMenu();</script>
 	</div>
-	<!-- //GNB -->
 
 	<!-- container -->
 	<div id="container">
@@ -228,6 +200,8 @@ $(document).ready(function() {
 				
 
 				<!-- info -->
+				
+				<form action="payment?product_no=${detail.product_no }" method="post" name="detail_form">
 				<div class="info">
 					<p class="title">
 					<!--카테고리 넣어야댐 -->
@@ -251,7 +225,7 @@ $(document).ready(function() {
 								<div class="stit">용량</div> <div>${detail.volume }</div>
 							</li>
 							<li>
-								<div class="stit">수량</div> <div class="num"><input id="spinner" value="1" /></div>
+								<div class="stit">수량</div> <div class="num"><input id="spinner" name="count" value="1" /></div>
 							</li>
 							<li>
 								<div class="stit">평점</div> 
@@ -265,11 +239,11 @@ $(document).ready(function() {
 							</li>
 						</ul>
 					</div>
-
+					</form>
 					<!-- 판매중 -->
 					<div class="infobtn">
 						<ul>
-							<li><a href="payment?product_no=${detail.product_no }" class="ty1">바로 <span>구매하기</span></a></li>
+							<li><input type="submit" class="ty1" value="구매하기"></li>
 							<li><a href="#" class="ty2">장바구니 <span>담기</span></a></li>
 							<li class="last"><a href="#" class="ty3">위시 <span>리스트</span></a></li>
 						</ul>
@@ -334,38 +308,38 @@ $(document).ready(function() {
 
 								<tr>
 									<th scope="row" class="info"><span>제조원</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.manufacturer}</td>
 									<th scope="row" class="info"><span>포장재질</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.material}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>유통기한</span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.shelf_life}</td>
 									<th scope="row" class="info"><span>고객<u>상담실</u></span></th>
-									<td>4</td>
+									<td>${ProductInfoDto.service_tel}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>식품의 <u>유형</u></span></th>
-									<td>3</td>
+									<td>${ProductInfoDto.food_type}</td>
 									<th scope="row" class="info"><span>유통전문<u>판매원</u></span></th>
-									<td>3</td>
+									<td>${ProductInfoDto.sales_office}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>영양성분</span></th>
-									<td colspan="3">2</td>
+									<td colspan="3">${ProductInfoDto.nutrient}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>원재료명 <u>및 함량</u></span></th>
-									<td colspan="3">1</td>
+									<td colspan="3">${ProductInfoDto.raw_materials}</td>
 								</tr>
 
 								<tr>
 									<th scope="row" class="info"><span>업소명 <u>및 소재지</u></span></th>
-									<td colspan="3">1</td>
+									<td colspan="3">${ProductInfoDto.location}</td>
 								</tr>
 							</tbody>
 								
@@ -437,7 +411,7 @@ $(document).ready(function() {
 				<div class="goodsReview disnone">
 					<div class="headTitle">
 						<strong>포토 상품평&nbsp;</strong> 포토 상품평 작성자 중 우수상품평을 선정해 소정의 선물을 드립니다.
-						<p class="btn"><a href="photo.html" class="popBtn">포토 상품평 작성</a></p>
+						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">포토 상품평 작성</a></p>
 					</div>
 
 
@@ -523,32 +497,45 @@ $(document).ready(function() {
 					
 					<div class="headTitle depth">
 						<strong>상품리뷰&nbsp;</strong>상품리뷰는 상품 구매 후 작성하실 수 있습니다.
-						<p class="btn"><a href="review.html" class="popBtn">구매 후기 작성</a></p>
+						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">구매 후기 작성</a></p>
 					</div>
 
 				<!-- 상품리뷰 -->
+				<c:forEach var="review_view" items="${review_view }">
 					<div class="accordion">
 						<ul>
 							<!-- 반복 -->
 							<li>
 								<div class="headArea">
 									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!</a>
+										<a href="javascript:;" class="accbtn">${review_view.title }</a>
 									</div>
 									<div class="writer">[ezlin****]</div>
 									<div class="day">
-										<p>2014-03-24</p>
+										<p>${review_view.review_date }</p>
+										
 										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
+										<span class="ty" id="star${k=k+1 }">
+											</span>
+										<script>
+    var innerHtml = "평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${review_view.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
 										</p>
 									</div>
 								</div>
 
 								<div class="hideArea">
 									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
+										${review_view.content }
 									</div>
 
 									<!-- 답변 -->
@@ -562,109 +549,22 @@ $(document).ready(function() {
 												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
 												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
 											</div>
-										</div>
+										</div>	
 									</div>
 									<!-- //답변 -->
 
 									<div class="modify">
 										<a href="#">수정</a>
-										<a href="#">삭제</a>
+										<a href="review_delete?review_no=${review_view.review_no }&product_no=${review_view.product_no}">삭제</a>
 									</div>
 
 								</div>
 							</li>
 							<!-- //반복 -->
 
-							<li>
-								<div class="headArea">
-									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!</a>
-									</div>
-									<div class="writer">[ezlin****]</div>
-									<div class="day">
-										<p>2014-03-24</p>
-										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-										</p>
-									</div>
-								</div>
-
-								<div class="hideArea">
-									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
-									</div>
-
-									<!-- 답변 -->
-									<div class="answer">
-										<div class="inbox">
-											<div class="aname">
-												<p>담당자</p>
-											</div>
-
-											<div class="atxt">
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-											</div>
-										</div>
-									</div>
-									<!-- //답변 -->
-
-									<div class="modify">
-										<a href="#">수정</a>
-										<a href="#">삭제</a>
-									</div>
-
-								</div>
-							</li>
-
-							<li>
-								<div class="headArea">
-									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!저렴한 가격에 커피맛과 향은 최고!!저렴한 가격에 커피맛과 향은 최고!!</a>
-									</div>
-									<div class="writer">[ezlin****]</div>
-									<div class="day">
-										<p>2014-03-24</p>
-										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-										</p>
-									</div>
-								</div>
-
-								<div class="hideArea">
-									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
-									</div>
-
-									<!-- 답변 -->
-									<div class="answer">
-										<div class="inbox">
-											<div class="aname">
-												<p>담당자</p>
-											</div>
-
-											<div class="atxt">
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-											</div>
-										</div>
-									</div>
-									<!-- //답변 -->
-
-									<div class="modify">
-										<a href="#">수정</a>
-										<a href="#">삭제</a>
-									</div>
-
-								</div>
-							</li>
-
 						</ul>
 					</div>
+					</c:forEach>
 
 					<div class="btnAreaList">
 						<!-- 페이징이동1 -->
@@ -926,7 +826,7 @@ $(document).ready(function() {
 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">

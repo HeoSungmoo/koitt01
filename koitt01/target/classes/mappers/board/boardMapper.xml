@@ -10,23 +10,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where no=#{no}
 	</select>
 	
+<<<<<<< HEAD
 <!-- 	 공지사항 글보기 이전글  -->
+=======
+	<!-- 공지사항 글보기 이전글 -->
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	<select id="noticeViewPre" resultType="com.koitt.jardin.dto.board.NoticeDTO">
 	<![CDATA[select * from notice where no=(select max(no) from (select * from notice where no < #{no} )) ]]>
 	</select>
+<<<<<<< HEAD
 <!-- 	공지사항 글보기 다음글  -->
+=======
+	<!-- 공지사항 글보기 다음글 -->
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	<select id="noticeViewNext" resultType="com.koitt.jardin.dto.board.NoticeDTO">
+<<<<<<< HEAD
 
 	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} ))]]>
  	</select>
 
+=======
+	<![CDATA[select * from notice where no=(select min(no) from (select * from notice where no > #{no} )) ]]>
+	</select>
+	
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	
 	<!-- 공지사항 조회수 -->
 	<update id="noticeViewHit">
 	update notice set Hit=Hit+1 where No=#{no}
 	</update>
 	
-	<!-- 공지사항 검색 title 글 리스트-->
+	<!-- 공지사항 검색 title-->
 	<select id="noticeSearchT"   resultType="com.koitt.jardin.dto.board.NoticeDTO">
 		
 		select * 
@@ -37,9 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where rnum between #{curPage}*10-9 and #{curPage}*10 
 		
 	</select>
-	
-	<!-- 공지사항 검색 content 글 리스트-->
+	<!-- 공지사항 검색 content-->
 	<select id="noticeSearchC"  resultType="com.koitt.jardin.dto.board.NoticeDTO">
+<<<<<<< HEAD
 		select * 
       from(
                select row_number() over(order by no desc) as rnum, 
@@ -54,6 +68,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="noticeSearchTN"  resultType="com.koitt.jardin.dto.page.PageNationDTO">
 		select count(*)listCnt from notice where title like '%'||#{search}||'%'
+=======
+		select * from notice where content like '%'||#{search}||'%'
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	</select>
 
 <!--1:1문의 글 쓰기 -->
@@ -144,6 +161,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
+   
    <!-- faqOrder페이징 게시글 수 -->
 	<select id="faqOrderPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
 		select count(*) listCnt from faq where category='주문' order by no

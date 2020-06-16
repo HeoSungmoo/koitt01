@@ -9,13 +9,16 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
-import com.koitt.jardin.dto.product.SubCategoryDto;
+import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	SqlSession sqlSession;
+
+//	@Autowired
+//	ProductMapper productMapper;
 
 	// 제품리스트 목록페이지
 	@Override
@@ -49,13 +52,6 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void review(ProductDTO ProductDto) {
-
-		sqlSession.insert("product.review", ProductDto);
-
-	}
-
-	@Override
 	public ProductDTO search(int productNo) {
 
 		return sqlSession.selectOne("product.search", productNo);
@@ -74,16 +70,31 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public SubCategoryDto SubCategoryDto(int sub_category_code) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("product.SubCategoryDto", sub_category_code);
+	public void review(ReviewDTO reviewDto) {
+
+		sqlSession.insert("product.review", reviewDto);
+
 	}
 
 	@Override
-	public List<SubCategoryDto> SubCategoryDto() {
+	public List<ReviewDTO> review_view(int product_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.subCategoryList");
+		return sqlSession.selectList("product.review_view", product_no);
 	}
+
+	@Override
+	public void review_delete(int review_no) {
+
+		sqlSession.delete("product.review_delete", review_no);
+
+	}
+
+//	@Override
+//	public List<ProductDTO> categoryList(String category1, String category2) {
+//		// TODO Auto-generated method stub
+//
+//		return productMapper.categoryTest(category1, category2);
+//	}
 
 //	@Override
 //	public List<ProductDTO> categoryList(String category1, String category2) {

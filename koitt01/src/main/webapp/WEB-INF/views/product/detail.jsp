@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
+
+
     
    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -12,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/top_navi.js"></script>
+<script type="text/javascript" src="../js/left_navi.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -494,21 +497,22 @@ $(document).ready(function() {
 					
 					<div class="headTitle depth">
 						<strong>상품리뷰&nbsp;</strong>상품리뷰는 상품 구매 후 작성하실 수 있습니다.
-						<p class="btn"><a href="review.html" class="popBtn">구매 후기 작성</a></p>
+						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">구매 후기 작성</a></p>
 					</div>
 
 				<!-- 상품리뷰 -->
+				<c:forEach var="review_view" items="${review_view }">
 					<div class="accordion">
 						<ul>
 							<!-- 반복 -->
 							<li>
 								<div class="headArea">
 									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!</a>
+										<a href="javascript:;" class="accbtn">${review_view.title }</a>
 									</div>
 									<div class="writer">[ezlin****]</div>
 									<div class="day">
-										<p>2014-03-24</p>
+										<p>${review_view.review_date }</p>
 										<p>
 											<img src="images/ico/ico_star.gif" alt="별점" />
 											<img src="images/ico/ico_star.gif" alt="별점" />
@@ -519,7 +523,7 @@ $(document).ready(function() {
 
 								<div class="hideArea">
 									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
+										${review_view.content }
 									</div>
 
 									<!-- 답변 -->
@@ -533,7 +537,7 @@ $(document).ready(function() {
 												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
 												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
 											</div>
-										</div>
+										</div>	
 									</div>
 									<!-- //답변 -->
 
@@ -546,96 +550,9 @@ $(document).ready(function() {
 							</li>
 							<!-- //반복 -->
 
-							<li>
-								<div class="headArea">
-									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!</a>
-									</div>
-									<div class="writer">[ezlin****]</div>
-									<div class="day">
-										<p>2014-03-24</p>
-										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-										</p>
-									</div>
-								</div>
-
-								<div class="hideArea">
-									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
-									</div>
-
-									<!-- 답변 -->
-									<div class="answer">
-										<div class="inbox">
-											<div class="aname">
-												<p>담당자</p>
-											</div>
-
-											<div class="atxt">
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-											</div>
-										</div>
-									</div>
-									<!-- //답변 -->
-
-									<div class="modify">
-										<a href="#">수정</a>
-										<a href="#">삭제</a>
-									</div>
-
-								</div>
-							</li>
-
-							<li>
-								<div class="headArea">
-									<div class="subject">
-										<a href="javascript:;" class="accbtn">저렴한 가격에 커피맛과 향은 최고!!저렴한 가격에 커피맛과 향은 최고!!저렴한 가격에 커피맛과 향은 최고!!</a>
-									</div>
-									<div class="writer">[ezlin****]</div>
-									<div class="day">
-										<p>2014-03-24</p>
-										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-										</p>
-									</div>
-								</div>
-
-								<div class="hideArea">
-									<div class="bodyArea">
-										너무 맛있어서 재주문 했습니다!<br/>쟈뎅 커피 너무 맛있어요!
-									</div>
-
-									<!-- 답변 -->
-									<div class="answer">
-										<div class="inbox">
-											<div class="aname">
-												<p>담당자</p>
-											</div>
-
-											<div class="atxt">
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-											</div>
-										</div>
-									</div>
-									<!-- //답변 -->
-
-									<div class="modify">
-										<a href="#">수정</a>
-										<a href="#">삭제</a>
-									</div>
-
-								</div>
-							</li>
-
 						</ul>
 					</div>
+					</c:forEach>
 
 					<div class="btnAreaList">
 						<!-- 페이징이동1 -->
@@ -897,7 +814,7 @@ $(document).ready(function() {
 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">

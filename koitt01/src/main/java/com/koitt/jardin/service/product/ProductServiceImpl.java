@@ -10,7 +10,6 @@ import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
-import com.koitt.jardin.dto.product.SubCategoryDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -48,12 +47,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void review(ProductDTO ProductDto) {
-
-		productDao.review(ProductDto);
-	}
-
-	@Override
 	public ProductDTO search(int productNo) {
 
 		return productDao.search(productNo);
@@ -72,24 +65,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public SubCategoryDto SubCategoryDto(int sub_category_code) {
-		// TODO Auto-generated method stub
-		return productDao.SubCategoryDto(sub_category_code);
+	public void review(ReviewDTO reviewDto) {
+
+		productDao.review(reviewDto);
 
 	}
-
-	@Override
-	public List<SubCategoryDto> SubCategoryDto() {
-		// TODO Auto-generated method stub
-		return productDao.SubCategoryDto();
-	}
-
-	@Override
-	public ReviewDTO review_view(int product_no) {
-		// TODO Auto-generated method stub
-		return productDao.review_view(product_no);
-	}
-
 //	@Override
 //	public void categoryList(Model model) {
 //
@@ -100,10 +80,10 @@ public class ProductServiceImpl implements ProductService {
 //		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
 //	}
 
-//	@Overrideso
-//	public ProductDTO categoryList() {
-//		// TODO Auto-generated method stub
-//		return productDao.categoryList();
-//	}
+	@Override
+	public List<ReviewDTO> review_view(int product_no) {
+		// TODO Auto-generated method stub
+		return productDao.review_view(product_no);
+	}
 
 }

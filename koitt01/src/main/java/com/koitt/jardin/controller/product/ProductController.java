@@ -2,6 +2,8 @@ package com.koitt.jardin.controller.product;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koitt.jardin.batis.ProductTestService;
 import com.koitt.jardin.dto.product.ProductDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.service.product.ProductService;
 
 @Controller
@@ -73,27 +76,13 @@ public class ProductController {
 	// 제품의 상세내용 (condent_view)
 	@RequestMapping("/detail")
 
-	public String detail(Model model, int product_no) {
-
+	public String detail(Model model, int product_no, ReviewDTO reviewDto) {
+		model.addAttribute("review_view", productService.review_view(product_no));
 		model.addAttribute("detail", productService.detail(product_no));
-
 		// 제품상세 제품 상세내용
+		System.out.println(reviewDto.getTitle());
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		return "product/detail";
-	}
-
-	@RequestMapping("subcategory")
-	public String subcategory(Model model, int sub_category_code) {
-		model.addAttribute("SubCategoryList", productService.SubCategoryDto(sub_category_code));
-
-		return "product/list";
-	}
-
-	@RequestMapping("subcategoryList")
-	public String subcategoryList(Model model) {
-		model.addAttribute("subcategoryList", productService.SubCategoryDto());
-
-		return "product/list";
 	}
 
 	// 질문과 답변 작성란 ::추후에
@@ -110,11 +99,22 @@ public class ProductController {
 		return "product/photo";
 	}
 
-	// 구매후기 작성란
+	// 구매후기 작성란 보기
 	@RequestMapping("review_view")
-	public String review(ProductDTO ProductDto, int product_no) {
-		productService.review_view(product_no);
+	public String review_view(int product_no, Model model) {
+		model.addAttribute("product_no", product_no);
+
 		return "product/review";
+	}
+
+	// 구매후기 작성
+	@RequestMapping("review")
+	public String review(ReviewDTO reviewDto, int product_no, Model model, HttpSession session) {
+		reviewDto.setId((String) session.getAttribute("member"));
+		productService.review(reviewDto);
+
+		model.addAttribute("product_no", product_no);
+		return "product/list";
 	}
 
 	@RequestMapping("search")

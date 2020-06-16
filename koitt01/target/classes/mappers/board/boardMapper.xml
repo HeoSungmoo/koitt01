@@ -114,6 +114,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
+   
    <!-- faqOrder페이징 게시글 수 -->
 	<select id="faqOrderPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
 		select count(*) listCnt from faq where category='주문' order by no

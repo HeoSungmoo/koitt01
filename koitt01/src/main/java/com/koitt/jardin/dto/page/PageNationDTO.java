@@ -96,7 +96,7 @@ public class PageNationDTO {
 	}
 
 	public void setRange_cnt(int page_cnt) {
-		if (page_cnt % 10 == 0) {
+		if (page_cnt % 5 == 0) {
 			this.range_cnt = page_cnt / getRange_size();
 		} else {
 			this.range_cnt = page_cnt / getRange_size() + 1;

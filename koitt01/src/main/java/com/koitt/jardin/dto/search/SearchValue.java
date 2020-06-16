@@ -1,10 +1,10 @@
-package com.koitt.jardin.dto.board;
+package com.koitt.jardin.dto.search;
 
 public class SearchValue {
 
 	int curPage = 1;
-	String option;
-	String search;
+	String option = "";
+	String search = "";
 
 	public int getCurPage() {
 		return curPage;

@@ -85,6 +85,8 @@ public class MyPageController {
 		System.out.println(content);
 		System.out.println(file_name);
 		myPageService.writeComplete(id, category, title, content, file_name);
+	
+
 		return "redirect:inquiry";
 	}
 

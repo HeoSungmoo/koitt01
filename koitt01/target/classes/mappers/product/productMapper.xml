@@ -48,13 +48,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<insert id="photo">
-	
-	
-	
-	</insert>
-	
-
 	
 	<insert id='review'>
 	
@@ -75,11 +68,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</delete>
 	
+	<update id="review_modify">
+	
+	update review set title=#{title} , content=#{content} where review_no=#{review_no}
+	
+	</update>
+	
+	<select id="review_modify_view" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	
+	select * from review where review_no=#{review_no}
+	
+	</select>
+	
 	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
 	
 	</select>
 	
+	<insert id="photo">
+	
+		insert into review(review_no,product_no,id,title,content,grade,thumbnail) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade},#{thumbnail})
+	
+	</insert>
 	
 	
 	

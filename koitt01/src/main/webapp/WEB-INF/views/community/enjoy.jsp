@@ -121,12 +121,12 @@ $(document).ready(function() {
 						<ul>
 
 							<!-- List -->
-							<c:forEach var="enjoy" items="${enjoyCoffee}">
+							<c:forEach var="enjoy" items="${eDto}">
 							<li>
 								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="enjoyView?no=${enjoy.no}">${enjoy.title }</a>
+										<a href="enjoyView?no=${enjoy.no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}">${enjoy.title }</a>
 									</div>
 									<div class="conf">
 										${enjoy.content}
@@ -149,33 +149,52 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="enjoy?curPage=1&option=${sv.option}&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="enjoy?curPage=${pDto.getStart_page()-1}&option=${sv.option}&search=${search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="enjoy?curPage=${index}&option=${sv.option}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="enjoy?curPage=${index}&option=${sv.option}&search=${sv.search}">${index}</a>
+              			
+              				
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="enjoy?curPage=${pDto.getEnd_page()+1}&option=${sv.option}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="enjoy?curPage=${pDto.getPage_cnt()}&option=${sv.option}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-
+					<form action="enjoy">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-									<select>
-										<option value="" />제목</option>
+									<select name="option">
+										<option value="total">전체</option>
+										<option value="title">제목</option>
+										<option value="content">내용</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
+								<li><input type="text" class="searchInput" name="search" /></li>
+								<li class="web"><button><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //포토 구매후기 -->
 
 

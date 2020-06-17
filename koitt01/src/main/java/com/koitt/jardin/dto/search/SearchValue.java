@@ -1,19 +1,10 @@
-package com.koitt.jardin.dto.board;
+package com.koitt.jardin.dto.search;
 
 public class SearchValue {
 
 	int curPage = 1;
-	String option = "title";
+	String option = "";
 	String search = "";
-	String category = "";
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
 
 	public int getCurPage() {
 		return curPage;

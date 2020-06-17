@@ -27,11 +27,28 @@
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-$(document).ready(function() {
+
 	
+	$(document).ready(function() {
+// 		$("#preuserBtn").click(function(){
+// 			var title=$("#title").val();
+// 			var content=$("#content").val();
+// 			var preuser_no=(Number$("#preuser_no").val());
+// 			$.ajax({
+// 				url:'preUserApply',
+// 				type:'post',
+// 				data:'title='+title+'&content='+content+'&preuser_no='+preuser_no,
+// 				success:function(data){
+// 					alert("입력완료");
+// 				}
+				
+// 			});
+			
+// 		});
+	
+	
+	});
 
-
-});
 </script>
 </head>
 <body>
@@ -188,7 +205,7 @@ $(document).ready(function() {
 					</div>
 					<!-- //Tab -->
 
-<form action="preUserApply?preuser_no=${expr.preuser_no }" name="preUserApply" method="post">
+					<form action="preUserApply?preuser_no=${expr.preuser_no}" method="post">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -201,7 +218,8 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" name="title" />
+<!-- 									<input type="hidden" class="wlong" name="preuser_no" value=""/> -->
+										<input type="text" class="wlong" name="title"/>
 									</td>
 								</tr>
 								<tr>
@@ -218,7 +236,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>	
-								<li><a href="preUserApply" class="sbtnMini"><button type="submit">신청하기</button></a></li>
+								<li><a href="#" class="sbtnMini"><button id="preuserBtn">신청하기</button></a></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>

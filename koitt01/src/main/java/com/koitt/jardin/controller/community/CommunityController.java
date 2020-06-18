@@ -10,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
+import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
@@ -25,23 +24,14 @@ public class CommunityController {
 	@Autowired
 	CommunityService communityService;
 
-	// 체험단 글 리스트
+	// 체험단 리스트 출력및 검색
 	@RequestMapping("expr")
 	public String expr(SearchValue sv, Model model) {
-//		model.addAttribute("expr", communityService.expr());
 		PageNationDTO pDto = communityService.exprPageNation(sv); // 게시글 수 저장
 		List<PreUserDTO> list = communityService.exprPageNationList(sv);
 		model.addAttribute("expr", list);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("sv", sv);
-		System.out.println("expr현재 블럭 시작페이지start_page: " + pDto.getStart_page());
-		System.out.println("expr현재 블럭 끝 페이지end_page: " + pDto.getEnd_page());
-		System.out.println("expr현재 페이지 위치curPage: " + pDto.getCurPage());
-		System.out.println("expr다음 블럭 버튼next_page: " + pDto.getNext_page());
-		System.out.println("expr게시글 수listCnt: " + pDto.getListCnt());
-		System.out.println("expr페이지 수page_cnt: " + pDto.getPage_cnt());
-		System.out.println("expr현재 블럭위치cur_range: " + pDto.getCur_range());
-		System.out.println("expr블럭수range_cnt: " + pDto.getRange_cnt());
 		return "community/expr";
 	}
 
@@ -86,11 +76,18 @@ public class CommunityController {
 	// 리스트--------------------------------------------------------------------2020-06-03
 	// 작업중 리뷰에 대한 부분 상의 필요
 	@RequestMapping("epilogue")
-	public String epilogue(Model model, HttpSession session) throws JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		String memberId = mapper.writeValueAsString((String) session.getAttribute("member"));
+	public String epilogue(Model model, HttpSession session, SearchValue sv) {
+
+		String memberId = (String) session.getAttribute("member");
+
+		PageNationDTO pDto = communityService.epiloguePageNation(sv); // 게시글 수 저장
+		List<EpilogueDTO> eDto = communityService.epiloguePageNationList(sv);
+
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("eDto", eDto);
+		model.addAttribute("sv", sv);
 		model.addAttribute("memberId", memberId);
-		model.addAttribute("epilogue", communityService.epilogue());
+		model.addAttribute("eDto", eDto);
 		return "community/epilogue";
 	}
 
@@ -104,16 +101,23 @@ public class CommunityController {
 	// 포토구매후기 글 쓰기
 	@RequestMapping("epilogueWrite")
 	public String epilogueWrite(HttpSession session, int review_no, Model model) {
-		model.addAttribute("epilogueWrite", review_no);
-
-		return "community/epilogue";
+		return "community/epilogueWrite";
 	}
 
 	// 상품평 글 리스트
 	@RequestMapping("comment")
-	public String comment() {
+	public String comment(Model model, HttpSession session, SearchValue sv) {
+		String memberId = (String) session.getAttribute("member");
 
-		return "community/comment";
+		PageNationDTO pDto = communityService.commentPageNation(sv); // 게시글 수 저장
+		List<EpilogueDTO> eDto = communityService.commentPageNationList(sv);
+
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("eDto", eDto);
+		model.addAttribute("sv", sv);
+		model.addAttribute("memberId", memberId);
+		model.addAttribute("eDto", eDto);
+		return "community/epilogue";
 	}
 
 	// 상품평 글 보기

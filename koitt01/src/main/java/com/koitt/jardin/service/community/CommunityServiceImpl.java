@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.koitt.jardin.dao.community.CommunityDAO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
+import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
@@ -76,23 +77,22 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDAO.enjoyView(no);
 	}
 
-//FAQ 페이징------------------------------------------------------------------
+// 체험단(expr) 페이징------------------------------------------------------------------
 	// 페이징 글 리스트 가져오기
 	@Override
-	public List<PageNationDTO> exprPageNationList(int curPage) {
-		return communityDAO.exprPageNationList(curPage);
+	public List<PreUserDTO> exprPageNationList(SearchValue sv) {
+		return communityDAO.exprPageNationList(sv);
 	}
 
 	// 페이징 게시글 수 및 값 세팅
 	@Override
-	public PageNationDTO exprPageNation(int curPage) {
-		PageNationDTO pDto = communityDAO.exprPageNation();
-
+	public PageNationDTO exprPageNation(SearchValue sv) {
+		PageNationDTO pDto = communityDAO.exprPageNation(sv);
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(curPage); // 현재 페이지 위치
-		pDto.setCur_range(curPage); // 현재 블럭 위치
-		pDto.prevnext(curPage); // 이전 블럭, 다음 블럭 설정
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
 		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
@@ -120,17 +120,17 @@ public class CommunityServiceImpl implements CommunityService {
 		return pDto;
 	}
 
-// expr 페이징------------------------------------------------------------------
-	// 페이징 글 리스트 가져오기
+//포토상품후기
+// 페이징 글 리스트 가져오기
 	@Override
-	public List<PreUserDTO> exprPageNationList(SearchValue sv) {
-		return communityDAO.exprPageNationList(sv);
+	public List<EpilogueDTO> epiloguePageNationList(SearchValue sv) {
+		return communityDAO.epiloguePageNationList(sv);
 	}
 
 	// 페이징 게시글 수 및 값 세팅
 	@Override
-	public PageNationDTO exprPageNation(SearchValue sv) {
-		PageNationDTO pDto = communityDAO.enjoyPageNation(sv);
+	public PageNationDTO epiloguePageNation(SearchValue sv) {
+		PageNationDTO pDto = communityDAO.epiloguePageNation(sv);
 		System.out.println(pDto.getPrev_page());
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
@@ -141,4 +141,28 @@ public class CommunityServiceImpl implements CommunityService {
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
 	}
+
+//상품후기 상품후기
+	// 페이징 글 리스트 가져오기
+	@Override
+	public List<EpilogueDTO> commentPageNationList(SearchValue sv) {
+		return communityDAO.commentPageNationList(sv);
+	}
+
+	// 페이징 게시글 수 및 값 세팅
+	@Override
+	public PageNationDTO commentPageNation(SearchValue sv) {
+		PageNationDTO pDto = communityDAO.commentPageNation(sv);
+		System.out.println(pDto.getPrev_page());
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+
+	}
+
 }

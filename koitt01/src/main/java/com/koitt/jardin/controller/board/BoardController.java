@@ -7,12 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
-=======
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 import com.koitt.jardin.service.board.BoardService;
@@ -37,13 +33,12 @@ public class BoardController {
 		return "board/noticeView";
 	}
 
-<<<<<<< HEAD
 	// 공지사항 리스트 출력 및 검색 리스트 출력
 	@RequestMapping("notice")
 	public String noticeSearch(SearchValue sv, Model model) {
 
-		PageNationDTO PDto = boardService.noticeSearchPageNation(sv); // 게시글 수 저장
-		List<NoticeDTO> list = boardService.noticeSearchPageNationList(sv);
+		PageNationDTO PDto = boardService.pageNation(sv); // 게시글 수 저장
+		List<NoticeDTO> list = boardService.pageNationList(sv);
 		model.addAttribute("notice", list);
 		model.addAttribute("pDto", PDto);
 		model.addAttribute("sv", sv);
@@ -53,20 +48,9 @@ public class BoardController {
 		System.out.println("현재 페이지 위치curPage: " + PDto.getCurPage());
 		System.out.println("다음 블럭 버튼next_page: " + PDto.getNext_page());
 		System.out.println("게시글 수listCnt: " + PDto.getListCnt());
-		System.out.println("페이지 수page_cnt: " + PDto.getPage_cnt());
 		System.out.println("현재 블럭위치cur_range: " + PDto.getCur_range());
 		System.out.println("블럭수range_cnt: " + PDto.getRange_cnt());
-=======
-	// 공지사항 검색
-	@RequestMapping("noticeSearch")
-	public String noticeSearch(Model model, SearchValue sv) {
-//		System.out.println("1" + sv.getOption());
-//		System.out.println("2" + sv.getSearch());
-//		System.out.println("3" + sv.getCurPage());
-		PageNationDTO PDto = boardService.pageNation(sv.getCurPage());
-		model.addAttribute("pDto", PDto);
-		model.addAttribute("notice", boardService.noticeSearch(sv));
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
+
 		return "board/notice";
 	}
 
@@ -95,33 +79,5 @@ public class BoardController {
 //		model.addAttribute("guide", boardService.guide());
 		return "board/guide";
 	}
-
-//	// 공지사항 글 리스트,페이징
-//	@RequestMapping("notice")
-//	public String noticePage(@RequestParam(value = "curPage", defaultValue = "1") int curPage, Model model) {
-//		PageNationDTO PDto = boardService.pageNation(curPage); // 게시글 수 저장
-//		List<PageNationDTO> list = boardService.pageNationList(curPage);
-//
-//		model.addAttribute("notice", list);
-//		model.addAttribute("pDto", PDto);
-
-<<<<<<< HEAD
-//		return "board/notice";
-//	}
-=======
-		model.addAttribute("notice", list);
-		model.addAttribute("pDto", PDto);
-//		System.out.println("현재 블럭 시작페이지start_page: " + PDto.getStart_page());
-//		System.out.println("현재 블럭 끝 페이지end_page: " + PDto.getEnd_page());
-//		System.out.println("현재 페이지 위치curPage: " + PDto.getCurPage());
-//		System.out.println("다음 블럭 버튼next_page: " + PDto.getNext_page());
-//		System.out.println("게시글 수listCnt: " + PDto.getListCnt());
-//		System.out.println("페이지 수page_cnt: " + PDto.getPage_cnt());
-//		System.out.println("현재 블럭위치cur_range: " + PDto.getCur_range());
-//		System.out.println("블럭수range_cnt: " + PDto.getRange_cnt());
-
-		return "board/notice";
-	}
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 
 }

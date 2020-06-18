@@ -10,12 +10,6 @@ import com.koitt.jardin.dto.search.SearchValue;
 
 public interface BoardService {
 
-	// 공지사항 글 리스트
-	public List<NoticeDTO> notice();
-
-	// 공지사항 검색
-	public List<NoticeDTO> noticeSearch(SearchValue sv);
-
 	// 공지사항 조회수
 	public void noticeViewHit(int No);
 
@@ -51,10 +45,10 @@ public interface BoardService {
 
 //공지사항 페이징------------------------------------------------------------------
 	// 페이징 게시글 수
-	public PageNationDTO pageNation(int curPage);
+	public PageNationDTO pageNation(SearchValue sv);
 
 	// 페이징 글 리스트 가져오기
-	public List<PageNationDTO> pageNationList(int curPage);
+	public List<NoticeDTO> pageNationList(SearchValue sv);
 
 //FAQ 페이징------------------------------------------------------------------	
 	// FAQ 페이징 게시글 수
@@ -62,27 +56,4 @@ public interface BoardService {
 
 	// FAQ 페이징 글 리스트 가져오기
 	public List<FaqDTO> faqPageNationList(SearchValue sv);
-
-//FAQJoin 페이징------------------------------------------------------------------	
-	// FAQJoin 페이징 게시글 수
-	public PageNationDTO faqJoinPageNation(SearchValue sv);
-
-	// FAQJoin 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqJoinPageNationList(SearchValue sv);
-
-	// FAQProduct
-//FAQProduct 페이징------------------------------------------------------------------
-	// FAQProduct 페이징 게시글 수
-	public PageNationDTO faqProductPageNation(int curPage);
-
-	// FAQProduct 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqProductPageNationList(int curPage);
-
-	// FAQProduct
-	// 페이징------------------------------------------------------------------
-	// FAQProduct 페이징 게시글 수
-	public PageNationDTO faqOrderPageNation(int curPage);
-
-	// FAQProduct 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqOrderPageNationList(int curPage);
 }

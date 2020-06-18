@@ -19,13 +19,17 @@ public interface ProductDAO {
 
 	public void inquiry(ProductDTO ProductDto);
 
-	public void photo(ProductDTO ProductDto);
-
 	public void review(ReviewDTO reviewDto);
 
 	public List<ReviewDTO> review_view(int product_no);
 
 	public void review_delete(int review_no);
+
+	public void review_modify(ReviewDTO reviewDto);
+
+	public ReviewDTO review_modify_view(int review_no);
+
+	public void photo(ReviewDTO reviewDto);
 
 	public ProductDTO search(int productNo);
 

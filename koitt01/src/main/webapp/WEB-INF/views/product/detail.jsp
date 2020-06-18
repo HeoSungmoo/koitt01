@@ -411,7 +411,7 @@ $(document).ready(function() {
 				<div class="goodsReview disnone">
 					<div class="headTitle">
 						<strong>포토 상품평&nbsp;</strong> 포토 상품평 작성자 중 우수상품평을 선정해 소정의 선물을 드립니다.
-						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">포토 상품평 작성</a></p>
+						<p class="btn"><a href="photo_view?product_no=${detail.product_no }" class="popBtn">포토 상품평 작성</a></p>
 					</div>
 
 
@@ -554,7 +554,7 @@ $(document).ready(function() {
 									<!-- //답변 -->
 
 									<div class="modify">
-										<a href="#">수정</a>
+										<a href="review_modify_view?review_no=${review_view.review_no }&product_no=${review_view.product_no}">수정</a>
 										<a href="review_delete?review_no=${review_view.review_no }&product_no=${review_view.product_no}">삭제</a>
 									</div>
 

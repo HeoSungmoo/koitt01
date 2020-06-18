@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -92,13 +94,6 @@ public class ProductController {
 		return "product/inquiry";
 	}
 
-	// 포토리뷰 작성란
-	@RequestMapping("photo")
-	public String photo(ProductDTO ProductDto) {
-		productService.photo(ProductDto);
-		return "product/photo";
-	}
-
 	// 구매후기 작성란 보기
 	@RequestMapping("review_view")
 	public String review_view(int product_no, Model model) {
@@ -123,6 +118,40 @@ public class ProductController {
 		productService.review_delete(review_no);
 
 		return "redirect:/detail?product_no=" + product_no;
+	}
+
+	@RequestMapping("/review_modify")
+	public String review_modify(HttpSession session, ReviewDTO reviewDto, int review_no, int product_no) {
+		reviewDto.setId((String) session.getAttribute("member"));
+		productService.review_modify(reviewDto);
+
+		return "redirect:/detail?product_no=" + product_no;
+	}
+
+	@RequestMapping("/review_modify_view")
+	public String review_modify_view(int product_no, Model model, int review_no, HttpSession session,
+			ReviewDTO reviewDto) {
+		reviewDto.setId((String) session.getAttribute("member"));
+		model.addAttribute("review_modify_view", productService.review_modify_view(review_no));
+		model.addAttribute("product_no", product_no);
+		model.addAttribute("review_no", review_no);
+		return "product/review_modify_view";
+	}
+
+	@RequestMapping("photo_view")
+	public String photo_view(int product_no, Model model) {
+		model.addAttribute("product_no", product_no);
+
+		return "product/photo";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "photo")
+	public String photo(HttpSession session, Model model, int product_no, String id, String title, String content,
+			int grade, MultipartFile thumbnail, ReviewDTO reviewDto) throws Exception {
+		reviewDto.setId((String) session.getAttribute("member"));
+		productService.photo(product_no, id, title, content, grade, thumbnail);
+		model.addAttribute("product_no", product_no);
+		return "product/list";
 	}
 
 	@RequestMapping("search")

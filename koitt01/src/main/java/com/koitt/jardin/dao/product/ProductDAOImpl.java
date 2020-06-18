@@ -45,13 +45,6 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void photo(ProductDTO ProductDto) {
-
-		sqlSession.insert("product.photo", ProductDto);
-
-	}
-
-	@Override
 	public ProductDTO search(int productNo) {
 
 		return sqlSession.selectOne("product.search", productNo);
@@ -86,6 +79,24 @@ public class ProductDAOImpl implements ProductDAO {
 	public void review_delete(int review_no) {
 
 		sqlSession.delete("product.review_delete", review_no);
+
+	}
+
+	@Override
+	public void review_modify(ReviewDTO reviewDto) {
+		// TODO Auto-generated method stub
+		sqlSession.update("product.review_modify", reviewDto);
+	}
+
+	@Override
+	public ReviewDTO review_modify_view(int review_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.review_modify_view", review_no);
+	}
+
+	@Override
+	public void photo(ReviewDTO reviewDto) {
+		sqlSession.insert("product.photo", reviewDto);
 
 	}
 

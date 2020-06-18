@@ -28,7 +28,7 @@ $(function() {
 		<div class="title">구매 후기 작성하기</div>
 		<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="images/btn/btn_input_close.gif" alt="닫기" /></a></p>
 		   
-	<form action="review?product_no=${product_no}" method="post" name="review_form">
+	<form action="review_modify?product_no=${product_no}&review_no=${review_no}" method="post" name="review_form">
 		<div class="checkDivMt">
 			<table summary="분류, 구매여부, 평가, 제목, 상세 내용 순으로 포토 리뷰를 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 				<caption>구매 후기 작성</caption>
@@ -70,7 +70,7 @@ $(function() {
 							<ul class="pta">
 								<li>
  									<input type="hidden" name="product_no" value="${product_no }">
- 									
+ 									<input type="hidden" name="review_no" value="${review_no }">
 									<input type="radio" name="grade" value='5' id="starFive" checked="checked"/>
 									<label for="starFive" class="star">
 										<img src="images/ico/ico_star.gif" alt="별점" />
@@ -121,13 +121,15 @@ $(function() {
 						<th scope="row"><span>제목</span></th>
 						<td>
 						
-							<input type="text" class="wlong" name="title" />
+							<input type="text" class="wlong" name="title" value="${review_modify_view.title }">
+							
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><span>내용</span></th>
 						<td>
-							<textarea class="tta" name="content"></textarea>
+							<textarea class="tta" name="content">${review_modify_view.content }</textarea>
+							
 						</td>
 					</tr>								
 				</tbody>

@@ -28,7 +28,7 @@ $(function() {
 		<div class="title">포토리뷰 작성하기</div>
 		<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="images/btn/btn_input_close.gif" alt="닫기" /></a></p>
 			
-			<form action="photo" method="post" name="photo" enctype="multipart/form-data">
+			<form action="photo?product_no=${product_no }" method="post" name="photo" enctype="multipart/form-data">
 			
 											
 		<div class="checkDivMt">

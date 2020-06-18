@@ -11,6 +11,7 @@ import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Service
@@ -34,11 +35,6 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
 		return productDao.detail(product_no);
-	}
-
-	@Override
-	public void inquiry(ProductDTO ProductDto) {
-
 	}
 
 	@Override
@@ -101,15 +97,16 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void photo(int product_no, String id, String title, String content, int grade, MultipartFile thumbnail)
+	public void photo(int product_no, String title, String content, int grade, MultipartFile thumbnail, String id)
 			throws Exception {
 
-		String path = "C:Users/user/git/koitt01/koitt01/src/main/webapp/resources/images/review";
+		String path = "C:/Users/user.user-PC/git/koitt01/koitt01/src/main/webapp/resources/images/review";
 
 		String thumbNail = thumbnail.getOriginalFilename();
 		thumbnail.transferTo(new File(path + thumbNail));
 
 		ReviewDTO reviewDto = new ReviewDTO();
+		reviewDto.setProduct_no(product_no);
 		reviewDto.setId(id);
 		reviewDto.setTitle(title);
 		reviewDto.setContent(content);
@@ -118,6 +115,13 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(reviewDto.getThumbnail());
 		System.out.println(reviewDto.getId());
 		productDao.photo(reviewDto);
+
+	}
+
+	@Override
+	public void inquiry(QnaDTO qnaDto) {
+
+		productDao.inquiry(qnaDto);
 
 	}
 

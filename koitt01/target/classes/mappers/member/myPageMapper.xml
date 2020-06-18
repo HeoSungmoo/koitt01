@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myPage">
+    <!-- 1:1문의 리스트 출력 -->
+    <select id = "inquiryList" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
+    	select * from question where id = #{id} order by no desc 
+    </select>
+    
+    <!-- 1:1문의 내용 -->
+    <select id = "inquiryView" resultType = "com.koitt.jardin.dto.member.InquiryDTO">
+    	select * from question where no = #{no}
+    </select>
+    
+   <!-- 1:1문의 글등록 -->
+    <insert id = "writeComplete">
+    	insert into question(no,id,category,title,content,file_name) values(question_seq.nextval,#{id},#{category},#{title},#{content},#{file_name})
+    </insert>
+    
+    <!-- 회원정보 수정 정보 출력-->
+    <select id = "changeInfoView" resultType = "com.koitt.jardin.dto.member.MemberDTO">
+    	select * from member where id = #{id}
+    </select>
+    
+    <!-- 회원정보 수정 -->
+    <update id = "changeInfo">
+    	update member set password = #{password}, mail = #{mail}, mailSend = #{mailSend}, address = #{address}, phone = #{phone}, sms = #{sms}, tel = #{tel}, birth = #{birth}, lunarSolar = #{lunarSolar} where id = #{id}
+    </update>
+    
+    <!-- 회원탈퇴 -->
+    <delete id = "delete">
+    	update member set name = "0", password = "0", mail = "0", mailSend = "0", zip = "0",address = "0",phone = '0',sms ='0', tel = '0', birth = sysdate, lunar_solar = "0", delete_date = sysdate where id = #{id}; 
+    </delete>
+    
+</mapper>

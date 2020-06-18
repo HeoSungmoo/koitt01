@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
+import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
@@ -87,17 +88,6 @@ public class CommunityDAOImpl implements CommunityDAO {
 	}
 
 	// 체험단 페이징------------------------------------------------------------------
-	// 페이징 게시글 수
-	@Override
-	public PageNationDTO exprPageNation() {
-		return sqlSession.selectOne("community.exprPageNation");
-	}
-
-	// 체험단 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> exprPageNationList(int curPage) {
-		return sqlSession.selectList("community.exprPageNationList", curPage);
-	}
 
 	// enjoy 페이징------------------------------------------------------------------
 	// enjoy 페이징 게시글 수
@@ -105,7 +95,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public PageNationDTO enjoyPageNation(SearchValue sv) {
 		PageNationDTO pDto = null;
 		if (sv.getOption().equals("")) {
-			System.out.println("그냥 리스트 개수 출력으로 들어옴");
+			System.out.println("enjoy 리스트 개수 출력으로 들어옴");
 			pDto = sqlSession.selectOne("community.enjoyPageNation", sv);
 		} else if (sv.getOption().equals("total")) {
 			System.out.println("total 개수 출력으로 들어옴");
@@ -128,6 +118,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 		List<EnjoyCoffDTO> eDto = null;
 		if (sv.getOption().equals("")) {
 			System.out.println("그냥 리스트 출력으로 들어옴");
+			System.out.println("enjoy 리스트 개수 출력으로 들어옴");
 			eDto = sqlSession.selectList("community.enjoyPageNationList", sv);
 		} else if (sv.getOption().equals("total")) {
 			System.out.println("total 리스트 출력으로 들어옴");
@@ -148,8 +139,11 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public PageNationDTO exprPageNation(SearchValue sv) {
 		PageNationDTO pDto = null;
 		if (sv.getOption().equals("")) {
-			System.out.println("그냥 리스트 개수 출력으로 들어옴");
+			System.out.println("expr 리스트 개수 출력으로 들어옴");
 			pDto = sqlSession.selectOne("community.exprPageNation", sv);
+			System.out.println("게시글 수" + pDto.getListCnt());
+			System.out.println("페이지 수" + pDto.getPage_cnt());
+			System.out.println("블록 수" + pDto.getRange_cnt());
 		} else if (sv.getOption().equals("total")) {
 			System.out.println("total 개수 출력으로 들어옴");
 			pDto = sqlSession.selectOne("community.exprPageNationTo", sv);
@@ -170,7 +164,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public List<PreUserDTO> exprPageNationList(SearchValue sv) {
 		List<PreUserDTO> eDto = null;
 		if (sv.getOption().equals("")) {
-			System.out.println("그냥 리스트 출력으로 들어옴");
+			System.out.println("expr 리스트 출력으로 들어옴");
 			eDto = sqlSession.selectList("community.exprPageNationList", sv);
 		} else if (sv.getOption().equals("total")) {
 			System.out.println("total 리스트 출력으로 들어옴");
@@ -185,4 +179,71 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return eDto;
 	}
 
+	// 포토 이용후기 페이징------------------------------------------------------------------
+	// 이용후기 페이징 게시글 수
+	@Override
+	public PageNationDTO epiloguePageNation(SearchValue sv) {
+		PageNationDTO pDto = null;
+		if (sv.getOption().equals("")) {
+			pDto = sqlSession.selectOne("community.epiloguePageNation", sv);
+		} else if (sv.getOption().equals("total")) {
+			pDto = sqlSession.selectOne("community.epiloguePageNationTo", sv);
+		} else if (sv.getOption().equals("title")) {
+			pDto = sqlSession.selectOne("community.epiloguePageNationTi", sv);
+		} else if (sv.getOption().equals("content")) {
+			pDto = sqlSession.selectOne("community.epiloguePageNationCo", sv);
+		}
+		return pDto;
+	}
+
+	// 이용후기 페이징 글 리스트 가져오기
+	@Override
+	public List<EpilogueDTO> epiloguePageNationList(SearchValue sv) {
+
+		List<EpilogueDTO> eDto = null;
+		if (sv.getOption().equals("")) {
+			eDto = sqlSession.selectList("community.epiloguePageNationList", sv);
+		} else if (sv.getOption().equals("total")) {
+			eDto = sqlSession.selectList("community.epiloguePageNationToList", sv);
+		} else if (sv.getOption().equals("title")) {
+			eDto = sqlSession.selectList("community.epiloguePageNationTiList", sv);
+		} else if (sv.getOption().equals("content")) {
+			eDto = sqlSession.selectList("community.epiloguePageNationCoList", sv);
+		}
+		return eDto;
+	}
+
+	// 이용후기 페이징------------------------------------------------------------------
+	// 이용후기 페이징 게시글 수
+	@Override
+	public PageNationDTO commentPageNation(SearchValue sv) {
+		PageNationDTO pDto = null;
+		if (sv.getOption().equals("")) {
+			pDto = sqlSession.selectOne("community.commentPageNation", sv);
+		} else if (sv.getOption().equals("total")) {
+			pDto = sqlSession.selectOne("community.commentPageNationTo", sv);
+		} else if (sv.getOption().equals("title")) {
+			pDto = sqlSession.selectOne("community.commentPageNationTi", sv);
+		} else if (sv.getOption().equals("content")) {
+			pDto = sqlSession.selectOne("community.commentPageNationCo", sv);
+		}
+		return pDto;
+	}
+
+	// 이용후기 페이징 글 리스트 가져오기
+	@Override
+	public List<EpilogueDTO> commentPageNationList(SearchValue sv) {
+
+		List<EpilogueDTO> eDto = null;
+		if (sv.getOption().equals("")) {
+			eDto = sqlSession.selectList("community.commentPageNationList", sv);
+		} else if (sv.getOption().equals("total")) {
+			eDto = sqlSession.selectList("community.commentPageNationToList", sv);
+		} else if (sv.getOption().equals("title")) {
+			eDto = sqlSession.selectList("community.commentPageNationTiList", sv);
+		} else if (sv.getOption().equals("content")) {
+			eDto = sqlSession.selectList("community.commentPageNationCoList", sv);
+		}
+		return eDto;
+	}
 }

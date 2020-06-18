@@ -38,12 +38,12 @@ fieldset{margin:0;padding:0;border:0 none;}
 legend, caption, .skip{position:absolute; left:-9999px; width:0; height:0; font-size:0; line-height:0; overflow:hidden;}
 caption{position:static;}
 
-html, body,input,button{font-size:12px; color:#888; font-family:'Nanum Gothic'}
+html, body,input,button{ border:0 #888; font-size:12px; color:#888; font-family:'Nanum Gothic'; z-index:1;}
 .faqSearch{width:65px; height:20; boder:0; outline:0; background:#f1f1f1; border:0 solid #f1f1f1; cursor: pointer;}
 
 a {color:#a7a7a7; text-decoration:none;}
 a:hover {color:#a7a7a7; text-decoration:none;}
-img,input{vertical-align:top;}
+img,input{vertical-align:top; border:white;}
 label{vertical-align:middle; font-size:14px; cursor:pointer;}
 select {height:24px; margin:0; border: 1px solid #dcdcdc; padding:0; font-size:13px; vertical-align:middle; color:#666;}
 textarea {border:1px solid #dcdcdc; color:#888; font-size:13px; line-height:18px; padding:5px; overflow-y:auto; resize:none;}

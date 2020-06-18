@@ -169,26 +169,26 @@ $(document).ready(function() {
 						<a href="faq?curPage=1&option=${sv.option}&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
-           				 <a href="faq?curPage=${pDto.getStart_page()-1}&option=${sv.option}&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="faq?curPage=${pDto.getStart_page()-1}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
             				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="faq?curPage=${index}&option=${sv.option}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+               				<a  href="faq?curPage=${index}&option=${sv.option}&search=${sv.search}&category=${sv.category} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="faq?curPage=${index}&option=${sv.option}&search=${sv.search}">${index}</a>
+              				 <a href="faq?curPage=${index}&option=${sv.option}&search=${sv.search}&category=${sv.category}">${index}</a>
               			
               				
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${pDto.getNext_page()}">
-            				<a href="faq?curPage=${pDto.getEnd_page()+1}&option=${sv.option}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="faq?curPage=${pDto.getEnd_page()+1}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="faq?curPage=${pDto.getPage_cnt()}&option=${sv.option}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="faq?curPage=${pDto.getPage_cnt()}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->

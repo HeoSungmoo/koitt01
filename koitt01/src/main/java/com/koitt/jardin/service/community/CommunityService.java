@@ -3,6 +3,7 @@ package com.koitt.jardin.service.community;
 import java.util.List;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
+import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
@@ -39,13 +40,6 @@ public interface CommunityService {
 	// enjoy커피 글 보기
 	public EnjoyCoffDTO enjoyView(int no);
 
-// 체험단 페이징 및 검색------------------------------------------------------------------
-	// 페이징 게시글 수
-	public PageNationDTO exprPageNation(int curPage);
-
-	// 페이징 글 리스트 가져오기
-	public List<PageNationDTO> exprPageNationList(int curPage);
-
 // enjoy 페이징 및 검색------------------------------------------------------------------
 	// 페이징 게시글 수
 	public PageNationDTO enjoyPageNation(SearchValue sv);
@@ -60,4 +54,17 @@ public interface CommunityService {
 	// 페이징 글 리스트 가져오기
 	public List<PreUserDTO> exprPageNationList(SearchValue sv);
 
+// 포토상품후기 페이징 및 검색------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO epiloguePageNation(SearchValue sv);
+
+	// 페이징 글 리스트 가져오기
+	public List<EpilogueDTO> epiloguePageNationList(SearchValue sv);
+
+// 이용후기 페이징 및 검색------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO commentPageNation(SearchValue sv);
+
+	// 페이징 글 리스트 가져오기
+	public List<EpilogueDTO> commentPageNationList(SearchValue sv);
 }

@@ -18,39 +18,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardDAO boardDao;
 
-	// 공지사항 글 리스트
-	@Override
-	public List<NoticeDTO> notice() {
-
-		return boardDao.notice();
-
-	}
-
-	// 공지사항 검색
-	@Override
-<<<<<<< HEAD
-	public PageNationDTO noticeSearchPageNation(SearchValue sv) {
-		System.out.println(sv.getCurPage());
-		System.out.println(sv.getOption());
-		System.out.println(sv.getSearch());
-		PageNationDTO pDto = boardDao.noticeSearchPageNation(sv);
-
-		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
-		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
-		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
-		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
-		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
-		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
-		return pDto;
-	}
-=======
-	public List<NoticeDTO> noticeSearch(SearchValue sv) {
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
-
-		return boardDao.noticeSearch(sv);
-	}
-
 	// 공지사항 글 보기
 	@Override
 	public NoticeDTO noticeView(int no) {
@@ -126,32 +93,32 @@ public class BoardServiceImpl implements BoardService {
 
 	// 페이징 글 리스트 가져오기
 	@Override
-	public List<PageNationDTO> pageNationList(int curPage) {
-		return boardDao.pageNationList(curPage);
+	public List<NoticeDTO> pageNationList(SearchValue sv) {
+		return boardDao.pageNationList(sv);
 	}
 
-	// 페이징 게시글 수 및 값 세팅
+	// 페이지 글 게시글 수 가져오기
 	@Override
-	public PageNationDTO pageNation(int curPage) {
-		PageNationDTO pDto = boardDao.pageNation();
+	public PageNationDTO pageNation(SearchValue sv) {
+		PageNationDTO pDto = boardDao.pageNation(sv);
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(curPage); // 현재 페이지 위치
-		pDto.setCur_range(curPage); // 현재 블럭 위치
-		pDto.prevnext(curPage); // 이전 블럭, 다음 블럭 설정
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
 		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
 	}
 
 //FAQ 페이징------------------------------------------------------------------
-	// 페이징 글 리스트 가져오기
+	// FAQ페이징 글 리스트 가져오기
 	@Override
 	public List<FaqDTO> faqPageNationList(SearchValue sv) {
 		return boardDao.faqPageNationList(sv);
 	}
 
-	// 페이징 게시글 수 및 값 세팅
+	// FAQ 페이징 게시글 수 및 값 세팅
 	@Override
 	public PageNationDTO faqPageNation(SearchValue sv) {
 		PageNationDTO pDto = boardDao.faqPageNation(sv);
@@ -166,65 +133,6 @@ public class BoardServiceImpl implements BoardService {
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
 	}
-
-	// faqJoin 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqJoinPageNationList(SearchValue sv) {
-		return boardDao.faqJoinPageNationList(sv);
-	}
-
-	// faqJoin 페이징 게시글 수 및 값 세팅
-	@Override
-	public PageNationDTO faqJoinPageNation(SearchValue sv) {
-		PageNationDTO pDto = boardDao.faqJoinPageNation(sv);
-		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
-		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
-		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
-		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
-		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
-		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
-		return pDto;
-	}
-
-	// faqProduct 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqProductPageNationList(int curPage) {
-		return boardDao.faqProductPageNationList(curPage);
-	}
-
-	// faqProduct 페이징 게시글 수 및 값 세팅
-	@Override
-	public PageNationDTO faqProductPageNation(int curPage) {
-		PageNationDTO pDto = boardDao.faqProductPageNation();
-		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
-		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(curPage); // 현재 페이지 위치
-		pDto.setCur_range(curPage); // 현재 블럭 위치
-		pDto.prevnext(curPage); // 이전 블럭, 다음 블럭 설정
-		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
-		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
-		return pDto;
-	}
-
-	// faqOrder 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqOrderPageNationList(int curPage) {
-		return boardDao.faqOrderPageNationList(curPage);
-	}
-
-	// faqOrder 페이징 게시글 수 및 값 세팅
-	@Override
-	public PageNationDTO faqOrderPageNation(int curPage) {
-		PageNationDTO pDto = boardDao.faqOrderPageNation();
-		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
-		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
-		pDto.setCurPage(curPage); // 현재 페이지 위치
-		pDto.setCur_range(curPage); // 현재 블럭 위치
-		pDto.prevnext(curPage); // 이전 블럭, 다음 블럭 설정
-		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
-		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
-		return pDto;
-	}
 //FAQ 페이징------------------------------------------------------------------
+
 }

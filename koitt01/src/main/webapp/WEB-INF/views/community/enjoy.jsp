@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="js/top_navi.js"></script>
 <script type="text/javascript" src="js/left_navi.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

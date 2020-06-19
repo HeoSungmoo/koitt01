@@ -217,7 +217,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bRight">
 							<ul>
-								<li><a href="epilogueWrite?review_no=${epilogueView.review_no}&productTitle=${epilogueView.productTitle}&thumbnail=${epilogueView.thumbnail}&grade=${epilogueView.grade}&title=${epilogueView.title}&content=${epilogueView.content}" class="nbtnbig mw">수정</a></li>
+								<li><a href="epilogueUpdate?review_no=${epilogueView.review_no}"class="nbtnbig mw">수정</a></li>
 								<li><a href="epilogueDelete?review_no=${epilogueView.review_no}" class="nbtnbig mw">삭제</a></li>
 								<li><a href="epilogue??curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" class="sbtnMini mw">목록</a></li>
 							</ul>

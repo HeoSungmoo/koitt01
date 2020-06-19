@@ -36,7 +36,7 @@ public interface CommunityService {
 	public void epilogueDelete(int review_no);
 
 	// 이용후기 글 수정
-	public void epilogueUpdate(ReviewDTO rDto,MultipartFile thumbnail) throws Exception;
+	public ReviewDTO epilogueUpdate(ReviewDTO rDto);
 
 	// enjoy커피 글 보기
 	public EnjoyCoffDTO enjoyView(SearchValue sv);

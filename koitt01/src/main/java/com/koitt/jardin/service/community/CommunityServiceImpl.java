@@ -63,12 +63,10 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 
 	@Override
-	public void epilogueUpdate(ReviewDTO rDto,MultipartFile thumbnail) throws Exception {
-		String path="C:/Users/yohan/git/jardinProjectImage/communityImage";
-		String fileName=thumbnail.getOriginalFilename();
-		thumbnail.transferTo(new File(path+fileName));
-		communityDAO.epilogueUpdate(rDto);
-		
+	public ReviewDTO epilogueUpdate(ReviewDTO rDto) {
+		System.out.println(rDto.getReview_no());
+	
+		return communityDAO.epilogueUpdate(rDto);
 	}
 
 	// 인조이 커피 글 보기

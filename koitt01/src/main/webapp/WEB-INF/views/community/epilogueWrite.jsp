@@ -114,7 +114,7 @@ $(document).ready(function() {
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
-<form action="epilogueUpdate">
+<form action="epilogueUpdate" method="post"  enctype="multipart/form-data" >
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
@@ -140,7 +140,7 @@ $(document).ready(function() {
 									<td>
 										<ul class="pta">
 											<li class="pt5">
-												<p><input type="text" name="productTitle" value="${epilogueUpdate.productTitle}" readonly/></p>
+												<p><input type="text" name="productTitle" style="width:200px; "value="${epilogueUpdate.productTitle}" readonly/></p>
 											</li>
 										</ul>
 									</td>

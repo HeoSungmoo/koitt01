@@ -68,8 +68,8 @@ public class CommunityDAOImpl implements CommunityDAO {
 	}
 
 	// 이용후기 글 삭제
-	public void epilogueUpdate(ReviewDTO rDto) {
-		sqlSession.update("epilogue.epilogueView", rDto);
+	public ReviewDTO epilogueUpdate(ReviewDTO rDto) {
+		return sqlSession.selectOne("epilogue.epilogueView", rDto);
 	}
 
 	// 인조이 커피 글 보기

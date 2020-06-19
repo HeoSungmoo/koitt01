@@ -103,19 +103,18 @@ public class CommunityController {
 		return "community/epilogueView";
 	}
 
-	// 포토구매후기 글 수정 write
+	// 포토구매후기 글 수정 update
 	@RequestMapping("epilogueWrite")
-	public String epilogueWrite(Model model,ReviewDTO rDto) {
+	public String epilogueWrite(Model model,ReviewDTO rDto,MultipartFile thumbnail) {
+		
 		model.addAttribute("epilogueUpdate",rDto);
 		return "community/epilogueWrite";
 	}
-	// 포토구매후기 글 수정 update
+	// 포토구매후기 글 수정페이지 view
 	@RequestMapping("epilogueUpdate")
-	public String epilogueUpdate(Model model,ReviewDTO rDto,MultipartFile thumbnail) throws Exception {
-		System.out.println(rDto.getThumbnail());
-		System.out.println("썸네일 이미지:"+thumbnail);
-		model.addAttribute("epilogueUpdate",rDto);
-		communityService.epilogueUpdate(rDto,thumbnail);
+	public String epilogueUpdate(Model model,ReviewDTO rDto,RedirectAttributes redirectAttributes) {	
+	rDto=communityService.epilogueUpdate(rDto);
+	model.addAttribute("epilogueUpdate",rDto);
 		return "community/epilogueWrite";
 	}
 	// 포토구매후기 글 삭제

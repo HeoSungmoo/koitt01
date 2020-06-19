@@ -36,7 +36,7 @@ public interface CommunityDAO {
 	public void epilogueDelete(int review_no);
 
 	// 이용후기 글 수정
-	public void epilogueUpdate(ReviewDTO rDto);
+	public ReviewDTO epilogueUpdate(ReviewDTO rDto);
 
 	// 인조이 커피 글 보기
 	public EnjoyCoffDTO enjoyView(SearchValue sv);

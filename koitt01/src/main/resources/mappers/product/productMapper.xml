@@ -42,11 +42,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	<insert id="inquiry">
-	
-	
-	</insert>
-	
 	
 	
 	<insert id='review'>
@@ -87,8 +82,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="photo">
 	
-		insert into review(review_no,product_no,id,title,content,grade,thumbnail) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade},#{thumbnail})
+	insert into review(review_no,product_no,id,title,content,grade,thumbnail) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade},#{thumbnail})
 	
+	</insert>
+	
+
+	<insert id="inquiry">
+	
+
+	insert into qna(qna_no,product_no,id,title,content) values(qna_seq.nextval,#{product_no},#{id},#{title},#{content})
 	</insert>
 	
 	

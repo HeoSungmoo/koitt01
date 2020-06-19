@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
-import com.koitt.jardin.dto.product.ProductDTO;
+import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.service.product.ProductService;
 
@@ -82,16 +82,9 @@ public class ProductController {
 		model.addAttribute("review_view", productService.review_view(product_no));
 		model.addAttribute("detail", productService.detail(product_no));
 		// 제품상세 제품 상세내용
-		System.out.println(reviewDto.getTitle());
+
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		return "product/detail";
-	}
-
-	// 질문과 답변 작성란 ::추후에
-	@RequestMapping("Pinquiry")
-	public String inquiry(ProductDTO ProductDto) {
-		productService.inquiry(ProductDto);
-		return "product/inquiry";
 	}
 
 	// 구매후기 작성란 보기
@@ -146,11 +139,29 @@ public class ProductController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "photo")
-	public String photo(HttpSession session, Model model, int product_no, String id, String title, String content,
-			int grade, MultipartFile thumbnail, ReviewDTO reviewDto) throws Exception {
-		reviewDto.setId((String) session.getAttribute("member"));
-		productService.photo(product_no, id, title, content, grade, thumbnail);
+	public String photo(HttpSession session, Model model, int product_no, String title, String content, int grade,
+			MultipartFile thumbnail) throws Exception {
+//		reviewDto.setId((String) session.getAttribute("member"));
+		System.out.println(thumbnail);
+		System.out.println(product_no);
+		productService.photo(product_no, title, content, grade, thumbnail, (String) session.getAttribute("member"));
 		model.addAttribute("product_no", product_no);
+		return "redirect:/detail?product_no=" + product_no;
+	}
+
+	@RequestMapping("inquiry_view")
+	public String inquiry_view(Model model, int product_no) {
+
+		model.addAttribute("product_no", product_no);
+		return "product/inquiry";
+	}
+
+	@RequestMapping("product_inquiry")
+	public String inquiry(Model model, QnaDTO qnaDto, HttpSession session) {
+		qnaDto.setId((String) session.getAttribute("member"));
+		productService.inquiry(qnaDto);
+		model.addAttribute("product_no", qnaDto.getProduct_no());
+		System.out.println(qnaDto.getProduct_no() + "상품번호");
 		return "product/list";
 	}
 

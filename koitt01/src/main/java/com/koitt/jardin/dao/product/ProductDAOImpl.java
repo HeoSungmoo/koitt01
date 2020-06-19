@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Repository
@@ -33,15 +34,6 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("product.detail", product_no);
-	}
-
-	// 구매후기 작성란
-
-	@Override
-	public void inquiry(ProductDTO ProductDto) {
-
-		sqlSession.insert("product.inquiry", ProductDto);
-
 	}
 
 	@Override
@@ -97,6 +89,12 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public void photo(ReviewDTO reviewDto) {
 		sqlSession.insert("product.photo", reviewDto);
+
+	}
+
+	@Override
+	public void inquiry(QnaDTO qnaDto) {
+		sqlSession.insert("product.inquiry", qnaDto);
 
 	}
 

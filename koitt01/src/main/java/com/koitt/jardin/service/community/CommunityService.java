@@ -2,11 +2,12 @@ package com.koitt.jardin.service.community;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
@@ -28,17 +29,17 @@ public interface CommunityService {
 	// 체험단 신청 글쓰기
 	public void preUserApply(PreUserApplyDTO pDto);
 
-	// 이용후기 글 리스트
-	public List<PreUserReviewDTO> epilogue();
-
 	// 이용후기 글 보기
 	public ReviewDTO epilogueView(int review_no);
 
-	// enjoy커피 글 리스트
-	public List<EnjoyCoffDTO> enjoyCoffee();
+	// 이용후기 글 삭제
+	public void epilogueDelete(int review_no);
+
+	// 이용후기 글 수정
+	public void epilogueUpdate(ReviewDTO rDto,MultipartFile thumbnail) throws Exception;
 
 	// enjoy커피 글 보기
-	public EnjoyCoffDTO enjoyView(int no);
+	public EnjoyCoffDTO enjoyView(SearchValue sv);
 
 // enjoy 페이징 및 검색------------------------------------------------------------------
 	// 페이징 게시글 수

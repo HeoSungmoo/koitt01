@@ -3,6 +3,7 @@ package com.koitt.jardin.dto.search;
 public class SearchValue {
 
 	int curPage = 1;
+	int no;
 	String option = "";
 	String search = "";
 	String category = "";

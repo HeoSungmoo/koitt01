@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 import com.koitt.jardin.service.community.CommunityService;
 
@@ -93,15 +97,32 @@ public class CommunityController {
 
 	// 포토구매후기 글 보기
 	@RequestMapping("epilogueView")
-	public String epilogueView(Model model, int review_no) {
+	public String epilogueView(Model model, int review_no, SearchValue sv) {
 		model.addAttribute("epilogueView", communityService.epilogueView(review_no));
+		model.addAttribute("sv", sv);
 		return "community/epilogueView";
 	}
 
-	// 포토구매후기 글 쓰기
+	// 포토구매후기 글 수정 write
 	@RequestMapping("epilogueWrite")
-	public String epilogueWrite(HttpSession session, int review_no, Model model) {
+	public String epilogueWrite(Model model,ReviewDTO rDto) {
+		model.addAttribute("epilogueUpdate",rDto);
 		return "community/epilogueWrite";
+	}
+	// 포토구매후기 글 수정 update
+	@RequestMapping("epilogueUpdate")
+	public String epilogueUpdate(Model model,ReviewDTO rDto,MultipartFile thumbnail) throws Exception {
+		System.out.println(rDto.getThumbnail());
+		System.out.println("썸네일 이미지:"+thumbnail);
+		model.addAttribute("epilogueUpdate",rDto);
+		communityService.epilogueUpdate(rDto,thumbnail);
+		return "community/epilogueWrite";
+	}
+	// 포토구매후기 글 삭제
+	@RequestMapping("epilogueDelete")
+	public String epilogueDelete(int review_no) {
+		communityService.epilogueDelete(review_no);
+		return "redirect:epilogue";
 	}
 
 	// 상품평 글 리스트
@@ -147,8 +168,8 @@ public class CommunityController {
 
 	// Enjoy Coffee 글 보기
 	@RequestMapping("enjoyView")
-	public String enjoyView(Model model, int no, SearchValue sv) {
-		model.addAttribute("enjoyView", communityService.enjoyView(no));
+	public String enjoyView(Model model, SearchValue sv) {
+		model.addAttribute("enjoyView", communityService.enjoyView(sv));
 		model.addAttribute("sv", sv);
 		return "community/enjoyView";
 	}

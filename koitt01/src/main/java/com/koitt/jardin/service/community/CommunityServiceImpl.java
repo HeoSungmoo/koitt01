@@ -1,16 +1,17 @@
 package com.koitt.jardin.service.community;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.community.CommunityDAO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
@@ -49,13 +50,6 @@ public class CommunityServiceImpl implements CommunityService {
 
 	}
 
-	// 이용후기 글 리스트
-	@Override
-	public List<PreUserReviewDTO> epilogue() {
-
-		return communityDAO.epilogue();
-	}
-
 	// 이용후기 글 보기
 	@Override
 	public ReviewDTO epilogueView(int review_no) {
@@ -63,18 +57,25 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDAO.epilogueView(review_no);
 	}
 
-	// 인조이 커피 글 리스트
 	@Override
-	public List<EnjoyCoffDTO> enjoyCoffee() {
+	public void epilogueDelete(int review_no) {
+		communityDAO.epilogueDelete(review_no);
+	}
 
-		return communityDAO.enjoyCoffee();
+	@Override
+	public void epilogueUpdate(ReviewDTO rDto,MultipartFile thumbnail) throws Exception {
+		String path="C:/Users/yohan/git/jardinProjectImage/communityImage";
+		String fileName=thumbnail.getOriginalFilename();
+		thumbnail.transferTo(new File(path+fileName));
+		communityDAO.epilogueUpdate(rDto);
+		
 	}
 
 	// 인조이 커피 글 보기
 	@Override
-	public EnjoyCoffDTO enjoyView(int no) {
+	public EnjoyCoffDTO enjoyView(SearchValue sv) {
 
-		return communityDAO.enjoyView(no);
+		return communityDAO.enjoyView(sv);
 	}
 
 // 체험단(expr) 페이징------------------------------------------------------------------

@@ -6,12 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.koitt.jardin.dto.product.CategoryDto;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -37,21 +39,21 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductDTO search(int productNo) {
-
-		return sqlSession.selectOne("product.search", productNo);
-	}
-
-	@Override
 	public ProductInfoDTO productInfoDto(int product_no) {
 
 		return sqlSession.selectOne("product.productInfoDto", product_no);
 	}
 
 	@Override
-	public List<CategoryDto> categoryList(String name) {
+	public List<ProductDTO> categoryAllList(ProductDTO productDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.categoryAllList", productDto);
+	}
 
-		return sqlSession.selectList("product.categoryList", name);
+	@Override
+	public List<ProductDTO> categoryList(ProductDTO productDto) {
+
+		return sqlSession.selectList("product.categoryList", productDto);
 	}
 
 	@Override
@@ -61,11 +63,11 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
-	@Override
-	public List<ReviewDTO> review_view(int product_no) {
-
-		return sqlSession.selectList("product.review_view", product_no);
-	}
+//	@Override
+//	public List<ReviewDTO> review_view(int product_no) {
+//
+//		return sqlSession.selectList("product.review_view", product_no);
+//	}
 
 	@Override
 	public void review_delete(int review_no) {
@@ -145,6 +147,36 @@ public class ProductDAOImpl implements ProductDAO {
 
 		sqlSession.update("product.qna_modify", qnaDto);
 
+	}
+
+	@Override
+	public List<ProductDTO> product_search(String search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("product.product_search", search);
+	}
+
+	@Override
+	public ProductPageNationDTO productPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.productPageNation", sv);
+	}
+
+	@Override
+	public List<ProductDTO> productPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.productPageNationList", sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO reviewPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.photoPageNation", sv);
+	}
+
+	@Override
+	public List<ReviewDTO> reviewPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.photoPageNationList", sv);
 	}
 
 //	@Override

@@ -1,20 +1,25 @@
 package com.koitt.jardin.controller.product;
 
-import java.util.Optional;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
+import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 import com.koitt.jardin.service.product.ProductService;
 
 @Controller
@@ -28,25 +33,30 @@ public class ProductController {
 
 	// 제품리스트 목록페이지
 	@RequestMapping("list")
-	public String list(Model model) {
+	public String list(Model model, SearchValue sv) {
+		ProductPageNationDTO pDto = productService.productPageNation(sv);
+		List<ProductDTO> list = productService.productPageNationList(sv);
+		model.addAttribute("list", list);
+		model.addAttribute("pDto", pDto);
 
-		model.addAttribute("list", productService.list());
+		model.addAttribute("sv", sv);
+
 		return "product/list";
 	}
 
-//	@RequestMapping("category")
-//	public String category(Model model, HttpServletRequest request) {
-//		String category1 = request.getParameter("category1");
-//		String category2 = null;
-//
-//		if (request.getParameter("category2") == null) {
-//			model.addAttribute("product", productService.categoryList(category1));
-//		} else {
-//			model.addAttribute("product", productService.categoryList(category2));
-//		}
-//
-//		return "product/list";
-//	}
+	@RequestMapping("category")
+	public String category(Model model, HttpServletRequest request,ProductDTO productDto) {
+		String category1 = request.getParameter("category1");
+		String category2 = request.getParameter("category1");
+
+		model.addAttribute("product", productService.categoryAllList(productDto));
+		model.addAttribute("product", productService.categoryList(productDto));
+
+		model.addAttribute("category1", category1);
+		model.addAttribute("category2", category2);
+
+		return "product/categoryList";
+	}
 
 //	@RequestMapping("category")
 //	public String category(Model model) {
@@ -56,22 +66,20 @@ public class ProductController {
 //	}
 
 	// 제품 카테고리
-	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
-	public String category_list(@PathVariable("category1") String category1,
-			@PathVariable("category2") String category2, @PathVariable Optional<Integer> page_, Model model) {
-		int page = page_.isPresent() ? page_.get() : 1;
-//		model.addAttribute("product", productService.categoryList(category1, category2, page));
-
-		productTestService.categoryList(category1, category2, model, page);
-
-		return "product/categoryList";
-	}
+//	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
+//	public String category_list(@PathVariable("category1") String category1,
+//			@PathVariable("category2") String category2, @PathVariable Optional<Integer> page_, Model model) {
+//		int page = page_.isPresent() ? page_.get() : 1;
+//
+//		productTestService.categoryList(category1, category2, model, page);
+//
+//		return "product/categoryList";
+//	}
 
 	@RequestMapping("header")
 
 	public String header(Model model, String name) {
 		model.addAttribute("list", productService.list());
-		model.addAttribute("categoryList", productService.categoryList(name));
 
 		return "include/header";
 	}
@@ -79,11 +87,19 @@ public class ProductController {
 	// 제품의 상세내용 (condent_view)
 	@RequestMapping("/detail")
 
-	public String detail(Model model, int product_no) {
-		model.addAttribute("review_view", productService.review_view(product_no));
+	public String detail(Model model, int product_no, SearchValue sv,
+			@RequestParam(value = "initVal", defaultValue = "0") int initVal) {
+//		model.addAttribute("review_view", productService.reviewPageNationList(sv));
 		model.addAttribute("detail", productService.detail(product_no));
 		model.addAttribute("qna_view", productService.QnA_view(product_no));
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
+		List<ReviewDTO> Review_list = productService.reviewPageNationList(sv);
+		ReviewPageNationDTO rDto = productService.reviewPageNation(sv);
+		model.addAttribute("initVal", initVal);
+		model.addAttribute("review_view", Review_list);
+		model.addAttribute("rDto", rDto);
+
+		model.addAttribute("sv", sv);
 		return "product/detail";
 	}
 
@@ -200,10 +216,11 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
 	}
 
-//	@RequestMapping("search")
-//	public String search(Model model, int product_No) {
-//		model.addAttribute("search", product_No);
-//		return "product/search";
-//	}
+	@RequestMapping("product_search")
+	public String search(Model model, String search) {
+
+		model.addAttribute("product_search", productService.product_search(search));
+		return "product/search";
+	}
 
 }

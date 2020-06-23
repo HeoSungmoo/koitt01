@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="epilogue">
+
+	<select id="epilogueView" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	select p.title productTitle, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+	from product p
+	inner join review r
+	on r.product_no=p.product_no
+	 where r.review_no=#{review_no}
+	</select>
+
+	<delete id="epilogueDelete" >
+	delete review where review_no=#{review_no}
+	</delete>
+	
+	<update id="epilogueUpdate">
+	update review set title=#{title},thumbnail=#{thumbnail},grade=#{grade},content=#{content} where review_no=#{review_no} 
+	</update>
+	
+<!-- epilogue 페이징,검색 -->
+   	 <!-- epilogue 전체 게시글 수 -->
+	<select id="epiloguePageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review where thumbnail is not null
+	</select>
+	 <!-- epilogue 전체 검색 게시글 수 -->
+	<select id="epiloguePageNationTo" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is not null and title like '%'|| #{search}||'%' or content like '%'|| #{search}||'%' 	
+	</select>
+	 <!-- epilogue 제목 제목검색 게시글 수 -->
+	<select id="epiloguePageNationTi" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is not null and  title like '%'|| #{search}||'%' 	
+	</select>
+	 <!-- epilogue 내용 내용검색 게시글 수 -->
+	<select id="epiloguePageNationCo" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is not null and content like '%'|| #{search}||'%' 	
+	</select>
+
+	<!-- epilogue페이징 글 리스트 가져오기 -->
+	<select id="epiloguePageNationList" resultType="com.koitt.jardin.dto.community.EpilogueDTO">
+		select * 
+      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail
+      from review where thumbnail is not null order by review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   
+   <!-- epilogue 전체 검색 글 리스트 가져오기 -->
+   <select id="epiloguePageNationToList" resultType="com.koitt.jardin.dto.community.EpilogueDTO">
+
+		select * 
+      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from review where thumbnail is not null and title like '%'|| #{search}||'%' or content like '%'|| #{search}||'%' 
+       order by review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+
+   </select>
+   
+   <!-- epilogue 제목 검색 글 리스트 가져오기 -->
+   <select id="epiloguePageNationTiList" resultType="com.koitt.jardin.dto.community.EpilogueDTO">
+		select * 
+      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from review  where thumbnail is not null and title like '%'|| #{search}||'%'
+       order by review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   
+   <!-- epilogue 내용 검색 페이징 글 리스트 가져오기 -->
+   <select id="epiloguePageNationCoList" resultType="com.koitt.jardin.dto.community.EpilogueDTO">
+		select * 
+      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from review  where thumbnail is not null and content like '%'|| #{search}||'%'
+       order by review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>   
+ 
+
+</mapper>

@@ -195,12 +195,6 @@
          <artifactId>commons-fileupload</artifactId>
          <version>1.4</version>
       </dependency>
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
       <dependency>
       	<groupId>com.fasterxml.jackson.core</groupId>
       	<artifactId>jackson-core</artifactId>

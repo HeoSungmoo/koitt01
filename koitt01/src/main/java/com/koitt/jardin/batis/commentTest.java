@@ -1,11 +1,14 @@
 package com.koitt.jardin.batis;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koitt.jardin.dto.product.CommentDto;
@@ -58,6 +61,29 @@ public class commentTest {
 		productService.comment_update(comment);
 
 		return "success";
+	}
+
+	@RequestMapping("/comment22")
+	public String ex_checkForm22() {
+
+		return "product/comment2";
+	}
+
+	@RequestMapping("/ex_checkForm")
+	public String ex_checkForm() {
+
+		return "ex_checkForm";
+	}
+
+	@RequestMapping("/ex_checkAjax")
+	@ResponseBody
+	public Map<String, Object> ex_checkAjax(@RequestParam CommentDto comment) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", "success");
+		map.put("cContent", "데이터");
+
+		return map;
 	}
 
 }

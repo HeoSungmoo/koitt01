@@ -276,7 +276,7 @@ $(document).ready(function() {
 					<li><a href="javascript:;" onclick="return false;" id="goodsQna">질문과 답변 <span>(1)</span></a></li>
 					<li class="last"><a href="javascript:;" onclick="return false;" id="goodsNotice">정책 및 공지</a></li>
 				</ul>
-			</div><script type="text/javascript">$(function(){$(".detailTab ul li a:eq(0)").click();});</script>
+			</div><script type="text/javascript">$(function(){$(".detailTab ul li a:eq(${initVal})").click();});</script>
 		<!-- //tab -->
 
 
@@ -421,7 +421,7 @@ $(document).ready(function() {
 					<c:forEach var="review_view" items="${review_view }">
 							<!-- List -->
 							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="images/${review_view.thumbnail }" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="#"><span class="orange">[먹어봤어요]</span> ${review_view.title }</a>
@@ -458,15 +458,32 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${rDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${rDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${rDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${rDto.getNext_page()}">
+            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
-						</div>
+						
+					</div>
 						<!-- //페이징이동1 -->
 					</div>
 				<!-- //포토 구매후기 -->
@@ -543,19 +560,37 @@ $(document).ready(function() {
 					</div>
 					</c:forEach>
 
-					<div class="btnAreaList">
+				
+						<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${rDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${rDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${rDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${rDto.getNext_page()}">
+            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
-						</div>
+						
+					</div>
 						<!-- //페이징이동1 -->
 					</div>
 				<!-- //상품리뷰 -->
@@ -610,17 +645,16 @@ $(document).ready(function() {
 
 						<div class="btnAreaList">
 							<!-- 페이징이동1 -->
-							<div class="allPageMoving1">
-
-							<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-							<strong>1</strong>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
-
-							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							<!-- //페이징이동1 -->
 						</div>
 					</div>

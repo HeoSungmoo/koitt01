@@ -8,21 +8,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
-import com.koitt.jardin.dto.product.CategoryDto;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDAO productDao;
-
-//	@Autowired
-//	ProductTestMapper productMapper;
 
 	// 제품리스트 목록페이지
 	@Override
@@ -38,12 +37,7 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.detail(product_no);
 	}
 
-	@Override
-	public ProductDTO search(int productNo) {
-
-		return productDao.search(productNo);
-	}
-
+	// 제품의 상세내용 // 상품상세 정보
 	@Override
 	public ProductInfoDTO productInfoDto(int product_no) {
 		// TODO Auto-generated method stub
@@ -51,17 +45,26 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<CategoryDto> categoryList(String name) {
+	public List<ProductDTO> categoryAllList(ProductDTO productDto) {
 		// TODO Auto-generated method stub
-		return productDao.categoryList(name);
+		return productDao.categoryAllList(productDto);
 	}
 
+	// 제품 카테고리 리스트
+	@Override
+	public List<ProductDTO> categoryList(ProductDTO productDto) {
+		// TODO Auto-generated method stub
+		return productDao.categoryList(productDto);
+	}
+
+	// 제품 상품리뷰
 	@Override
 	public void review(ReviewDTO reviewDto) {
 
 		productDao.review(reviewDto);
 
 	}
+
 //	@Override
 //	public void categoryList(Model model) {
 //
@@ -71,13 +74,9 @@ public class ProductServiceImpl implements ProductService {
 //
 //		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
 //	}
+	// 제품 상품리뷰 리스트
 
-	@Override
-	public List<ReviewDTO> review_view(int product_no) {
-		// TODO Auto-generated method stub
-		return productDao.review_view(product_no);
-	}
-
+	// 제품 상품리뷰 삭제
 	@Override
 	public void review_delete(int review_no) {
 
@@ -85,18 +84,21 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	// 제품 상품리뷰 수정
 	@Override
 	public void review_modify(ReviewDTO reviewDto) {
 		// TODO Auto-generated method stub
 		productDao.review_modify(reviewDto);
 	}
 
+	// 제품 상품리뷰 수정란 보기
 	@Override
 	public ReviewDTO review_modify_view(int review_no) {
 		// TODO Auto-generated method stub
 		return productDao.review_modify_view(review_no);
 	}
 
+	// 제품 포토리뷰
 	@Override
 	public void photo(int product_no, String title, String content, int grade, MultipartFile thumbnail, String id)
 			throws Exception {
@@ -113,10 +115,12 @@ public class ProductServiceImpl implements ProductService {
 		reviewDto.setContent(content);
 		reviewDto.setGrade(grade);
 		reviewDto.setThumbnail(thumbNail);
+		System.out.println(thumbNail);
 		productDao.photo(reviewDto);
 
 	}
 
+	// 제품 질문과 답변
 	@Override
 	public void inquiry(QnaDTO qnaDto) {
 
@@ -150,12 +154,14 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	// 제품 질문과 답변 작성란 보기
 	@Override
 	public List<QnaDTO> QnA_view(int product_no) {
 		// TODO Auto-generated method stub
 		return productDao.QnA_view(product_no);
 	}
 
+	// 제품 질문과 답변 삭제
 	@Override
 	public void QnA_delete(int qna_no) {
 
@@ -163,17 +169,70 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	// 제품 질문과 답변 수정란 보기
 	@Override
 	public QnaDTO QnA_modify_view(int qna_no) {
 		// TODO Auto-generated method stub
 		return productDao.QnA_modify_view(qna_no);
 	}
 
+	// 제품 질문과 답변 수정
 	@Override
 	public void QnA_modify(QnaDTO qnaDto) {
 
 		productDao.QnA_modify(qnaDto);
 
+	}
+
+	@Override
+	public List<ProductDTO> product_search(String search) {
+		// TODO Auto-generated method stub
+		return productDao.product_search(search);
+	}
+
+	@Override
+	public ProductPageNationDTO productPageNation(SearchValue sv) {
+		ProductPageNationDTO pDto = productDao.productPageNation(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+	}
+
+	@Override
+	public List<ProductDTO> productPageNationList(SearchValue sv) {
+
+		return productDao.productPageNationList(sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO reviewPageNation(SearchValue sv) {
+		// TODO Auto-generated method stub
+		ReviewPageNationDTO rDto = productDao.reviewPageNation(sv);
+		rDto.setPage_cnt(rDto.getListCnt()); // 페이지 수 저장
+		rDto.setRange_cnt(rDto.getPage_cnt()); // 블럭 수 저장
+		rDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		rDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		rDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		rDto.setStart_page(rDto.getCur_range(), rDto.getRange_size()); // 현재 블럭 시작 페이지
+		rDto.setEnd_page(rDto.getCur_range(), rDto.getRange_cnt()); // 현재 블럭 끝
+
+		return rDto;
+	}
+
+//	@Override
+//	public List<ReviewDTO> review_view(int product_no) {
+//		// TODO Auto-generated method stub
+//		return productDao.review_view(product_no);
+//	}
+	@Override
+	public List<ReviewDTO> reviewPageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return productDao.reviewPageNationList(sv);
 	}
 
 }

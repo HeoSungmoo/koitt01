@@ -55,6 +55,7 @@ public class ProductController {
 //		return "product/list";
 //	}
 
+	// 제품 카테고리
 	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
 	public String category_list(@PathVariable("category1") String category1,
 			@PathVariable("category2") String category2, @PathVariable Optional<Integer> page_, Model model) {
@@ -78,11 +79,10 @@ public class ProductController {
 	// 제품의 상세내용 (condent_view)
 	@RequestMapping("/detail")
 
-	public String detail(Model model, int product_no, ReviewDTO reviewDto) {
+	public String detail(Model model, int product_no) {
 		model.addAttribute("review_view", productService.review_view(product_no));
 		model.addAttribute("detail", productService.detail(product_no));
-		// 제품상세 제품 상세내용
-
+		model.addAttribute("qna_view", productService.QnA_view(product_no));
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		return "product/detail";
 	}
@@ -105,6 +105,7 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + product_no;
 	}
 
+	// 후기리뷰 삭제
 	@RequestMapping("/review_delete")
 	public String review_delete(HttpSession session, ReviewDTO reviewDto, int review_no, int product_no) {
 		reviewDto.setId((String) session.getAttribute("member"));
@@ -113,6 +114,7 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + product_no;
 	}
 
+	// 후기리뷰 수정
 	@RequestMapping("/review_modify")
 	public String review_modify(HttpSession session, ReviewDTO reviewDto, int review_no, int product_no) {
 		reviewDto.setId((String) session.getAttribute("member"));
@@ -121,6 +123,7 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + product_no;
 	}
 
+	// 후기리뷰 수정란 보기
 	@RequestMapping("/review_modify_view")
 	public String review_modify_view(int product_no, Model model, int review_no, HttpSession session,
 			ReviewDTO reviewDto) {
@@ -131,6 +134,7 @@ public class ProductController {
 		return "product/review_modify_view";
 	}
 
+	// 포토리뷰 작성란 보기
 	@RequestMapping("photo_view")
 	public String photo_view(int product_no, Model model) {
 		model.addAttribute("product_no", product_no);
@@ -138,6 +142,7 @@ public class ProductController {
 		return "product/photo";
 	}
 
+	// 포토리뷰 작성
 	@RequestMapping(method = RequestMethod.POST, value = "photo")
 	public String photo(HttpSession session, Model model, int product_no, String title, String content, int grade,
 			MultipartFile thumbnail) throws Exception {
@@ -149,6 +154,7 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + product_no;
 	}
 
+	// 해당제품 질문과 답변 작성란 보기
 	@RequestMapping("inquiry_view")
 	public String inquiry_view(Model model, int product_no) {
 
@@ -156,20 +162,48 @@ public class ProductController {
 		return "product/inquiry";
 	}
 
+	// 해당제품 질문과 답변 작성란 보기
 	@RequestMapping("product_inquiry")
 	public String inquiry(Model model, QnaDTO qnaDto, HttpSession session) {
 		qnaDto.setId((String) session.getAttribute("member"));
 		productService.inquiry(qnaDto);
 		model.addAttribute("product_no", qnaDto.getProduct_no());
 		System.out.println(qnaDto.getProduct_no() + "상품번호");
-		return "product/list";
+		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
 	}
 
-	@RequestMapping("search")
+	@RequestMapping("qna_delete")
+	public String qna_delete(QnaDTO qnaDto, HttpSession session, int qna_no) {
+		qnaDto.setId((String) session.getAttribute("member"));
+		productService.QnA_delete(qna_no);
 
-	public String search(Model model, int product_No) {
-		model.addAttribute("search", product_No);
-		return "product/search";
+		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
 	}
+
+	// 해당제품 질문과 답변 작성란 보기
+	@RequestMapping("qna_modify_view")
+	public String qna_modify_view(Model model, int product_no, int qna_no) {
+		model.addAttribute("product_no", product_no);
+		model.addAttribute("qna_no", qna_no);
+		model.addAttribute("qna_modify_view", productService.QnA_modify_view(qna_no));
+		return "product/QnA_modify_view";
+	}
+
+	@RequestMapping("qna_modify")
+	public String qna_modify(Model model, QnaDTO qnaDto, HttpSession session, int qna_no, int product_no) {
+		qnaDto.setId((String) session.getAttribute("member"));
+
+		model.addAttribute("product_no", product_no);
+		model.addAttribute("qna_no", qna_no);
+
+		productService.QnA_modify(qnaDto);
+		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
+	}
+
+//	@RequestMapping("search")
+//	public String search(Model model, int product_No) {
+//		model.addAttribute("search", product_No);
+//		return "product/search";
+//	}
 
 }

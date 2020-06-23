@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
 import com.koitt.jardin.dto.product.CategoryDto;
+import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
@@ -112,8 +113,6 @@ public class ProductServiceImpl implements ProductService {
 		reviewDto.setContent(content);
 		reviewDto.setGrade(grade);
 		reviewDto.setThumbnail(thumbNail);
-		System.out.println(reviewDto.getThumbnail());
-		System.out.println(reviewDto.getId());
 		productDao.photo(reviewDto);
 
 	}
@@ -122,6 +121,58 @@ public class ProductServiceImpl implements ProductService {
 	public void inquiry(QnaDTO qnaDto) {
 
 		productDao.inquiry(qnaDto);
+
+	}
+
+	@Override
+	public List<CommentDto> comment_List() {
+		// TODO Auto-generated method stub
+		return productDao.comment_List();
+	}
+
+	@Override
+	public void comment_delete(int cId) {
+
+		productDao.comment_delete(cId);
+
+	}
+
+	@Override
+	public void comment_insert(CommentDto comment) {
+
+		productDao.comment_insert(comment);
+
+	}
+
+	@Override
+	public void comment_update(CommentDto comment) {
+		productDao.comment_update(comment);
+
+	}
+
+	@Override
+	public List<QnaDTO> QnA_view(int product_no) {
+		// TODO Auto-generated method stub
+		return productDao.QnA_view(product_no);
+	}
+
+	@Override
+	public void QnA_delete(int qna_no) {
+
+		productDao.QnA_delete(qna_no);
+
+	}
+
+	@Override
+	public QnaDTO QnA_modify_view(int qna_no) {
+		// TODO Auto-generated method stub
+		return productDao.QnA_modify_view(qna_no);
+	}
+
+	@Override
+	public void QnA_modify(QnaDTO qnaDto) {
+
+		productDao.QnA_modify(qnaDto);
 
 	}
 

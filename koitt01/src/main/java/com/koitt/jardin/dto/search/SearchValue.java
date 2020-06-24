@@ -8,6 +8,32 @@ public class SearchValue {
 	String option = "";
 	String search = "";
 	String category = "";
+	int review_no;
+	int product_no;
+
+	public int getProduct_no() {
+		return product_no;
+	}
+
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getReview_no() {
+		return review_no;
+	}
+
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
+	}
 
 	public int getNo() {
 		return no;

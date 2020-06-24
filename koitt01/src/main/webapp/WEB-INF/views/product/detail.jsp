@@ -243,7 +243,7 @@ $(document).ready(function() {
 					<!-- 판매중 -->
 					<div class="infobtn">
 						<ul>
-							<li><input type="submit" class="ty1" value="구매하기"></li>
+							<li><input type="submit" class="ty2" value="구매하기"></li>
 							<li><a href="#" class="ty2">장바구니 <span>담기</span></a></li>
 							<li class="last"><a href="#" class="ty3">위시 <span>리스트</span></a></li>
 						</ul>
@@ -276,7 +276,7 @@ $(document).ready(function() {
 					<li><a href="javascript:;" onclick="return false;" id="goodsQna">질문과 답변 <span>(1)</span></a></li>
 					<li class="last"><a href="javascript:;" onclick="return false;" id="goodsNotice">정책 및 공지</a></li>
 				</ul>
-			</div><script type="text/javascript">$(function(){$(".detailTab ul li a:eq(0)").click();});</script>
+			</div><script type="text/javascript">$(function(){$(".detailTab ul li a:eq(${initVal})").click();});</script>
 		<!-- //tab -->
 
 
@@ -421,7 +421,7 @@ $(document).ready(function() {
 					<c:forEach var="review_view" items="${review_view }">
 							<!-- List -->
 							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="images/${review_view.thumbnail }" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="#"><span class="orange">[먹어봤어요]</span> ${review_view.title }</a>
@@ -458,15 +458,32 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${rDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${rDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${rDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${rDto.getNext_page()}">
+            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
-						</div>
+						
+					</div>
 						<!-- //페이징이동1 -->
 					</div>
 				<!-- //포토 구매후기 -->
@@ -543,19 +560,37 @@ $(document).ready(function() {
 					</div>
 					</c:forEach>
 
-					<div class="btnAreaList">
+				
+						<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${rDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${rDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${rDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${rDto.getNext_page()}">
+            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
-						</div>
+						
+					</div>
 						<!-- //페이징이동1 -->
 					</div>
 				<!-- //상품리뷰 -->
@@ -572,113 +607,37 @@ $(document).ready(function() {
 						</div>
 
 						<!-- 질문과 답변 -->
+					<c:forEach var="qna_view" items="${qna_view }">
 						<div class="accordion">
 							<ul>
 								<li>
 									<div class="headArea">
 										<div class="subject">
-											<a href="javascript:;" class="accbtn">배송기간은 얼마나 걸리나요?</a>
+											<a href="javascript:;" class="accbtn">${qna_view.title }</a>
 										</div>
-										<div class="writer">[ezlin****]</div>
+										<div class="writer">${qna_view.id }</div>
 										<div class="day">
-											<p>2014-03-24</p>
+											<p>${qna_view.qna_date }</p>
 											<p><span class="nbtnMini iw70">답변대기</span></p>
 										</div>
 									</div>
 
 									<div class="hideArea">
 										<div class="bodyArea">
-											배송일은 얼마나 걸리나요?<br/>빨리 받아보고 싶습니다.
+											${qna_view.content }
 										</div>
 
 										<div class="modify">
-											<a href="#">수정</a>
-											<a href="#">삭제</a>
+											<a href="qna_modify_view?qna_no=${qna_view.qna_no }&product_no=${detail.product_no}">수정</a>
+											<a href="qna_delete?qna_no=${qna_view.qna_no }&product_no=${detail.product_no}">삭제</a>
+											        
 										</div>
 									</div>
+								</c:forEach> 
 									
 								</li>
 
-								<li>
-									<div class="headArea">
-										<div class="subject">
-											<a href="javascript:;" class="accbtn">배송기간은 얼마나 걸리나요?</a>
-										</div>
-										<div class="writer">[ezlin****]</div>
-										<div class="day">
-											<p>2014-03-24</p>
-											<p><span class="obtnMini iw70">답변완료</span></p> 
-										</div>
-									</div>
-
-									<div class="hideArea">
-										<div class="bodyArea">
-											배송일은 얼마나 걸리나요?<br/>빨리 받아보고 싶습니다.
-										</div>
-
-										<!-- 답변 -->
-										<div class="answer">
-											<div class="inbox">
-												<div class="aname">
-													<p>담당자</p>
-												</div>
-
-												<div class="atxt">
-													쟈뎅 커피를 사랑해주셔서 감사합니다.<br/>배송은 결제 후 평군 2~3일 정도 소요됩니다. (공휴일 및 휴일 제외) 산간 도서지방은 배송기간이 더 소요될 수 있으므로 미리 양해 부탁드립니다. 
-												</div>
-											</div>
-										</div>
-										<!-- //답변 -->
-
-										<div class="modify">
-											<a href="#">수정</a>
-											<a href="#">삭제</a>
-										</div>
-
-									</div>
-								</li>
-
-								<li>
-									<div class="headArea">
-										<div class="subject">
-											<a href="event/password.html" class="passbtn">
-												배송기간은 얼마나 걸리나요?
-												<img src="images/ico/ico_lock.gif" alt="비밀글" />
-											</a>
-										</div>
-										<div class="writer">[ezlin****]</div>
-										<div class="day">
-											<p>2014-03-24</p>
-											<p><span class="obtnMini iw70">답변완료</span></p> 
-										</div>
-									</div>
-
-									<div class="hideArea">
-										<div class="bodyArea">
-											배송일은 얼마나 걸리나요?<br/>빨리 받아보고 싶습니다.
-										</div>
-
-										<!-- 답변 -->
-										<div class="answer">
-											<div class="inbox">
-												<div class="aname">
-													<p>담당자</p>
-												</div>
-
-												<div class="atxt">
-													쟈뎅 커피를 사랑해주셔서 감사합니다.<br/>배송은 결제 후 평군 2~3일 정도 소요됩니다. (공휴일 및 휴일 제외) 산간 도서지방은 배송기간이 더 소요될 수 있으므로 미리 양해 부탁드립니다. 
-												</div>
-											</div>
-										</div>
-										<!-- //답변 -->
-
-										<div class="modify">
-											<a href="#">수정</a>
-											<a href="#">삭제</a>
-										</div>
-									</div>
-								</li>
-
+								
 
 							</ul>
 						</div>
@@ -686,17 +645,16 @@ $(document).ready(function() {
 
 						<div class="btnAreaList">
 							<!-- 페이징이동1 -->
-							<div class="allPageMoving1">
-
-							<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-							<strong>1</strong>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
-
-							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							<!-- //페이징이동1 -->
 						</div>
 					</div>
@@ -956,5 +914,8 @@ $(document).ready(function() {
 
 </div>
 </div>
+
+
+
 </body>
 </html>

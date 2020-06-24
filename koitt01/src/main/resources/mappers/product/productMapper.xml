@@ -11,9 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 	</select>
 	
+	<select id="categoryAllList" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	select * from product where category1=#{category1}
+	
+	</select>
+	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where category1=#{category1} and category2=#{category2}
+	select * from product where category2=#{category2}
 	
 	</select>
 	
@@ -82,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="photo">
 	
-	insert into review(review_no,product_no,id,title,content,grade,thumbnail) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade},#{thumbnail})
+	insert into review(review_no,product_no,id,title,content,thumbnail,grade) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{thumbnail},#{grade})
 	
 	</insert>
 	
@@ -90,9 +96,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="inquiry">
 	
 
-	insert into qna(qna_no,product_no,id,title,content) values(qna_seq.nextval,#{product_no},#{id},#{title},#{content})
+	insert into qna(qna_no,product_no,id,title,content,answer) values(qna_seq.nextval,#{product_no},#{id},#{title},#{content},1)
 	</insert>
 	
+	<select id="qna_view" resultType="com.koitt.jardin.dto.product.QnaDTO">
 	
+	select * from qna where product_no=#{product_no}
+	
+	</select>
+	
+	<delete id="qna_delete">
+	
+	delete from qna where qna_no=#{qna_no}
+	
+	</delete>
+	
+	<select id="qna_modify_view" resultType="com.koitt.jardin.dto.product.QnaDTO">
+	
+	select * from qna where qna_no=#{qna_no}
+	
+	</select>
+	
+	<update id="qna_modify">
+	
+	update qna set title=#{title} , content=#{content} where qna_no=#{qna_no}
+	
+	</update>
+	
+	<select id="product_search" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	select * from product where title like '%'||#{search}||'%'
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	<select id="comment_List" resultType="com.koitt.jardin.dto.product.CommentDto"> 
+	
+ 			select * from cComment
+	
+	</select>
+	
+	
+	<delete id="comment_delete" parameterType="com.koitt.jardin.dto.product.CommentDto"> 
+	
+			delete from cComment where cId=#{cId}
+	
+	</delete>
+	
+	<insert id="comment_insert">
+		<![CDATA[
+		insert into cComment values(mvc_comment_seq.nextval,#{bId},#{cContent},#{cName},sysdate)
+		]]>
+	</insert>
+	
+	<update id="comment_update">
+		
+		update cComment set cContent=#{cContent} where cId=#{cId}
+		
+	</update>
 	
 </mapper>

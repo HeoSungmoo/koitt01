@@ -70,8 +70,12 @@ $(document).ready(function() {
 				</ul>
 
 				<div id="search">
-					<input type="text" class="searchType" />
+				<form action="product_search" method="post" name="search_form">
+			
+					<input type="text" class="searchType" name="search" >
 					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
+				
+				</form>
 				</div>
 			</div>
 		</div>

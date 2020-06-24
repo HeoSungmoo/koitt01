@@ -6,6 +6,7 @@ public class ReviewDTO {
 
 	private int review_no;
 	private int product_no;
+	private String productTitle;
 	private String id;
 	private String title;
 	private String content;
@@ -15,6 +16,14 @@ public class ReviewDTO {
 	private String thumbnail;
 	private String reply;
 	private Timestamp reply_date;
+
+	public String getProductTitle() {
+		return productTitle;
+	}
+
+	public void setProductTitle(String productTitle) {
+		this.productTitle = productTitle;
+	}
 
 	public String getId() {
 		return id;

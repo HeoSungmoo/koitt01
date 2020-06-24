@@ -141,10 +141,11 @@ const member= JSON.parse(memberId);
 							<!-- List -->
 							<c:forEach var="epilogue" items="${eDto}">
 							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="upload/${epilogue.thumbnail}" width="155" height="160" alt="" /></div>
+								
 								<div class="txt">
 									<div class="subject">
-										<a href="epilogueView?review_no=${epilogue.review_no}"> ${epilogue.title}</a>
+										<a href="epilogueView?review_no=${epilogue.review_no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}"> ${epilogue.title}</a>
 									</div>
 									<div class="conf">
 									${epilogue.content}
@@ -255,7 +256,7 @@ const member= JSON.parse(memberId);
 	<!-- //container -->
 
 
- <footer>
+ 	<footer>
       <%@ include file="../include/footer.jsp"  %>
    </footer>
 

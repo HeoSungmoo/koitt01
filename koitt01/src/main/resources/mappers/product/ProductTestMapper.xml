@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="categoryTest" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where category1 = #{param1} and category2 = #{param2}
+	select * from product where category1 = #{param1} and category2 = #{param2} 
 	
 	</select>
 	

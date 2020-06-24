@@ -12,17 +12,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="../../css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../../css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../../css/content.css?v=Y" />
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/top_navi.js"></script>
-<script type="text/javascript" src="../../js/left_navi.js"></script>
-<script type="text/javascript" src="../../js/main.js"></script>
-<script type="text/javascript" src="../../js/common.js"></script>
-<script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../../js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/top_navi.js"></script>
+<script type="text/javascript" src="js/left_navi.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<li><a href="http://www.apple.com/safari" target="_blank"><img src="images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
 			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
 		</ul>
-		<p class="btn" onclick="msiehide();"><img src="../../images/ico/ico_close.gif" alt="닫기" /></p>
+		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
 <!--//익스레이어팝업-->
@@ -94,10 +94,10 @@ $(document).ready(function() {
 <div id="header">
 		
 		<div id="snbBox">
-			<h1><a href="${pageContext.request.contextPath}"><img src="../../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
+			<h1><a href="${pageContext.request.contextPath}"><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
-				<div id="mnaviOpen"><img src="../../images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
-				<div id="mnaviClose"><img src="../../images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
+				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
+				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
 				<ul>
 
 					<li><a href="event">EVENT</a></li>
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 				<div id="search">
 					<input type="text" class="searchType" />
-					<input type="image" src="../../images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
+					<input type="image" src="images/btn/btn_main_search.gif" width="23" height="20" alt="검색하기" />
 				</div>
 			</div>
 		</div>
@@ -149,11 +149,12 @@ $(document).ready(function() {
 						
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi2">원두</a>
+				<li class="t2"><a href="category?category1=원두" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두">전체</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
@@ -208,7 +209,7 @@ $(document).ready(function() {
 		
 		<div id="maxcontents">
 		
-			<div class="banner"><img src="../../images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
+			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
 			
 			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
 
@@ -233,10 +234,10 @@ $(document).ready(function() {
 					<!-- 반복 -->
 
 		
-					 	<c:forEach var="productList" items="${productList }">
+					 	<c:forEach var="productList" items="${product }">
 					<li>
 						<a href="${pageContext.request.contextPath}/detail?product_no=${productList.product_no }">
-							<div class="img"><img src="../../images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
 							<div class="name">${productList.title }</div>
 							<div class="price">${productList.price }</div>
 						</a>
@@ -313,7 +314,74 @@ $(document).ready(function() {
 	</div>
 	<!-- //container -->
 
+			<% if(request.getParameter("category2") == null) {%>
+					<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
 
+						<a href="category?curPage=1&search=${sv.search}&category1=${category1}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="category?curPage=${pDto.getStart_page()-1}&search=${sv.search}&category1=${category1}" class="pre"><img src="${pageContext.request.contextPath}/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="category?curPage=${index}&search=${sv.search}&category1=${category1}" style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="category?curPage=${index}&search=${sv.search}&category1=${category1}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="category?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&category1=${category1}" class="next"><img src="${pageContext.request.contextPath}/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="category?curPage=${pDto.getPage_cnt()}&search=${sv.search}&category1=${category1}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
+				<%} else{%>
+						<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+
+						<a href="category?curPage=1&search=${sv.search}&category1=${category1}&category2=${category2}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="category?curPage=${pDto.getStart_page()-1}&search=${sv.search}&category1=${category1}&category2=${category2}" class="pre"><img src="${pageContext.request.contextPath}/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="category?curPage=${index}&search=${sv.search}&category1=${category1}&category2=${category2} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="category?curPage=${index}&search=${sv.search}&category1=${category1}&category2=${category2}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="category?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&category1=${category1}&category2=${category2}" class="next"><img src="${pageContext.request.contextPath}/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="category?curPage=${pDto.getPage_cnt()}&search=${sv.search}&category1=${category1}&category2=${category2}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
+				
+				
+				
+				<%} %>
 
 
 	

@@ -101,7 +101,7 @@ $(document).ready(function() {
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/category?category2=클래스">클래스</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리">홈스타일 카페모리</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피백</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">카페리얼 커피</a></li>
@@ -112,14 +112,18 @@ $(document).ready(function() {
 						
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi2">원두</a>
+				
+				<li class="t2"><a href="category/category1=원두" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두">전체</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+					
 					</ul>
 				</li>
+			
 				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
 						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
@@ -272,8 +276,40 @@ $(document).ready(function() {
 
 	</div>
 	<!-- //container -->
+	
+	
 
+				<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
 
+						<a href="list?curPage=1&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="list?curPage=${pDto.getStart_page()-1}&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="list?curPage=${index}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="list?curPage=${index}&search=${sv.search}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="list?curPage=${pDto.getEnd_page()+1}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="list?curPage=${pDto.getPage_cnt()}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
 
 
 	

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+	
+   <!-- comment 페이징,검색 -->
+<!--    	 comment 전체 게시글 수 -->
+	<select id="commentPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review where thumbnail is null
+	</select>
+	 <!-- comment 전체 검색 게시글 수 -->
+	<select id="commentPageNationTo" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is null and title like '%'|| #{search}||'%' or content like '%'|| #{search}||'%' 	
+	</select>
+	 <!-- comment 제목 제목검색 게시글 수 -->
+	<select id="commentPageNationTi" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is null and title like '%'|| #{search}||'%' 	
+	</select>
+	 <!-- comment 내용 내용검색 게시글 수 -->
+	<select id="commentPageNationCo" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from review  where thumbnail is null and content like '%'|| #{search}||'%' 	
+	</select>
+
+	<!-- comment페이징 글 리스트 가져오기 -->
+	<select id="commentPageNationList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+		select * 
+      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from product p
+      inner join review r
+	  on r.product_no=p.product_no
+      where r.thumbnail is null order by r.review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   
+   <!-- comment 전체 검색 글 리스트 가져오기 -->
+   <select id="commentPageNationToList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+
+		select * 
+      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from product p
+      inner join review r
+	  on r.product_no=p.product_no
+      where r.thumbnail is null and r.title like '%'|| #{search}||'%' or r.content like '%'|| #{search}||'%' 
+       order by r.review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+
+   </select>
+   
+   <!-- comment 제목 검색 글 리스트 가져오기 -->
+   <select id="commentPageNationTiList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+			select * 
+      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from product p
+      inner join review r
+	  on r.product_no=p.product_no
+      where r.thumbnail is null and r.title like '%'|| #{search}||'%' 
+       order by r.review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   
+   <!-- comment 내용 검색 페이징 글 리스트 가져오기 -->
+   <select id="commentPageNationCoList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+		select * 
+      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from product p
+      inner join review r
+	  on r.product_no=p.product_no
+      where r.thumbnail is null and r.content like '%'|| #{search}||'%' 
+       order by r.review_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+   	 
+</mapper>

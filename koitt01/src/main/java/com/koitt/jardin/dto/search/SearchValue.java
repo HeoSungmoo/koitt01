@@ -3,9 +3,80 @@ package com.koitt.jardin.dto.search;
 public class SearchValue {
 
 	int curPage = 1;
+	int curPage1 = 1;
+	int no;
+	int preuser_no;
 	String option = "";
 	String search = "";
 	String category = "";
+	int review_no;
+	int product_no;
+	String category1 = "";
+	String category2 = "";
+
+	public int getCurPage1() {
+		return curPage1;
+	}
+
+	public void setCurPage1(int curPage1) {
+		this.curPage1 = curPage1;
+	}
+
+	public String getCategory1() {
+		return category1;
+	}
+
+	public void setCategory1(String category1) {
+		this.category1 = category1;
+	}
+
+	public String getCategory2() {
+		return category2;
+	}
+
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
+
+	public int getProduct_no() {
+		return product_no;
+	}
+
+	public void setProduct_no(int product_no) {
+		this.product_no = product_no;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getReview_no() {
+		return review_no;
+	}
+
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getPreuser_no() {
+		return preuser_no;
+	}
+
+	public void setPreuser_no(int preuser_no) {
+		this.preuser_no = preuser_no;
+	}
 
 	public String getCategory() {
 		return category;

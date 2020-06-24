@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
@@ -19,12 +20,6 @@ public class BoardDAOImpl implements BoardDAO {
 	SqlSession sqlSession;
 
 	// 공지사할 글 리스트 가져오기
-	@Override
-	public List<NoticeDTO> notice() {
-
-		System.out.println(sqlSession.selectList("board.notice"));
-		return sqlSession.selectList("board.notice");
-	}
 
 	// 공지사항 글 보기
 	@Override
@@ -47,28 +42,6 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("board.noticeViewNext", no);
 	}
 
-	// 공지사항 글 검색
-	@Override
-	public List<NoticeDTO> noticeSearch(SearchValue sv) {
-
-		List<NoticeDTO> sList = null;
-
-		if (sv.getOption() == null) {
-			sList = sqlSession.selectList("board.pageNationList", sv);
-		}
-
-		else if (sv.getOption().equals("title")) {
-
-			sList = sqlSession.selectList("board.noticeSearchT", sv);
-			System.out.println(+sList.size());
-		} else if (sv.getOption().equals("content")) {
-			sList = sqlSession.selectList("board.noticeSearchC", sv);
-			System.out.println(sList.size());
-		}
-		return sList;
-
-	}
-
 	// 공지사항 조회수
 	@Override
 	public void noticeViewHit(int rnum) {
@@ -78,9 +51,14 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 1:1문의 글 쓰기
 	@Override
-	public void inquiry() {
-		// TODO Auto-generated method stub
-
+	public void inquiryWrite(InquiryDTO iDto) {
+		if(iDto.getFile_name()==null){
+			System.out.println("보드 DAO 파일첨부 안함");
+			sqlSession.insert("board.inquiryWriteNonF", iDto);
+		}else {
+		System.out.println("보드 DAO 파일첨부");
+		sqlSession.insert("board.inquiryWrite", iDto);
+		}
 	}
 
 	// FAQ 글 리스트 가져오기
@@ -126,7 +104,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public PageNationDTO pageNation(SearchValue sv) {
 		PageNationDTO pDto = null;
 
-		if (sv.getOption() == "") { // 검색 안했을 경우
+		if (sv.getOption().equals("")) { // 검색 안했을 경우
 			pDto = sqlSession.selectOne("board.pageNation", sv);
 			System.out.println();
 		} else if (sv.getOption().equals("title")) { // 제목검색
@@ -150,10 +128,10 @@ public class BoardDAOImpl implements BoardDAO {
 
 		} else if (sv.getOption().equals("title")) { // 제목검색
 
-			nDto = sqlSession.selectList("board.noticeSearchC", sv);
+			nDto = sqlSession.selectList("board.noticeSearchT", sv);
 
 		} else if (sv.getOption().equals("content")) { // 내용검색
-			nDto = sqlSession.selectList("board.noticeSearchT", sv);
+			nDto = sqlSession.selectList("board.noticeSearchC", sv);
 		}
 		return nDto;
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,11 +110,11 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="expr" id="leftNavi1">체험단</a></li>
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
-					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+					<li class="last"><a href="enjoy" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
-
+<form action="epilogueWrite1" method="post"  enctype="multipart/form-data" >
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
@@ -122,7 +123,7 @@ $(document).ready(function() {
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="#" class="on">포토 구매후기</a></li>
-							<li class="last"><a href="#">상품평</a></li>
+							<li class="last"><a href="epilogueInsert">상품평</a></li>
 						</ul>						
 					</div>
 
@@ -135,47 +136,32 @@ $(document).ready(function() {
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row"><span>분류</span></th>
+									<th scope="row"><span>상품명</span></th>
 									<td>
 										<ul class="pta">
-											<li>
-												<select>
-													<option value="">카테고리</option>
-												</select>
-											</li>
 											<li class="pt5">
-												<select>
-													<option value="">카테고리</option>
-												</select>
-											</li>
-											<li class="pt5">
-												<select>
-													<option value="">카테고리</option>
-												</select>
+												<p><input type="text" name="productTitle" style="width:200px; "value="${epilogueUpdate.productTitle}" readonly/></p>
+												<input type="hidden" name="review_no" value="${epilogueUpdate.review_no} ">
 											</li>
 										</ul>
 									</td>
 								</tr>
-								<tr>
-									<th scope="row"><span>구매여부</span></th>
+								
+								<tr style="height: 30px;">
+									<th scope="row"><span>이미지</span></th>
 									<td>
-										<select>
-											<option value="">구매했어요.</option>
-										</select>
+										<input type="file" name="thumbnail" class="fileType" />
+										<br>
+										<br>
+										<input type="text" name="thumbnail2" class="fileType" value="기존파일:${epilogueUpdate.thumbnail}"  />
 									</td>
 								</tr>
 								<tr>
-									<th scope="row"><span>작은이미지</span></th>
-									<td>
-										<input type="file" class="fileType" />
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><span>평가</span></th>
+									<th scope="row"><span>평점</span></th>
 									<td>
 										<ul class="pta">
 											<li>
-												<input type="radio" name="appraisal" id="starFive" checked="checked"/>
+												<input type="radio" name="grade" id="starFive" value="5" checked="checked"/>
 												<label for="starFive" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -186,7 +172,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starFour" />
+												<input type="radio" name="grade" value="4" id="starFour" />
 												<label for="starFour" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -196,7 +182,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starThree" />
+												<input type="radio" name="grade" value="3" id="starThree" />
 												<label for="starThree" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -205,7 +191,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="startwo" />
+												<input type="radio" name="grade" value="2" id="startwo" />
 												<label for="startwo" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -213,7 +199,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starOne" />
+												<input type="radio" name="grade" value="1" id="starOne" />
 												<label for="starOne" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 												</label>
@@ -224,13 +210,13 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" />
+										<input type="text" name="title" class="wlong" value="${epilogueUpdate.title}" />
 									</td>
 								</tr>
 								<tr>
-									<th scope="row"><span>상세 내용</span></th>
+									<th scope="row"><span>내용</span></th>
 									<td>
-										<textarea class="tta"></textarea>
+										<textarea name="content" class="tta">${epilogueUpdate.content}</textarea>
 									</td>
 								</tr>								
 							</tbody>
@@ -241,8 +227,8 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>																
-								<li><a href="#" class="nbtnbig">취소</a></li>
-								<li><a href="#" class="sbtnMini">확인</a></li>
+								<li><a href="#" onclick='history.back(-1);return false;' class="nbtnbig">취소</a></li>
+								<li><button class="sbtnMini"> 확인</button></li>
 							</ul>
 						</div>
 					</div>
@@ -251,7 +237,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<!-- //contents -->
-
+</form>
 
 		</div>
 	</div>

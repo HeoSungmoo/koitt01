@@ -1,18 +1,23 @@
 package com.koitt.jardin.service.community;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.community.CommunityDAO;
+import com.koitt.jardin.dto.CommentDTO.CommentDTO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
-import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
 @Service
@@ -23,9 +28,9 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 체험단 글 보기 리뷰
 	@Override
-	public PreUserDTO exprReview(int preUserNo) {
+	public PreUserDTO exprReview(SearchValue sv) {
 
-		return communityDAO.exprReview(preUserNo);
+		return communityDAO.exprReview(sv);
 	}
 
 	// 체험단 글보기 뷰
@@ -49,32 +54,59 @@ public class CommunityServiceImpl implements CommunityService {
 
 	}
 
-	// 이용후기 글 리스트
-	@Override
-	public List<PreUserReviewDTO> epilogue() {
-
-		return communityDAO.epilogue();
-	}
-
 	// 이용후기 글 보기
 	@Override
-	public ReviewDTO epilogueView(int review_no) {
+	public UpdateReviewDTO epilogueView(int review_no) {
 
 		return communityDAO.epilogueView(review_no);
 	}
 
-	// 인조이 커피 글 리스트
 	@Override
-	public List<EnjoyCoffDTO> enjoyCoffee() {
+	public void epilogueDelete(int review_no) {
+		communityDAO.epilogueDelete(review_no);
+	}
 
-		return communityDAO.enjoyCoffee();
+	@Override
+	public void epilogueWrite(String id,int review_no,String title,String productTitle,int grade, String content,MultipartFile thumbnail) throws Exception {
+		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/upload/";
+		System.out.println("-------------커뮤니티 서비스----------------");
+		System.out.println("리뷰글 번호"+review_no);
+		System.out.println("상품명"+productTitle);
+		System.out.println("글 제목"+title);
+		System.out.println("평가점수"+grade);
+		System.out.println("리뷰글 내용"+content);
+		System.out.println("썸네일"+thumbnail);
+		System.out.println("-------------커뮤니티 서비스----------------");
+		String origin_Name=thumbnail.getOriginalFilename();
+		UUID uuid= UUID.randomUUID();
+		String file_Name=uuid.toString()+"_"+origin_Name;
+		thumbnail.transferTo(new File(path + file_Name));
+		UpdateReviewDTO rDto = new UpdateReviewDTO();
+		rDto.setReview_no(review_no);
+		rDto.setProductTitle(productTitle);
+		rDto.setTitle(title);
+		rDto.setId(id);
+		rDto.setTitle(title);
+		rDto.setContent(content);
+		rDto.setGrade(grade);
+		rDto.setThumbnail(file_Name);
+		communityDAO.epilogueWrite(rDto);
+		
+	}
+	
+	
+	@Override
+	public UpdateReviewDTO epilogueUpdate(UpdateReviewDTO rDto) {
+		System.out.println(rDto.getReview_no());
+	
+		return communityDAO.epilogueUpdate(rDto);
 	}
 
 	// 인조이 커피 글 보기
 	@Override
-	public EnjoyCoffDTO enjoyView(int no) {
+	public EnjoyCoffDTO enjoyView(SearchValue sv) {
 
-		return communityDAO.enjoyView(no);
+		return communityDAO.enjoyView(sv);
 	}
 
 // 체험단(expr) 페이징------------------------------------------------------------------
@@ -131,7 +163,7 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public PageNationDTO epiloguePageNation(SearchValue sv) {
 		PageNationDTO pDto = communityDAO.epiloguePageNation(sv);
-		System.out.println(pDto.getPrev_page());
+		
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
 		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
@@ -145,7 +177,7 @@ public class CommunityServiceImpl implements CommunityService {
 //상품후기 상품후기
 	// 페이징 글 리스트 가져오기
 	@Override
-	public List<EpilogueDTO> commentPageNationList(SearchValue sv) {
+	public List<ReviewDTO> commentPageNationList(SearchValue sv) {
 		return communityDAO.commentPageNationList(sv);
 	}
 
@@ -164,5 +196,7 @@ public class CommunityServiceImpl implements CommunityService {
 		return pDto;
 
 	}
+	
+	
 
 }

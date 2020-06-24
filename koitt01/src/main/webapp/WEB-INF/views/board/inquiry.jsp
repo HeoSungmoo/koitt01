@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="js/top_navi.js"></script>
 <script type="text/javascript" src="js/left_navi.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
@@ -108,7 +108,7 @@ $(document).ready(function() {
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
 					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
-					<li><a href="bInquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="boardInquiryView" id="leftNavi2">1:1문의</a></li>
 					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 				</ul>			
@@ -120,6 +120,7 @@ $(document).ready(function() {
 				<div id="customer">
 					<h2><strong>1:1문의</strong><span>쟈뎅에 궁금하신 사항을 남겨주시면 답변해드립니다.</span></h2>
 					
+							<form action="BoardInquiryWrite" name="inquiryWrite" method="post" enctype="multipart/form-data">
 					<div class="checkMt">
 						<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>1:1문의</caption>
@@ -128,14 +129,14 @@ $(document).ready(function() {
 							<col width="*" />
 							</colgroup>
 							<tbody>
-							<form action="inquiryWrite" name="inquiryWrite" method="post">
 								<tr>
 									<th scope="row"><span>분류</span></th>
 									<td>
 										<select name="category">
-											<option value="분류1">선택해주세요.</option>
-											<option value="분류2">선택해주세요.</option>
-											<option value="분류3">선택해주세요.</option>
+											<option value="주문 문의">주문 문의</option>
+											<option value="상품 문의">상품 문의</option>
+											<option value="배송 문의">배송 문의</option>
+											<option value="기타 문의">기타 문의</option>
 											
 										</select>
 									</td>
@@ -155,12 +156,12 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>첨부파일</span></th>
 									<td>
-										<input type="file" class="fileType" name="fileName" />
+										<input type="file" class="fileType" name="file_name" />
 									</td>
 								</tr>
-							</form>
 							</tbody>
 						</table>
+							
 					</div>
 
 					<!-- Btn Area -->
@@ -168,10 +169,11 @@ $(document).ready(function() {
 						<div class="bCenter">
 							<ul>																
 								<li><a href="#" class="nbtnbig">취소</a></li>
-								<li><a href="writeComplete" class="sbtnMini">확인</a></li>
+								<li><button class="sbtnMini"> 확인</button></li>
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //Btn Area -->
 					
 				</div>

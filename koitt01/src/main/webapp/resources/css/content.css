@@ -590,8 +590,8 @@
 .viewHead .day p.appraisal span{padding:0 18px 0 14px;}
 .viewHead .day p.appraisal span img{padding:3px 0 0 0;}
 .viewHead .data{position:relative; width:100%; font-size:14px; font-weight:600; color:#666; border-bottom:1px #d9d9d9 solid; clear:both; overflow:hidden;}
-.viewHead .data ul li{float:left; padding:12px 0; margin:0 0 0 20px; color:#666;}
-.viewHead .data ul li span{font-size:13px; color:#666; font-weight:normal; padding:0 18px 0 14px;}
+.viewHead .data ul li{float:left; padding:12px 0; margin:0 0 0 18px; color:#666;}
+.viewHead .data ul li span{font-size:12px; color:#666; font-weight:normal; padding:0 18px 0 14px;}
 .viewHead .data ul li span img{vertical-align:middle;}
 .viewContents{margin:30px 20px 70px; line-height:1.4; font-size:14px; color:#727272;}
 .viewContents2{margin:20px 20px 40px; line-height:1.4; font-size:14px; color:#727272;}

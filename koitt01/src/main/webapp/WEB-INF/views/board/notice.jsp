@@ -113,7 +113,7 @@ $(document).ready(function() {
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
 					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
-					<li><a href="bInquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="boardInquiryView" id="leftNavi2">1:1문의</a></li>
 					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 				</ul>			
@@ -211,23 +211,23 @@ $(document).ready(function() {
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-				<form action="notice?curPage=${pDto.getCurPage() }" name="search">
+				<form action="notice" name="search">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-								
+								<input type="hidden" name="curPage" value="${pDto.getCurPage()}"/>
 									
 									<select name="option">
-										<option value="title" />제목</option>
-										<option value="content" />내용</option>
+										<option value="title">제목</option>
+										<option value="content">내용</option>
 									</select>
 								</li>
 								<li><input type="text" class="searchInput" name="search" /></li>
 								<li class="web"><button class="faqSearch"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
-							
+							</ul>
 							
 							
 						

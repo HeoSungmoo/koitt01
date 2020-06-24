@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<li><a href="http://www.apple.com/safari" target="_blank"><img src="images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
 			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
 		</ul>
-		<p class="btn" onclick="msiehide();"><img src="../../images/ico/ico_close.gif" alt="닫기" /></p>
+		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
 <!--//익스레이어팝업-->
@@ -94,7 +94,7 @@ $(document).ready(function() {
 <div id="header">
 		
 		<div id="snbBox">
-			<h1><a href="${pageContext.request.contextPath}"><img src="../../images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
+			<h1><a href="${pageContext.request.contextPath}"><img src="images/txt/logo.gif" alt="JARDIN SHOP" /></a></h1>
 			<div id="quickmenu">
 				<div id="mnaviOpen"><img src="images/btn/btn_mnavi.gif" width="33" height="31" alt="메뉴열기" /></div>
 				<div id="mnaviClose"><img src="images/btn/btn_mnavi_close.gif" width="44" height="43" alt="메뉴닫기" /></div>
@@ -149,11 +149,12 @@ $(document).ready(function() {
 						
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi2">원두</a>
+				<li class="t2"><a href="category?category1=원두" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두">전체</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
@@ -313,39 +314,74 @@ $(document).ready(function() {
 	</div>
 	<!-- //container -->
 
-<div class="btnAreaList">
+			<% if(request.getParameter("category2") == null) {%>
+					<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="list?curPage=1&search=${sv.search}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<a href="category?curPage=1&search=${sv.search}&category1=${category1}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
-           				 <a href="list?curPage=${pDto.getStart_page()-1}&search=${sv.search}" class="pre"><img src="${pageContext.request.contextPath}/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="category?curPage=${pDto.getStart_page()-1}&search=${sv.search}&category1=${category1}" class="pre"><img src="${pageContext.request.contextPath}/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
             				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="list?curPage=${index}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+               				<a  href="category?curPage=${index}&search=${sv.search}&category1=${category1}" style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="list?curPage=${index}&search=${sv.search}">${index}</a>
+              				 <a href="category?curPage=${index}&search=${sv.search}&category1=${category1}">${index}</a>
               			
            	
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${pDto.getNext_page()}">
-            				<a href="list?curPage=${pDto.getEnd_page()+1}&search=${sv.search}" class="next"><img src="${pageContext.request.contextPath}/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="category?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&category1=${category1}" class="next"><img src="${pageContext.request.contextPath}/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="list?curPage=${pDto.getPage_cnt()}&search=${sv.search}" class="n"><img src="${pageContext.request.contextPath}images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="category?curPage=${pDto.getPage_cnt()}&search=${sv.search}&category1=${category1}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
+				<%} else{%>
+						<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
 
+						<a href="category?curPage=1&search=${sv.search}&category1=${category1}&category2=${category2}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="category?curPage=${pDto.getStart_page()-1}&search=${sv.search}&category1=${category1}&category2=${category2}" class="pre"><img src="${pageContext.request.contextPath}/images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="category?curPage=${index}&search=${sv.search}&category1=${category1}&category2=${category2} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="category?curPage=${index}&search=${sv.search}&category1=${category1}&category2=${category2}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="category?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&category1=${category1}&category2=${category2}" class="next"><img src="${pageContext.request.contextPath}/images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="category?curPage=${pDto.getPage_cnt()}&search=${sv.search}&category1=${category1}&category2=${category2}" class="n"><img src="${pageContext.request.contextPath}/images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
+				
+				
+				
+				<%} %>
 
 
 	

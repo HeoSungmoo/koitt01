@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
+import com.koitt.jardin.dto.page.PhotoPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
@@ -33,28 +34,28 @@ public class ProductServiceImpl implements ProductService {
 	// 제품의 상세내용 ( condent_view)
 	@Override
 	public ProductDTO detail(int product_no) {
-		// TODO Auto-generated method stub
+
 		return productDao.detail(product_no);
 	}
 
 	// 제품의 상세내용 // 상품상세 정보
 	@Override
 	public ProductInfoDTO productInfoDto(int product_no) {
-		// TODO Auto-generated method stub
+
 		return productDao.productInfoDto(product_no);
 	}
 
 	@Override
-	public List<ProductDTO> categoryAllList(ProductDTO productDto) {
-		// TODO Auto-generated method stub
-		return productDao.categoryAllList(productDto);
+	public List<ProductDTO> categoryAllList(SearchValue sv) {
+
+		return productDao.categoryAllList(sv);
 	}
 
 	// 제품 카테고리 리스트
 	@Override
-	public List<ProductDTO> categoryList(ProductDTO productDto) {
-		// TODO Auto-generated method stub
-		return productDao.categoryList(productDto);
+	public List<ProductDTO> categoryList(SearchValue sv) {
+
+		return productDao.categoryList(sv);
 	}
 
 	// 제품 상품리뷰
@@ -70,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
 //
 //		String category1 = model.asMap().get("category1").toString();
 //		String category2 = model.asMap().get("category2").toString();
-//		// TODO Auto-generated method stub
+//
 //
 //		model.addAttribute("categoryTest", productDao.categoryList(category1, category2));
 //	}
@@ -87,14 +88,14 @@ public class ProductServiceImpl implements ProductService {
 	// 제품 상품리뷰 수정
 	@Override
 	public void review_modify(ReviewDTO reviewDto) {
-		// TODO Auto-generated method stub
+
 		productDao.review_modify(reviewDto);
 	}
 
 	// 제품 상품리뷰 수정란 보기
 	@Override
 	public ReviewDTO review_modify_view(int review_no) {
-		// TODO Auto-generated method stub
+
 		return productDao.review_modify_view(review_no);
 	}
 
@@ -130,7 +131,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<CommentDto> comment_List() {
-		// TODO Auto-generated method stub
+
 		return productDao.comment_List();
 	}
 
@@ -157,7 +158,7 @@ public class ProductServiceImpl implements ProductService {
 	// 제품 질문과 답변 작성란 보기
 	@Override
 	public List<QnaDTO> QnA_view(int product_no) {
-		// TODO Auto-generated method stub
+
 		return productDao.QnA_view(product_no);
 	}
 
@@ -172,7 +173,7 @@ public class ProductServiceImpl implements ProductService {
 	// 제품 질문과 답변 수정란 보기
 	@Override
 	public QnaDTO QnA_modify_view(int qna_no) {
-		// TODO Auto-generated method stub
+
 		return productDao.QnA_modify_view(qna_no);
 	}
 
@@ -186,7 +187,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDTO> product_search(String search) {
-		// TODO Auto-generated method stub
+
 		return productDao.product_search(search);
 	}
 
@@ -210,12 +211,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ReviewPageNationDTO reviewPageNation(SearchValue sv) {
-		// TODO Auto-generated method stub
-		ReviewPageNationDTO rDto = productDao.reviewPageNation(sv);
+	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+
+		PhotoPageNationDTO rDto = productDao.PhotoReviewPageNation(sv);
 		rDto.setPage_cnt(rDto.getListCnt()); // 페이지 수 저장
 		rDto.setRange_cnt(rDto.getPage_cnt()); // 블럭 수 저장
-		rDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		rDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치 rDto.setCurpa
+		rDto.setCurPage1(sv.getCurPage1());
 		rDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
 		rDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
 		rDto.setStart_page(rDto.getCur_range(), rDto.getRange_size()); // 현재 블럭 시작 페이지
@@ -224,15 +226,56 @@ public class ProductServiceImpl implements ProductService {
 		return rDto;
 	}
 
-//	@Override
-//	public List<ReviewDTO> review_view(int product_no) {
-//		// TODO Auto-generated method stub
-//		return productDao.review_view(product_no);
-//	}
 	@Override
-	public List<ReviewDTO> reviewPageNationList(SearchValue sv) {
+	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv) {
+
+		return productDao.PhotoReviewPageNationList(sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO ReviewPageNation(SearchValue sv) {
+		ReviewPageNationDTO pDto = productDao.ReviewPageNation(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+	}
+
+	@Override
+	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
 		// TODO Auto-generated method stub
-		return productDao.reviewPageNationList(sv);
+		return productDao.ReviewPageNationList(sv);
+	}
+
+	@Override
+	public ProductPageNationDTO categoryPageNationListDTO(SearchValue sv) {
+		ProductPageNationDTO pDto = productDao.categoryPageNationListDTO(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+
+	}
+
+	@Override
+	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv) {
+		ProductPageNationDTO pDto = productDao.categoryPageNationDTO(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
 	}
 
 }

@@ -13,13 +13,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="categoryAllList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where category1=#{category1}
+	
+	select * 
+      from(select row_number() over(order by product_no desc) as rnum,product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+                    detail,upload_date,product_stock,exposure_state,category1,category2 from product where category1=#{category1} order by product_no desc)
+      where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1 
 	
 	</select>
 	
 	<select id="categoryList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where category2=#{category2}
+	select * 
+      from(select row_number() over(order by product_no desc) as rnum,product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+                    detail,upload_date,product_stock,exposure_state,category1,category2 from product where category2=#{category2} order by product_no desc)
+      where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1
 	
 	</select>
 	
@@ -128,6 +135,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from product where title like '%'||#{search}||'%'
 	
 	</select>
+	
+	
 	
 	
 	

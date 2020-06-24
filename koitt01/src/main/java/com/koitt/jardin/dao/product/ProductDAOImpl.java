@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.page.PhotoPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
@@ -45,15 +46,15 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<ProductDTO> categoryAllList(ProductDTO productDto) {
+	public List<ProductDTO> categoryAllList(SearchValue sv) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.categoryAllList", productDto);
+		return sqlSession.selectList("product.categoryAllList", sv);
 	}
 
 	@Override
-	public List<ProductDTO> categoryList(ProductDTO productDto) {
+	public List<ProductDTO> categoryList(SearchValue sv) {
 
-		return sqlSession.selectList("product.categoryList", productDto);
+		return sqlSession.selectList("product.categoryList", sv);
 	}
 
 	@Override
@@ -168,36 +169,39 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ReviewPageNationDTO reviewPageNation(SearchValue sv) {
+	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv) {
 
 		return sqlSession.selectOne("page.photoPageNation", sv);
 	}
 
 	@Override
-	public List<ReviewDTO> reviewPageNationList(SearchValue sv) {
+	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv) {
 
 		return sqlSession.selectList("page.photoPageNationList", sv);
 	}
 
-//	@Override
-//	public List<ProductDTO> categoryList(String category1, String category2) {
-//		// TODO Auto-generated method stub
-//
-//		return productMapper.categoryTest(category1, category2);
-//	}
+	@Override
+	public ProductPageNationDTO categoryPageNationListDTO(SearchValue sv) {
 
-//	@Override
-//	public List<ProductDTO> categoryList(String category1, String category2) {
-//		// TODO Auto-generated method stub
-//		return sqlSession.selectList("product.categoryList,category1");
-////		return productMapper.categoryTest(category1, category2);
-//	}
+		return sqlSession.selectOne("page.categoryPageNationList", sv);
+	}
 
-//	@Override
-//	public List<ProductDTO> categoryList(String category1, String category2) {
-//		// TODO Auto-generated method stub
-//
-//		return productMapper.categoryTest(category1, category2);
-//	}
+	@Override
+	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv) {
+
+		return sqlSession.selectOne("page.categoryPageNation", sv);
+	}
+
+	@Override
+	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("page.reviewPageNationList", sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO ReviewPageNation(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("page.reviewPageNation", sv);
+	}
 
 }

@@ -115,10 +115,10 @@ $(document).ready(function() {
 				
 				<li class="t2"><a href="category/category1=원두" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-					
+						<li><a href="category?category1=원두">전체</a></li>
 						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
 					
 					</ul>
@@ -276,6 +276,8 @@ $(document).ready(function() {
 
 	</div>
 	<!-- //container -->
+	
+	
 
 				<div class="btnAreaList">
 						<!-- 페이징이동1 -->

@@ -5,6 +5,7 @@ public class SearchValue {
 	int curPage = 1;
 	int curPage1 = 1;
 	int no;
+	int preuser_no;
 	String option = "";
 	String search = "";
 	String category = "";
@@ -59,6 +60,22 @@ public class SearchValue {
 
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getPreuser_no() {
+		return preuser_no;
+	}
+
+	public void setPreuser_no(int preuser_no) {
+		this.preuser_no = preuser_no;
 	}
 
 	public String getCategory() {

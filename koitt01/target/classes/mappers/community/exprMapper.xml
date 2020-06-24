@@ -4,6 +4,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="expr">
+
+<select id="exprReview" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * from preuser where preuser_no=#{preuser_no}
+	</select>
+	
+	
+<!-- 	체험단 글 보기 뷰-->
+	<select id="exprView" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * from preuser where preuser_no=#{preuser_no}
+	</select>
+<!-- 	체험단 신청 글 쓰기 -->
+	<insert id="preUserReview" >
+	insert into preuserReview 
+	</insert>
+	
+	<insert id="preUserApply" >
+	insert into preuser_apply values(PREUSER_APPLY_SEQ.nextval,#{preuser_no},#{id},#{title},#{content})
+	</insert> 
+
+
 <!-- 체험단 페이징 -->
    	 <!-- 페이징 게시글 수 -->
 	<select id="exprPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">

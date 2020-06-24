@@ -19,6 +19,7 @@ import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 import com.koitt.jardin.service.community.CommunityService;
 
@@ -41,8 +42,9 @@ public class CommunityController {
 
 	// 체험단 글 보기 및 체험단 리뷰리스트
 	@RequestMapping("exprReview")
-	public String exprReview(SearchValue sv, Model model, int preuser_no) {
-		model.addAttribute("exprReview", communityService.exprReview(preuser_no));
+	public String exprReview(SearchValue sv, Model model) {
+		model.addAttribute("exprView", communityService.exprReview(sv));
+
 		expr(sv, model);
 		return "community/exprReview";
 	}
@@ -57,23 +59,17 @@ public class CommunityController {
 	// 체험단 글 보기 및 체험단 신청--------> exprReview와 exprView는 같은 글보기 상태에서 리뷰는 리뷰작성및 리뷰
 	// 리스트가 나오고 뷰는 체험단 신청이 나오는 차이가 있어서 exprReview를 호출했다.
 	@RequestMapping("exprView")
-	public String exprView(Model model, int preuser_no) {
+	public String exprView(Model model, int preuser_no,HttpSession session) {
+		String id=(String)session.getAttribute("member");
 		model.addAttribute("exprView", communityService.exprView(preuser_no));
+		model.addAttribute("id",id);
 		return "community/exprView";
 	}
-
+	//체험단 신청 insert
 	@RequestMapping("preUserApply")
-	public String preUserApply(PreUserApplyDTO pDto, HttpServletRequest request, HttpSession session) {
-		pDto.setId((String) session.getAttribute("member"));
-
-		int preuser_no = Integer.parseInt(request.getParameter("preuser_no"));
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		pDto.setPreuser_no(preuser_no);
-		pDto.setTitle(title);
-		pDto.setContent(content);
+	public String preUserApply(PreUserApplyDTO pDto) {
 		communityService.preUserApply(pDto);
-		return "community/expr";
+		return "redirect:expr";
 	}
 
 	// 포토구매후기 글
@@ -83,15 +79,14 @@ public class CommunityController {
 	public String epilogue(Model model, HttpSession session, SearchValue sv) {
 
 		String memberId = (String) session.getAttribute("member");
-
+		System.out.println("커뮤니티id"+memberId);
 		PageNationDTO pDto = communityService.epiloguePageNation(sv); // 게시글 수 저장
 		List<EpilogueDTO> eDto = communityService.epiloguePageNationList(sv);
-
+		
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("eDto", eDto);
 		model.addAttribute("sv", sv);
 		model.addAttribute("memberId", memberId);
-		model.addAttribute("eDto", eDto);
 		return "community/epilogue";
 	}
 
@@ -104,15 +99,23 @@ public class CommunityController {
 	}
 
 	// 포토구매후기 글 수정 update
-	@RequestMapping("epilogueWrite")
-	public String epilogueWrite(Model model,ReviewDTO rDto,MultipartFile thumbnail) {
+	@RequestMapping("epilogueWrite1")
+	public String epilogueWrite(Model model,String id,String title,int review_no,String productTitle,int grade, String content,MultipartFile thumbnail) throws Exception {
 		
-		model.addAttribute("epilogueUpdate",rDto);
-		return "community/epilogueWrite";
+		System.out.println("-------------커뮤니티 컨트롤러----------------");
+		communityService.epilogueWrite(id,review_no,title,productTitle,grade,content,thumbnail);
+		System.out.println("-------------커뮤니티 컨트롤러----------------");
+		System.out.println("리뷰글 번호"+review_no);
+		System.out.println("상품명"+productTitle);
+		System.out.println("글 제목"+title);
+		System.out.println("평가점수"+grade);
+		System.out.println("리뷰글 내용"+content);
+		System.out.println("썸네일"+thumbnail);
+		return "redirect:epilogue";
 	}
 	// 포토구매후기 글 수정페이지 view
 	@RequestMapping("epilogueUpdate")
-	public String epilogueUpdate(Model model,ReviewDTO rDto,RedirectAttributes redirectAttributes) {	
+	public String epilogueUpdate(Model model,UpdateReviewDTO rDto) {	
 	rDto=communityService.epilogueUpdate(rDto);
 	model.addAttribute("epilogueUpdate",rDto);
 		return "community/epilogueWrite";
@@ -128,16 +131,13 @@ public class CommunityController {
 	@RequestMapping("comment")
 	public String comment(Model model, HttpSession session, SearchValue sv) {
 		String memberId = (String) session.getAttribute("member");
-
 		PageNationDTO pDto = communityService.commentPageNation(sv); // 게시글 수 저장
-		List<EpilogueDTO> eDto = communityService.commentPageNationList(sv);
-
+		List<ReviewDTO> eDto = communityService.commentPageNationList(sv);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("eDto", eDto);
 		model.addAttribute("sv", sv);
 		model.addAttribute("memberId", memberId);
-		model.addAttribute("eDto", eDto);
-		return "community/epilogue";
+		return "community/comment";
 	}
 
 	// 상품평 글 보기
@@ -148,10 +148,10 @@ public class CommunityController {
 	}
 
 	// 상품평 글 쓰기
-	@RequestMapping("commentWrite")
+	@RequestMapping("epilogueInsert")
 	public String commentWrite() {
 
-		return "community/commentWrite";
+		return "community/epilogueInsert";
 	}
 
 	// Enjoy Coffee 글 리스트

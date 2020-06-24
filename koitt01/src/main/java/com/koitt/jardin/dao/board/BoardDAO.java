@@ -1,20 +1,18 @@
 package com.koitt.jardin.dao.board;
 
+import java.sql.Timestamp;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
+import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
 public interface BoardDAO {
-
-	// 공지사항 글 리스트
-	public List<NoticeDTO> notice();
-
-	// 공지사항 검색
-	public List<NoticeDTO> noticeSearch(SearchValue sv);
 
 	// 공지사항 글 보기
 	public NoticeDTO noticeView(int no);
@@ -29,7 +27,7 @@ public interface BoardDAO {
 	public NoticeDTO noticeViewNext(int no);
 
 	// 1:1문의
-	public void inquiry();
+	public void inquiryWrite(InquiryDTO iDto);
 
 	// FAQ전체 리스트
 	public List<FaqDTO> faq();

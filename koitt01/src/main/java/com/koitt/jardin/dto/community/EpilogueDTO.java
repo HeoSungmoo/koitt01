@@ -2,6 +2,8 @@ package com.koitt.jardin.dto.community;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EpilogueDTO {
 
 	private int review_no;

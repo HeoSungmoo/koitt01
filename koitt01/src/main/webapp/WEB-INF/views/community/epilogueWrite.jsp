@@ -114,7 +114,7 @@ $(document).ready(function() {
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
-<form action="epilogueUpdate" method="post"  enctype="multipart/form-data" >
+<form action="epilogueWrite1" method="post"  enctype="multipart/form-data" >
 			<!-- contents -->
 			<div id="contents">
 				<div id="mypage">
@@ -123,7 +123,7 @@ $(document).ready(function() {
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="#" class="on">포토 구매후기</a></li>
-							<li class="last"><a href="#">상품평</a></li>
+							<li class="last"><a href="epilogueInsert">상품평</a></li>
 						</ul>						
 					</div>
 
@@ -141,15 +141,19 @@ $(document).ready(function() {
 										<ul class="pta">
 											<li class="pt5">
 												<p><input type="text" name="productTitle" style="width:200px; "value="${epilogueUpdate.productTitle}" readonly/></p>
+												<input type="hidden" name="review_no" value="${epilogueUpdate.review_no} ">
 											</li>
 										</ul>
 									</td>
 								</tr>
 								
-								<tr>
+								<tr style="height: 30px;">
 									<th scope="row"><span>이미지</span></th>
 									<td>
-										<input type="file" class="fileType" src="C:/Users/yohan/git/jardinProjectImage/communityImage/${epilogueUpdate.thumbnail}" />
+										<input type="file" name="thumbnail" class="fileType" />
+										<br>
+										<br>
+										<input type="text" name="thumbnail2" class="fileType" value="기존파일:${epilogueUpdate.thumbnail}"  />
 									</td>
 								</tr>
 								<tr>
@@ -206,13 +210,13 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" value="${epilogueUpdate.title}" />
+										<input type="text" name="title" class="wlong" value="${epilogueUpdate.title}" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
-										<textarea class="tta">${epilogueUpdate.content}</textarea>
+										<textarea name="content" class="tta">${epilogueUpdate.content}</textarea>
 									</td>
 								</tr>								
 							</tbody>

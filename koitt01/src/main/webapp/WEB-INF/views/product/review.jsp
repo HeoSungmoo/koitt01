@@ -69,7 +69,8 @@ $(function() {
 						<td>
 							<ul class="pta">
 								<li>
- 									<input type="hidden" name="product_no" value="10">
+ 									<input type="hidden" name="product_no" value="${product_no }">
+ 									
 									<input type="radio" name="grade" value='5' id="starFive" checked="checked"/>
 									<label for="starFive" class="star">
 										<img src="images/ico/ico_star.gif" alt="별점" />

@@ -411,28 +411,28 @@ $(document).ready(function() {
 				<div class="goodsReview disnone">
 					<div class="headTitle">
 						<strong>포토 상품평&nbsp;</strong> 포토 상품평 작성자 중 우수상품평을 선정해 소정의 선물을 드립니다.
-						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">포토 상품평 작성</a></p>
+						<p class="btn"><a href="photo_view?product_no=${detail.product_no }" class="popBtn">포토 상품평 작성</a></p>
 					</div>
 
 
 				<!-- 포토 구매후기 -->
 					<div class="imgListType">
 						<ul>
-
+					<c:forEach var="review_view" items="${review_view }">
 							<!-- List -->
 							<li>
 								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="#"><span class="orange">[먹어봤어요]</span> 쟈뎅, 테이크아웃 카페모리 구매후기</a>
+										<a href="#"><span class="orange">[먹어봤어요]</span> ${review_view.title }</a>
 									</div>
 									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
+										${review_view.content }
 									</div>
 									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
+										<p>작성자 <span>${review_view.id }</span></p>
+										<p>등록일 <span>${review_view.review_date }</span></p>
+										<p>조회수 <span></span></p>
 										<p>평점 
 											<span class="ty">
 												<img src="images/ico/ico_star.gif" alt="별점" />
@@ -445,34 +445,11 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</li>
+								</c:forEach>
 							<!-- //List -->
 
-							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject">
-										<a href="#"><span class="orange">[먹어봤어요]</span> 쟈뎅, 테이크아웃 카페모리 구매후기</a>
-									</div>
-									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
-									</div>
-									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>조회수 <span>325</span></p>
-										<p>평점 
-											<span>
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-											</span>
-										</p>
-									</div>
-								</div>
-							</li>
-
+						
+			
 						</ul>
 					</div>
 
@@ -510,13 +487,25 @@ $(document).ready(function() {
 									<div class="subject">
 										<a href="javascript:;" class="accbtn">${review_view.title }</a>
 									</div>
-									<div class="writer">[ezlin****]</div>
+									<div class="writer">${review_view_id }</div>
 									<div class="day">
 										<p>${review_view.review_date }</p>
+										
 										<p>
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
-											<img src="images/ico/ico_star.gif" alt="별점" />
+										<span class="ty" id="star${k=k+1 }">
+											</span>
+										<script>
+    var innerHtml = "평점&nbsp;";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${review_view.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
 										</p>
 									</div>
 								</div>
@@ -542,8 +531,8 @@ $(document).ready(function() {
 									<!-- //답변 -->
 
 									<div class="modify">
-										<a href="#">수정</a>
-										<a href="#">삭제</a>
+										<a href="review_modify_view?review_no=${review_view.review_no }&product_no=${review_view.product_no}">수정</a>
+										<a href="review_delete?review_no=${review_view.review_no }&product_no=${review_view.product_no}">삭제</a>
 									</div>
 
 								</div>
@@ -579,7 +568,7 @@ $(document).ready(function() {
 					<div class="goodsQna disnone">
 						<div class="headTitle depth">
 							<strong>질문과 답변&nbsp;</strong>상품과 관련된 문의와 답변을 하는 공간입니다.
-							<p class="btn"><a href="inquiry.html" class="popBtn">문의하기</a></p>
+							<p class="btn"><a href="inquiry_view?product_no=${detail.product_no }" class="popBtn">문의하기</a></p>
 						</div>
 
 						<!-- 질문과 답변 -->

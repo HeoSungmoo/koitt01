@@ -45,6 +45,7 @@ html{overflow-y:scroll; width:100%;}
 #gnb #top ul li ul li a{background:url(none); width:163px; height:24px; line-height:24px; font-size:14px; color:#fff; font-weight:600; text-align:left; padding:0 0 0 20px;}
 #gnb #top ul li ul li a:hover{background:url(none) #7d7370; width:163px; height:24px; line-height:24px; border:0;}
 #gnb #top ul li ul li a.hover{background:url(none) #7d7370; width:163px; height:24px; line-height:24px; border:0;}
+#epxrBtn{border-color:#888;}
 
 #gnb #top ul li.brand{background:url('../images/bg/bg_navi_brand.gif') left top #ef5428 no-repeat;}
 #gnb #top ul li.brand a{width:178px; font-size:16px; background:url('../images/bg/bg_navi_brand_r.gif') right top no-repeat;}

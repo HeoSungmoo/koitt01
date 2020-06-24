@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.product.CategoryDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
+import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 
 @Repository
@@ -33,22 +34,6 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDTO detail(int product_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("product.detail", product_no);
-	}
-
-	// 구매후기 작성란
-
-	@Override
-	public void inquiry(ProductDTO ProductDto) {
-
-		sqlSession.insert("product.inquiry", ProductDto);
-
-	}
-
-	@Override
-	public void photo(ProductDTO ProductDto) {
-
-		sqlSession.insert("product.photo", ProductDto);
-
 	}
 
 	@Override
@@ -80,6 +65,37 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ReviewDTO> review_view(int product_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("product.review_view", product_no);
+	}
+
+	@Override
+	public void review_delete(int review_no) {
+
+		sqlSession.delete("product.review_delete", review_no);
+
+	}
+
+	@Override
+	public void review_modify(ReviewDTO reviewDto) {
+		// TODO Auto-generated method stub
+		sqlSession.update("product.review_modify", reviewDto);
+	}
+
+	@Override
+	public ReviewDTO review_modify_view(int review_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.review_modify_view", review_no);
+	}
+
+	@Override
+	public void photo(ReviewDTO reviewDto) {
+		sqlSession.insert("product.photo", reviewDto);
+
+	}
+
+	@Override
+	public void inquiry(QnaDTO qnaDto) {
+		sqlSession.insert("product.inquiry", qnaDto);
+
 	}
 
 //	@Override

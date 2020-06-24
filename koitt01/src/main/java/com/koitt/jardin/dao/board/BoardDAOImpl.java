@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -53,7 +53,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 		List<NoticeDTO> sList = null;
 
-		if (sv.getOption().equals("title")) {
+		if (sv.getOption() == null) {
+			sList = sqlSession.selectList("board.pageNationList", sv);
+		}
+
+		else if (sv.getOption().equals("title")) {
 
 			sList = sqlSession.selectList("board.noticeSearchT", sv);
 			System.out.println(+sList.size());
@@ -117,66 +121,80 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 //공지사항 페이징------------------------------------------------------------------
-	// 페이징 게시글 수
+
 	@Override
-	public PageNationDTO pageNation() {
-		return sqlSession.selectOne("board.pageNation");
+	public PageNationDTO pageNation(SearchValue sv) {
+		PageNationDTO pDto = null;
+
+		if (sv.getOption() == "") { // 검색 안했을 경우
+			pDto = sqlSession.selectOne("board.pageNation", sv);
+			System.out.println();
+		} else if (sv.getOption().equals("title")) { // 제목검색
+
+			pDto = sqlSession.selectOne("board.noticeSearchCN", sv);
+
+		} else if (sv.getOption().equals("content")) { // 내용검색
+			pDto = sqlSession.selectOne("board.noticeSearchTN", sv);
+		}
+		return pDto;
+
 	}
 
 	// 페이징 글 리스트 가져오기
 	@Override
-	public List<PageNationDTO> pageNationList(int curPage) {
-		System.out.println("서비스 현재페이지" + curPage);
-		return sqlSession.selectList("board.pageNationList", curPage);
+	public List<NoticeDTO> pageNationList(SearchValue sv) {
+
+		List<NoticeDTO> nDto = null;
+		if (sv.getOption().equals("")) { // 검색 안했을 경우
+			nDto = sqlSession.selectList("board.pageNationList", sv);
+
+		} else if (sv.getOption().equals("title")) { // 제목검색
+
+			nDto = sqlSession.selectList("board.noticeSearchC", sv);
+
+		} else if (sv.getOption().equals("content")) { // 내용검색
+			nDto = sqlSession.selectList("board.noticeSearchT", sv);
+		}
+		return nDto;
 
 	}
 
 //FAQ 페이징------------------------------------------------------------------
 	// 페이징 게시글 수
 	@Override
-	public PageNationDTO faqPageNation() {
-		return sqlSession.selectOne("board.faqPageNation");
+	public PageNationDTO faqPageNation(SearchValue sv) {
+		PageNationDTO pDto = new PageNationDTO();
+
+		if (sv.getCategory().equals("")) {
+			pDto = sqlSession.selectOne("board.faqPageNation", sv);
+
+		} else if (sv.getCategory().equals("회원가입")) {
+
+			pDto = sqlSession.selectOne("board.faqJoinPageNation", sv);
+		} else if (sv.getCategory().equals("상품")) {
+			pDto = sqlSession.selectOne("board.faqProductPageNation", sv);
+		} else if (sv.getCategory().equals("주문")) {
+			pDto = sqlSession.selectOne("board.faqOrderPageNation", sv);
+		}
+		System.out.println("faq글 리스트 개수" + pDto.getListCnt());
+		return pDto;
 	}
 
 	// 페이징 글 리스트 가져오기
 	@Override
-	public List<PageNationDTO> faqPageNationList(int curPage) {
-		return sqlSession.selectList("board.faqPageNationList", curPage);
+	public List<FaqDTO> faqPageNationList(SearchValue sv) {
+		List<FaqDTO> pDto = null;
+		if (sv.getCategory().equals("")) {
+			pDto = sqlSession.selectList("board.faqPageNationList", sv);
+		} else if (sv.getCategory().equals("회원가입")) {
+			pDto = sqlSession.selectList("board.faqJoinPageNationList", sv);
+		} else if (sv.getCategory().equals("상품")) {
+			pDto = sqlSession.selectList("board.faqProductPageNationList", sv);
+		} else if (sv.getCategory().equals("주문")) {
+			pDto = sqlSession.selectList("board.faqOrderPageNationList", sv);
+		}
+		return pDto;
+
 	}
 
-	// faqJoin 페이징 게시글 수
-	@Override
-	public PageNationDTO faqJoinPageNation() {
-		return sqlSession.selectOne("board.faqJoinPageNation");
-	}
-
-	// faqJoin 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqJoinPageNationList(int curPage) {
-		return sqlSession.selectList("board.faqJoinPageNationList", curPage);
-	}
-
-	// faqProduct 페이징 게시글 수
-	@Override
-	public PageNationDTO faqProductPageNation() {
-		return sqlSession.selectOne("board.faqProductPageNation");
-	}
-
-	// faqProdcut 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqProductPageNationList(int curPage) {
-		return sqlSession.selectList("board.faqProductPageNationList", curPage);
-	}
-
-	// faqOrder 페이징 게시글 수
-	@Override
-	public PageNationDTO faqOrderPageNation() {
-		return sqlSession.selectOne("board.faqOrderPageNation");
-	}
-
-	// faqOrder 페이징 글 리스트 가져오기
-	@Override
-	public List<PageNationDTO> faqOrderPageNationList(int curPage) {
-		return sqlSession.selectList("board.faqOrderPageNationList", curPage);
-	}
 }

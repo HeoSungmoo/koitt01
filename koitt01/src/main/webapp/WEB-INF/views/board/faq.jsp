@@ -13,14 +13,14 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/top_navi.js"></script>
+<script type="text/javascript" src="../js/left_navi.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -125,9 +125,9 @@ $(document).ready(function() {
 					<div class="faqTab">
 						<ul>
 							<li><a href="faq" class="on">전체</a></li>
-							<li class="dep"><a href="faqJoin">회원가입</a></li>
-							<li><a href="faqProduct">상품</a></li>
-							<li class="last"><a href="faqOrder">주문</a></li>
+							<li class="dep"><a href="faq?category=회원가입">회원가입</a></li>
+							<li><a href="faq?category=상품">상품</a></li>
+							<li class="last"><a href="faq?category=주문">주문</a></li>
 						</ul>						
 					</div>	
 					
@@ -135,6 +135,7 @@ $(document).ready(function() {
 					<div class="faqList">
 						<ul>
 							<!-- list -->
+							${faq.size() }
 							<c:forEach var="faq" items="${faq }">
 							<li>
 								<a href="javascript:;" class="faqbtn">
@@ -165,51 +166,51 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="faq?curPage=1" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<a href="faq?curPage=1&option=${sv.option}&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
-           				 <a href="faq?curPage=${pDto.getStart_page()-1}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="faq?curPage=${pDto.getStart_page()-1}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
             				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="faq?curPage=${index} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+               				<a  href="faq?curPage=${index}&option=${sv.option}&search=${sv.search}&category=${sv.category} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="faq?curPage=${index}">${index}</a>
+              				 <a href="faq?curPage=${index}&option=${sv.option}&search=${sv.search}&category=${sv.category}">${index}</a>
               			
               				
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${pDto.getNext_page()}">
-            				<a href="faq?curPage=${pDto.getEnd_page()+1}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="faq?curPage=${pDto.getEnd_page()+1}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="faq?curPage=${pDto.getPage_cnt()}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="faq?curPage=${pDto.getPage_cnt()}&option=${sv.option}&search=${sv.search}&category=${sv.category}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
 					
+								<form action="faq" name="search1">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-								<form action="faqSearch" name="search">
-									<select>
-										<option value="title" />제목</option>
+									<select name="option">
+										<option value="title">제목</option>
 									</select>
 								</li>
 								<li><input type="text" class="searchInput" name="search" /></li>
 								<li class="web"><button class="faqSearch"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
-								</form>
 							</ul>
 						</div>
 					</div>
+								</form>
 
 				</div>
 			</div>

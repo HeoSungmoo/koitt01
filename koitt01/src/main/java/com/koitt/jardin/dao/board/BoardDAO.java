@@ -5,8 +5,8 @@ import java.util.List;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.SearchValue;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 public interface BoardDAO {
 
@@ -51,33 +51,16 @@ public interface BoardDAO {
 
 //공지사항 페이징-----------------------------------------------------------------
 	// 페이징 게시글 수
-	public PageNationDTO pageNation();
+	public PageNationDTO pageNation(SearchValue sv);
 
 	// 페이징 글 리스트 가져오기
-	public List<PageNationDTO> pageNationList(int curPage);
+	public List<NoticeDTO> pageNationList(SearchValue sv);
 
 //FAQ 페이징-----------------------------------------------------------------
 	// FAQ 페이징 게시글 수
-	public PageNationDTO faqPageNation();
+	public PageNationDTO faqPageNation(SearchValue sv);
 
 	// FAQ 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqPageNationList(int curPage);
+	public List<FaqDTO> faqPageNationList(SearchValue sv);
 
-	// FAQJoin 페이징 게시글 수
-	public PageNationDTO faqJoinPageNation();
-
-	// FAQJoin 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqJoinPageNationList(int curPage);
-
-	// FAQProduct 페이징 게시글 수
-	public PageNationDTO faqProductPageNation();
-
-	// FAQProdcut 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqProductPageNationList(int curPage);
-
-	// FAQOrder 페이징 게시글 수
-	public PageNationDTO faqOrderPageNation();
-
-	// FAQOrder 페이징 글 리스트 가져오기
-	public List<PageNationDTO> faqOrderPageNationList(int curPage);
 }

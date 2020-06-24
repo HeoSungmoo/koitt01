@@ -262,7 +262,7 @@ $(document).ready(function() {
 					<div class="btnArea btline">
 						<div class="bRight">
 							<ul>
-								<li><a href="#" class="sbtnMini mw">목록</a></li>
+								<li><a href="enjoy?curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" class="sbtnMini mw">목록</a></li>
 							</ul>
 						</div>
 					</div>

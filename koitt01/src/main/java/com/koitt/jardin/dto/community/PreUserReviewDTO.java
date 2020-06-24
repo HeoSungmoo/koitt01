@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class PreUserReviewDTO {
 
 	int preUserReview; // 테스터 리뷰 글번호
-	int preUserApplyNo; // 체험단 신청 번호
+	int preuser_no; // 리뷰작성할 해당 체험단 번호
 	String preUserReviewImage; // 이미지
 	int grade;// 평가
 	String title; // 리뷰 제목
@@ -21,12 +21,13 @@ public class PreUserReviewDTO {
 		this.preUserReview = preUserReview;
 	}
 
-	public int getPreUserApplyNo() {
-		return preUserApplyNo;
+	
+	public int getPreuser_no() {
+		return preuser_no;
 	}
 
-	public void setPreUserApplyNo(int preUserApplyNo) {
-		this.preUserApplyNo = preUserApplyNo;
+	public void setPreuser_no(int preuser_no) {
+		this.preuser_no = preuser_no;
 	}
 
 	public String getPreUserReviewImage() {

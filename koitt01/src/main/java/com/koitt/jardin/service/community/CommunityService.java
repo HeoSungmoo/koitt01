@@ -9,6 +9,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -25,11 +26,12 @@ public interface CommunityService {
 	public PreUserDTO exprView(int preuser_no);
 
 	// 체험단 리뷰 글쓰기
-	public void preUserReview(int preUserApplyNo);
+	public void preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception;
 
 	// 체험단 신청 글쓰기
 	public void preUserApply(PreUserApplyDTO pDto);
 
+	
 	// 이용후기 글 보기
 	public UpdateReviewDTO epilogueView(int review_no);
 

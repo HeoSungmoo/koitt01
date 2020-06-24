@@ -19,14 +19,6 @@ public class SearchValue {
 		this.product_no = product_no;
 	}
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
 	public int getReview_no() {
 		return review_no;
 	}

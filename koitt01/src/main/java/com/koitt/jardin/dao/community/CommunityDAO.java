@@ -9,6 +9,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -24,7 +25,7 @@ public interface CommunityDAO {
 	public PreUserDTO exprView(int preuser_no);
 
 	// 체험단 리뷰 글쓰기
-	public void preUserReview(int preUserApplyNo);
+	public void preUserReview(PreUserReviewDTO purDto);
 
 	// 체험단 신청 글쓰기
 	public void preUserApply(PreUserApplyDTO pDto);

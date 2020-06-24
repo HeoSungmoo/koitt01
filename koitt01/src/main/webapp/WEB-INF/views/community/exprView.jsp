@@ -199,7 +199,7 @@
 					<!-- Tab -->
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="exprView" class="on">체험단 신청</a></li>
+							<li><a href="exprView?preuser_no=${exprView.preuser_no}" class="on">체험단 신청</a></li>
 							<li class="last"><a href="exprReview?preuser_no=${exprView.preuser_no}">체험 리뷰</a></li>
 						</ul>						
 					</div>

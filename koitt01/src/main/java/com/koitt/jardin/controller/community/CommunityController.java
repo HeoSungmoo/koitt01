@@ -17,6 +17,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -40,9 +41,11 @@ public class CommunityController {
 		return "community/expr";
 	}
 
-	// 체험단 글 보기 및 체험단 리뷰리스트
+	// 체험단 글 보기 및 체험단 리뷰작성,리뷰리스트
 	@RequestMapping("exprReview")
 	public String exprReview(SearchValue sv, Model model) {
+		PreUserDTO pDto=communityService.exprReview(sv);
+		System.out.println("리뷰작성페이지 보내는 preuser_no이 있는가: "+pDto.getPreuser_no());
 		model.addAttribute("exprView", communityService.exprReview(sv));
 
 		expr(sv, model);
@@ -51,9 +54,12 @@ public class CommunityController {
 
 	// 체험단 리뷰 작성
 	@RequestMapping("preUserReview")
-	public String preUserReview(int preUserApplyNo) {
-		communityService.preUserReview(preUserApplyNo);
-		return "community/exprReview";
+	public String preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception {
+		System.out.println("-------------커뮤니티 프리유저리뷰---------------");
+		System.out.println("체험단 번호"+preuser_no);
+		System.out.println("-------------커뮤니티 프리유저리뷰---------------");
+		communityService.preUserReview(preuser_no,preUserReviewImage,grade,title,content);
+		return "redirect:expr";
 	}
 
 	// 체험단 글 보기 및 체험단 신청--------> exprReview와 exprView는 같은 글보기 상태에서 리뷰는 리뷰작성및 리뷰
@@ -71,6 +77,7 @@ public class CommunityController {
 		communityService.preUserApply(pDto);
 		return "redirect:expr";
 	}
+	
 
 	// 포토구매후기 글
 	// 리스트--------------------------------------------------------------------2020-06-03

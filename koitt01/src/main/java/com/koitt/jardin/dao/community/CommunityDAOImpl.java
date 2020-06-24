@@ -12,6 +12,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -38,8 +39,8 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 체험단 리뷰 글 쓰기
 	@Override
-	public void preUserReview(int preUserApplyNo) {
-		sqlSession.insert("expr.preUserReview", preUserApplyNo);
+	public void preUserReview(PreUserReviewDTO purDto) {
+		sqlSession.insert("expr.preUserReview", purDto);
 
 	}
 

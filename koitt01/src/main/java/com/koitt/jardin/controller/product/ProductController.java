@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
+import com.koitt.jardin.dto.page.PhotoPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -45,13 +46,28 @@ public class ProductController {
 	}
 
 	@RequestMapping("category")
-	public String category(Model model, HttpServletRequest request,ProductDTO productDto) {
+	public String category(Model model, SearchValue sv, HttpServletRequest request) {
 		String category1 = request.getParameter("category1");
-		String category2 = request.getParameter("category1");
+		String category2 = request.getParameter("category2");
+		List<ProductDTO> categoryAllList = productService.categoryAllList(sv);
+		List<ProductDTO> categoryList = productService.categoryList(sv);
+		ProductPageNationDTO pDtoAll = productService.categoryPageNationListDTO(sv);
+		ProductPageNationDTO pDto = productService.categoryPageNationDTO(sv);
 
-		model.addAttribute("product", productService.categoryAllList(productDto));
-		model.addAttribute("product", productService.categoryList(productDto));
+		if (request.getParameter("category2") == null) {
+			System.out.println("카테고리2가 null일때 :" + category2);
+			model.addAttribute("product", categoryAllList);
+			model.addAttribute("pDto", pDtoAll);
 
+		} else {
+			System.out.println("카테고리2가 null이아닐때 :" + category2);
+			model.addAttribute("product", categoryList);
+			model.addAttribute("pDto", pDto);
+		}
+
+//		model.addAttribute("product", productService.categoryAllList(sv));
+//		model.addAttribute("product", productService.categoryList(sv));
+		model.addAttribute("sv", sv);
 		model.addAttribute("category1", category1);
 		model.addAttribute("category2", category2);
 
@@ -93,15 +109,35 @@ public class ProductController {
 		model.addAttribute("detail", productService.detail(product_no));
 		model.addAttribute("qna_view", productService.QnA_view(product_no));
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
-		List<ReviewDTO> Review_list = productService.reviewPageNationList(sv);
-		ReviewPageNationDTO rDto = productService.reviewPageNation(sv);
+		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
+		PhotoPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
+		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
+		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("initVal", initVal);
+		model.addAttribute("PhotoReview_view", PhotoReview_list);
+		model.addAttribute("PhotoRdto", PhotoRdto);
 		model.addAttribute("review_view", Review_list);
-		model.addAttribute("rDto", rDto);
-
+		model.addAttribute("rDto", rdto);
 		model.addAttribute("sv", sv);
 		return "product/detail";
 	}
+
+//	@RequestMapping("/photoReviewPage")
+//	public String reviewPageNation(Model model, SearchValue sv,
+//			@RequestParam(value = "initVal", defaultValue = "0") int initVal) {
+//		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
+//		ReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
+//		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
+//		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
+//		model.addAttribute("review_view", Review_list);
+//		model.addAttribute("rDto", rdto);
+//
+//		model.addAttribute("initVal", initVal);
+//		model.addAttribute("PhotoReview_view", PhotoReview_list);
+//		model.addAttribute("PhotoRdto", PhotoRdto);
+//
+//		return "product/detail";
+//	}
 
 	// 구매후기 작성란 보기
 	@RequestMapping("review_view")

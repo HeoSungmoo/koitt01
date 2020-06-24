@@ -117,8 +117,8 @@ $(document).ready(function() {
 				</li>
 				<li class="t2"><a href="#" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
 						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
 					</ul>
@@ -418,20 +418,20 @@ $(document).ready(function() {
 				<!-- 포토 구매후기 -->
 					<div class="imgListType">
 						<ul>
-					<c:forEach var="review_view" items="${review_view }">
+					<c:forEach var="PhotoReview_view" items="${PhotoReview_view }">
 							<!-- List -->
 							<li>
-								<div class="img"><img src="images/${review_view.thumbnail }" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="images/${PhotoReview_view.thumbnail }" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
-										<a href="#"><span class="orange">[먹어봤어요]</span> ${review_view.title }</a>
+										<a href="#"><span class="orange">[먹어봤어요]</span> ${PhotoReview_view.title }</a>
 									</div>
 									<div class="conf">
-										${review_view.content }
+										${PhotoReview_view.content }
 									</div>
 									<div class="data">
-										<p>작성자 <span>${review_view.id }</span></p>
-										<p>등록일 <span>${review_view.review_date }</span></p>
+										<p>작성자 <span>${PhotoReview_view.id }</span></p>
+										<p>등록일 <span>${PhotoReview_view.review_date }</span></p>
 										<p>조회수 <span></span></p>
 										<p>평점 
 											<span class="ty">
@@ -458,29 +458,29 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<c:if test="${rDto.getPrev_page()}">
+						<a href="detail?curPage1=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${PhotoRdto.getPrev_page()}">
 						
-           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="detail?curPage1=${PhotoRdto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
-						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
-            				<c:if test="${rDto.getCurPage() eq index}">
-               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+						 <c:forEach begin="${PhotoRdto.getStart_page()}" end="${PhotoRdto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${PhotoRdto.getCurPage1() eq index}">
+               				<a  href="detail?curPage1=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
-            				<c:if test="${rDto.getCurPage() ne index}">
-              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+            				<c:if test="${PhotoRdto.getCurPage1() ne index}">
+              				 <a href="detail?curPage1=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
               			
            	
             				</c:if>
          					</c:forEach>
          					
-         					<c:if test="${rDto.getNext_page()}">
-            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					<c:if test="${PhotoRdto.getNext_page()}">
+            				<a href="detail?curPage1=${PhotoRdto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage1=${PhotoRdto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						
 					</div>
@@ -583,7 +583,7 @@ $(document).ready(function() {
          					</c:forEach>
          					
          					<c:if test="${rDto.getNext_page()}">
-            				<a href="detail?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="detail?curPage=${rDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						

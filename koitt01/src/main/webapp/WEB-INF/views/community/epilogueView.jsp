@@ -122,12 +122,12 @@ $(document).ready(function() {
 				<div id="mypage">
 					<h2><strong>사용 후기</strong><span>쟈뎅 제품을 구매하신 회원님들의 소중한 후기입니다.</span></h2>
 					
-					<div class="productTab normaltab">
-						<ul>
-							<li><a href="#" class="on">포토 구매후기</a></li>
-							<li class="last"><a href="#">상품평</a></li>
-						</ul>						
-					</div>
+<!-- 					<div class="productTab normaltab"> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href="#" class="on">포토 구매후기</a></li> -->
+<!-- 							<li class="last"><a href="#">상품평</a></li> -->
+<!-- 						</ul>						 -->
+<!-- 					</div> -->
 
 					<div class="viewDivTab">
 						<div class="viewHead">
@@ -219,7 +219,7 @@ $(document).ready(function() {
 							<ul>
 								<li><a href="epilogueUpdate?review_no=${epilogueView.review_no}"class="nbtnbig mw">수정</a></li>
 								<li><a href="epilogueDelete?review_no=${epilogueView.review_no}" class="nbtnbig mw">삭제</a></li>
-								<li><a href="epilogue??curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" class="sbtnMini mw">목록</a></li>
+								<li><a href="epilogue?curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" class="sbtnMini mw">목록</a></li>
 							</ul>
 						</div>
 					</div>

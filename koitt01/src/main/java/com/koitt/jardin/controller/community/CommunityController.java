@@ -44,11 +44,10 @@ public class CommunityController {
 	// 체험단 글 보기 및 체험단 리뷰작성,리뷰리스트
 	@RequestMapping("exprReview")
 	public String exprReview(SearchValue sv, Model model) {
-		PreUserDTO pDto=communityService.exprReview(sv);
-		System.out.println("리뷰작성페이지 보내는 preuser_no이 있는가: "+pDto.getPreuser_no());
-		model.addAttribute("exprView", communityService.exprReview(sv));
-
-		expr(sv, model);
+		PageNationDTO pDto = communityService.exprReviewPageNation(sv); // 게시글 수 저장
+		List<PreUserReviewDTO> list = communityService.exprReviewList(sv);
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("expr", list);
 		return "community/exprReview";
 	}
 
@@ -149,8 +148,9 @@ public class CommunityController {
 
 	// 상품평 글 보기
 	@RequestMapping("commentView")
-	public String commentView() {
-
+	public String commentView(Model model, int review_no, SearchValue sv) {
+		model.addAttribute("epilogueView", communityService.epilogueView(review_no));
+		model.addAttribute("sv", sv);
 		return "community/commentView";
 	}
 

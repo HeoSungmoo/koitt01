@@ -28,26 +28,7 @@
 <![endif]-->
 <script type="text/javascript">
 
-	
-	$(document).ready(function() {
-// 		$("#preuserBtn").click(function(){
-// 			var title=$("#title").val();
-// 			var content=$("#content").val();
-// 			var preuser_no=(Number$("#preuser_no").val());
-// 			$.ajax({
-// 				url:'preUserApply',
-// 				type:'post',
-// 				data:'title='+title+'&content='+content+'&preuser_no='+preuser_no,
-// 				success:function(data){
-// 					alert("입력완료");
-// 				}
-				
-// 			});
-			
-// 		});
-	
-	
-	});
+
 
 </script>
 </head>
@@ -112,7 +93,19 @@
         clearTimeout(msietimer);
      }
 </script>
-
+<!-- <script type="text/javascript">
+function loginCheck(){
+	var id=exprApply.id.value;
+	if(!id){
+		alert("로그인 하셔야 신청 가능합니다.");
+		history.back();
+	}else{
+		
+	exprApply.submit();
+	}
+}
+</script>
+ -->
 <div id="allwrap">
 <div id="wrap">
 
@@ -205,9 +198,9 @@
 					</div>
 					<!-- //Tab -->
 
-					<form action="preUserApply" method="post">
+					<form action="preUserApply" method="post" name="exprApply">
 						<input type="hidden"  name="preuser_no" class="wlong" value="${exprView.preuser_no}"/>
-									<input type="hidden"  name="id"  value="${id}"/>
+									<input type="hidden"  name="id" id="id" value="${id}"/>
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -242,6 +235,7 @@
 							<ul>	
 									
 								<li>
+								
 								<button class="sbtnMini">신청하기</button></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>

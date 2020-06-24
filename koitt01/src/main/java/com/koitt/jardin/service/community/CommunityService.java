@@ -59,7 +59,12 @@ public interface CommunityService {
 
 	// 페이징 글 리스트 가져오기
 	public List<PreUserDTO> exprPageNationList(SearchValue sv);
+	
+	//체험단 리뷰 게시글 수
+	public PageNationDTO exprReviewPageNation(SearchValue sv);
 
+	//체험단 리뷰 게시글 리스트 가져오기
+	public List<PreUserReviewDTO> exprReviewList(SearchValue sv);
 // 포토상품후기 페이징 및 검색------------------------------------------------------------------
 	// 페이징 게시글 수
 	public PageNationDTO epiloguePageNation(SearchValue sv);

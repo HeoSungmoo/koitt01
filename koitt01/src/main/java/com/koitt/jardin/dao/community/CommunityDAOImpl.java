@@ -180,6 +180,20 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return eDto;
 	}
 
+	//체험단 리뷰 페이징
+	@Override
+	public PageNationDTO exprReviewPageNation(SearchValue sv) {
+		return sqlSession.selectOne("expr.exprReviewPageNation", sv);
+
+	}
+
+	// 체험단 페이징 글 리스트 가져오기
+	@Override
+	public List<PreUserReviewDTO> exprReviewList(SearchValue sv) {
+		return sqlSession.selectList("expr.exprReviewPageNationList", sv);
+	}
+	
+	
 	// 포토 이용후기 페이징------------------------------------------------------------------
 	// 이용후기 페이징 게시글 수
 	@Override

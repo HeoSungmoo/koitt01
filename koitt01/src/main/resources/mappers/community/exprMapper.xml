@@ -76,5 +76,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                      review_end_date,announcement_date,grade from preuser where content like '%'|| #{search}||'%'
        order by preuser_no desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
-   </select>	
+   </select>
+   
+   <!-- 체험단 리뷰 게시글 개수 -->	
+   <select id="exprReviewPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
+		select count(*) listCnt from preuser_review 
+	</select>
+	<!-- 체험단 리뷰 게시글 리스트 -->
+	<select id="exprReviewPageNationList" resultType="com.koitt.jardin.dto.community.PreUserDTO">
+		select * 
+      from(select row_number() over(order by PREUSER_REVIEW desc) as rnum,preuser_review,preuser_no,preuser_review_image,grade,title,content,hit,upload_date
+      from PREUSER_REVIEW order by preuser_no desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10
+   </select>
+	
 </mapper>

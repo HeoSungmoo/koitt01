@@ -29,7 +29,7 @@ public interface CommunityDAO {
 
 	// 체험단 신청 글쓰기
 	public void preUserApply(PreUserApplyDTO pDto);
-
+	
 	// 이용후기 글 보기
 	public UpdateReviewDTO epilogueView(int review_no);
 
@@ -58,6 +58,12 @@ public interface CommunityDAO {
 	// 페이징 글 리스트 가져오기
 	public List<PreUserDTO> exprPageNationList(SearchValue sv);
 
+	//체험단 리뷰 게시글 수
+	public PageNationDTO exprReviewPageNation(SearchValue sv);
+
+	//체험단 리뷰 게시글 리스트 가져오기
+	public List<PreUserReviewDTO> exprReviewList(SearchValue sv);
+	
 //포토이용후기 페이징----------------------------------------------------------------
 //페이징 게시글 수
 	public PageNationDTO epiloguePageNation(SearchValue sv);

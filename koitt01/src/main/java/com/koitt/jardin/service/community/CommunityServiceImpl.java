@@ -143,6 +143,26 @@ public class CommunityServiceImpl implements CommunityService {
 		return pDto;
 	}
 
+//체험단 리뷰(exprReview) 페이징---------------------------------------------------------
+	// 페이징 글 리스트 가져오기
+		@Override
+		public List<PreUserReviewDTO> exprReviewList(SearchValue sv) {
+			return communityDAO.exprReviewList(sv);
+		}
+
+		// 페이징 게시글 수 및 값 세팅
+		@Override
+		public PageNationDTO exprReviewPageNation(SearchValue sv) {
+			PageNationDTO pDto = communityDAO.exprPageNation(sv);
+			pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+			pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+			pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+			pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+			pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+			pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+			pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+			return pDto;
+		}
 	// enjoy 페이징------------------------------------------------------------------
 	// 페이징 글 리스트 가져오기
 	@Override

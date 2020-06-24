@@ -75,10 +75,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 <!--1:1문의 글 쓰기 -->
-	<insert id="inquiry">
-		insert into question
+	<insert id="inquiryWrite">
+		insert into question (no,id,category,title,content,file_name) values(question_seq.nextval,#{id},#{category},#{title},#{content},#{file_name})
 	</insert>
 	
+	<insert id="inquiryWriteNonF">
+		insert into question (no,id,category,title,content) values(question_seq.nextval,#{id},#{category},#{title},#{content})
+	</insert>
 	<!--FAQ 주문 글 리스트 가져오기 -->
 	<select id="faqOrder" resultType="com.koitt.jardin.dto.board.FaqDTO">
 		select * from faq  where category='주문' order by no

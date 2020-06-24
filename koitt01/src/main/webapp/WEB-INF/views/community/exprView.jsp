@@ -200,12 +200,14 @@
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="exprView" class="on">체험단 신청</a></li>
-							<li class="last"><a href="exprReview?preuser_no">체험 리뷰</a></li>
+							<li class="last"><a href="exprReview?preuser_no=${exprView.preuser_no}">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->
 
-					<form action="preUserApply?preuser_no=${expr.preuser_no}" method="post">
+					<form action="preUserApply" method="post">
+						<input type="hidden"  name="preuser_no" class="wlong" value="${exprView.preuser_no}"/>
+									<input type="hidden"  name="id"  value="${id}"/>
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -213,19 +215,21 @@
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
-							<
+							
 							<tbody>
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-<!-- 									<input type="hidden" class="wlong" name="preuser_no" value=""/> -->
+
 										<input type="text" class="wlong" name="title"/>
+								
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
 										<textarea class="tta" name="content"></textarea>
+								
 									</td>
 								</tr>								
 							</tbody>
@@ -236,7 +240,9 @@
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>	
-								<li><a href="#" class="sbtnMini"><button id="preuserBtn">신청하기</button></a></li>
+									
+								<li>
+								<button class="sbtnMini">신청하기</button></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>

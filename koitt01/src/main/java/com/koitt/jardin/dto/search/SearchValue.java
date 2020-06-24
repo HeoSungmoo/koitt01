@@ -4,9 +4,26 @@ public class SearchValue {
 
 	int curPage = 1;
 	int no;
+	int preuser_no;
 	String option = "";
 	String search = "";
 	String category = "";
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getPreuser_no() {
+		return preuser_no;
+	}
+
+	public void setPreuser_no(int preuser_no) {
+		this.preuser_no = preuser_no;
+	}
 
 	public String getCategory() {
 		return category;

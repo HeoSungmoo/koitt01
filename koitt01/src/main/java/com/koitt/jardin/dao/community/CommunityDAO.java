@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.koitt.jardin.dto.CommentDTO.CommentDTO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
+import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
 public interface CommunityDAO {
 
-	// 체험단 글 리스트
-//	public List<PreUserDTO> expr();
 
 	// 체험 단 글 보기 리뷰
-	public PreUserDTO exprReview(int preUserNo);
+	public PreUserDTO exprReview(SearchValue sv);
 
 	// 체험 단 글 보기 뷰
 	public PreUserDTO exprView(int preuser_no);
@@ -30,14 +30,16 @@ public interface CommunityDAO {
 	public void preUserApply(PreUserApplyDTO pDto);
 
 	// 이용후기 글 보기
-	public ReviewDTO epilogueView(int review_no);
+	public UpdateReviewDTO epilogueView(int review_no);
 
 	// 이용후기 글 삭제
 	public void epilogueDelete(int review_no);
 
 	// 이용후기 글 수정
-	public ReviewDTO epilogueUpdate(ReviewDTO rDto);
+	public UpdateReviewDTO epilogueUpdate(UpdateReviewDTO rDto);
 
+	public void epilogueWrite(UpdateReviewDTO rDto) throws Exception;
+	
 	// 인조이 커피 글 보기
 	public EnjoyCoffDTO enjoyView(SearchValue sv);
 
@@ -67,5 +69,5 @@ public interface CommunityDAO {
 	public PageNationDTO commentPageNation(SearchValue sv);
 
 	// 페이징 글 리스트 가져오기
-	public List<EpilogueDTO> commentPageNationList(SearchValue sv);
+	public List<ReviewDTO> commentPageNationList(SearchValue sv);
 }

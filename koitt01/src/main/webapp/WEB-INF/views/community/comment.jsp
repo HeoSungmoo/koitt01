@@ -134,9 +134,9 @@ $(document).ready(function() {
 						<caption>주문 제품 확인</caption>
 						<colgroup>
 						<col width="8%" class="tnone" />
-						<col width="24%" class="tw20" />
+						<col width="15%" class="tw20" />
 						<col width="*" />
-						<col width="5%" class="tw20" />
+						<col width="14%" class="tw20" />
 						<col width="14%" class="tnone" />
 						<col width="10%" class="tnone" />
 						</colgroup>
@@ -154,7 +154,7 @@ $(document).ready(function() {
 								<td class="tnone">1</td>
 								<td>${comment.productTitle}</td>
 								<td class="left">
-									<a href="epilogueView?review_no=${comment.review_no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" >
+									<a href="commentView?review_no=${comment.review_no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" >
 										 ${comment.title}
 										<img src="images/ico/ico_new.gif" alt="new" />
 									</a>

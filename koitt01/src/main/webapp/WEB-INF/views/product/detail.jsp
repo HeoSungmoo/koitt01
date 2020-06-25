@@ -421,7 +421,8 @@ $(document).ready(function() {
 					<c:forEach var="PhotoReview_view" items="${PhotoReview_view }">
 							<!-- List -->
 							<li>
-								<div class="img"><img src="images/${PhotoReview_view.thumbnail }" width="155" height="160" alt="" /></div>
+								<div class="img">
+								<img src="preuserUpload/${PhotoReview_view.thumbnail }" width="155" height="160" alt="포토리뷰 썸네일" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="#"><span class="orange">[먹어봤어요]</span> ${PhotoReview_view.title }</a>

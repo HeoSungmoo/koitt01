@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="js/top_navi.js"></script>
 <script type="text/javascript" src="js/left_navi.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
@@ -170,12 +170,12 @@ $(document).ready(function() {
 
 					<div class="productTab normaltab">
 						<ul>
-							<li><a href="exprView">체험단 신청</a></li>
+							<li><a href="exprView?preuser_no=${exprView.preuser_no}">체험단 신청</a></li>
 							<li class="last"><a href="exprReview" class="on">체험 리뷰</a></li>
 						</ul>						
 					</div>
 
-
+				<form action="preUserReview" method="post" enctype="multipart/form-data">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -187,7 +187,7 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>작은이미지</span></th>
 									<td>
-										<input type="file" class="fileType" />
+										<input type="file" class="fileType" name="preUserReviewImage" />
 									</td>
 								</tr>
 								<tr>
@@ -195,7 +195,7 @@ $(document).ready(function() {
 									<td>
 										<ul class="pta">
 											<li>
-												<input type="radio" name="appraisal" id="starFive" checked="checked"/>
+												<input type="radio" name="grade"  value="5" id="starFive" checked="checked"/>
 												<label for="starFive" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -206,7 +206,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starFour" />
+												<input type="radio" name="grade"  value="4" id="starFour" />
 												<label for="starFour" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -216,7 +216,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starThree" />
+												<input type="radio" name="grade"  value="3" id="starThree" />
 												<label for="starThree" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -225,7 +225,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="startwo" />
+												<input type="radio" name="grade"  value="2" id="startwo" />
 												<label for="startwo" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 													<img src="images/ico/ico_star.gif" alt="별점" />
@@ -233,7 +233,7 @@ $(document).ready(function() {
 											</li>
 
 											<li>
-												<input type="radio" name="appraisal" id="starOne" />
+												<input type="radio" name="grade"  value="1" id="starOne" />
 												<label for="starOne" class="star">
 													<img src="images/ico/ico_star.gif" alt="별점" />
 												</label>
@@ -244,13 +244,13 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" />
+										<input type="text" class="wlong" name="title" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
-										<textarea class="tta"></textarea>
+										<textarea class="tta" name="content"></textarea>
 									</td>
 								</tr>								
 							</tbody>
@@ -260,12 +260,14 @@ $(document).ready(function() {
 					<!-- Btn Area -->
 					<div class="btnArea">
 						<div class="bCenter">
+								<input type="hidden" name="preuser_no" value="${exprView.preuser_no}"/>
 							<ul>
-								<li><a href="preUserReview" class="sbtnMini">리뷰작성</a></li>
-								<li><a href="#" class="nbtnbig">취소</a></li>								
+								<li><button class="sbtnMini"> 리뷰작성</button></li>
+								<li><a href="expr" class="nbtnbig">취소</a></li>								
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //Btn Area -->
 
 
@@ -274,14 +276,15 @@ $(document).ready(function() {
 						<ul>
 
 							<!-- List / Contnent -->
+							<c:forEach var="expr" items="${expr}">
 							<li>
 								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject expr">
-										<a href="javascript:;" class="reviewBtn">카페모리 홍차라떼, 드립커피백 체험단 리뷰 올립니다!!</a>
+										<a href="javascript:;" class="reviewBtn">${expr.title }</a>
 									</div>
 									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
+										${expr.content }
 									</div>
 									<div class="data">
 										<p>작성자 <span>dlsif***</span></p>
@@ -325,164 +328,8 @@ $(document).ready(function() {
 									</div>
 								</div>
 							</li>
+							</c:forEach>
 							<!-- //List / Contnent-->
-
-
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject expr">
-										<a href="javascript:;" class="reviewBtn">카페모리 홍차라떼, 드립커피백 체험단 리뷰 올립니다!!</a>
-									</div>
-									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
-									</div>
-									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
-										<p>댓글 <span>2</span></p>
-										<p>조회수 <span>325</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>평점 
-											<span class="ty">
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="confhide">
-									<div class="reviewContent">
-										<div class="viewContents2">
-											카페모리 홍차라떼, 드립커피백 후기<br/>
-											처음 체험단에 신청해봤는데 당첨돼서 너무 좋았습니다.<br/>
-											너무 맛있었어요. 향도 너무 좋고!!<br/>
-											쟈뎅 드립커페백 추천드립니다!!
-										</div>
-
-										<!-- 답변 -->
-										<div class="answer">
-											<div class="inbox">
-												<div class="aname">
-													<p>담당자 <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></p>
-												</div>
-
-												<div class="atxt">
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												</div>
-											</div>
-										</div>
-										<!-- //답변 -->
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject expr">
-										<a href="javascript:;" class="reviewBtn">카페모리 홍차라떼, 드립커피백 체험단 리뷰 올립니다!!</a>
-									</div>
-									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
-									</div>
-									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
-										<p>댓글 <span>2</span></p>
-										<p>조회수 <span>325</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>평점 
-											<span class="ty">
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="confhide">
-									<div class="reviewContent">
-										<div class="viewContents2">
-											카페모리 홍차라떼, 드립커피백 후기<br/>
-											처음 체험단에 신청해봤는데 당첨돼서 너무 좋았습니다.<br/>
-											너무 맛있었어요. 향도 너무 좋고!!<br/>
-											쟈뎅 드립커페백 추천드립니다!!
-										</div>
-
-										<!-- 답변 -->
-										<div class="answer">
-											<div class="inbox">
-												<div class="aname">
-													<p>담당자 <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></p>
-												</div>
-
-												<div class="atxt">
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												</div>
-											</div>
-										</div>
-										<!-- //답변 -->
-									</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
-								<div class="txt">
-									<div class="subject expr">
-										<a href="javascript:;" class="reviewBtn">카페모리 홍차라떼, 드립커피백 체험단 리뷰 올립니다!!</a>
-									</div>
-									<div class="conf">
-										소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.소문만큼 맛있었습니다.....
-									</div>
-									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
-										<p>댓글 <span>2</span></p>
-										<p>조회수 <span>325</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
-										<p>평점 
-											<span class="ty">
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-											</span>
-										</p>
-									</div>
-								</div>
-								<div class="confhide">
-									<div class="reviewContent">
-										<div class="viewContents2">
-											카페모리 홍차라떼, 드립커피백 후기<br/>
-											처음 체험단에 신청해봤는데 당첨돼서 너무 좋았습니다.<br/>
-											너무 맛있었어요. 향도 너무 좋고!!<br/>
-											쟈뎅 드립커페백 추천드립니다!!
-										</div>
-
-										<!-- 답변 -->
-										<div class="answer">
-											<div class="inbox">
-												<div class="aname">
-													<p>담당자 <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></p>
-												</div>
-
-												<div class="atxt">
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-													쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-												</div>
-											</div>
-										</div>
-										<!-- //답변 -->
-									</div>
-								</div>
-							</li>
 
 						</ul>
 					</div>

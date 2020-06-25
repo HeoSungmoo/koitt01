@@ -15,6 +15,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -42,8 +43,20 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 체험단 리뷰 글쓰기
 	@Override
-	public void preUserReview(int preUserApplyNo) {
-		communityDAO.preUserReview(preUserApplyNo);
+	public void preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception {
+		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/preuserUpload/";
+		String origin_Name=preUserReviewImage.getOriginalFilename();
+		System.out.println(origin_Name);
+		UUID uuid= UUID.randomUUID();
+		String file_Name=uuid.toString()+"_"+origin_Name;
+		preUserReviewImage.transferTo(new File(path + file_Name));
+		PreUserReviewDTO purDto = new PreUserReviewDTO();
+		purDto.setPreuser_no(preuser_no);
+		purDto.setTitle(title);
+		purDto.setContent(content);
+		purDto.setGrade(grade);
+		purDto.setPreUserReviewImage(file_Name);
+		communityDAO.preUserReview(purDto);
 
 	}
 
@@ -130,6 +143,26 @@ public class CommunityServiceImpl implements CommunityService {
 		return pDto;
 	}
 
+//체험단 리뷰(exprReview) 페이징---------------------------------------------------------
+	// 페이징 글 리스트 가져오기
+		@Override
+		public List<PreUserReviewDTO> exprReviewList(SearchValue sv) {
+			return communityDAO.exprReviewList(sv);
+		}
+
+		// 페이징 게시글 수 및 값 세팅
+		@Override
+		public PageNationDTO exprReviewPageNation(SearchValue sv) {
+			PageNationDTO pDto = communityDAO.exprPageNation(sv);
+			pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+			pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+			pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+			pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+			pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+			pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+			pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+			return pDto;
+		}
 	// enjoy 페이징------------------------------------------------------------------
 	// 페이징 글 리스트 가져오기
 	@Override

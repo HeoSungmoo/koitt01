@@ -12,6 +12,7 @@ import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
@@ -38,8 +39,8 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 체험단 리뷰 글 쓰기
 	@Override
-	public void preUserReview(int preUserApplyNo) {
-		sqlSession.insert("expr.preUserReview", preUserApplyNo);
+	public void preUserReview(PreUserReviewDTO purDto) {
+		sqlSession.insert("expr.preUserReview", purDto);
 
 	}
 
@@ -179,6 +180,20 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return eDto;
 	}
 
+	//체험단 리뷰 페이징
+	@Override
+	public PageNationDTO exprReviewPageNation(SearchValue sv) {
+		return sqlSession.selectOne("expr.exprReviewPageNation", sv);
+
+	}
+
+	// 체험단 페이징 글 리스트 가져오기
+	@Override
+	public List<PreUserReviewDTO> exprReviewList(SearchValue sv) {
+		return sqlSession.selectList("expr.exprReviewPageNationList", sv);
+	}
+	
+	
 	// 포토 이용후기 페이징------------------------------------------------------------------
 	// 이용후기 페이징 게시글 수
 	@Override

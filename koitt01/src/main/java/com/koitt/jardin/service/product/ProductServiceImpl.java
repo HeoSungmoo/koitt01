@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
-import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
 	public void photo(int product_no, String title, String content, int grade, MultipartFile thumbnail, String id)
 			throws Exception {
 
-		String path = "C:/Users/user.user-PC/git/koitt01/koitt01/src/main/webapp/resources/images/review";
+		String path = "C:/Users/user.user-PC/git/koitt01/koitt01/src/main/webapp/resources/preuserUpload/";
 
 		String thumbNail = thumbnail.getOriginalFilename();
 		thumbnail.transferTo(new File(path + thumbNail));

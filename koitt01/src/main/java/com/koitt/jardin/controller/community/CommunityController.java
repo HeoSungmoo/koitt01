@@ -43,22 +43,24 @@ public class CommunityController {
 
 	// 체험단 글 보기 및 체험단 리뷰작성,리뷰리스트
 	@RequestMapping("exprReview")
-	public String exprReview(SearchValue sv, Model model) {
+	public String exprReview(SearchValue sv, Model model,HttpSession session) {
 		PageNationDTO pDto = communityService.exprReviewPageNation(sv); // 게시글 수 저장
 		List<PreUserReviewDTO> list = communityService.exprReviewList(sv);
+		String writerId=(String)session.getAttribute("member");
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("expr", list);
-		model.addAttribute("exprView", communityService.exprReview(sv));
+		model.addAttribute("writerId",writerId);
+		model.addAttribute("exprView",communityService.exprReview(sv));
 		return "community/exprReview";
 	}
 
 	// 체험단 리뷰 작성
 	@RequestMapping("preUserReview")
-	public String preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception {
+	public String preUserReview(int preuser_no,String writerId,MultipartFile preuser_review_image,int grade,String title,String content) throws Exception {
 		System.out.println("-------------커뮤니티 프리유저리뷰---------------");
 		System.out.println("체험단 번호"+preuser_no);
 		System.out.println("-------------커뮤니티 프리유저리뷰---------------");
-		communityService.preUserReview(preuser_no,preUserReviewImage,grade,title,content);
+		communityService.preUserReview(preuser_no,writerId,preuser_review_image,grade,title,content);
 		return "redirect:expr";
 	}
 

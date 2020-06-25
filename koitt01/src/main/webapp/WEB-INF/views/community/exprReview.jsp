@@ -54,6 +54,33 @@ $(document).ready(function() {
 </div>
 <!--//익스레이어팝업-->
 <!--IE 6,7,8 사용자에게 브라우저 업데이터 설명 Div 관련 스크립트-->
+<script type="text/javascript">
+function logCheck(){
+	var writerId= preUserReview.writerId.value;
+	var preuser_review_image=preUserReview.preuser_review_image.value;
+	var title=preUserReview.title.value;
+	var content=preUserReview.content.value;
+	
+	if(!writerId){
+		alert("로그인하셔야 작성가능합니다.");
+		location.href = "login";
+		return false;
+	}
+	else if(!preuser_review_image){
+		alert("체험단 관련 이미지를 첨부해주셔야합니다.");
+		return false;
+	}
+	else if(!title){
+		alert("리뷰 제목을 입력해주세요.");
+		return false;
+	}else if(!content){
+		alert("리뷰 내용을 입력해주세요.");
+		return false;
+	}else{
+		preUserReview.submit();
+	}
+}
+</script>
  <script type="text/javascript">
 
      var settimediv = 200000; //지속시간(1000= 1초)
@@ -124,6 +151,16 @@ $(document).ready(function() {
 							<div class="subject">
 								<ul>
 									<li>${exprView.title }
+							<jsp:useBean id="now" class="java.util.Date" />
+									
+									 <!-- 현재날짜 --> 
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+									   
+									<!-- 신청 시작날짜 !--> 
+									<fmt:formatDate value="${exprView.apply_start_date}" pattern="yyyy-MM-dd" var="startDate" /> 
+										
+									<!-- 신청 마감날짜 !-->
+									<fmt:formatDate value="${exprView.apply_end_date}" pattern="yyyy-MM-dd" var="endDate" />
 									<c:choose>
 										<c:when test="${nowDate<endDate}">
 										 <span class="ingbtn">진행중</span>
@@ -175,7 +212,7 @@ $(document).ready(function() {
 						</ul>						
 					</div>
 
-				<form action="preUserReview" method="post" enctype="multipart/form-data">
+				<form action="preUserReview" name="preUserReview" method="post" enctype="multipart/form-data">
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -187,7 +224,7 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>작은이미지</span></th>
 									<td>
-										<input type="file" class="fileType" name="preUserReviewImage" />
+										<input type="file" class="fileType" name="preuser_review_image" />
 									</td>
 								</tr>
 								<tr>
@@ -244,13 +281,13 @@ $(document).ready(function() {
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" name="title" />
+										<input type="text" class="wlong" id="title" name="title" />
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
-										<textarea class="tta" name="content"></textarea>
+										<textarea class="tta" id="content" name="content"></textarea>
 									</td>
 								</tr>								
 							</tbody>
@@ -261,14 +298,15 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 								<input type="hidden" name="preuser_no" value="${exprView.preuser_no}"/>
+								<input type="hidden" name="writerId" value="${writerId}"/>
 							<ul>
-								<li><button class="sbtnMini"> 리뷰작성</button></li>
+								<li><button class="sbtnMini" type="button" onclick="logCheck()"> 리뷰작성</button></li>
 								<li><a href="expr" class="nbtnbig">취소</a></li>								
 							</ul>
 						</div>
 					</div>
-					</form>
 					<!-- //Btn Area -->
+					</form>
 
 
 					<!-- 작성된 체험리뷰 -->
@@ -278,7 +316,7 @@ $(document).ready(function() {
 							<!-- List / Contnent -->
 							<c:forEach var="expr" items="${expr}">
 							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="preuserUpload/${expr.preuser_review_image }" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject expr">
 										<a href="javascript:;" class="reviewBtn">${expr.title }</a>
@@ -287,18 +325,25 @@ $(document).ready(function() {
 										${expr.content }
 									</div>
 									<div class="data">
-										<p>작성자 <span>dlsif***</span></p>
+										<p>작성자 <span>${expr.writerId}</span></p>
 										<p>댓글 <span>2</span></p>
-										<p>조회수 <span>325</span></p>
-										<p>등록일 <span>2014-03-24</span></p>
+										<p>조회수 <span>${expr.hit }</span></p>
+										<p>등록일 <span><fmt:formatDate pattern="yyyy-MM-dd" value="${expr.upload_date }"/></span></p>
 										<p>평점 
-											<span class="ty">
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-												<img src="images/ico/ico_star.gif" alt="별점" />
-											</span>
+											<span class="ty" id="star${k=k+1}"></span>
+											
+											<script>
+    var innerHtml = "";
+    for (var i = 0; i < 5; i++) {
+        if (i < ${expr.grade}) {
+            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+        } else {
+            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+        }
+    }
+    var star = document.getElementById('star${k}');
+    star.innerHTML = innerHtml;
+</script>
 										</p>
 									</div>
 								</div>
@@ -335,18 +380,33 @@ $(document).ready(function() {
 					</div>
 
 
-					<div class="btnAreaList">
-
+						<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="exprReview?curPage=1&preuser_no=${exprView.preuser_no}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="exprReview?curPage=${pDto.getStart_page()-1}&preuser_no=${exprView.preuser_no}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="exprReview?curPage=${index}&preuser_no=${exprView.preuser_no} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="exprReview?curPage=${index}&preuser_no=${exprView.preuser_no}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="exprReview?curPage=${pDto.getEnd_page()+1}&preuser_no=${exprView.preuser_no}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="exprReview?curPage=${pDto.getPage_cnt()}&preuser_no=${exprView.preuser_no}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->

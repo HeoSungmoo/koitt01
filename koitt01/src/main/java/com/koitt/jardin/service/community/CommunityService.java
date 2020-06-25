@@ -26,7 +26,7 @@ public interface CommunityService {
 	public PreUserDTO exprView(int preuser_no);
 
 	// 체험단 리뷰 글쓰기
-	public void preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception;
+	public void preUserReview(int preuser_no,String writerId,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception;
 
 	// 체험단 신청 글쓰기
 	public void preUserApply(PreUserApplyDTO pDto);

@@ -187,7 +187,7 @@ const member= JSON.parse(memberId);
 				
 						</c:when>
 						<c:when test="${not empty memberId}">
-								<li><a href="epilogueWrite?memberId=${memberId}" class="sbtnMini">글쓰기</a></li>
+								<li><a href="epilogueWrite1?memberId=${memberId}" class="sbtnMini">글쓰기</a></li>
 						</c:when>
 								</c:choose>
 							</ul>

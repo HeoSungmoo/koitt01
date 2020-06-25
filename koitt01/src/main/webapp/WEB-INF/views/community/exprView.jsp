@@ -237,7 +237,7 @@ function loginCheck(){
 								<li>
 								
 								<button class="sbtnMini">신청하기</button></li>
-								<li><a href="#" class="nbtnbig">취소</a></li>	
+								<li><a href="expr" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>
 					</div>

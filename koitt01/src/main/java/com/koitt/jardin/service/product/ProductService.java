@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
-import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -39,7 +38,7 @@ public interface ProductService {
 
 	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv);
 
-	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv);
+	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv);
 
 	public List<ReviewDTO> ReviewPageNationList(SearchValue sv);
 

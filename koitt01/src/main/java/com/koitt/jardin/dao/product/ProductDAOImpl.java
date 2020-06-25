@@ -6,9 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
-import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -169,7 +168,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
 
 		return sqlSession.selectOne("page.photoPageNation", sv);
 	}

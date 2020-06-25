@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
-import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
@@ -110,7 +109,7 @@ public class ProductController {
 		model.addAttribute("qna_view", productService.QnA_view(product_no));
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
-		PhotoPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
+		ReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
 		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
 		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("initVal", initVal);

@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
-import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
+import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -211,9 +210,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
 
-		PhotoPageNationDTO rDto = productDao.PhotoReviewPageNation(sv);
+		ReviewPageNationDTO rDto = productDao.PhotoReviewPageNation(sv);
 		rDto.setPage_cnt(rDto.getListCnt()); // 페이지 수 저장
 		rDto.setRange_cnt(rDto.getPage_cnt()); // 블럭 수 저장
 		rDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치 rDto.setCurpa

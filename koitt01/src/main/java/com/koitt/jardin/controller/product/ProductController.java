@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.batis.ProductTestService;
-import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
@@ -106,37 +106,27 @@ public class ProductController {
 			@RequestParam(value = "initVal", defaultValue = "0") int initVal) {
 //		model.addAttribute("review_view", productService.reviewPageNationList(sv));
 		model.addAttribute("detail", productService.detail(product_no));
-		model.addAttribute("qna_view", productService.QnA_view(product_no));
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
+		// 포토리뷰 뿌려주기
 		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
 		ReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
-		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
-		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("initVal", initVal);
 		model.addAttribute("PhotoReview_view", PhotoReview_list);
 		model.addAttribute("PhotoRdto", PhotoRdto);
+		// 리뷰 뿌려주기
+		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
+		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("review_view", Review_list);
 		model.addAttribute("rDto", rdto);
+		// 질문과 답변 뿌려주기
+		List<QnaDTO> QnapageNationList = productService.QnApageNationList(sv);
+		ReviewPageNationDTO qDto = productService.QnApageNation(sv);
+		model.addAttribute("qna_view", QnapageNationList);
+		model.addAttribute("qDto", qDto);
+
 		model.addAttribute("sv", sv);
 		return "product/detail";
 	}
-
-//	@RequestMapping("/photoReviewPage")
-//	public String reviewPageNation(Model model, SearchValue sv,
-//			@RequestParam(value = "initVal", defaultValue = "0") int initVal) {
-//		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
-//		ReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
-//		List<ReviewDTO> Review_list = productService.ReviewPageNationList(sv);
-//		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
-//		model.addAttribute("review_view", Review_list);
-//		model.addAttribute("rDto", rdto);
-//
-//		model.addAttribute("initVal", initVal);
-//		model.addAttribute("PhotoReview_view", PhotoReview_list);
-//		model.addAttribute("PhotoRdto", PhotoRdto);
-//
-//		return "product/detail";
-//	}
 
 	// 구매후기 작성란 보기
 	@RequestMapping("review_view")
@@ -197,9 +187,7 @@ public class ProductController {
 	@RequestMapping(method = RequestMethod.POST, value = "photo")
 	public String photo(HttpSession session, Model model, int product_no, String title, String content, int grade,
 			MultipartFile thumbnail) throws Exception {
-//		reviewDto.setId((String) session.getAttribute("member"));
-		System.out.println(thumbnail);
-		System.out.println(product_no);
+
 		productService.photo(product_no, title, content, grade, thumbnail, (String) session.getAttribute("member"));
 		model.addAttribute("product_no", product_no);
 		return "redirect:/detail?product_no=" + product_no;
@@ -252,10 +240,62 @@ public class ProductController {
 	}
 
 	@RequestMapping("product_search")
-	public String search(Model model, String search) {
+	public String search(Model model, SearchValue sv) {
 
-		model.addAttribute("product_search", productService.product_search(search));
+		List<ProductDTO> Psearch = productService.productSearchPageNationList(sv);
+		List<ProductDTO> HighPircePageNationList = productService.HighPircePageNationList(sv);
+		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
+		model.addAttribute("product_search", HighPircePageNationList);
+		model.addAttribute("product_search", LowPircePageNationList);
+		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
+		model.addAttribute("product_search", Psearch);
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("sv", sv);
+
+		if (!(sv.getHighPrice() == null)) {
+			model.addAttribute("product_search", HighPircePageNationList);
+			model.addAttribute("pDto", pDto);
+
+		} else if (!(sv.getLowPrice() == null)) {
+			model.addAttribute("product_search", LowPircePageNationList);
+			model.addAttribute("pDto", pDto);
+		} else {
+			model.addAttribute("product_search", Psearch);
+			model.addAttribute("pDto", pDto);
+
+		}
+
 		return "product/search";
 	}
 
+	@RequestMapping("product_new")
+	public String product_new() {
+
+		return "product/search";
+	}
+
+	@RequestMapping("product_HighPrice")
+	public String HighPirce(Model model, SearchValue sv) {
+
+		List<ProductDTO> HighPircePageNationList = productService.HighPircePageNationList(sv);
+		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
+		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
+		model.addAttribute("product_search", HighPircePageNationList);
+		model.addAttribute("product_search", LowPircePageNationList);
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("sv", sv);
+		return "product/search";
+	}
+
+	@RequestMapping("product_LowPrice")
+	public String LowPirce(Model model, SearchValue sv) {
+
+		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
+		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
+		model.addAttribute("product_search", LowPircePageNationList);
+		model.addAttribute("pDto", pDto);
+		model.addAttribute("sv", sv);
+
+		return "product/search";
+	}
 }

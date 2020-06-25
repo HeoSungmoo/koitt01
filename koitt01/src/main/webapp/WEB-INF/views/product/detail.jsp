@@ -422,7 +422,7 @@ $(document).ready(function() {
 							<!-- List -->
 							<li>
 								<div class="img">
-								<img src="preuserUpload/${PhotoReview_view.thumbnail }" width="155" height="160" alt="포토리뷰 썸네일" /></div>
+								<img src="preuserUpload/${PhotoReview_view.thumbnail}" width="155" height="160" alt="포토리뷰 썸네일" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="#"><span class="orange">[먹어봤어요]</span> ${PhotoReview_view.title }</a>
@@ -644,17 +644,36 @@ $(document).ready(function() {
 						</div>
 						<!-- //질문과 답변 -->
 
-						<div class="btnAreaList">
-							<!-- 페이징이동1 -->
-							
-							
-							
-							
-							
-							
-							
-							
-							
+								<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${qDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${qDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${qDto.getStart_page()}" end="${qDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${qDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=3 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${qDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=3">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${qDto.getNext_page()}">
+            				<a href="detail?curPage=${qDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${qDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						
+					</div>
 							
 							<!-- //페이징이동1 -->
 						</div>

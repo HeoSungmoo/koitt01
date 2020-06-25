@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -62,12 +62,6 @@ public class ProductDAOImpl implements ProductDAO {
 		sqlSession.insert("product.review", reviewDto);
 
 	}
-
-//	@Override
-//	public List<ReviewDTO> review_view(int product_no) {
-//
-//		return sqlSession.selectList("product.review_view", product_no);
-//	}
 
 	@Override
 	public void review_delete(int review_no) {
@@ -124,12 +118,6 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<QnaDTO> QnA_view(int product_no) {
-
-		return sqlSession.selectList("product.qna_view", product_no);
-	}
-
-	@Override
 	public void QnA_delete(int qna_no) {
 
 		sqlSession.delete("product.qna_delete", qna_no);
@@ -147,12 +135,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 		sqlSession.update("product.qna_modify", qnaDto);
 
-	}
-
-	@Override
-	public List<ProductDTO> product_search(String search) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("product.product_search", search);
 	}
 
 	@Override
@@ -193,14 +175,56 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
-		// TODO Auto-generated method stub
+
 		return sqlSession.selectList("page.reviewPageNationList", sv);
 	}
 
 	@Override
 	public ReviewPageNationDTO ReviewPageNation(SearchValue sv) {
-		// TODO Auto-generated method stub
+
 		return sqlSession.selectOne("page.reviewPageNation", sv);
+	}
+
+	@Override
+	public List<QnaDTO> QnApageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.QnApageNationList", sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO QnApageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.QnApageNation", sv);
+	}
+
+	@Override
+	public List<ProductDTO> productSearchPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.productSearchPageNationList", sv);
+	}
+
+	@Override
+	public ProductPageNationDTO productSearchPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.productSearchPageNation", sv);
+	}
+
+	@Override
+	public List<ProductDTO> product_amount(SearchValue sv) {
+
+		return null;
+	}
+
+	@Override
+	public List<ProductDTO> HighPircePageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.HighPircePageNationList", sv);
+	}
+
+	@Override
+	public List<ProductDTO> LowPircePageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("page.LowPircePageNationList", sv);
 	}
 
 }

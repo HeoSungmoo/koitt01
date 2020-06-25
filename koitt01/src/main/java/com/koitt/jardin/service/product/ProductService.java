@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ProductInfoDTO;
@@ -21,18 +21,24 @@ public interface ProductService {
 
 	public List<ProductDTO> categoryList(SearchValue sv);
 
-	public List<ProductDTO> product_search(String search);
-
 //	--------------------제품리스트 페이지네이션-----------------------------
-	public ProductPageNationDTO productPageNation(SearchValue sv);
-
 	public List<ProductDTO> productPageNationList(SearchValue sv);
+
+	public ProductPageNationDTO productPageNation(SearchValue sv);
 
 	public ProductPageNationDTO categoryPageNationListDTO(SearchValue sv);
 
 	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv);
 
-// -------------------------------------------------------------------------
+	public List<ProductDTO> productSearchPageNationList(SearchValue sv);
+
+	public ProductPageNationDTO productSearchPageNation(SearchValue sv);
+
+// -------------------제품 검색 페이지네이션------------------------
+
+	public List<ProductDTO> HighPircePageNationList(SearchValue sv);
+
+	public List<ProductDTO> LowPircePageNationList(SearchValue sv);
 
 // ---------------------제품 상세 페이지네이션--------------------------------------
 
@@ -44,7 +50,9 @@ public interface ProductService {
 
 	public ReviewPageNationDTO ReviewPageNation(SearchValue sv);
 
-// ---------------------------------------------------------------
+	public List<QnaDTO> QnApageNationList(SearchValue sv);
+
+	public ReviewPageNationDTO QnApageNation(SearchValue sv);
 
 	public ProductDTO detail(int product_no);
 
@@ -63,8 +71,6 @@ public interface ProductService {
 
 	public void inquiry(QnaDTO qnaDto);
 
-	public List<QnaDTO> QnA_view(int product_no);
-
 	public List<CommentDto> comment_List();
 
 	public void QnA_delete(int qna_no);
@@ -78,5 +84,7 @@ public interface ProductService {
 	public void comment_insert(CommentDto comment);
 
 	public void comment_update(CommentDto comment);
+
+	List<ProductDTO> product_amount(SearchValue sv);
 
 }

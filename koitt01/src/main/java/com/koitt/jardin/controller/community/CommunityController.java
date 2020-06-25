@@ -48,6 +48,7 @@ public class CommunityController {
 		List<PreUserReviewDTO> list = communityService.exprReviewList(sv);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("expr", list);
+		model.addAttribute("exprView", communityService.exprReview(sv));
 		return "community/exprReview";
 	}
 

@@ -27,11 +27,28 @@
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-$(document).ready(function() {
+
 	
+	$(document).ready(function() {
+// 		$("#preuserBtn").click(function(){
+// 			var title=$("#title").val();
+// 			var content=$("#content").val();
+// 			var preuser_no=(Number$("#preuser_no").val());
+// 			$.ajax({
+// 				url:'preUserApply',
+// 				type:'post',
+// 				data:'title='+title+'&content='+content+'&preuser_no='+preuser_no,
+// 				success:function(data){
+// 					alert("입력완료");
+// 				}
+				
+// 			});
+			
+// 		});
+	
+	
+	});
 
-
-});
 </script>
 </head>
 <body>
@@ -120,7 +137,7 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="expr" id="leftNavi1">체험단</a></li>
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
-					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+					<li class="last"><a href="enjoy" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
 
@@ -183,12 +200,14 @@ $(document).ready(function() {
 					<div class="productTab normaltab">
 						<ul>
 							<li><a href="exprView" class="on">체험단 신청</a></li>
-							<li class="last"><a href="exprReview?preuser_no">체험 리뷰</a></li>
+							<li class="last"><a href="exprReview?preuser_no=${exprView.preuser_no}">체험 리뷰</a></li>
 						</ul>						
 					</div>
 					<!-- //Tab -->
 
-<form action="preUserApply?preuser_no=${expr.preuser_no }" name="preUserApply" method="post">
+					<form action="preUserApply" method="post">
+						<input type="hidden"  name="preuser_no" class="wlong" value="${exprView.preuser_no}"/>
+									<input type="hidden"  name="id"  value="${id}"/>
 					<div class="checkDivTab">
 						<table summary="분류, 별점, 제목, 상세 내용 순으로 상품평을 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
 							<caption>상품평 작성</caption>
@@ -196,18 +215,21 @@ $(document).ready(function() {
 							<col width="19%" class="tw30" />
 							<col width="*" />
 							</colgroup>
-							<
+							
 							<tbody>
 								<tr>
 									<th scope="row"><span>제목</span></th>
 									<td>
-										<input type="text" class="wlong" name="title" />
+
+										<input type="text" class="wlong" name="title"/>
+								
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><span>내용</span></th>
 									<td>
 										<textarea class="tta" name="content"></textarea>
+								
 									</td>
 								</tr>								
 							</tbody>
@@ -218,7 +240,9 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>	
-								<li><a href="preUserApply" class="sbtnMini"><button type="submit">신청하기</button></a></li>
+									
+								<li>
+								<button class="sbtnMini">신청하기</button></li>
 								<li><a href="#" class="nbtnbig">취소</a></li>	
 							</ul>
 						</div>

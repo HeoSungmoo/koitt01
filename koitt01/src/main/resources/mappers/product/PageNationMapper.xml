@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="page">
+
+	<select id="productPageNation" resultType="com.koitt.jardin.dto.page.ProductPageNationDTO">
+	
+	select count(*) listCnt from product
+	
+	</select>
+
+
+
+<!-- 페이징 리스트  -->
+
+	<select id="productPageNationList" resultType="com.koitt.jardin.dto.product.ProductDTO">
+     select * 
+      from(select row_number() over(order by product_no desc) as rnum,product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+                    detail,upload_date,product_stock,exposure_state,category1,category2 from product order by product_no desc)
+      where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1
+
+	</select>
+	
+	
+	<select id="photoPageNation" resultType="com.koitt.jardin.dto.page.PhotoPageNationDTO">
+	
+	select count(*) listCnt from review where thumbnail is not null
+	
+	</select>
+	
+	<select id="photoPageNationList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+
+      select * 
+      from(select row_number() over(order by review_no desc) as rnum,review_no,product_no,id,title,content,review_date,hit,thumbnail,reply,reply_date
+                    from review where thumbnail is not null order by review_no desc)
+      where rnum between (#{curPage1}-1)*2+1 and ((#{curPage1}-1)*2+1)+2-1 and product_no=#{product_no}
+
+	</select>
+	
+	
+	<select id="reviewPageNation" resultType="com.koitt.jardin.dto.page.ReviewPageNationDTO">
+	
+	select count(*) listCnt from review where thumbnail is null
+	
+	</select>
+	
+	<select id="reviewPageNationList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+
+        select * 
+      from(select row_number() over(order by review_no desc) as rnum,review_no,product_no,id,title,content,review_date,hit,thumbnail,reply,reply_date
+                    from review where thumbnail is null order by review_no desc)
+      where rnum between (#{curPage}-1)*2+1 and ((#{curPage}-1)*2+1)+2-1 and product_no=#{product_no}
+                    
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="categoryPageNationList" resultType="com.koitt.jardin.dto.page.ProductPageNationDTO">
+	
+	select count(*) listCnt from product where category1=#{category1}
+	
+	</select>
+	
+	<select id="categoryPageNation" resultType="com.koitt.jardin.dto.page.ProductPageNationDTO">
+	
+	select count(*) listCnt from product where category2=#{category2}
+	
+	</select>
+	
+	
+	
+	
+</mapper>

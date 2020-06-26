@@ -1,29 +1,41 @@
 package com.koitt.jardin.service.board;
 
+import java.sql.Timestamp;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.board.PageNationDTO;
+import com.koitt.jardin.dto.member.InquiryDTO;
+import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.search.SearchValue;
 
 public interface BoardService {
-
-	// 공지사항 글 리스트
-	public List<NoticeDTO> notice();
-
-	// 공지사항 검색
-	public List<NoticeDTO> noticeSearch(String option, String search);
 
 	// 공지사항 조회수
 	public void noticeViewHit(int No);
 
 	// 공지사항 글 보기
-	public NoticeDTO noticeView(int rnum);
+	public NoticeDTO noticeView(int no);
+
+	// 공지사항 글보기 이전글
+	public NoticeDTO noticeViewPre(int no);
+
+	// 공지사항 글보기 이전글
+	public NoticeDTO noticeViewNext(int no);
 
 	// 1:1문의
-	public void inquiry();
+	public void inquiryWrite(String id,String category,String title,String content,
+			MultipartFile file_name) throws Exception;
 
+	// 1:1문의 파일 없을때
+		public void inquiryWrite1(String id,String category,String title,String content
+				) throws Exception;
+
+	
+	
 	// FAQ전체 리스트
 	public List<FaqDTO> faq();
 
@@ -42,8 +54,17 @@ public interface BoardService {
 	// 이용안내
 	public GuideDTO guide();
 
-	public List<PageNationDTO> pageNationList(int curPage);
+//공지사항 페이징------------------------------------------------------------------
+	// 페이징 게시글 수
+	public PageNationDTO pageNation(SearchValue sv);
 
-	public PageNationDTO pageNation(int curPage);
+	// 페이징 글 리스트 가져오기
+	public List<NoticeDTO> pageNationList(SearchValue sv);
 
+//FAQ 페이징------------------------------------------------------------------	
+	// FAQ 페이징 게시글 수
+	public PageNationDTO faqPageNation(SearchValue sv);
+
+	// FAQ 페이징 글 리스트 가져오기
+	public List<FaqDTO> faqPageNationList(SearchValue sv);
 }

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +12,20 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/top_navi.js"></script>
+<script type="text/javascript" src="../js/left_navi.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
+<script type="text/javascript" src="../js/html5.js"></script>
+<script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -41,16 +42,16 @@ $(document).ready(function() {
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
-		<p class="img"><img src="images/ico/ico_alert.gif" alt="알림" /></p>
+		<p class="img"><img src="../images/ico/ico_alert.gif" alt="알림" /></p>
 		<p class="txt">IE버전이 낮아 홈페이지 이용에 불편함이 있으므로 <strong>IE9이상이나 다른 브라우저</strong>를 이용해 주세요. </p>
 		<ul>
-			<li><a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank"><img src="images/ico/ico_ie.gif" alt="IE 최신브라우저 다운" ></a></li>
-			<li><a href="https://www.google.com/intl/ko/chrome/browser" target="_blank"><img src="images/ico/ico_chrome.gif" alt="IE 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.mozilla.org/ko/firefox/new" target="_blank"><img src="images/ico/ico_mozila.gif" alt="MOZILA 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.apple.com/safari" target="_blank"><img src="images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
-			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
+			<li><a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank"><img src="../images/ico/ico_ie.gif" alt="IE 최신브라우저 다운" ></a></li>
+			<li><a href="https://www.google.com/intl/ko/chrome/browser" target="_blank"><img src="../images/ico/ico_chrome.gif" alt="IE 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.mozilla.org/ko/firefox/new" target="_blank"><img src="../images/ico/ico_mozila.gif" alt="MOZILA 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.apple.com/safari" target="_blank"><img src="../images/ico/ico_safari.gif" alt="SAFARI 최신브라우저 다운" ></a></li>
+			<li><a href="http://www.opera.com/ko/o/ie-simple" target="_blank"><img src="../images/ico/ico_opera.gif" alt="OPERA 최신브라우저 다운" ></a></li>		
 		</ul>
-		<p class="btn" onclick="msiehide();"><img src="images/ico/ico_close.gif" alt="닫기" /></p>
+		<p class="btn" onclick="msiehide();"><img src="../images/ico/ico_close.gif" alt="닫기" /></p>
 	</div>
 </div>
 <!--//익스레이어팝업-->
@@ -90,7 +91,7 @@ $(document).ready(function() {
 <div id="allwrap">
 <div id="wrap">
 
-	<header>
+			<header>
       <%@ include file="../include/header.jsp"  %>
    </header>
 
@@ -111,7 +112,7 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="expr" id="leftNavi1">체험단</a></li>
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
-					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+					<li class="last"><a href="enjoy" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
@@ -132,19 +133,22 @@ $(document).ready(function() {
 						<div class="viewHead">
 							<div class="subject">
 								<ul>
-									
-									<li>${epilogueView.title}</li>
+								
+									<li>${epilogueView.title} </li>
 								</ul>
 							</div>
 							<div class="day">
-								<p class="txt">제품명<span>쟈뎅, 테이크아웃 ‘카페모리’ </span></p>
+								<p class="txt">제품명<span>${epilogueView.productTitle} </span></p>
 							</div>
 							<div class="data">
 								<ul>
 									<li>작성자<span>${epilogueView.id}</span></li>
-									<li class="tnone">등록일<span><fmt:formatDate pattern="yyyy-MM-dd" value="${epilogueView.review_date}"/></span></li>
+									<li class="tnone">등록일<span>${epilogueView.review_date}</span></li>
 									<li class="tnone">조회수<span>${epilogueView.hit}</span></li>
-									<script>
+									<li class="last">평점
+										<span class="ty" id="star${k=k+1 }">
+											</span>
+											<script>
     var innerHtml = "체험단 평점&nbsp;";
     for (var i = 0; i < 5; i++) {
         if (i < ${epilogueView.grade}) {
@@ -156,17 +160,13 @@ $(document).ready(function() {
     var star = document.getElementById('star${k}');
     star.innerHTML = innerHtml;
 </script>
-									<li class="last">평점
-										<span id="star${k=k+1}" class="star">
-											
-										</span>
 									</li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="viewContents">
-							${epilogue.content }
+							${epilogueView.content}
 						</div>
 					</div>
 
@@ -179,7 +179,7 @@ $(document).ready(function() {
 
 							<div class="atxt">
 								쟈뎅 커피를 사랑해주셔서 감사합니다. 앞으로도 노력하는 쟈뎅이 되겠습니다. 감사합니다.
-								
+						
 							</div>
 						</div>
 					</div>
@@ -204,7 +204,7 @@ $(document).ready(function() {
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
+									<td>다음 글이 없습니다 .${epilogueView.thumbnail}</td>
 									<td>&nbsp;</td>
 								</tr>
 							</tbody>
@@ -217,9 +217,9 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bRight">
 							<ul>
-								<li><a href="#" class="nbtnbig mw">수정</a></li>
-								<li><a href="#" class="nbtnbig mw">삭제</a></li>
-								<li><a href="#" class="sbtnMini mw">목록</a></li>
+								<li><a href="epilogueUpdate?review_no=${epilogueView.review_no}"class="nbtnbig mw">수정</a></li>
+								<li><a href="epilogueDelete?review_no=${epilogueView.review_no}" class="nbtnbig mw">삭제</a></li>
+								<li><a href="epilogue??curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" class="sbtnMini mw">목록</a></li>
 							</ul>
 						</div>
 					</div>
@@ -235,11 +235,11 @@ $(document).ready(function() {
 	<!-- //container -->
 
 
-
-
-	 <footer>
+<footer>
       <%@ include file="../include/footer.jsp"  %>
    </footer>
+
+
 
 
 </div>

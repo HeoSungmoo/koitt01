@@ -14,18 +14,17 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<script type="text/javascript" src="js/respond.min.js"></script>
-<![endif]-->
+<script type="text/javascript" src="../js/jquery.min.../js"></script>
+<script type="text/javascript" src="../js/top_navi.../js"></script>
+<script type="text/javascript" src="../js/left_navi.../js"></script>
+<script type="text/javascript" src="../js/main.../js"></script>
+<script type="text/javascript" src="../js/common.../js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.../js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.../js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.../js"></script>
+<script type="text/javascript" src="../js/html5.../js"></script>
+<script type="text/javascript" src="../js/respond.min.../js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -194,33 +193,52 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="#" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a><a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a><a href="#" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="expr?curPage=1&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="expr?curPage=${pDto.getStart_page()-1}&option=${sv.option }&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="expr?curPage=${index}&option=${sv.option }&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="expr?curPage=${index}&option=${sv.option }&search=${sv.search}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="expr?curPage=${pDto.getEnd_page()+1}&option=${sv.option }&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="expr?curPage=${pDto.getPage_cnt()}&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-
+				<form action="expr">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
-									<select>
-										<option value="" />제목</option>
+									<select name="option">
+										<option value="total">전체</option>
+										<option value="title">제목</option>
+										<option value="content">내용</option>
 									</select>
 								</li>
-								<li><input type="text" class="searchInput" /></li>
-								<li class="web"><a href="#"><img src="images/btn/btn_search.gif" alt="검색" /></a></li>
-								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
+								<li><input type="text" name="search" class="searchInput" /></li>
+								<li class="web"><button id="exprBtn"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
+								<li class="mobile"><button><img src="images/btn/btn_search_m.gif" alt="검색" /></button></li>
 							</ul>
 						</div>
 					</div>
+					</form>
 					<!-- //체험단 -->
 
 

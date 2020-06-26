@@ -94,13 +94,78 @@ $(document).ready(function() {
 	<header>
       <%@ include file="../include/header.jsp"  %>
    </header>
+   
+   	<div id="gnb">
+		
+		<div id="top">
+			<ul>
+				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
+					<ul id="topSubm1">
+						<li><a href="${pageContext.request.contextPath}/category?category2=클래스">클래스</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리">홈스타일 카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">카페리얼 커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">카페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						
+					</ul>
+				</li>
+				
+				<li class="t2"><a href="category/category1=원두" id="topNavi2">원두</a>
+					<ul id="topSubm2">
+						<li><a href="category?category1=원두">전체</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+					
+					</ul>
+				</li>
+			
+				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
+					<ul id="topSubm3">
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+					</ul>
+				</li>
+				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
+					<ul id="topSubm4">
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
+					</ul>
+				</li>
+				<li class="t1"><a href="#" id="topNavi5">음료</a>
+					<ul id="topSubm5">
+						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
+					</ul>
+				</li>
+				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
+					<ul id="topSubm6">
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/종이컵">종이컵</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/커피필터">커피필터</a></li>
+						<li><a href="${pageContext.request.contextPath}/product/커피용품/머신 등">머신 등</a></li>
+					</ul>
+				</li>
+				<li class="t1"><a href="${pageContext.request.contextPath}/product/선물세트" id="topNavi7">선물세트</a></li>
+				<li class="t2"><a href="${pageContext.request.contextPath}/product/대량구매" id="topNavi8">대량구매</a></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">initTopMenu();</script>
+	</div>
 
 	<!-- container -->
 	<div id="container">
 
 		<div id="location">
 			<ol>
-				<li><a href="#">HOME</a></li>
+				<li><a href="#">HOME1</a></li>
 				<li>원두커피</li>
 				<li class="last">원두</li>
 			</ol>
@@ -116,33 +181,35 @@ $(document).ready(function() {
 
 			<div class="brandTab">
 				<ul>
+
 			
-				
-	<c:forEach var="subcategoryList" items="${subcategoryList }">
-		<li>${subcategoryList.sub_category_code }</li>
-		<li>${subcategoryList.categoryCode }</li>
-		<li>${subcategoryList.name }</li>
-	
-	
-	</c:forEach>
-			
+					<li><a href="#" class="hover">드립커피백</a></li>
+					<li><a href="#">오리지널 커피백</a></li>
+					<li><a href="#">마일드 커피백</a></li>
+					<li><a href="#">카페모리</a></li>
+					<li><a href="#">카페포드</a></li>
+					<li><a href="#">카페리얼</a></li>
+					<li><a href="#">워터커피</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+
 				</ul>
 			</div>
 			<div class="brandList">
-		<c:forEach var="ProductDto" items="${list }">
-				<ul>
+		
+		<ul>
 					<!-- 반복 -->
+
+					 	<c:forEach var="list" items="${list }">
 					<li>
-						<a href="detail">
-							<div class="img"><a href=""><img src="images/img/sample_brand.jpg" alt="제품이미지" /></a></div>
-							<div class="title"><a href="detail?product_no=${ProductDto.product_no }">${ProductDto.product_no }//${ProductDto.title }</a></div>
-							<div class="price">	${ProductDto.price }</div>
-						
+						<a href="${pageContext.request.contextPath}/detail?product_no=${list.product_no }">
+							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="name">${list.title }</div>
+							<div class="price">${list.price }</div>
 						</a>
 					</li>
-				</ul>
-				
-	</c:forEach>
+						</c:forEach> 
+		</ul>
+		
 			</div>
 	
 	
@@ -209,8 +276,40 @@ $(document).ready(function() {
 
 	</div>
 	<!-- //container -->
+	
+	
 
+				<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
 
+						<a href="list?curPage=1&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="list?curPage=${pDto.getStart_page()-1}&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="list?curPage=${index}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="list?curPage=${index}&search=${sv.search}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="list?curPage=${pDto.getEnd_page()+1}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="list?curPage=${pDto.getPage_cnt()}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
 
 
 	

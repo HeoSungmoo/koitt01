@@ -28,6 +28,7 @@
 <script type="text/javascript" src="js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
+
 $(document).ready(function() {
 	
 
@@ -110,9 +111,9 @@ $(document).ready(function() {
 			<div id="left">
 				<div id="title2">EVENT<span>이벤트</span></div>
 				<ul>	
-					<li><a href="#" id="leftNavi1">진행중 이벤트</a></li>
-					<li><a href="#" id="leftNavi2">종료된 이벤트</a></li>
-					<li class="last"><a href="#" id="leftNavi3">당첨자 발표</span></a></li>
+					<li><a href="event" id="leftNavi1">진행중 이벤트</a></li>
+					<li><a href="finEvent" id="leftNavi2">종료된 이벤트</a></li>
+					<li class="last"><a href="prizeWinner" id="leftNavi3">당첨자 발표</span></a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(1,0);</script>
 
@@ -153,13 +154,13 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
+									<td><a href="eventView?event_no=${eventViewPre.event_no} ">${eventViewPre.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
+									<td><a href="eventView?event_no=${eventViewNext.event_no} & end_date=${eventViewNext.end_date}">${eventViewNext.title}</a></td>
 									<td>&nbsp;</td>
 								</tr>
 							</tbody>
@@ -167,29 +168,31 @@ $(document).ready(function() {
 					</div>
 					<!-- //이전다음글 -->
 
-
+				<form action="eventCommentWrite?event_no=${eventView.event_no}" method="post" name=eventCommentForm>
 					<!-- 댓글-->
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
 								<p class="txt">총 <span class="orange"></span> 개의 댓글이 달려있습니다.</p>
+								
 								<textarea class="replyType" name="comment_content"></textarea>
 							</li>
-							<li class="btn"><a href="eventView?event_no=${eventView.event_no}" class="replyBtn">등록</a></li>
+							<li class="btn"><input class="replyBtn" id="writeBtn" value="등록"></li>
 						</ul>
 						
 					</div>
+					</form>
 
 					<c:forEach var="EventComment" items="${eventComment }">
 					<div class="replyBox">
 					
 
 						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
+							<li class="name">${EventComment.id }<span>${EventComment.comment_data }</span></li>
 							<li class="txt">${EventComment.comment_content }</li>
 							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
+								<a href="eventCommentModifyView?comment_no=${EventComment.comment_no }&event_no=${eventView.event_no}" class="rebtn">수정</a>
+								<a href="eventCommentDelete?comment_no=${EventComment.comment_no }&event_no=${eventView.event_no}" class="rebtn">삭제</a>
 							</li>
 						</ul>
 
@@ -202,7 +205,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bRight">
 							<ul>
-								<li><a href="#" class="sbtnMini mw">목록</a></li>
+								<li><a href="event" class="sbtnMini mw">목록</a></li>
 							</ul>
 						</div>
 					</div>

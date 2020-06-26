@@ -7,16 +7,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" resultType="com.koitt.jardin.dto.product.ProductDTO">
 
-	select * from product
+	select * from product order by product_no desc
 			
 	</select>
 	
+	<select id="categoryAllList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	<select id="categoryList" resultType="com.koitt.jardin.dto.product.CategoryDto">
 	
-	select * from category order by category_code asc
+	select * 
+      from(select row_number() over(order by product_no desc) as rnum,product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+                    detail,upload_date,product_stock,exposure_state,category1,category2 from product where category1=#{category1} order by product_no desc)
+      where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1 
 	
 	</select>
+	
+	<select id="categoryList" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	select * 
+      from(select row_number() over(order by product_no desc) as rnum,product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+                    detail,upload_date,product_stock,exposure_state,category1,category2 from product where category2=#{category2} order by product_no desc)
+      where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1
+	
+	</select>
+	
 	
 	<select id="detail" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
@@ -42,30 +55,117 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	<insert id="inquiry">
 	
-	
-	</insert>
-	
-	
-	<insert id="photo">
-	
-	
-	
-	</insert>
 	
 	<insert id='review'>
 	
-	insert into review()
+	insert into review(review_no,product_no,id,title,content,grade) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{grade})
 	
 	</insert>
+	
+	<select id="review_view" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	
+	select * from review where product_no=#{product_no}
+	
+	</select>
+	
+	<delete id="review_delete">
+	
+	delete from review where review_no=#{review_no}
+	
+	
+	</delete>
+	
+	<update id="review_modify">
+	
+	update review set title=#{title} , content=#{content} where review_no=#{review_no}
+	
+	</update>
+	
+	<select id="review_modify_view" resultType="com.koitt.jardin.dto.product.ReviewDTO">
+	
+	select * from review where review_no=#{review_no}
+	
+	</select>
 	
 	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
 	
 	</select>
 	
+	<insert id="photo">
+	
+	insert into review(review_no,product_no,id,title,content,thumbnail,grade) values(review_seq.nextval,#{product_no},#{id},#{title},#{content},#{thumbnail},#{grade})
+	
+	</insert>
+	
+
+	<insert id="inquiry">
+	
+
+	insert into qna(qna_no,product_no,id,title,content,answer) values(qna_seq.nextval,#{product_no},#{id},#{title},#{content},1)
+	</insert>
+	
+	<select id="qna_view" resultType="com.koitt.jardin.dto.product.QnaDTO">
+	
+	select * from qna where product_no=#{product_no}
+	
+	</select>
+	
+	<delete id="qna_delete">
+	
+	delete from qna where qna_no=#{qna_no}
+	
+	</delete>
+	
+	<select id="qna_modify_view" resultType="com.koitt.jardin.dto.product.QnaDTO">
+	
+	select * from qna where qna_no=#{qna_no}
+	
+	</select>
+	
+	<update id="qna_modify">
+	
+	update qna set title=#{title} , content=#{content} where qna_no=#{qna_no}
+	
+	</update>
+	
+	<select id="product_search" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+	select * from product where title like '%'||#{search}||'%'
+	
+	</select>
 	
 	
+	
+	
+	
+	
+	
+	
+	<select id="comment_List" resultType="com.koitt.jardin.dto.product.CommentDto"> 
+	
+ 			select * from cComment
+	
+	</select>
+	
+	
+	<delete id="comment_delete" parameterType="com.koitt.jardin.dto.product.CommentDto"> 
+	
+			delete from cComment where cId=#{cId}
+	
+	</delete>
+	
+	<insert id="comment_insert">
+		<![CDATA[
+		insert into cComment values(mvc_comment_seq.nextval,#{bId},#{cContent},#{cName},sysdate)
+		]]>
+	</insert>
+	
+	<update id="comment_update">
+		
+		update cComment set cContent=#{cContent} where cId=#{cId}
+		
+	</update>
 	
 </mapper>

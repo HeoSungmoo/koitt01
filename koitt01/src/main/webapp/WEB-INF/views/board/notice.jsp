@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -12,17 +14,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/top_navi.js"></script>
+<script type="text/javascript" src="../js/left_navi.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -111,7 +113,7 @@ $(document).ready(function() {
 				<div id="title2">CUSTOMER<span>고객센터</span></div>
 				<ul>	
 					<li><a href="notice" id="leftNavi1">NOTICE</a></li>
-					<li><a href="bInquiryView" id="leftNavi2">1:1문의</a></li>
+					<li><a href="boardInquiryView" id="leftNavi2">1:1문의</a></li>
 					<li><a href="faq" id="leftNavi3">FAQ</span></a></li>
 					<li class="last"><a href="guide" id="leftNavi4">이용안내</a></li>
 				</ul>			
@@ -140,13 +142,31 @@ $(document).ready(function() {
 							</thead>
 							<tbody>
 							${notice.size() }	
-							<c:forEach var="noticeDto" items="${notice}">
+							<c:forEach  var="noticeDto" items="${notice}">
 						
 								<tr>
 									<td class="tnone">${noticeDto.no}</td>
 									<td class="left">
-										<a href="noticeView?rnum=${noticeDto.rnum}">${noticeDto.title}</a>
-										<img src="images/ico/ico_new.gif" alt="NEW" />
+										<a href="noticeView?no=${noticeDto.no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}">${noticeDto.title}</a>
+										<jsp:useBean id="now" class="java.util.Date" />
+										
+<!-- 									 현재날짜  -->
+									<!-- 오늘 -->
+									<c:set var="today" value="<%=new Date()%>"/>
+									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today"/>
+																	
+									<!-- 하루전   -->
+									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
+									<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo"/>
+									
+									<c:choose>
+										<c:when test="${noticeDto.upload_date<=oneAgo}">
+										</c:when>
+										<c:when test="${noticeDto.upload_date>oneAgo}">
+										<img src="images/ico/ico_new.gif" alt="NEW" /> 
+										
+										</c:when>
+										</c:choose>
 									</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${noticeDto.upload_date}"/></td>
 									<td class="tnone right">${noticeDto.hit}</td>
@@ -164,37 +184,53 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="notice?curPage=1" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<a href="#" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-						<strong>1</strong>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-						<a href="notice?" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="notice?curPage=1&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="notice?curPage=${pDto.getStart_page()-1}&option=${sv.option }&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="notice?curPage=${index}&option=${sv.option }&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="notice?curPage=${index}&option=${sv.option }&search=${sv.search}">${index}</a>
+              			
+              				
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="notice?curPage=${pDto.getEnd_page()+1}&option=${sv.option }&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="notice?curPage=${pDto.getPage_cnt()}&option=${sv.option }&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
-				<form action="noticeSearch" name="search">
+				<form action="notice" name="search">
 					<div class="searchWrap">
 						<div class="search">
 							<ul>
 								<li class="web"><img src="images/txt/txt_search.gif" alt="search" /></li>
 								<li class="se">
+								<input type="hidden" name="curPage" value="${pDto.getCurPage()}"/>
 									
 									<select name="option">
-										<option value="title" />제목</option>
-										<option value="content" />내용</option>
+										<option value="title">제목</option>
+										<option value="content">내용</option>
 									</select>
 								</li>
 								<li><input type="text" class="searchInput" name="search" /></li>
 								<li class="web"><button class="faqSearch"><img src="images/btn/btn_search.gif" alt="검색" /></button></li>
 								<li class="mobile"><a href="#"><img src="images/btn/btn_search_m.gif" alt="검색" /></a></li>
+							</ul>
 							
 							
-							
+						
 							
 						</div>
 					</div>

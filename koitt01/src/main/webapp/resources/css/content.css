@@ -590,8 +590,8 @@
 .viewHead .day p.appraisal span{padding:0 18px 0 14px;}
 .viewHead .day p.appraisal span img{padding:3px 0 0 0;}
 .viewHead .data{position:relative; width:100%; font-size:14px; font-weight:600; color:#666; border-bottom:1px #d9d9d9 solid; clear:both; overflow:hidden;}
-.viewHead .data ul li{float:left; padding:12px 0; margin:0 0 0 20px; color:#666;}
-.viewHead .data ul li span{font-size:13px; color:#666; font-weight:normal; padding:0 18px 0 14px;}
+.viewHead .data ul li{float:left; padding:12px 0; margin:0 0 0 18px; color:#666;}
+.viewHead .data ul li span{font-size:12px; color:#666; font-weight:normal; padding:0 18px 0 14px;}
 .viewHead .data ul li span img{vertical-align:middle;}
 .viewContents{margin:30px 20px 70px; line-height:1.4; font-size:14px; color:#727272;}
 .viewContents2{margin:20px 20px 40px; line-height:1.4; font-size:14px; color:#727272;}
@@ -660,6 +660,7 @@
 .w134{width:129px; height:18px; line-height:18px; background:#fff; border:1px #d9d9d9 solid; padding:0 0 0 5px; font-size:12px;}
 .w84{width:79px; height:18px; line-height:18px; background:#fff; border:1px #d9d9d9 solid; padding:0 0 0 5px; font-size:12px;}
 .w74{width:69px; height:18px; line-height:18px; background:#fff; border:1px #d9d9d9 solid; padding:0 0 0 5px; font-size:12px;}
+.hsmTel{width:120px; height:18px; line-height:18px; background:#fff; border:1px #d9d9d9 solid; padding:0 0 0 5px; font-size:12px;}
 
 .fileType{width:95%; height:20px; line-height:20px; background:#fff;}
 .fileType::-ms-value{border:1px #c0c0c0 solid;background:none;}
@@ -672,7 +673,7 @@
 /* BTN */
 .sbtn{display:block; width:130px; height:40px; line-height:40px; background:#f7703c; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
 .sbtn:hover{color:#fff;}
-.sbtnMini{display:block; width:110px; height:30px; line-height:30px; background:#f7703c; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
+.sbtnMini{display:block; width:110px; height:30px; line-height:30px; background:#f7703c; color:#fff !important; font-size:14px; font-weight:600; text-align:center; z-index:1;}
 .sbtnMini:hover{color:#fff;}
 .nbtnbig{display:block; width:110px; height:30px; line-height:30px; background:#999; color:#fff !important; font-size:14px; font-weight:600; text-align:center;}
 .nbtnbig:hover{color:#fff;}
@@ -1165,3 +1166,4 @@ span.searchStyleSelectBox.changed{background-color: #fff;}
 .detailTab ul li.last{width:100%; padding:0;}
 .detailTab ul li a{width:100%;}
 .detailTab ul li.
+

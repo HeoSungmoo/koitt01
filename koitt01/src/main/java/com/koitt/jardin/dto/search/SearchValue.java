@@ -4,6 +4,7 @@ public class SearchValue {
 
 	int curPage = 1;
 	int curPage1 = 1;
+	int curPage2 = 1;
 	int no;
 	int preuser_no;
 	String option = "";
@@ -13,23 +14,22 @@ public class SearchValue {
 	int product_no;
 	String category1 = "";
 	String category2 = "";
-	String HighPrice = "";
-	String LowPrice = "";
+	String selectPrice = "";
 
-	public String getHighPrice() {
-		return HighPrice;
+	public int getCurPage2() {
+		return curPage2;
 	}
 
-	public void setHighPrice(String highPrice) {
-		HighPrice = highPrice;
+	public void setCurPage2(int curPage2) {
+		this.curPage2 = curPage2;
 	}
 
-	public String getLowPrice() {
-		return LowPrice;
+	public String getSelectPrice() {
+		return selectPrice;
 	}
 
-	public void setLowPrice(String lowPrice) {
-		LowPrice = lowPrice;
+	public void setSelectPrice(String selectPrice) {
+		this.selectPrice = selectPrice;
 	}
 
 	public int getCurPage1() {

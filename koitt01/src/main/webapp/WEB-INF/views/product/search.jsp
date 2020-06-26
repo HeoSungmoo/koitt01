@@ -192,9 +192,9 @@ $(document).ready(function() {
 				<div class="cateRight">
 					<ul>
 						<li class="first"><a href="#" class="on">인기도순</a></li>
-						<li><a href="#">신상품순</a></li>
-						<li><a href="product_search?search=${sv.search }&HighPrice=1">높은 가격순</a></li>
-						<li class="last"><a href="product_search?search=${sv.search }&lowPrice=1">낮은 가격순</a></li>
+						<li><a href="product_search?search=${sv.search }&selectPrice=0">신상품순</a></li>
+						<li><a href="product_search?search=${sv.search }&selectPrice=2">높은 가격순</a></li>
+						<li class="last"><a href="product_search?search=${sv.search }&selectPrice=1">낮은 가격순</a></li>
 					</ul>
 				</div>
 			</div>
@@ -221,11 +221,7 @@ $(document).ready(function() {
 	</div>
 	<!-- //container -->
 	
-		
 			<script type="text/javascript">
-			
-			
-			
 			
 			
 			</script>
@@ -235,70 +231,36 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
-
-						<a href="product_search?curPage=1&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						${"안녕하세요" }
+						${selectPrice }
+						<a href="product_search?curPage=1&search=${sv.search}&selectPrice=${selectPrice}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
-           				 <a href="product_search?curPage=${pDto.getStart_page()-1}&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="product_search?curPage=${pDto.getStart_page()-1}&search=${sv.search}&selectPrice=${selectPrice}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
             				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="product_search?curPage=${index}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+               				<a  href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="product_search?curPage=${index}&search=${sv.search}">${index}</a>
+              				 <a href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice}">${index}</a>
               			
            	
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${pDto.getNext_page()}">
-            				<a href="product_search?curPage=${pDto.getEnd_page()+1}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="product_search?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&selectPrice=${selectPrice}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="product_search?curPage=${pDto.getPage_cnt()}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="product_search?curPage=${pDto.getPage_cnt()}&search=${sv.search}&selectPrice=${selectPrice}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						</div>
 						<!-- //페이징이동1 -->
 					</div>
 					
-					
-					<div class="btnAreaList">
-						<!-- 페이징이동1 -->
-						<div class="allPageMoving1">
-
-						<a href="product_HighPrice?curPage=1&search=${sv.search}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<c:if test="${pDto.getPrev_page()}">
-						
-           				 <a href="product_HighPrice?curPage=${pDto.getStart_page()-1}&search=${sv.search}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
-         					</c:if>
-         					
-						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
-            				<c:if test="${pDto.getCurPage() eq index}">
-               				<a  href="product_HighPrice?curPage=${index}&search=${sv.search} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
-            				</c:if>
-            				<c:if test="${pDto.getCurPage() ne index}">
-              				 <a href="product_HighPrice?curPage=${index}&search=${sv.search}">${index}</a>
-              			
-           	
-            				</c:if>
-         					</c:forEach>
-         					
-         					<c:if test="${pDto.getNext_page()}">
-            				<a href="product_HighPrice?curPage=${pDto.getEnd_page()+1}&search=${sv.search}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
-         					</c:if>
-         					
-						
-						<a href="product_HighPrice?curPage=${pDto.getPage_cnt()}&search=${sv.search}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
-
-						</div>
-						<!-- //페이징이동1 -->
-					</div>
-
-
-
 
 	<div id="footerWrap">
 		<div id="footer">

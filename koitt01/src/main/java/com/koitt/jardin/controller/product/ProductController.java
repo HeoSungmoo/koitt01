@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.koitt.jardin.batis.ProductTestService;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -28,9 +27,6 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
-	@Autowired
-	ProductTestService productTestService;
-
 	// 제품리스트 목록페이지
 	@RequestMapping("list")
 	public String list(Model model, SearchValue sv) {
@@ -38,12 +34,12 @@ public class ProductController {
 		List<ProductDTO> list = productService.productPageNationList(sv);
 		model.addAttribute("list", list);
 		model.addAttribute("pDto", pDto);
-
 		model.addAttribute("sv", sv);
 
 		return "product/list";
 	}
 
+	// 카테고리 분류
 	@RequestMapping("category")
 	public String category(Model model, SearchValue sv, HttpServletRequest request) {
 		String category1 = request.getParameter("category1");
@@ -64,21 +60,12 @@ public class ProductController {
 			model.addAttribute("pDto", pDto);
 		}
 
-//		model.addAttribute("product", productService.categoryAllList(sv));
-//		model.addAttribute("product", productService.categoryList(sv));
 		model.addAttribute("sv", sv);
 		model.addAttribute("category1", category1);
 		model.addAttribute("category2", category2);
 
 		return "product/categoryList";
 	}
-
-//	@RequestMapping("category")
-//	public String category(Model model) {
-//		model.addAttribute("categoryList", productService.categoryList());
-//
-//		return "product/list";
-//	}
 
 	// 제품 카테고리
 //	@RequestMapping({ "/product/{category1}/{category2}", "/product/{category1}/{category2}/{page_}" })
@@ -91,6 +78,7 @@ public class ProductController {
 //		return "product/categoryList";
 //	}
 
+	// 페이지 상단 헤더
 	@RequestMapping("header")
 
 	public String header(Model model, String name) {
@@ -118,6 +106,8 @@ public class ProductController {
 		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("review_view", Review_list);
 		model.addAttribute("rDto", rdto);
+		System.out.println("리뷰 컬페이지" + rdto.getCurPage2());
+
 		// 질문과 답변 뿌려주기
 		List<QnaDTO> QnapageNationList = productService.QnApageNationList(sv);
 		ReviewPageNationDTO qDto = productService.QnApageNation(sv);
@@ -211,6 +201,7 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
 	}
 
+	// 해당제품 질문과 답변 삭제
 	@RequestMapping("qna_delete")
 	public String qna_delete(QnaDTO qnaDto, HttpSession session, int qna_no) {
 		qnaDto.setId((String) session.getAttribute("member"));
@@ -228,6 +219,7 @@ public class ProductController {
 		return "product/QnA_modify_view";
 	}
 
+	// 해당제품 질문과 답변 수정
 	@RequestMapping("qna_modify")
 	public String qna_modify(Model model, QnaDTO qnaDto, HttpSession session, int qna_no, int product_no) {
 		qnaDto.setId((String) session.getAttribute("member"));
@@ -239,63 +231,36 @@ public class ProductController {
 		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
 	}
 
+	// 제품 검색
 	@RequestMapping("product_search")
-	public String search(Model model, SearchValue sv) {
+	public String search(Model model, SearchValue sv, HttpServletRequest request) {
 
+		// 제품 신상품순 정렬
 		List<ProductDTO> Psearch = productService.productSearchPageNationList(sv);
+		// 제품 높은가격순 정렬
 		List<ProductDTO> HighPircePageNationList = productService.HighPircePageNationList(sv);
+		// 제품 낮은가격순 정렬
 		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
-		model.addAttribute("product_search", HighPircePageNationList);
-		model.addAttribute("product_search", LowPircePageNationList);
 		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
-		model.addAttribute("product_search", Psearch);
-		model.addAttribute("pDto", pDto);
-		model.addAttribute("sv", sv);
 
-		if (!(sv.getHighPrice() == null)) {
+		if (sv.getSelectPrice().equals("2")) {
 			model.addAttribute("product_search", HighPircePageNationList);
 			model.addAttribute("pDto", pDto);
+			model.addAttribute("selectPrice", sv.getSelectPrice());
 
-		} else if (!(sv.getLowPrice() == null)) {
+		} else if (sv.getSelectPrice().equals("1")) {
 			model.addAttribute("product_search", LowPircePageNationList);
 			model.addAttribute("pDto", pDto);
+			model.addAttribute("selectPrice", sv.getSelectPrice());
 		} else {
 			model.addAttribute("product_search", Psearch);
 			model.addAttribute("pDto", pDto);
-
+			model.addAttribute("selectPrice", sv.getSelectPrice());
 		}
 
-		return "product/search";
-	}
-
-	@RequestMapping("product_new")
-	public String product_new() {
-
-		return "product/search";
-	}
-
-	@RequestMapping("product_HighPrice")
-	public String HighPirce(Model model, SearchValue sv) {
-
-		List<ProductDTO> HighPircePageNationList = productService.HighPircePageNationList(sv);
-		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
-		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
-		model.addAttribute("product_search", HighPircePageNationList);
-		model.addAttribute("product_search", LowPircePageNationList);
-		model.addAttribute("pDto", pDto);
-		model.addAttribute("sv", sv);
-		return "product/search";
-	}
-
-	@RequestMapping("product_LowPrice")
-	public String LowPirce(Model model, SearchValue sv) {
-
-		List<ProductDTO> LowPircePageNationList = productService.LowPircePageNationList(sv);
-		ProductPageNationDTO pDto = productService.productSearchPageNation(sv);
-		model.addAttribute("product_search", LowPircePageNationList);
-		model.addAttribute("pDto", pDto);
 		model.addAttribute("sv", sv);
 
 		return "product/search";
 	}
+
 }

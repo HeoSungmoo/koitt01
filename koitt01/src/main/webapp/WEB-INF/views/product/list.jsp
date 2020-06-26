@@ -119,16 +119,16 @@ $(document).ready(function() {
 						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
 						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
 						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+						<li><a href="category?category1=원두&category2=산지별 생두">산지별 생두</a></li>
 					
 					</ul>
 				</li>
 			
 				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
@@ -184,13 +184,13 @@ $(document).ready(function() {
 
 			
 					<li><a href="#" class="hover">드립커피백</a></li>
-					<li><a href="#">오리지널 커피백</a></li>
-					<li><a href="#">마일드 커피백</a></li>
-					<li><a href="#">카페모리</a></li>
-					<li><a href="#">카페포드</a></li>
-					<li><a href="#">카페리얼</a></li>
-					<li><a href="#">워터커피</a></li>
-					<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
+					<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널 커피백</a></li>
+					<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드 커피백</a></li>
+					<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
+					<li><a href="category?category1=인스턴트&category2=까페모리">까페모리</a></li>
+					<li><a href="category?category1=음료&category2=까페리얼">카페리얼</a></li>
+					<li><a href="category?category1=음료&category2=워터커피">워터커피</a></li>
+					<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
 
 				</ul>
 			</div>

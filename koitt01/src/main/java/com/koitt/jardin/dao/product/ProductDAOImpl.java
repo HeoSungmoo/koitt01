@@ -38,24 +38,28 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectOne("product.detail", product_no);
 	}
 
+	// 제품의 상세내용 // 상품상세 정보
 	@Override
 	public ProductInfoDTO productInfoDto(int product_no) {
 
 		return sqlSession.selectOne("product.productInfoDto", product_no);
 	}
 
+	// 제품 카테고리 리스트
 	@Override
 	public List<ProductDTO> categoryAllList(SearchValue sv) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("product.categoryAllList", sv);
 	}
 
+	// 제품 카테고리 리스트
 	@Override
 	public List<ProductDTO> categoryList(SearchValue sv) {
 
 		return sqlSession.selectList("product.categoryList", sv);
 	}
 
+	// 제품 상품리뷰 쓰기
 	@Override
 	public void review(ReviewDTO reviewDto) {
 
@@ -63,6 +67,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
+	// 제품 상품리뷰 삭제
 	@Override
 	public void review_delete(int review_no) {
 
@@ -70,30 +75,156 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
+	// 제품 상품리뷰 수정
 	@Override
 	public void review_modify(ReviewDTO reviewDto) {
 
 		sqlSession.update("product.review_modify", reviewDto);
 	}
 
+	// 제품 상품리뷰 수정란 보기
 	@Override
 	public ReviewDTO review_modify_view(int review_no) {
 
 		return sqlSession.selectOne("product.review_modify_view", review_no);
 	}
 
+	// 제품 포토리뷰 쓰기
 	@Override
 	public void photo(ReviewDTO reviewDto) {
 		sqlSession.insert("product.photo", reviewDto);
 
 	}
 
+	// 제품 질문과 답변 쓰기
 	@Override
 	public void inquiry(QnaDTO qnaDto) {
 		sqlSession.insert("product.inquiry", qnaDto);
 
 	}
 
+	// 제품 질문과 답변 삭제
+	@Override
+	public void QnA_delete(int qna_no) {
+
+		sqlSession.delete("product.qna_delete", qna_no);
+
+	}
+
+	// 제품 질문과 답변 수정란 보기
+	@Override
+	public QnaDTO QnA_modify_view(int qna_no) {
+
+		return sqlSession.selectOne("product.qna_modify_view", qna_no);
+	}
+
+	// 제품 질문과 답변 수정
+	@Override
+	public void QnA_modify(QnaDTO qnaDto) {
+
+		sqlSession.update("product.qna_modify", qnaDto);
+
+	}
+
+	// 제품 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ProductPageNationDTO productPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.productPageNation", sv);
+	}
+
+	// 제품 페이지네이션 리스트
+	@Override
+	public List<ProductDTO> productPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.productPageNationList", sv);
+	}
+
+	// 포토상품리뷰 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.photoPageNation", sv);
+	}
+
+	// 포토상품리뷰 페이지네이션 리스트
+	@Override
+	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.photoPageNationList", sv);
+	}
+
+	// 카테고리1 대분류 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ProductPageNationDTO categoryPageNationListDTO(SearchValue sv) {
+
+		return sqlSession.selectOne("page.categoryPageNationList", sv);
+	}
+
+	// 카테고리2 대분류 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv) {
+
+		return sqlSession.selectOne("page.categoryPageNation", sv);
+	}
+
+	// 리뷰 페이지네이션 리스트
+	@Override
+	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.reviewPageNationList", sv);
+	}
+
+	// 리뷰 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ReviewPageNationDTO ReviewPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.reviewPageNation", sv);
+	}
+
+	// 질문과 답변 페이지네이션 리스트
+	@Override
+	public List<QnaDTO> QnApageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.QnApageNationList", sv);
+	}
+
+	// 질문과 답변 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ReviewPageNationDTO QnApageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.QnApageNation", sv);
+	}
+
+	// 제품 검색 페이지네이션 리스트
+	@Override
+	public List<ProductDTO> productSearchPageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.productSearchPageNationList", sv);
+	}
+
+	// 제품 검색 페이지네이션 페이지,게시물 수 확인
+	@Override
+	public ProductPageNationDTO productSearchPageNation(SearchValue sv) {
+
+		return sqlSession.selectOne("page.productSearchPageNation", sv);
+	}
+
+	// 제품 검색 높은 가격순 페이지네이션 리스트
+	@Override
+	public List<ProductDTO> HighPircePageNationList(SearchValue sv) {
+
+		return sqlSession.selectList("page.HighPircePageNationList", sv);
+	}
+
+	// 제품 검색 낮은 가격순 페이지네이션 리스트
+	@Override
+	public List<ProductDTO> LowPircePageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("page.LowPircePageNationList", sv);
+	}
+
+	// -------------------ajax 연습 ------------------------------------------------
 	@Override
 	public List<CommentDto> comment_List() {
 
@@ -115,116 +246,6 @@ public class ProductDAOImpl implements ProductDAO {
 	public void comment_update(CommentDto comment) {
 		sqlSession.update("product.comment_update", comment);
 
-	}
-
-	@Override
-	public void QnA_delete(int qna_no) {
-
-		sqlSession.delete("product.qna_delete", qna_no);
-
-	}
-
-	@Override
-	public QnaDTO QnA_modify_view(int qna_no) {
-
-		return sqlSession.selectOne("product.qna_modify_view", qna_no);
-	}
-
-	@Override
-	public void QnA_modify(QnaDTO qnaDto) {
-
-		sqlSession.update("product.qna_modify", qnaDto);
-
-	}
-
-	@Override
-	public ProductPageNationDTO productPageNation(SearchValue sv) {
-
-		return sqlSession.selectOne("page.productPageNation", sv);
-	}
-
-	@Override
-	public List<ProductDTO> productPageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.productPageNationList", sv);
-	}
-
-	@Override
-	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
-
-		return sqlSession.selectOne("page.photoPageNation", sv);
-	}
-
-	@Override
-	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.photoPageNationList", sv);
-	}
-
-	@Override
-	public ProductPageNationDTO categoryPageNationListDTO(SearchValue sv) {
-
-		return sqlSession.selectOne("page.categoryPageNationList", sv);
-	}
-
-	@Override
-	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv) {
-
-		return sqlSession.selectOne("page.categoryPageNation", sv);
-	}
-
-	@Override
-	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.reviewPageNationList", sv);
-	}
-
-	@Override
-	public ReviewPageNationDTO ReviewPageNation(SearchValue sv) {
-
-		return sqlSession.selectOne("page.reviewPageNation", sv);
-	}
-
-	@Override
-	public List<QnaDTO> QnApageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.QnApageNationList", sv);
-	}
-
-	@Override
-	public ReviewPageNationDTO QnApageNation(SearchValue sv) {
-
-		return sqlSession.selectOne("page.QnApageNation", sv);
-	}
-
-	@Override
-	public List<ProductDTO> productSearchPageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.productSearchPageNationList", sv);
-	}
-
-	@Override
-	public ProductPageNationDTO productSearchPageNation(SearchValue sv) {
-
-		return sqlSession.selectOne("page.productSearchPageNation", sv);
-	}
-
-	@Override
-	public List<ProductDTO> product_amount(SearchValue sv) {
-
-		return null;
-	}
-
-	@Override
-	public List<ProductDTO> HighPircePageNationList(SearchValue sv) {
-
-		return sqlSession.selectList("page.HighPircePageNationList", sv);
-	}
-
-	@Override
-	public List<ProductDTO> LowPircePageNationList(SearchValue sv) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("page.LowPircePageNationList", sv);
 	}
 
 }

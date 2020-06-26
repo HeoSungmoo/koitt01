@@ -6,6 +6,7 @@ public class ReviewPageNationDTO {
 	private int range_size = 5;// 한 블럭 에 담을 페이지 수
 	private int curPage; // 현재 페이지 위치
 	private int curPage1;
+	private int curPage2;
 	private int cur_range; // 현재 블럭 위치
 	private int listCnt; // 게시글 수
 	private int page_cnt; // 페이지 수
@@ -35,20 +36,20 @@ public class ReviewPageNationDTO {
 		}
 	}
 
+	public int getCurPage2() {
+		return curPage2;
+	}
+
+	public void setCurPage2(int curPage2) {
+		this.curPage2 = curPage2;
+	}
+
 	public int getCurPage1() {
 		return curPage1;
 	}
 
 	public void setCurPage1(int curPage1) {
 		this.curPage1 = curPage1;
-	}
-
-	public int getCurpage1() {
-		return curPage1;
-	}
-
-	public void setCurpage1(int curpage1) {
-		this.curPage1 = curpage1;
 	}
 
 	public void setStart_page(int start_page) {

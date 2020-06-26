@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select * 
       from(select row_number() over(order by review_no desc) as rnum,review_no,product_no,id,title,content,review_date,hit,thumbnail,reply,reply_date
                     from review where thumbnail is null  and product_no=#{product_no} order by review_no desc)
-      where rnum between (#{curPage}-1)*2+1 and ((#{curPage}-1)*2+1)+2-1
+      where rnum between (#{curPage2}-1)*2+1 and ((#{curPage2}-1)*2+1)+2-1
                     
 
 	</select>
@@ -101,8 +101,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="LowPircePageNationList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	        select * from (select ROWNUM rnum, tt.* from(select product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
-            detail,upload_date,product_stock,exposure_state,category1,category2 from product where title like '%'||#{search}||'%' order by price asc ) tt
+	        select * from (select ROWNUM rnum, tt.* 
+	  from(select product_no,sub_category_code,title,price,point,kcal,volume,grade,thumbnail,image1,image2,image3,
+           			 detail,upload_date,product_stock,exposure_state,category1,category2 from product where title like '%'||#{search}||'%' order by price asc ) tt
             ) where rnum between (#{curPage}-1)*9+1 and ((#{curPage}-1)*9+1)+9-1
 
 	</select>

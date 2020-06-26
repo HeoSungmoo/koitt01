@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,7 +222,7 @@ $(document).ready(function() {
 							</div>
 							<div class="data">
 								<ul>
-									<li class="tnone">등록일<span>${enjoyView.upload_date }</span></li>
+									<li class="tnone">등록일<span><fmt:formatDate pattern="yyyy-MM-dd" value="${enjoyView.upload_date }"/></span></li>
 									<li class="tnone">조회수<span>${enjoyView.hit }</span></li>
 								</ul>
 							</div>
@@ -231,31 +233,50 @@ $(document).ready(function() {
 						</div>
 					</div>
 
-					<!-- 이전다음글 -->
-					<div class="pnDiv web">
-						<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext" border="1" cellspacing="0">
-							<caption>이전다음글</caption>
-							<colgroup>
-							<col width="100px" />
-							<col width="*" />
-							<col width="100px" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th class="pre">PREV</th>
-									<td><a href="#">상품 재입고는 언제 되나요?</a></td>
-									<td>&nbsp;</td>
-								</tr>
+				<!-- 이전다음글 -->
+							<div class="pnDiv web">
+								<table summary="이전다음글을 선택하여 보실 수 있습니다." class="preNext"
+									border="1" cellspacing="0">
+									<caption>이전다음글</caption>
+									<colgroup>
+										<col width="100px" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="pre">PREV</th>
+											<c:choose>
+												<c:when test="${enjoyViewPre.title==null}">
+													<td>
+														<p>이전글이 없습니다.</p>
+													</td>
+												</c:when>
+												<c:otherwise>
 
-								<tr>
-									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다.</td>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- //이전다음글 -->
+													<td><a href="enjoyView?no=${enjoyViewPre.no}">${enjoyViewPre.title}</a>
+													</td>
+												</c:otherwise>
+											</c:choose>
+										</tr>
+
+										<tr>
+											<th class="next">NEXT</th>
+											<c:choose>
+												<c:when test="${enjoyViewNext.title==null}">
+													<td>
+														<p>다음글이 없습니다.</p>
+													</td>
+												</c:when>
+												<c:otherwise>
+													<td><a href="enjoyView?no=${enjoyViewNext.no}">${enjoyViewNext.title}</a>
+													</td>
+												</c:otherwise>
+											</c:choose>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- //이전다음글 -->
 
 
 					<!-- Btn Area -->

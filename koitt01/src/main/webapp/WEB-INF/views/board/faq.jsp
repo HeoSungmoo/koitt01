@@ -135,7 +135,6 @@ $(document).ready(function() {
 					<div class="faqList">
 						<ul>
 							<!-- list -->
-							${faq.size() }
 							<c:forEach var="faq" items="${faq }">
 							<li>
 								<a href="javascript:;" class="faqbtn">

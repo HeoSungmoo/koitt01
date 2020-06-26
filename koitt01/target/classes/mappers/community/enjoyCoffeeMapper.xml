@@ -10,6 +10,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		select * from enjoy_coffee where no=#{no}
    	 </select>
 
+	<update id="enjoyHit">
+	update enjoy_coffee set hit=hit+1 where no=#{no}
+	</update>
+
+	<!-- 	 공지사항 글보기 이전글  -->
+	<select id="enjoyViewPre" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
+	<![CDATA[select * from enjoy_coffee where no=(select max(no) from (select * from enjoy_coffee where no < #{no} )) ]]>
+	</select>
+
+<!-- 	공지사항 글보기 다음글  -->
+	<select id="enjoyViewNext" resultType="com.koitt.jardin.dto.community.EnjoyCoffDTO">
+
+	<![CDATA[select * from enjoy_coffee where no=(select min(no) from (select * from enjoy_coffee where no > #{no} ))]]>
+ 	</select>
+	
 <!-- enjoy 페이징,검색 -->
    	 <!-- enjoy 전체 게시글 수 -->
 	<select id="enjoyPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">

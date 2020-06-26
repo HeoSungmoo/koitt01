@@ -141,7 +141,7 @@ $(document).ready(function() {
 								<th scope="col" class="tnone">조회수</th>
 							</thead>
 							<tbody>
-							${notice.size() }	
+						
 							<c:forEach  var="noticeDto" items="${notice}">
 						
 								<tr>

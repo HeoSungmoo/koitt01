@@ -169,28 +169,32 @@ $(document).ready(function() {
 			</ol>
 		</div>
 					
+			
+					
 		<!-- maxcontents -->
 		<div id="maxcontents">
 			
 			<div class="sContents">
-				<p><strong><span class="orange">‘원두커피백’</span>에 대한 검색 결과입니다.</strong></p>
+				<p><strong><span class="orange">‘${sv.search }’</span>에 대한 검색 결과입니다.</strong></p>
 				<p>다른 상품을 검색하시려면 다시 한번 검색어를 입력하신 후 검색 버튼을 클릭하세요.</p>
 
 				<div class="searchForm">
-					<input type="text" class="reSearchType" onfocus="this.className='reSearchfocus'" onblur="if (this.value.length==0) {this.className='reSearchType'}else {this.className='reSearchfocusnot'}" />
-					<div class="btn"><a href="#"><img src="images/btn/btn_result_search.gif" alt="검색" /></a></div>
+					<form action="product_search" method="post" name="search_form">
+					<input type="text" class="reSearchType" name="search" onfocus="this.className='reSearchfocus'" onblur="if (this.value.length==0) {this.className='reSearchType'}else {this.className='reSearchfocusnot'}" />
+					<div class="btn"><input type="image" src="images/btn/btn_result_search.gif" alt="검색" /></div>
+					</form>
 					<p class="rechk"><input type="checkbox" /><label for="">결과 내 재검색</label></p>
 				</div>
 			</div>
 
 			<div class="tabCategory">
-				<div class="cateLeft"><span class="orange">‘원두커피백’</span> 검색 결과 <span class="orange">15</span>건 </div>
+				<div class="cateLeft"><span class="orange"></span> 검색 결과: ${sv.search } //<span class="orange" ></span> ${pDto.listCnt }건 </div>
 				<div class="cateRight">
 					<ul>
 						<li class="first"><a href="#" class="on">인기도순</a></li>
-						<li><a href="#">신상품순</a></li>
-						<li><a href="#">높은 가격순</a></li>
-						<li class="last"><a href="#">낮은 가격순</a></li>
+						<li><a href="product_search?search=${sv.search }&selectPrice=0">신상품순</a></li>
+						<li><a href="product_search?search=${sv.search }&selectPrice=2">높은 가격순</a></li>
+						<li class="last"><a href="product_search?search=${sv.search }&selectPrice=1">낮은 가격순</a></li>
 					</ul>
 				</div>
 			</div>
@@ -216,9 +220,47 @@ $(document).ready(function() {
 
 	</div>
 	<!-- //container -->
+	
+			<script type="text/javascript">
+			
+			
+			</script>
+		
+	
 
+					<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+						${"안녕하세요" }
+						${selectPrice }
+						<a href="product_search?curPage=1&search=${sv.search}&selectPrice=${selectPrice}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${pDto.getPrev_page()}">
+						
+           				 <a href="product_search?curPage=${pDto.getStart_page()-1}&search=${sv.search}&selectPrice=${selectPrice}" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${pDto.getCurPage() eq index}">
+               				<a  href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${pDto.getCurPage() ne index}">
+              				 <a href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice}">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${pDto.getNext_page()}">
+            				<a href="product_search?curPage=${pDto.getEnd_page()+1}&search=${sv.search}&selectPrice=${selectPrice}" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="product_search?curPage=${pDto.getPage_cnt()}&search=${sv.search}&selectPrice=${selectPrice}" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
-
+						</div>
+						<!-- //페이징이동1 -->
+					</div>
+					
 
 	<div id="footerWrap">
 		<div id="footer">

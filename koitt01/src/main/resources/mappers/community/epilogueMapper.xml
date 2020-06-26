@@ -20,6 +20,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update review set title=#{title},grade=#{grade},content=#{content},thumbnail=#{thumbnail} where review_no=#{review_no}
 	</update>
 	
+	<insert id="epilogueWrite2">
+	insert into review values()
+	</insert>
+	
+	<update id="epilogueHit">
+	update review set hit=hit+1 where review_no=#{review_no}
+	</update>
+	
+	<select id="productTitle" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	select distinct title,product_no from product
+	</select>
+	
 <!-- epilogue 페이징,검색 -->
    	 <!-- epilogue 전체 게시글 수 -->
 	<select id="epiloguePageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">

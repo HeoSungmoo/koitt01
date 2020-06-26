@@ -25,13 +25,13 @@ $(function() {
 <div class="inputWrap">
 		
 	<div class="inputBody">
-		<div class="title">질문과 답변</div>
+		<div class="title">댓글 수정</div>
 		<p class="close"><a onclick="parent.$.fancybox.close();" href="javascript:;"><img src="images/btn/btn_input_close.gif" alt="닫기" /></a></p>
 
 				<form action="eventCommentModify?event_no=${event_no}" method="post" name="ModifyForm"> 
 		<div class="checkDivMt">
 			<table summary="문의사항을 비밀번호, 제목, 내용 순으로 작성 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
-				<caption>질문과 답변</caption>
+				<caption>댓글 수정</caption>
 				<colgroup>
 				<col width="19%" class="tw30" />
 				<col width="*" />

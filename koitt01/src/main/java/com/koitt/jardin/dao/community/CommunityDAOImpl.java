@@ -8,11 +8,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dto.CommentDTO.CommentDTO;
+import com.koitt.jardin.dto.board.NoticeDTO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.community.EpilogueDTO;
 import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
+import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
@@ -38,8 +41,8 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	// 체험단 리뷰 글 쓰기
 	@Override
-	public void preUserReview(int preUserApplyNo) {
-		sqlSession.insert("expr.preUserReview", preUserApplyNo);
+	public void preUserReview(PreUserReviewDTO purDto) {
+		sqlSession.insert("expr.preUserReview", purDto);
 
 	}
 
@@ -61,23 +64,33 @@ public class CommunityDAOImpl implements CommunityDAO {
 		sqlSession.selectOne("epilogue.epilogueDelete", review_no);
 	}
 
+	// 이용후기 글 수정페이지로 이동
 	@Override
 	public void epilogueWrite(UpdateReviewDTO rDto) throws Exception {
-		System.out.println("-------------커뮤니티 DAOImpl----------------");
-		System.out.println("리뷰글 번호"+rDto.getReview_no());
-		System.out.println("상품명"+rDto.getProductTitle());
-		System.out.println("글 제목"+rDto.getTitle());
-		System.out.println("평가점수"+rDto.getGrade());
-		System.out.println("리뷰글 내용"+rDto.getContent());
-		System.out.println("썸네일"+rDto.getThumbnail());
-		System.out.println("-------------커뮤니티 DAOImpl----------------");
 		sqlSession.update("epilogue.epilogueUpdate", rDto);
-		
 	}
-	
-	// 이용후기 글 삭제
+
+	// 포토상품후기 글쓰기
+	@Override
+	public void epilogueWrite2(UpdateReviewDTO rDto) throws Exception {
+		sqlSession.insert("epilogue.epilogueWrite2", rDto);
+	}
+
+	// 이용후기 글 수정
 	public UpdateReviewDTO epilogueUpdate(UpdateReviewDTO rDto) {
 		return sqlSession.selectOne("epilogue.epilogueView", rDto);
+	}
+
+	// 이용후기 조회수
+	@Override
+	public void epilogueHit(SearchValue sv) {
+		sqlSession.update("epilogue.epilogueHit", sv);
+
+	}
+
+	// 이용후기 작성시 상품 이름 리스트 가져오기
+	public List<ProductDTO> productTitle() {
+		return sqlSession.selectList("epilogue.productTitle");
 	}
 
 	// 인조이 커피 글 보기
@@ -85,6 +98,25 @@ public class CommunityDAOImpl implements CommunityDAO {
 	public EnjoyCoffDTO enjoyView(SearchValue sv) {
 
 		return sqlSession.selectOne("enjoyCoffee.enjoyView", sv);
+	}
+
+	// 인조이 글보기 이전 글
+	public EnjoyCoffDTO enjoyViewPre(SearchValue sv) {
+		
+		return sqlSession.selectOne("enjoyCoffee.enjoyViewPre", sv);
+	}
+
+	// 인조이 글보기 다음 글
+	public EnjoyCoffDTO enjoyViewNext(SearchValue sv) {
+		
+		return sqlSession.selectOne("enjoyCoffee.enjoyViewNext", sv);
+	}
+
+	// 인조이 커피 조회수
+	@Override
+	public void enjoyHit(SearchValue sv) {
+		sqlSession.update("enjoyCoffee.enjoyHit", sv);
+
 	}
 
 	// 체험단 페이징------------------------------------------------------------------
@@ -179,6 +211,19 @@ public class CommunityDAOImpl implements CommunityDAO {
 		return eDto;
 	}
 
+	// 체험단 리뷰 페이징
+	@Override
+	public PageNationDTO exprReviewPageNation(SearchValue sv) {
+		return sqlSession.selectOne("expr.exprReviewPageNation", sv);
+
+	}
+
+	// 체험단 페이징 글 리스트 가져오기
+	@Override
+	public List<PreUserReviewDTO> exprReviewList(SearchValue sv) {
+		return sqlSession.selectList("expr.exprReviewPageNationList", sv);
+	}
+
 	// 포토 이용후기 페이징------------------------------------------------------------------
 	// 이용후기 페이징 게시글 수
 	@Override
@@ -246,7 +291,5 @@ public class CommunityDAOImpl implements CommunityDAO {
 		}
 		return eDto;
 	}
-	
 
-	
 }

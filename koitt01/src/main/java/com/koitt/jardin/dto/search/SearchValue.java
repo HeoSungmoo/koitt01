@@ -4,6 +4,7 @@ public class SearchValue {
 
 	int curPage = 1;
 	int curPage1 = 1;
+	int curPage2 = 1;
 	int no;
 	int preuser_no;
 	String option = "";
@@ -13,6 +14,23 @@ public class SearchValue {
 	int product_no;
 	String category1 = "";
 	String category2 = "";
+	String selectPrice = "";
+
+	public int getCurPage2() {
+		return curPage2;
+	}
+
+	public void setCurPage2(int curPage2) {
+		this.curPage2 = curPage2;
+	}
+
+	public String getSelectPrice() {
+		return selectPrice;
+	}
+
+	public void setSelectPrice(String selectPrice) {
+		this.selectPrice = selectPrice;
+	}
 
 	public int getCurPage1() {
 		return curPage1;
@@ -46,8 +64,11 @@ public class SearchValue {
 		this.product_no = product_no;
 	}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	public int getReview_no() {
 		return review_no;
 	}

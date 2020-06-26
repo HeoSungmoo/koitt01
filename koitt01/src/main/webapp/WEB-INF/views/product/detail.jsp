@@ -119,36 +119,36 @@ $(document).ready(function() {
 					<ul id="topSubm2">
 						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
 						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두&category2=산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
 				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
 					<ul id="topSubm4">
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
+						<li><a href="category?category1=인스턴트&category2=까페모리">까페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=포타제">포타제</a></li>
 					</ul>
 				</li>
 				<li class="t1"><a href="#" id="topNavi5">음료</a>
 					<ul id="topSubm5">
-						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
+						<li><a href="category?category1=음료&category2=까페리얼">까페리얼</a></li>
+						<li><a href="category?category1=음료&category2=워터커피">워터커피</a></li>
+						<li><a href="category?category1=음료&category2=모히또">모히또</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
 					<ul id="topSubm6">
-						<li><a href="${pageContext.request.contextPath}/product/커피용품/종이컵">종이컵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/커피용품/커피필터">커피필터</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/커피용품/머신 등">머신 등</a></li>
+						<li><a href="category?category1=커피용품&category2=종이컵">종이컵</a></li>
+						<li><a href="category?category1=커피용품&category2=커피필터">커피필터</a></li>
+						<li><a href="category?category1=커피용품&category2=머신 등">머신 등</a></li>
 					</ul>
 				</li>
 				<li class="t1"><a href="${pageContext.request.contextPath}/product/선물세트" id="topNavi7">선물세트</a></li>
@@ -421,7 +421,8 @@ $(document).ready(function() {
 					<c:forEach var="PhotoReview_view" items="${PhotoReview_view }">
 							<!-- List -->
 							<li>
-								<div class="img"><img src="images/${PhotoReview_view.thumbnail }" width="155" height="160" alt="" /></div>
+								<div class="img">
+								<img src="preuserUpload/${PhotoReview_view.thumbnail}" width="155" height="160" alt="포토리뷰 썸네일" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="#"><span class="orange">[먹어봤어요]</span> ${PhotoReview_view.title }</a>
@@ -565,29 +566,29 @@ $(document).ready(function() {
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
-						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<a href="detail?curPage2=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${rDto.getPrev_page()}">
 						
-           				 <a href="detail?curPage=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="detail?curPage2=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
-            				<c:if test="${rDto.getCurPage() eq index}">
-               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				<c:if test="${rDto.getCurPage2() eq index}">
+               				<a  href="detail?curPage2=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
-            				<c:if test="${rDto.getCurPage() ne index}">
-              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
+            				<c:if test="${rDto.getCurPage2() ne index}">
+              				 <a href="detail?curPage2=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2">${index}</a>
               			
            	
             				</c:if>
          					</c:forEach>
          					
          					<c:if test="${rDto.getNext_page()}">
-            				<a href="detail?curPage=${rDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+            				<a href="detail?curPage2=${rDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="detail?curPage=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage2=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						
 					</div>
@@ -643,17 +644,36 @@ $(document).ready(function() {
 						</div>
 						<!-- //질문과 답변 -->
 
-						<div class="btnAreaList">
-							<!-- 페이징이동1 -->
-							
-							
-							
-							
-							
-							
-							
-							
-							
+								<div class="btnAreaList">
+						<!-- 페이징이동1 -->
+						<div class="allPageMoving1">
+
+						<a href="detail?curPage=1&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
+						<c:if test="${qDto.getPrev_page()}">
+						
+           				 <a href="detail?curPage=${qDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+         					</c:if>
+         					
+						 <c:forEach begin="${qDto.getStart_page()}" end="${qDto.getEnd_page()}" step="1" var="index">
+            				<c:if test="${qDto.getCurPage() eq index}">
+               				<a  href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=3 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
+            				</c:if>
+            				<c:if test="${qDto.getCurPage() ne index}">
+              				 <a href="detail?curPage=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=3">${index}</a>
+              			
+           	
+            				</c:if>
+         					</c:forEach>
+         					
+         					<c:if test="${qDto.getNext_page()}">
+            				<a href="detail?curPage=${qDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					</c:if>
+         					
+						
+						<a href="detail?curPage=${qDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+
+						
+					</div>
 							
 							<!-- //페이징이동1 -->
 						</div>

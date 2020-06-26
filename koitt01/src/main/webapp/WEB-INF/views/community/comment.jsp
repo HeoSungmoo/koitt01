@@ -1,5 +1,7 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
@@ -110,7 +112,7 @@ $(document).ready(function() {
 				<ul>	
 					<li><a href="expr" id="leftNavi1">체험단</a></li>
 					<li><a href="epilogue" id="leftNavi2">사용 후기</a></li>
-					<li class="last"><a href="#" id="leftNavi3">ENJOY COFFEE</a></li>
+					<li class="last"><a href="enjoy" id="leftNavi3">ENJOY COFFEE</a></li>
 				</ul>			
 			</div><script type="text/javascript">initSubmenu(2,0);</script>
 
@@ -156,7 +158,23 @@ $(document).ready(function() {
 								<td class="left">
 									<a href="commentView?review_no=${comment.review_no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" >
 										 ${comment.title}
+										 	<jsp:useBean id="now" class="java.util.Date" />
+										 <!-- 오늘 -->
+									<c:set var="today" value="<%=new Date()%>"/>
+									<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="today"/>
+																	
+									<!-- 하루전   -->
+									<c:set var="oneAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
+									<fmt:formatDate value="${oneAgo}" pattern="yyyy-MM-dd" var="oneAgo"/>
+									
+									<c:choose>
+										<c:when test="${comment.review_date<=oneAgo}">
+										</c:when>
+										<c:when test="${comment.review_date>oneAgo}">
 										<img src="images/ico/ico_new.gif" alt="new" />
+	
+										</c:when>
+										</c:choose>
 									</a>
 								</td>
 								<td>${comment.id}</td>
@@ -257,12 +275,12 @@ $(document).ready(function() {
 
 
 
-<footer>
-      <%@ include file="../include/footer.jsp"  %>
-   </footer>
 
 
 </div>
+<footer>
+      <%@ include file="../include/footer.jsp"  %>
+   </footer>
 </div>
 </body>
 </html>

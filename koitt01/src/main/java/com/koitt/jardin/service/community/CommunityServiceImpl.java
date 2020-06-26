@@ -17,6 +17,7 @@ import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
@@ -43,19 +44,20 @@ public class CommunityServiceImpl implements CommunityService {
 
 	// 체험단 리뷰 글쓰기
 	@Override
-	public void preUserReview(int preuser_no,MultipartFile preUserReviewImage,int grade,String title,String content) throws Exception {
+	public void preUserReview(int preuser_no,String writerId,MultipartFile preuser_review_image,int grade,String title,String content) throws Exception {
 		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/preuserUpload/";
-		String origin_Name=preUserReviewImage.getOriginalFilename();
+		String origin_Name=preuser_review_image.getOriginalFilename();
 		System.out.println(origin_Name);
 		UUID uuid= UUID.randomUUID();
 		String file_Name=uuid.toString()+"_"+origin_Name;
-		preUserReviewImage.transferTo(new File(path + file_Name));
+		preuser_review_image.transferTo(new File(path + file_Name));
 		PreUserReviewDTO purDto = new PreUserReviewDTO();
 		purDto.setPreuser_no(preuser_no);
 		purDto.setTitle(title);
 		purDto.setContent(content);
 		purDto.setGrade(grade);
-		purDto.setPreUserReviewImage(file_Name);
+		purDto.setWriterId(writerId);
+		purDto.setPreuser_review_image(file_Name);
 		communityDAO.preUserReview(purDto);
 
 	}
@@ -78,18 +80,10 @@ public class CommunityServiceImpl implements CommunityService {
 	public void epilogueDelete(int review_no) {
 		communityDAO.epilogueDelete(review_no);
 	}
-
+	//이용후기 글 수정
 	@Override
 	public void epilogueWrite(String id,int review_no,String title,String productTitle,int grade, String content,MultipartFile thumbnail) throws Exception {
 		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/upload/";
-		System.out.println("-------------커뮤니티 서비스----------------");
-		System.out.println("리뷰글 번호"+review_no);
-		System.out.println("상품명"+productTitle);
-		System.out.println("글 제목"+title);
-		System.out.println("평가점수"+grade);
-		System.out.println("리뷰글 내용"+content);
-		System.out.println("썸네일"+thumbnail);
-		System.out.println("-------------커뮤니티 서비스----------------");
 		String origin_Name=thumbnail.getOriginalFilename();
 		UUID uuid= UUID.randomUUID();
 		String file_Name=uuid.toString()+"_"+origin_Name;
@@ -99,7 +93,6 @@ public class CommunityServiceImpl implements CommunityService {
 		rDto.setProductTitle(productTitle);
 		rDto.setTitle(title);
 		rDto.setId(id);
-		rDto.setTitle(title);
 		rDto.setContent(content);
 		rDto.setGrade(grade);
 		rDto.setThumbnail(file_Name);
@@ -107,13 +100,41 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 	
+	@Override
+	public void epilogueWrite2(String id,String title,String productTitle,int grade, String content,MultipartFile thumbnail) throws Exception {
+		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/upload/";
+		String origin_Name=thumbnail.getOriginalFilename();
+		UUID uuid= UUID.randomUUID();
+		String file_Name=uuid.toString()+"_"+origin_Name;
+		thumbnail.transferTo(new File(path + file_Name));
+		UpdateReviewDTO rDto = new UpdateReviewDTO();
+		rDto.setProductTitle(productTitle);
+		rDto.setTitle(title);
+		rDto.setId(id);
+		rDto.setContent(content);
+		rDto.setGrade(grade);
+		rDto.setThumbnail(file_Name);
+		communityDAO.epilogueWrite2(rDto);
+		
+	}
 	
+	//이용후기 글 수정
 	@Override
 	public UpdateReviewDTO epilogueUpdate(UpdateReviewDTO rDto) {
 		System.out.println(rDto.getReview_no());
 	
 		return communityDAO.epilogueUpdate(rDto);
 	}
+	//이용후기 조회수
+	@Override
+	public void epilogueHit(SearchValue sv) {
+		communityDAO.epilogueHit(sv);
+		
+	}
+	//이용후기 작성시 상품제목 리스트 가져오기
+	public List<ProductDTO> productTitle() {
+		return communityDAO.productTitle();
+		}
 
 	// 인조이 커피 글 보기
 	@Override
@@ -122,6 +143,23 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDAO.enjoyView(sv);
 	}
 
+	@Override
+	public EnjoyCoffDTO enjoyViewPre(SearchValue sv) {
+		return communityDAO.enjoyViewPre(sv);
+	}
+
+	@Override
+	public EnjoyCoffDTO enjoyViewNext(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return communityDAO.enjoyViewNext(sv);
+	}
+	
+	@Override
+	public void enjoyHit(SearchValue sv) {
+		communityDAO.enjoyHit(sv);
+		
+	}
+	
 // 체험단(expr) 페이징------------------------------------------------------------------
 	// 페이징 글 리스트 가져오기
 	@Override
@@ -153,7 +191,7 @@ public class CommunityServiceImpl implements CommunityService {
 		// 페이징 게시글 수 및 값 세팅
 		@Override
 		public PageNationDTO exprReviewPageNation(SearchValue sv) {
-			PageNationDTO pDto = communityDAO.exprPageNation(sv);
+			PageNationDTO pDto = communityDAO.exprReviewPageNation(sv);
 			pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
 			pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
 			pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
@@ -229,6 +267,10 @@ public class CommunityServiceImpl implements CommunityService {
 		return pDto;
 
 	}
+
+	
+
+	
 	
 	
 

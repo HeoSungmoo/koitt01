@@ -168,7 +168,7 @@ $(document).ready(function() {
 					<div class="btnArea">
 						<div class="bCenter">
 							<ul>																
-								<li><a href="#" class="nbtnbig">취소</a></li>
+								<li><a href="boardInquiryView" class="nbtnbig">취소</a></li>
 								<li><button class="sbtnMini"> 확인</button></li>
 							</ul>
 						</div>
@@ -183,14 +183,14 @@ $(document).ready(function() {
 
 		</div>
 	</div>
+	<footer>
+      <%@ include file="../include/footer.jsp"  %>
+   </footer>
 	<!-- //container -->
 
 
 
 
-	<footer>
-      <%@ include file="../include/footer.jsp"  %>
-   </footer>
 
 
 

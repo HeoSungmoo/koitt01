@@ -11,6 +11,7 @@ import com.koitt.jardin.dto.community.PreUserApplyDTO;
 import com.koitt.jardin.dto.community.PreUserDTO;
 import com.koitt.jardin.dto.community.PreUserReviewDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
+import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.product.UpdateReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
@@ -39,11 +40,28 @@ public interface CommunityDAO {
 	// 이용후기 글 수정
 	public UpdateReviewDTO epilogueUpdate(UpdateReviewDTO rDto);
 
+	//이용후기 수정페이지로 이동
 	public void epilogueWrite(UpdateReviewDTO rDto) throws Exception;
 	
+	//포토상품후기 글 쓰기
+		public void epilogueWrite2(UpdateReviewDTO rDto) throws Exception;
+	
+	//이용후기 조회수
+	public void epilogueHit(SearchValue sv);
+	
+	//이용후기 작성시 상품 명 가져오기
+	public List<ProductDTO> productTitle();
 	// 인조이 커피 글 보기
 	public EnjoyCoffDTO enjoyView(SearchValue sv);
+	
+	//enjoy 조회수
+	public void enjoyHit(SearchValue sv);
 
+	// 인조이 글보기 이전 글
+	public EnjoyCoffDTO enjoyViewPre(SearchValue sv);
+
+	// 인조이 글보기 다음 글
+	public EnjoyCoffDTO enjoyViewNext(SearchValue sv);
 // enjoy페이징------------------------------------------------------------------
 	// 페이징 게시글 수
 	public PageNationDTO enjoyPageNation(SearchValue sv);

@@ -130,7 +130,7 @@ $(document).ready(function() {
 							
 							
 							<li>
-								<div class="img"><img src="images/img/sample_expr.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="preuserUpload/${expr.thumbnail }" width="155" height="160" alt="" /></div>
 							
 								<div class="txt">
 									<div class="subject">

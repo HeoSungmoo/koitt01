@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -122,12 +122,7 @@ $(document).ready(function() {
 				<div id="mypage">
 					<h2><strong>사용 후기</strong><span>쟈뎅 제품을 구매하신 회원님들의 소중한 후기입니다.</span></h2>
 					
-<!-- 					<div class="productTab normaltab"> -->
-<!-- 						<ul> -->
-<!-- 							<li><a href="#" class="on">포토 구매후기</a></li> -->
-<!-- 							<li class="last"><a href="#">상품평</a></li> -->
-<!-- 						</ul>						 -->
-<!-- 					</div> -->
+
 
 					<div class="viewDivTab">
 						<div class="viewHead">
@@ -143,7 +138,7 @@ $(document).ready(function() {
 							<div class="data">
 								<ul>
 									<li>작성자<span>${epilogueView.id}</span></li>
-									<li class="tnone">등록일<span>${epilogueView.review_date}</span></li>
+									<li class="tnone">등록일<span><fmt:formatDate pattern="yyyy-MM-dd" value="${epilogueView.review_date}"/></span></li>
 									<li class="tnone">조회수<span>${epilogueView.hit}</span></li>
 									<li class="last">평점
 										<span class="ty" id="star${k=k+1 }">

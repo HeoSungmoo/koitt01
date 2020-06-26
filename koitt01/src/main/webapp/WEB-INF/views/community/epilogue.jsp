@@ -187,7 +187,7 @@ const member= JSON.parse(memberId);
 				
 						</c:when>
 						<c:when test="${not empty memberId}">
-								<li><a href="epilogueWrite1?memberId=${memberId}" class="sbtnMini">글쓰기</a></li>
+								<li><a href="epilogueInsert2?Id=${memberId}" class="sbtnMini">글쓰기</a></li>
 						</c:when>
 								</c:choose>
 							</ul>
@@ -256,14 +256,14 @@ const member= JSON.parse(memberId);
 	<!-- //container -->
 
 
- 	<footer>
-      <%@ include file="../include/footer.jsp"  %>
-   </footer>
 
 	
 
 
 </div>
+ 	<footer>
+      <%@ include file="../include/footer.jsp"  %>
+   </footer>
 </div>
 </body>
 </html>

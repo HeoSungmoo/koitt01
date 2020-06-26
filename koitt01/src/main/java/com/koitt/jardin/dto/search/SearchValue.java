@@ -13,6 +13,24 @@ public class SearchValue {
 	int product_no;
 	String category1 = "";
 	String category2 = "";
+	String HighPrice = "";
+	String LowPrice = "";
+
+	public String getHighPrice() {
+		return HighPrice;
+	}
+
+	public void setHighPrice(String highPrice) {
+		HighPrice = highPrice;
+	}
+
+	public String getLowPrice() {
+		return LowPrice;
+	}
+
+	public void setLowPrice(String lowPrice) {
+		LowPrice = lowPrice;
+	}
 
 	public int getCurPage1() {
 		return curPage1;

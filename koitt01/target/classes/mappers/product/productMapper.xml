@@ -88,10 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
-	<select id="search" resultType="com.koitt.jardin.dto.product.ProductDTO">
-	
-	
-	</select>
+
 	
 	<insert id="photo">
 	
@@ -106,11 +103,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into qna(qna_no,product_no,id,title,content,answer) values(qna_seq.nextval,#{product_no},#{id},#{title},#{content},1)
 	</insert>
 	
-	<select id="qna_view" resultType="com.koitt.jardin.dto.product.QnaDTO">
-	
-	select * from qna where product_no=#{product_no}
-	
-	</select>
+
 	
 	<delete id="qna_delete">
 	
@@ -130,12 +123,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</update>
 	
-	<select id="product_search" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	
-	select * from product where title like '%'||#{search}||'%'
+	<select id="product_amount" resultType="com.koitt.jardin.dto.product.ProductDTO">
+	
+ 	select * from product where title like '%'||#{search}||'%'
 	
 	</select>
-	
 	
 	
 	

@@ -2,13 +2,13 @@ package com.koitt.jardin.service.product;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
@@ -104,11 +104,11 @@ public class ProductServiceImpl implements ProductService {
 	public void photo(int product_no, String title, String content, int grade, MultipartFile thumbnail, String id)
 			throws Exception {
 
-		String path = "C:/Users/user.user-PC/git/koitt01/koitt01/src/main/webapp/resources/images/review";
-
-		String thumbNail = thumbnail.getOriginalFilename();
+		String path = "C:/Users/user.user-PC/git/koitt01/koitt01/src/main/webapp/resources/preuserUpload/";
+		String origin_Name = thumbnail.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		String thumbNail = uuid.toString() + "_" + origin_Name;
 		thumbnail.transferTo(new File(path + thumbNail));
-
 		ReviewDTO reviewDto = new ReviewDTO();
 		reviewDto.setProduct_no(product_no);
 		reviewDto.setId(id);
@@ -156,11 +156,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 제품 질문과 답변 작성란 보기
-	@Override
-	public List<QnaDTO> QnA_view(int product_no) {
-
-		return productDao.QnA_view(product_no);
-	}
 
 	// 제품 질문과 답변 삭제
 	@Override
@@ -186,12 +181,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> product_search(String search) {
-
-		return productDao.product_search(search);
-	}
-
-	@Override
 	public ProductPageNationDTO productPageNation(SearchValue sv) {
 		ProductPageNationDTO pDto = productDao.productPageNation(sv);
 		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
@@ -211,9 +200,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public PhotoPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
 
-		PhotoPageNationDTO rDto = productDao.PhotoReviewPageNation(sv);
+		ReviewPageNationDTO rDto = productDao.PhotoReviewPageNation(sv);
 		rDto.setPage_cnt(rDto.getListCnt()); // 페이지 수 저장
 		rDto.setRange_cnt(rDto.getPage_cnt()); // 블럭 수 저장
 		rDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치 rDto.setCurpa
@@ -276,6 +265,62 @@ public class ProductServiceImpl implements ProductService {
 		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
+	}
+
+	@Override
+	public List<QnaDTO> QnApageNationList(SearchValue sv) {
+
+		return productDao.QnApageNationList(sv);
+	}
+
+	@Override
+	public ReviewPageNationDTO QnApageNation(SearchValue sv) {
+		ReviewPageNationDTO pDto = productDao.QnApageNation(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+	}
+
+	@Override
+	public List<ProductDTO> productSearchPageNationList(SearchValue sv) {
+
+		return productDao.productSearchPageNationList(sv);
+	}
+
+	@Override
+	public ProductPageNationDTO productSearchPageNation(SearchValue sv) {
+		ProductPageNationDTO pDto = productDao.productSearchPageNation(sv);
+		pDto.setPage_cnt(pDto.getListCnt()); // 페이지 수 저장
+		pDto.setRange_cnt(pDto.getPage_cnt()); // 블럭 수 저장
+		pDto.setCurPage(sv.getCurPage()); // 현재 페이지 위치
+		pDto.setCur_range(sv.getCurPage()); // 현재 블럭 위치
+		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
+		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
+		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
+		return pDto;
+	}
+
+	@Override
+	public List<ProductDTO> product_amount(SearchValue sv) {
+
+		return productDao.product_amount(sv);
+	}
+
+	@Override
+	public List<ProductDTO> HighPircePageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return productDao.HighPircePageNationList(sv);
+	}
+
+	@Override
+	public List<ProductDTO> LowPircePageNationList(SearchValue sv) {
+		// TODO Auto-generated method stub
+		return productDao.LowPircePageNationList(sv);
 	}
 
 }

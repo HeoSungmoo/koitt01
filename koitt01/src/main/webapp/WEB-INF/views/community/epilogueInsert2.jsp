@@ -134,7 +134,7 @@
 						initSubmenu(2, 0);
 					</script>
 
-					<form action="epilogueWrite1" method="post"
+					<form action="epilogueInsert" method="post"
 						enctype="multipart/form-data">
 						<!-- contents -->
 						<div id="contents">
@@ -145,8 +145,8 @@
 
 								<div class="productTab normaltab">
 									<ul>
-										<li><a href="epilogueInsert2">포토 구매후기</a></li>
-										<li class="last"><a href="epilogueInsert" class="on">상품평</a></li>
+										<li><a href="#" class="on">포토 구매후기</a></li>
+										<li class="last"><a href="epilogueInsert">상품평</a></li>
 									</ul>
 								</div>
 
@@ -164,19 +164,20 @@
 												<th scope="row"><span>상품명</span></th>
 												<td>
 													<ul class="pta">
-														<li class="pt5">
-															<p>
-																<select name="">
-																	<c:forEach var="productCategory"
-																		items="${productCategory}">
-																		<option value="product_no">${productCategory.title}</option>
-																	</c:forEach>
-																</select>
-															</p> <input type="hidden" name="review_no"
-															value="${epilogueUpdate.review_no} ">
-														</li>
+														<li class="pt5"><select name="">
+																<c:forEach var="productCategory"
+																	items="${productCategory}">
+																	<option value="product_no">${productCategory.title}</option>
+																</c:forEach>
+														</select></li>
 													</ul>
 												</td>
+											</tr>
+
+											<tr style="height: 30px;">
+												<th scope="row"><span>이미지</span></th>
+												<td><input type="file" name="thumbnail"
+													class="fileType" /> <br></td>
 											</tr>
 											<tr>
 												<th scope="row"><span>평점</span></th>

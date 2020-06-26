@@ -19,7 +19,11 @@
    <resources mapping="/images/**" location="/resources/images/" />
    <resources mapping="/js/**" location="/resources/js/" />
     <resources mapping="/upload/**" location="/resources/upload/" />
+
       <resources mapping="/preuserUpload/**" location="/resources/preuserUpload/" />
+
+    <resources mapping="/preuserUpload/**" location="/resources/preuserUpload/" />
+
     <resources mapping="/inquiryUpload/**" location="/resources/inquiryUpload/" />
    
 

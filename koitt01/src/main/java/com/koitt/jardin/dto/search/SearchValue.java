@@ -64,11 +64,6 @@ public class SearchValue {
 		this.product_no = product_no;
 	}
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://github.com/HeoSungmoo/koitt01.git
 	public int getReview_no() {
 		return review_no;
 	}

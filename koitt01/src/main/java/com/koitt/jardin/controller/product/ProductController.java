@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.QnaPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
@@ -97,8 +99,7 @@ public class ProductController {
 		model.addAttribute("ProductInfoDto", productService.productInfoDto(product_no));
 		// 포토리뷰 뿌려주기
 		List<ReviewDTO> PhotoReview_list = productService.PhotoReviewPageNationList(sv);
-		ReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
-		model.addAttribute("initVal", initVal);
+		PhotoReviewPageNationDTO PhotoRdto = productService.PhotoReviewPageNation(sv);
 		model.addAttribute("PhotoReview_view", PhotoReview_list);
 		model.addAttribute("PhotoRdto", PhotoRdto);
 		// 리뷰 뿌려주기
@@ -106,14 +107,14 @@ public class ProductController {
 		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("review_view", Review_list);
 		model.addAttribute("rDto", rdto);
-		System.out.println("리뷰 컬페이지" + rdto.getCurPage2());
-
+	
 		// 질문과 답변 뿌려주기
 		List<QnaDTO> QnapageNationList = productService.QnApageNationList(sv);
-		ReviewPageNationDTO qDto = productService.QnApageNation(sv);
+		QnaPageNationDTO qDto = productService.QnApageNation(sv);
 		model.addAttribute("qna_view", QnapageNationList);
 		model.addAttribute("qDto", qDto);
 
+		model.addAttribute("initVal", initVal);
 		model.addAttribute("sv", sv);
 		return "product/detail";
 	}

@@ -1,8 +1,8 @@
 package com.koitt.jardin.dto.page;
 
-public class ProductPageNationDTO {
+public class QnaPageNationDTO {
 
-	private int page_size = 9; // 한 페이지에 담을 게시글 수
+	private int page_size = 2; // 한 페이지에 담을 게시글 수
 	private int range_size = 5;// 한 블럭 에 담을 페이지 수
 	private int curPage; // 현재 페이지 위치
 	private int cur_range; // 현재 블럭 위치
@@ -32,6 +32,16 @@ public class ProductPageNationDTO {
 			setPrev_page(true);
 			setNext_page(true);
 		}
+	}
+
+
+
+	public void setStart_page(int start_page) {
+		this.start_page = start_page;
+	}
+
+	public void setEnd_page(int end_page) {
+		this.end_page = end_page;
 	}
 
 	public int getPage_size() {
@@ -84,10 +94,10 @@ public class ProductPageNationDTO {
 
 	// 게시판 페이지 갯수
 	public void setPage_cnt(int listCnt) {
-		if (listCnt % 9 == 0) {
-			this.page_cnt = listCnt / 9;
+		if (listCnt % 2 == 0) {
+			this.page_cnt = listCnt / 2;
 		} else {
-			this.page_cnt = listCnt / 9 + 1;
+			this.page_cnt = listCnt / 2 + 1;
 		}
 	}
 

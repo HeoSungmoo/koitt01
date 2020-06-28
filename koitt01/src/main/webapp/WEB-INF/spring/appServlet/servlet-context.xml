@@ -18,7 +18,8 @@
    <resources mapping="/css/**" location="/resources/css/" />
    <resources mapping="/images/**" location="/resources/images/" />
    <resources mapping="/js/**" location="/resources/js/" />
-    <resources mapping="/upload/**" location="/resources/upload/" />
+   <resources mapping="/upload/**" location="/resources/upload/" />
+   <resources mapping="/productUpload/**" location="/resources/productUpload/" />
 
       <resources mapping="/preuserUpload/**" location="/resources/preuserUpload/" />
 

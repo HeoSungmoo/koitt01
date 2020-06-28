@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.QnaPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -142,7 +144,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	// 포토상품리뷰 페이지네이션 페이지,게시물 수 확인
 	@Override
-	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
+	public PhotoReviewPageNationDTO PhotoReviewPageNation(SearchValue sv) {
 
 		return sqlSession.selectOne("page.photoPageNation", sv);
 	}
@@ -191,7 +193,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	// 질문과 답변 페이지네이션 페이지,게시물 수 확인
 	@Override
-	public ReviewPageNationDTO QnApageNation(SearchValue sv) {
+	public QnaPageNationDTO QnApageNation(SearchValue sv) {
 
 		return sqlSession.selectOne("page.QnApageNation", sv);
 	}

@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<select id="photoPageNation" resultType="com.koitt.jardin.dto.page.ReviewPageNationDTO">
+	<select id="photoPageNation" resultType="com.koitt.jardin.dto.page.PhotoReviewPageNationDTO">
 	
 	select count(*) listCnt from review where thumbnail is not null and product_no=#{product_no}
 	
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<select id="QnApageNation" resultType="com.koitt.jardin.dto.page.ReviewPageNationDTO">
+	<select id="QnApageNation" resultType="com.koitt.jardin.dto.page.QnaPageNationDTO">
 	
 	select count(*) listCnt from qna where product_no=#{product_no}
 	

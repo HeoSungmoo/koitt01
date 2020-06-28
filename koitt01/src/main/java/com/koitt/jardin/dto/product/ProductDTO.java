@@ -12,16 +12,26 @@ public class ProductDTO {
 	private String kcal;
 	private int grade;
 	private int volume;
-	private String thumb_nail;
+	private String thumbnail;
 	private String image1;
 	private String image2;
 	private String image3;
+
+
 	private String detail;
 	private Timestamp upload_date;
 	private int product_stock;
 	private int exposure_state;
 	private String category1;
 	private String category2;
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 
 	public ProductDTO() {
 
@@ -147,13 +157,7 @@ public class ProductDTO {
 		this.product_stock = product_stock;
 	}
 
-	public String getThumb_nail() {
-		return thumb_nail;
-	}
 
-	public void setThumb_nail(String thumb_nail) {
-		this.thumb_nail = thumb_nail;
-	}
 
 	public Timestamp getUpload_date() {
 		return upload_date;

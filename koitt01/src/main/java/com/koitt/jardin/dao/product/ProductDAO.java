@@ -2,7 +2,9 @@ package com.koitt.jardin.dao.product;
 
 import java.util.List;
 
+import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
+import com.koitt.jardin.dto.page.QnaPageNationDTO;
 import com.koitt.jardin.dto.page.ReviewPageNationDTO;
 import com.koitt.jardin.dto.product.CommentDto;
 import com.koitt.jardin.dto.product.ProductDTO;
@@ -10,6 +12,7 @@ import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
+
 
 public interface ProductDAO {
 
@@ -54,7 +57,7 @@ public interface ProductDAO {
 	public List<ReviewDTO> PhotoReviewPageNationList(SearchValue sv);
 
 	// 포토상품리뷰 페이지네이션 페이지,게시물 수 확인
-	public ReviewPageNationDTO PhotoReviewPageNation(SearchValue sv);
+	public PhotoReviewPageNationDTO PhotoReviewPageNation(SearchValue sv);
 
 	// 리뷰 페이지네이션 리스트
 	public List<ReviewDTO> ReviewPageNationList(SearchValue sv);
@@ -66,7 +69,7 @@ public interface ProductDAO {
 	public List<QnaDTO> QnApageNationList(SearchValue sv);
 
 	// 질문과 답변 페이지네이션 페이지,게시물 수 확인
-	public ReviewPageNationDTO QnApageNation(SearchValue sv);
+	public QnaPageNationDTO QnApageNation(SearchValue sv);
 
 	// ----------------------제품상세--------------------------------------------
 	// 제품의 상세내용 ( condent_view)

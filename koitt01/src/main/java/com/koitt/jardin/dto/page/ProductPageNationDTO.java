@@ -25,7 +25,7 @@ public class ProductPageNationDTO {
 		} else if (curPage > 0 && curPage < 6) {
 			setPrev_page(false);
 			setNext_page(true);
-		} else if (getRange_cnt() * 5 - 5 < curPage) {
+		} else if (getRange_cnt() * 10 - 10 < curPage) {
 			setPrev_page(true);
 			setNext_page(false);
 		} else {
@@ -84,10 +84,10 @@ public class ProductPageNationDTO {
 
 	// 게시판 페이지 갯수
 	public void setPage_cnt(int listCnt) {
-		if (listCnt % 10 == 0) {
-			this.page_cnt = listCnt / 10;
+		if (listCnt % 9 == 0) {
+			this.page_cnt = listCnt / 9;
 		} else {
-			this.page_cnt = listCnt / 10 + 1;
+			this.page_cnt = listCnt / 9 + 1;
 		}
 	}
 

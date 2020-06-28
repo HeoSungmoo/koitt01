@@ -202,7 +202,7 @@ $(document).ready(function() {
 					 	<c:forEach var="list" items="${list }">
 					<li>
 						<a href="${pageContext.request.contextPath}/detail?product_no=${list.product_no }">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="img"><img src="productUpload/${list.thumbnail }" alt="제품이미지" /></div>
 							<div class="name">${list.title }</div>
 							<div class="price">${list.price }</div>
 						</a>

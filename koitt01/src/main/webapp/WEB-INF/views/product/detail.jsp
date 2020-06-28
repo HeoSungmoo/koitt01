@@ -15,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/top_navi.js"></script>
-<script type="text/javascript" src="../js/left_navi.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/top_navi.js"></script>
+<script type="text/javascript" src="js/left_navi.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -182,17 +182,17 @@ $(document).ready(function() {
 				<div class="imgSlide">
 					<div class="img">
 						<ul>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image1}" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image2}" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image3}" alt="제품이미지" /></li>
 						</ul>
 					</div>
 
 					<div class="thum">
 						<ul>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
+							<li><img src="productUpload/${detail.image1 }" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image2 }" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image3 }" alt="제품이미지" /></li>
 						</ul>
 					</div>
 				</div>
@@ -460,12 +460,12 @@ $(document).ready(function() {
 						<div class="allPageMoving1">
 
 						<a href="detail?curPage1=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<c:if test="${PhotoRdto.getPrev_page()}">
+						<c:if test="${PhotoRdto.getPrev_page1()}">
 						
-           				 <a href="detail?curPage1=${PhotoRdto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="detail?curPage1=${PhotoRdto.getStart_page1()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
-						 <c:forEach begin="${PhotoRdto.getStart_page()}" end="${PhotoRdto.getEnd_page()}" step="1" var="index">
+						 <c:forEach begin="${PhotoRdto.getStart_page1()}" end="${PhotoRdto.getEnd_page1()}" step="1" var="index">
             				<c:if test="${PhotoRdto.getCurPage1() eq index}">
                				<a  href="detail?curPage1=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
@@ -476,12 +476,12 @@ $(document).ready(function() {
             				</c:if>
          					</c:forEach>
          					
-         					<c:if test="${PhotoRdto.getNext_page()}">
-            				<a href="detail?curPage1=${PhotoRdto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					<c:if test="${PhotoRdto.getNext_page1()}">
+            				<a href="detail?curPage1=${PhotoRdto.getEnd_page1()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="detail?curPage1=${PhotoRdto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage1=${PhotoRdto.getPage_cnt1()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						
 					</div>
@@ -491,6 +491,7 @@ $(document).ready(function() {
 
 					
 					<div class="headTitle depth">
+				
 						<strong>상품리뷰&nbsp;</strong>상품리뷰는 상품 구매 후 작성하실 수 있습니다.
 						<p class="btn"><a href="review_view?product_no=${detail.product_no }" class="popBtn">구매 후기 작성</a></p>
 					</div>
@@ -513,17 +514,17 @@ $(document).ready(function() {
 										<span class="ty" id="star${k=k+1 }">
 											</span>
 										<script>
-    var innerHtml = "평점&nbsp;";
-    for (var i = 0; i < 5; i++) {
-        if (i < ${review_view.grade}) {
-            innerHtml += '<img src="images/ico/ico_star.gif"/>'
-        } else {
-            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
-        }
-    }
-    var star = document.getElementById('star${k}');
-    star.innerHTML = innerHtml;
-</script>
+									    var innerHtml = "평점&nbsp;";
+									    for (var i = 0; i < 5; i++) {
+									        if (i < ${review_view.grade}) {
+									            innerHtml += '<img src="images/ico/ico_star.gif"/>'
+									        } else {
+									            innerHtml += '<img src="images/ico/ico_star_off.gif"/>';
+									        }
+									    }
+									    var star = document.getElementById('star${k}');
+									    star.innerHTML = innerHtml;
+									</script>
 										</p>
 									</div>
 								</div>
@@ -564,15 +565,15 @@ $(document).ready(function() {
 				
 						<div class="btnAreaList">
 						<!-- 페이징이동1 -->
-						<div class="allPageMoving1">
+				<div class="allPageMoving1">
 
 						<a href="detail?curPage2=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
-						<c:if test="${rDto.getPrev_page()}">
+						<c:if test="${rDto.getPrev_page2()}">
 						
-           				 <a href="detail?curPage2=${rDto.getStart_page()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="detail?curPage2=${rDto.getStart_page2()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
-						 <c:forEach begin="${rDto.getStart_page()}" end="${rDto.getEnd_page()}" step="1" var="index">
+						 <c:forEach begin="${rDto.getStart_page2()}" end="${rDto.getEnd_page2()}" step="1" var="index">
             				<c:if test="${rDto.getCurPage2() eq index}">
                				<a  href="detail?curPage2=${index}&search=${sv.search}&product_no=${sv.product_no}&initVal=2 " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
@@ -583,12 +584,12 @@ $(document).ready(function() {
             				</c:if>
          					</c:forEach>
          					
-         					<c:if test="${rDto.getNext_page()}">
-            				<a href="detail?curPage2=${rDto.getEnd_page()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
+         					<c:if test="${rDto.getNext_page2()}">
+            				<a href="detail?curPage2=${rDto.getEnd_page2()+1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="next"><img src="images/btn/btn_next1.gif" alt="뒤페이지로"/></a>
          					</c:if>
          					
 						
-						<a href="detail?curPage2=${rDto.getPage_cnt()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
+						<a href="detail?curPage2=${rDto.getPage_cnt2()}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_next2.gif" alt="마지막페이지로"/></a>
 
 						
 					</div>
@@ -634,17 +635,17 @@ $(document).ready(function() {
 											        
 										</div>
 									</div>
-								</c:forEach> 
-									
 								</li>
 
 								
 
 							</ul>
+								</c:forEach> 
+									
 						</div>
+								<div class="btnAreaList">
 						<!-- //질문과 답변 -->
 
-								<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
 
@@ -781,7 +782,7 @@ $(document).ready(function() {
 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script type="text/javascript" src="../js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">

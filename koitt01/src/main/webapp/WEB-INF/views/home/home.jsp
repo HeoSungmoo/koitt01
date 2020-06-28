@@ -176,7 +176,7 @@ $(document).ready(function() {
 				<div class="swiper-wrapper">
 					<c:forEach var="hitList" items="${hitList}">
 						<div class="swiper-slide">
-							<div class="img"><a href="detail?product_no=${hitList.product_no}"><img src="${pageContext.request.contextPath}/images/img/${hitList.thumbnail}" alt="Best seller 상품" /></a></div>
+							<div class="img"><a href="detail?product_no=${hitList.product_no}"><img src="${pageContext.request.contextPath}/productUpload/${hitList.thumbnail}" alt="Best seller 상품" /></a></div>
 							<div class="name">${hitList.title}</div>
 							<div class="price">${hitList.price }</div>
 						</div>

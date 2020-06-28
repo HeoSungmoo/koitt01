@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.QnaPageNationDTO;
@@ -248,6 +249,12 @@ public class ProductDAOImpl implements ProductDAO {
 	public void comment_update(CommentDto comment) {
 		sqlSession.update("product.comment_update", comment);
 
+	}
+
+	@Override
+	public BannerDTO banner(String category1) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("product.banner", category1);
 	}
 
 }

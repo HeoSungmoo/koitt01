@@ -1,6 +1,5 @@
 package com.koitt.jardin.controller.product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +34,7 @@ public class ProductController {
 	public String list(Model model, SearchValue sv) {
 		ProductPageNationDTO pDto = productService.productPageNation(sv);
 		List<ProductDTO> list = productService.productPageNationList(sv);
-		
+
 		model.addAttribute("list", list);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("sv", sv);
@@ -52,6 +51,7 @@ public class ProductController {
 		List<ProductDTO> categoryList = productService.categoryList(sv);
 		ProductPageNationDTO pDtoAll = productService.categoryPageNationListDTO(sv);
 		ProductPageNationDTO pDto = productService.categoryPageNationDTO(sv);
+		model.addAttribute("banner", productService.banner(category1));
 
 		if (request.getParameter("category2") == null) {
 			System.out.println("카테고리2가 null일때 :" + category2);

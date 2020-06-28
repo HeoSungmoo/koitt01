@@ -155,28 +155,28 @@ $(document).ready(function() {
 						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
 						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
 						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+						<li><a href="category?category1=원두&category2=산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
+				<li class="t1"><a href="category?category1=원두커피백" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
+				<li class="t2"><a href="category?category1=인스턴트" id="topNavi4">인스턴트</a>
 					<ul id="topSubm4">
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
+						<li><a href="category?category1=인스턴트&category2=까페모리">까페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=포타제">포타제</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="#" id="topNavi5">음료</a>
+				<li class="t1"><a href="category?category1=음료" id="topNavi5">음료</a>
 					<ul id="topSubm5">
-						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
+						<li><a href="category?category1=음료&category2=까페리얼">까페리얼</a></li>
+						<li><a href="category?category1=음료&category2=워터커피">워터커피</a></li>
+						<li><a href="category?category1=음료&category2=모히또">모히또</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
@@ -208,10 +208,10 @@ $(document).ready(function() {
 		<!-- maxcontents -->
 		
 		<div id="maxcontents">
-		
-			<div class="banner"><img src="images/img/product_banner01.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
-			
-			<h2 class="brand">쟈뎅원두<span>더 신선한 커피, 더 맛있는 커피</span></h2>
+
+			<div class="banner"><img src="productUpload/${banner.image }" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="web" /><img src="images/img/product_banner01_m.jpg" alt="원두커피, 원두커피 전문 기업 쟈뎅의 Coffee Master의 심혈을 기울인 엄선된 원두 선별, 일반 원두커피부터 간편하게 즐기는 원두커피백, POD까지 다양하게 구성되어 있습니다." class="mobile" /></div>
+	
+			<h2 class="brand">${banner.category1 }<span>더 신선한 커피, 더 맛있는 커피</span></h2>
 
 			<div class="brandTab">
 				<ul>
@@ -237,7 +237,7 @@ $(document).ready(function() {
 					 	<c:forEach var="productList" items="${product }">
 					<li>
 						<a href="${pageContext.request.contextPath}/detail?product_no=${productList.product_no }">
-							<div class="img"><img src="${productList.thumbnail }" alt="제품이미지" /></div>
+							<div class="img"><img src="productUpload/${productList.thumbnail }" alt="제품이미지" /></div>
 							<div class="name">${productList.title }</div>
 							<div class="price">${productList.price }</div>
 						</a>

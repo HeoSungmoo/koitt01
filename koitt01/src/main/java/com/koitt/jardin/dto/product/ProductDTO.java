@@ -16,15 +16,13 @@ public class ProductDTO {
 	private String image1;
 	private String image2;
 	private String image3;
-
-
 	private String detail;
 	private Timestamp upload_date;
 	private int product_stock;
 	private int exposure_state;
 	private String category1;
 	private String category2;
-	
+
 	public String getThumbnail() {
 		return thumbnail;
 	}
@@ -156,8 +154,6 @@ public class ProductDTO {
 	public void setProduct_stock(int product_stock) {
 		this.product_stock = product_stock;
 	}
-
-
 
 	public Timestamp getUpload_date() {
 		return upload_date;

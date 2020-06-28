@@ -205,7 +205,7 @@ $(document).ready(function() {
 					<!-- 반복 -->
 					<li>
 						<a href="${pageContext.request.contextPath}/detail?product_no=${search.product_no }">
-							<div class="img"><img src="images/img/sample_brand.jpg" alt="제품이미지" /></div>
+							<div class="img"><img src="productUpload/${search.thumbnail }" alt="제품이미지" /></div>
 							<div class="name">${search.title }
 							<div class="price">${search.price }</div>
 						</a>

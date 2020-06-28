@@ -15,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/top_navi.js"></script>
-<script type="text/javascript" src="js/left_navi.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/content.css?v=Y" />
+<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/top_navi.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/left_navi.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/main.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/common.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -151,7 +151,7 @@ $(document).ready(function() {
 						<li><a href="category?category1=커피용품&category2=머신 등">머신 등</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="${pageContext.request.contextPath}/product/선물세트" id="topNavi7">선물세트</a></li>
+				<li class="t1"><a href="../product/선물세트" id="topNavi7">선물세트</a></li>
 				<li class="t2"><a href="${pageContext.request.contextPath}/product/대량구매" id="topNavi8">대량구매</a></li>
 			</ul>
 		</div>

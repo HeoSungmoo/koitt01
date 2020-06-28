@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koitt.jardin.dao.product.ProductDAO;
+import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.QnaPageNationDTO;
@@ -28,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDTO> list() {
-		
+
 		return productDao.list();
 	}
 
@@ -63,12 +64,12 @@ public class ProductServiceImpl implements ProductService {
 		pDto.prevnext(sv.getCurPage()); // 이전 블럭, 다음 블럭 설정
 		System.out.println("게시글 갯수 : " + pDto.getListCnt());
 		System.out.println("페이지 갯수 : " + pDto.getPage_cnt());
-		System.out.println("블록 갯수 :  "+ pDto.getCur_range());
-		System.out.println("현재 블록 끝 페이지 : "+pDto.getEnd_page());
+		System.out.println("블록 갯수 :  " + pDto.getCur_range());
+		System.out.println("현재 블록 끝 페이지 : " + pDto.getEnd_page());
 		pDto.setStart_page(pDto.getCur_range(), pDto.getRange_size()); // 현재 블럭 시작 페이지
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
-		}
+	}
 
 	// 카테고리1 대분류 페이지네이션 페이지,게시물 수 확인
 	@Override
@@ -83,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 		pDto.setEnd_page(pDto.getCur_range(), pDto.getRange_cnt()); // 현재 블럭 끝
 		return pDto;
 	}
-		
+
 	// 카테고리2 대분류 페이지네이션 페이지,게시물 수 확인
 	@Override
 	public ProductPageNationDTO categoryPageNationDTO(SearchValue sv) {
@@ -156,7 +157,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ReviewDTO> ReviewPageNationList(SearchValue sv) {
-	
+
 		return productDao.ReviewPageNationList(sv);
 	}
 
@@ -172,9 +173,9 @@ public class ProductServiceImpl implements ProductService {
 		pDto.setEnd_page2(pDto.getCur_range2(), pDto.getRange_cnt2()); // 현재 블럭 끝
 		System.out.println("일반리뷰 게시글 갯수 : " + pDto.getListCnt());
 		System.out.println("일반리뷰 페이지 갯수 : " + pDto.getPage_cnt2());
-		System.out.println("일반리뷰 블록 갯수 :  "+ pDto.getCur_range2());
-		System.out.println("일반리뷰 현재 블록 시작 페이지 : "+pDto.getStart_page2() );
-		System.out.println("일반리뷰 현재 블록 끝 페이지 : "+pDto.getEnd_page2());
+		System.out.println("일반리뷰 블록 갯수 :  " + pDto.getCur_range2());
+		System.out.println("일반리뷰 현재 블록 시작 페이지 : " + pDto.getStart_page2());
+		System.out.println("일반리뷰 현재 블록 끝 페이지 : " + pDto.getEnd_page2());
 		return pDto;
 	}
 
@@ -298,6 +299,7 @@ public class ProductServiceImpl implements ProductService {
 		productDao.QnA_modify(qnaDto);
 
 	}
+
 	@Override
 	public List<CommentDto> comment_List() {
 		// TODO Auto-generated method stub
@@ -307,21 +309,25 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void comment_delete(int cId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void comment_insert(CommentDto comment) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void comment_update(CommentDto comment) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
+	@Override
+	public BannerDTO banner(String category1) {
+		// TODO Auto-generated method stub
+		return productDao.banner(category1);
+	}
 
 }

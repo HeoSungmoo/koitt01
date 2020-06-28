@@ -10,6 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from product order by product_no desc
 			
 	</select>
+
+	<select id="banner" resultType="com.koitt.jardin.dto.home.BannerDTO">
+	
+    select banner.image,banner.category1 from banner, product where banner.category1 = product.category1 and banner.category1=#{category1} and rownum = 1
+	
+	</select>
+	
 <!-- 	제품 카테고리 리스트 -->
 	<select id="categoryAllList" resultType="com.koitt.jardin.dto.product.ProductDTO">
 	

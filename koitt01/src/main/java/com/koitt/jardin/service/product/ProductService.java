@@ -1,9 +1,10 @@
 package com.koitt.jardin.service.product;
 
-
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.QnaPageNationDTO;
@@ -15,11 +16,11 @@ import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
-
-
 public interface ProductService {
 	// 제품리스트 목록페이지
 	public List<ProductDTO> list();
+
+	public BannerDTO banner(String category1);
 
 	// 제품 카테고리1 리스트
 	public List<ProductDTO> categoryAllList(SearchValue sv);

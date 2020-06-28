@@ -138,7 +138,7 @@ public class ReviewPageNationDTO {
 	}
 
 	public void setPrev_page2(boolean prev_page2) {
-		this.prev_page2 = prev_page2;
+		this.prev_page2 = cur_range2 == 1 ? false : true;
 	}
 
 	public boolean getNext_page2() {
@@ -146,7 +146,7 @@ public class ReviewPageNationDTO {
 	}
 
 	public void setNext_page2(boolean next_page2) {
-		this.next_page2 = next_page2;
+		this.next_page2 = cur_range2 == range_cnt2 ? false : true;
 	}
 
 

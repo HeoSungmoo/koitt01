@@ -15,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/top_navi.js"></script>
-<script type="text/javascript" src="../js/left_navi.js"></script>
-<script type="text/javascript" src="../js/main.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="css/content.css?v=Y" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/top_navi.js"></script>
+<script type="text/javascript" src="js/left_navi.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -182,17 +182,17 @@ $(document).ready(function() {
 				<div class="imgSlide">
 					<div class="img">
 						<ul>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image1}" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image2}" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image3}" alt="제품이미지" /></li>
 						</ul>
 					</div>
 
 					<div class="thum">
 						<ul>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
-							<li><img src="images/img/sample_brand.jpg" alt="썸네일 제품이미지" /></li>
+							<li><img src="productUpload/${detail.image1 }" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image2 }" alt="제품이미지" /></li>
+							<li><img src="productUpload/${detail.image3 }" alt="제품이미지" /></li>
 						</ul>
 					</div>
 				</div>
@@ -782,7 +782,7 @@ $(document).ready(function() {
 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script type="text/javascript" src="../js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">

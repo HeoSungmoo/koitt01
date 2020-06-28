@@ -1,12 +1,9 @@
 package com.koitt.jardin.service.product;
 
-import java.io.File;
+
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
-
-import com.koitt.jardin.dto.page.PhotoPageNationDTO;
 import com.koitt.jardin.dto.page.PhotoReviewPageNationDTO;
 import com.koitt.jardin.dto.page.ProductPageNationDTO;
 import com.koitt.jardin.dto.page.QnaPageNationDTO;
@@ -17,12 +14,6 @@ import com.koitt.jardin.dto.product.ProductInfoDTO;
 import com.koitt.jardin.dto.product.QnaDTO;
 import com.koitt.jardin.dto.product.ReviewDTO;
 import com.koitt.jardin.dto.search.SearchValue;
-
-
-
-
-	
-
 
 
 

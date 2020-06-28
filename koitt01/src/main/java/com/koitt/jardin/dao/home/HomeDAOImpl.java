@@ -10,6 +10,7 @@ import com.koitt.jardin.dto.board.NoticeDTO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.home.ProductTypeDTO;
+import com.koitt.jardin.dto.product.ProductDTO;
 
 @Repository
 public class HomeDAOImpl implements HomeDAO {
@@ -51,5 +52,11 @@ public class HomeDAOImpl implements HomeDAO {
 	@Override
 	public List<EnjoyCoffDTO> enjoyCoffee() {
 		return sqlSession.selectList("home.enjoyCoffee");
+	}
+	
+	@Override
+	public List<ProductDTO> list(){
+		
+		return sqlSession.selectList("product.list");
 	}
 }

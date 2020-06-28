@@ -1,5 +1,6 @@
 package com.koitt.jardin.controller.product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,7 @@ public class ProductController {
 	public String list(Model model, SearchValue sv) {
 		ProductPageNationDTO pDto = productService.productPageNation(sv);
 		List<ProductDTO> list = productService.productPageNationList(sv);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("sv", sv);
@@ -107,7 +109,7 @@ public class ProductController {
 		ReviewPageNationDTO rdto = productService.ReviewPageNation(sv);
 		model.addAttribute("review_view", Review_list);
 		model.addAttribute("rDto", rdto);
-	
+
 		// 질문과 답변 뿌려주기
 		List<QnaDTO> QnapageNationList = productService.QnApageNationList(sv);
 		QnaPageNationDTO qDto = productService.QnApageNation(sv);

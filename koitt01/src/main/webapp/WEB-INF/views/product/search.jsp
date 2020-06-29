@@ -239,7 +239,7 @@ $(document).ready(function() {
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
-            ㄴ				<c:if test="${pDto.getCurPage() eq index}">
+            				<c:if test="${pDto.getCurPage() eq index}">
                				<a  href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">

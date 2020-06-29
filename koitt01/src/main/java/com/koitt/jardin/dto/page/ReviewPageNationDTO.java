@@ -14,7 +14,6 @@ public class ReviewPageNationDTO {
 	private boolean prev_page2; // 이전 블럭 버튼
 	private boolean next_page2; // 다음 블럭 버튼
 
-
 	// 이전 페이지, 다음 페이지 설정
 	public void prevnext2(int curPage2) {
 		if (getRange_cnt2() == 1) {
@@ -31,8 +30,6 @@ public class ReviewPageNationDTO {
 			setNext_page2(true);
 		}
 	}
-
-
 
 	public void setStart_page2(int start_page2) {
 		this.start_page2 = start_page2;
@@ -127,9 +124,8 @@ public class ReviewPageNationDTO {
 	public void setEnd_page2(int cur_range2, int range_cnt2) {
 		if (cur_range2 == range_cnt2) {
 			this.end_page2 = getPage_cnt2();
-		} 
-		else {
-			this.end_page2 = 1;
+		} else {
+			this.end_page2 = cur_range2 * 5;
 		}
 	}
 
@@ -148,7 +144,5 @@ public class ReviewPageNationDTO {
 	public void setNext_page2(boolean next_page2) {
 		this.next_page2 = cur_range2 == range_cnt2 ? false : true;
 	}
-
-
 
 }

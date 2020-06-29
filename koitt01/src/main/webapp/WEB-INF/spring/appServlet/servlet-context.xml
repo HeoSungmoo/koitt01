@@ -21,7 +21,7 @@
    <resources mapping="/upload/**" location="/resources/upload/" />
    <resources mapping="/productUpload/**" location="/resources/productUpload/" />
    <resources mapping="/eventUpload/**" location="/resources/eventUpload/" />
-
+ <resources mapping="/enjoyUpload/**" location="/resources/enjoyUpload/" />
       <resources mapping="/preuserUpload/**" location="/resources/preuserUpload/" />
 
     <resources mapping="/preuserUpload/**" location="/resources/preuserUpload/" />

@@ -160,8 +160,8 @@ $(document).ready(function() {
 				</li>
 				<li class="t1"><a href="category?category1=원두커피백" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="category?category1=원두커피백&category2=드립커피 로스트">드립커피 로스트</a></li>
-						<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=드립커피로스트">드립커피로스트</a></li>
+						<li><a href="category?category1=원두커피백&category2=오리지널커피백">오리지널커피백</a></li>
 						<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>

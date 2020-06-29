@@ -10,6 +10,7 @@ import com.koitt.jardin.dto.board.NoticeDTO;
 import com.koitt.jardin.dto.community.EnjoyCoffDTO;
 import com.koitt.jardin.dto.home.BannerDTO;
 import com.koitt.jardin.dto.home.ProductTypeDTO;
+import com.koitt.jardin.dto.home.homeBannerDTO;
 import com.koitt.jardin.dto.product.ProductDTO;
 
 @Service
@@ -62,6 +63,12 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public List<ProductDTO> list() {
 		return homeDao.list();
+	}
+
+	@Override
+	public List<homeBannerDTO> homeBannerList() {
+		// TODO Auto-generated method stub
+		return homeDao.homeBannerList();
 	}
 
 }

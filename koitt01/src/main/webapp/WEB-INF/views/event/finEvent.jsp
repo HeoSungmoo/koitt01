@@ -139,7 +139,7 @@ $(document).ready(function() {
 										<c:when test="${nowDate>endDate}">
 							<li>
 								<div class="img">
-									<a href="finEventView?event_no=${Event.event_no }"><img src="images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
+									<a href="finEventView?event_no=${Event.event_no }"><img src="eventUpload/${Event.thumbnail }" alt="진행중 이벤트" /></a>
 								</div>
 								<div class="txt">
 									<div class="subject">${Event.event_no}//${Event.title }</div>

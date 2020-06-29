@@ -136,7 +136,7 @@ public class ProductController {
 		productService.review(reviewDto);
 
 		model.addAttribute("product_no", product_no);
-		return "redirect:/detail?product_no=" + product_no;
+		return "product/review";
 	}
 
 	// 후기리뷰 삭제
@@ -201,7 +201,8 @@ public class ProductController {
 		productService.inquiry(qnaDto);
 		model.addAttribute("product_no", qnaDto.getProduct_no());
 		System.out.println(qnaDto.getProduct_no() + "상품번호");
-		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
+//		return "redirect:/detail?product_no=" + qnaDto.getProduct_no();
+		return "product/inquiry";
 	}
 
 	// 해당제품 질문과 답변 삭제

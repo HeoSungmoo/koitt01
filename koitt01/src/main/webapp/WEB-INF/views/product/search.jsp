@@ -97,8 +97,8 @@ $(document).ready(function() {
 
 	<!-- GNB -->
 			<div id="gnb">
-			
-			<div id="top">
+		
+		<div id="top">
 			<ul>
 				<li class="brand t1"><a href="#" id="topNavi1">JARDIN’s BRAND</a>
 					<ul id="topSubm1">
@@ -113,33 +113,34 @@ $(document).ready(function() {
 						
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi2">원두</a>
+				<li class="t2"><a href="category?category1=원두" id="topNavi2">원두</a>
 					<ul id="topSubm2">
-						<li><a href="${pageContext.request.contextPath}/product/원두/클래스">클래스</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/로스터리샵">로스터리샵</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/커피휘엘">커피휘엘</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두/산지별 생두">산지별 생두</a></li>
+						<li><a href="category?category1=원두">전체</a></li>
+						<li><a href="category?category1=원두&category2=클래스">클래스</a></li>
+						<li><a href="category?category1=원두&category2=로스터리샵">로스터리샵</a></li>
+						<li><a href="category?category1=원두&category2=커피휘엘">커피휘엘</a></li>
+						<li><a href="category?category1=원두&category2=산지별 생두">산지별 생두</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="#" id="topNavi3">원두커피백</a>
+				<li class="t1"><a href="category?category1=원두커피백" id="topNavi3">원두커피백</a>
 					<ul id="topSubm3">
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/드립커피 로스트">드립커피 로스트</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/오리지널 커피백">오리지널커피백</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/원두커피백/마일드커피백">마일드커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=드립커피 로스트">드립커피 로스트</a></li>
+						<li><a href="category?category1=원두커피백&category2=오리지널 커피백">오리지널커피백</a></li>
+						<li><a href="category?category1=원두커피백&category2=마일드커피백">마일드커피백</a></li>
 					</ul>
 				</li>
-				<li class="t2"><a href="#" id="topNavi4">인스턴트</a>
+				<li class="t2"><a href="category?category1=인스턴트" id="topNavi4">인스턴트</a>
 					<ul id="topSubm4">
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/까페모리">까페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/홍스타일카페모리">홈스타일카페모리</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/인스턴트/포타제">포타제</a></li>
+						<li><a href="category?category1=인스턴트&category2=까페모리">까페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=홍스타일카페모리">홈스타일카페모리</a></li>
+						<li><a href="category?category1=인스턴트&category2=포타제">포타제</a></li>
 					</ul>
 				</li>
-				<li class="t1"><a href="#" id="topNavi5">음료</a>
+				<li class="t1"><a href="category?category1=음료" id="topNavi5">음료</a>
 					<ul id="topSubm5">
-						<li><a href="${pageContext.request.contextPath}/product/음료/까페리얼">까페리얼</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/워터커피">워터커피</a></li>
-						<li><a href="${pageContext.request.contextPath}/product/음료/모히또">모히또</a></li>
+						<li><a href="category?category1=음료&category2=까페리얼">까페리얼</a></li>
+						<li><a href="category?category1=음료&category2=워터커피">워터커피</a></li>
+						<li><a href="category?category1=음료&category2=모히또">모히또</a></li>
 					</ul>
 				</li>
 				<li class="t2"><a href="#" id="topNavi6">커피용품</a>
@@ -153,7 +154,6 @@ $(document).ready(function() {
 				<li class="t2"><a href="${pageContext.request.contextPath}/product/대량구매" id="topNavi8">대량구매</a></li>
 			</ul>
 		</div>
-
 		<script type="text/javascript">initTopMenu();</script>
 	</div>
 	<!-- //GNB -->
@@ -205,7 +205,7 @@ $(document).ready(function() {
 					<!-- 반복 -->
 					<li>
 						<a href="${pageContext.request.contextPath}/detail?product_no=${search.product_no }">
-							<div class="img"><img src="productUpload/${search.thumbnail }" alt="제품이미지" /></div>
+							<div class="img"><img src="${pageContext.request.contextPath}/productUpload/${search.thumbnail }" alt="제품이미지" /></div>
 							<div class="name">${search.title }
 							<div class="price">${search.price }</div>
 						</a>
@@ -231,8 +231,7 @@ $(document).ready(function() {
 					<div class="btnAreaList">
 						<!-- 페이징이동1 -->
 						<div class="allPageMoving1">
-						${"안녕하세요" }
-						${selectPrice }
+						
 						<a href="product_search?curPage=1&search=${sv.search}&selectPrice=${selectPrice}" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${pDto.getPrev_page()}">
 						
@@ -240,7 +239,7 @@ $(document).ready(function() {
          					</c:if>
          					
 						 <c:forEach begin="${pDto.getStart_page()}" end="${pDto.getEnd_page()}" step="1" var="index">
-            				<c:if test="${pDto.getCurPage() eq index}">
+            ㄴ				<c:if test="${pDto.getCurPage() eq index}">
                				<a  href="product_search?curPage=${index}&search=${sv.search}&selectPrice=${selectPrice} " style="color:#f7703c; border-color:#f7703c;">${index}</a>
             				</c:if>
             				<c:if test="${pDto.getCurPage() ne index}">

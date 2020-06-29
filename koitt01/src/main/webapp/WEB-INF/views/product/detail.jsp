@@ -15,17 +15,17 @@
 <meta name="description" content="JARDIN SHOP" />
 <meta name="keywords" content="JARDIN SHOP" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleable=no" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/reset.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/layout.css?v=Y" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}css/content.css?v=Y" />
-<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/top_navi.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/left_navi.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/main.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/common.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/idangerous.swiper-2.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.anchor.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/layout.css?v=Y" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/content.css?v=Y" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/top_navi.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/left_navi.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.anchor.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/html5.js"></script>
 <script type="text/javascript" src="js/respond.min.js"></script>
@@ -243,7 +243,7 @@ $(document).ready(function() {
 					<!-- 판매중 -->
 					<div class="infobtn">
 						<ul>
-							<li><input type="submit" class="ty2" value="구매하기"></li>
+							<li><a href="#" class="ty2"><span>구매하기</span></a></li>
 							<li><a href="#" class="ty2">장바구니 <span>담기</span></a></li>
 							<li class="last"><a href="#" class="ty3">위시 <span>리스트</span></a></li>
 						</ul>

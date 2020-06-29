@@ -28,7 +28,8 @@ public class HomeController {
 		model.addAttribute("notice", homeService.notice());// 공지사항 상위글 3개 불러오기
 		model.addAttribute("enjoyCoffee", homeService.enjoyCoffee());// 인조이 사위글 3개 불러오기
 		model.addAttribute("list", homeService.list());
-	
+		model.addAttribute("homeBannerList", homeService.homeBannerList());
+
 		return "home/home";
 
 	}

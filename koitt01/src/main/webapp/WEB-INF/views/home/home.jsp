@@ -156,9 +156,9 @@ $(document).ready(function() {
 		<!-- main rolling -->
 		<div id="mainRoll">
 			<div class="swiper-wrapper">
-				<c:forEach var="bannerList" items="${bannerList}">
+				<c:forEach var="bannerList" items="${homeBannerList}">
 					<div class="swiper-slide">
-						<a href="detail?product_no=${bannerList.product_no}"><img src="${pageContext.request.contextPath}/images/img/${bannerList.image}" alt="" /></a>
+						<img src="${pageContext.request.contextPath}/productUpload/${bannerList.image}" alt="" />
 					</div>
 				</c:forEach>
 			</div>

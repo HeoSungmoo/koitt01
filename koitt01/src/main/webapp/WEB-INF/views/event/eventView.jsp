@@ -163,7 +163,7 @@ e
 								</div>
 
 								<div class="viewContents">
-									<img src="images/img/sample_event_view.jpg" alt="" />
+									<img src="eventUpload/${eventView.content }" alt="" />
 									${eventView.content }
 								</div>
 							</div>

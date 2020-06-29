@@ -35,6 +35,7 @@ public class CommunityController {
 	public String expr(SearchValue sv, Model model) {
 		PageNationDTO pDto = communityService.exprPageNation(sv); // 게시글 수 저장
 		List<PreUserDTO> list = communityService.exprPageNationList(sv);
+		
 		model.addAttribute("expr", list);
 		model.addAttribute("pDto", pDto);
 		model.addAttribute("sv", sv);

@@ -46,26 +46,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 체험단 페이징 글 리스트 가져오기 -->
 	<select id="exprPageNationList" resultType="com.koitt.jardin.dto.community.PreUserDTO">
 		select * 
-      from(select row_number() over(order by preuser_no desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
-                     review_end_date,announcement_date,grade from preuser order by preuser_no desc)
-      where rnum between #{curPage}*10-9 and #{curPage}*10
+      from(select row_number() over(order by apply_end_date desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
+                     review_end_date,announcement_date,grade from preuser order by apply_end_date desc)
+      where rnum between #{curPage}*10-9 and #{curPage}*10 
    </select>
    
    <!-- 체험단 전체 검색 글 리스트 가져오기 -->
    <select id="exprPageNationToList" resultType="com.koitt.jardin.dto.community.PreUserDTO">
 		select * 
-      from(select row_number() over(order by preuser_no desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
+      from(select row_number() over(order by apply_end_date desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
                      review_end_date,announcement_date,grade from preuser where title like '%'|| #{search}||'%' or content like '%'|| #{search}||'%'
-       order by preuser_no desc)
+       order by apply_end_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
    <!-- 체험단 제목 검색 글 리스트 가져오기 -->
    <select id="exprPageNationTiList" resultType="com.koitt.jardin.dto.community.PreUserDTO">
 		select * 
-      from(select row_number() over(order by preuser_no desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
+      from(select row_number() over(order by apply_end_date desc) as rnum,preuser_no,title,content,thumbnail,personnel,apply_start_date,apply_end_date,review_start_date,
                      review_end_date,announcement_date,grade from preuser where title like '%'|| #{search}||'%'
-       order by preuser_no desc)
+       order by apply_end_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    

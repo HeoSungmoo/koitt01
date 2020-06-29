@@ -140,28 +140,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
 <!-- faqProduct페이징 게시글 수 -->
 	<select id="faqProductPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
-		select count(*) listCnt from faq where category='상품' order by no
+		select count(*) listCnt from faq where category='취소환불' order by no
 	</select>
 <!-- faqProduct 페이징 글 리스트 가져오기 -->
 	<select id="faqProductPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
 		select * 
       from(
                select row_number() over(order by no desc) as rnum, 
-                     no,category,title,content from faq where category='상품' order by no desc
+                     no,category,title,content from faq where category='취소환불' order by no desc
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
    <!-- faqOrder페이징 게시글 수 -->
 	<select id="faqOrderPageNation" resultType="com.koitt.jardin.dto.page.PageNationDTO">
-		select count(*) listCnt from faq where category='주문' order by no
+		select count(*) listCnt from faq where category='주문결제' order by no
 	</select>
 <!-- faqOrder 페이징 글 리스트 가져오기 -->
 	<select id="faqOrderPageNationList" resultType="com.koitt.jardin.dto.board.FaqDTO">
 		select * 
       from(
                select row_number() over(order by no desc) as rnum, 
-                     no,category,title,content from faq where category='주문' order by no desc
+                     no,category,title,content from faq where category='주문결제' order by no desc
           )
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>

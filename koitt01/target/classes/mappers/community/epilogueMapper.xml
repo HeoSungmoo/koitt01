@@ -53,8 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- epilogue페이징 글 리스트 가져오기 -->
 	<select id="epiloguePageNationList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 		select * 
-      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail
-      from review where thumbnail is not null order by review_no desc)
+      from(select row_number() over(order by review_date desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail
+      from review where thumbnail is not null order by review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
@@ -62,9 +62,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="epiloguePageNationToList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 
 		select * 
-      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from(select row_number() over(order by review_date desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
       from review where thumbnail is not null and title like '%'|| #{search}||'%' or content like '%'|| #{search}||'%' 
-       order by review_no desc)
+       order by review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
 
    </select>
@@ -72,18 +72,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- epilogue 제목 검색 글 리스트 가져오기 -->
    <select id="epiloguePageNationTiList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 		select * 
-      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from(select row_number() over(order by review_date desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
       from review  where thumbnail is not null and title like '%'|| #{search}||'%'
-       order by review_no desc)
+       order by review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
    <!-- epilogue 내용 검색 페이징 글 리스트 가져오기 -->
    <select id="epiloguePageNationCoList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 		select * 
-      from(select row_number() over(order by review_no desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
+      from(select row_number() over(order by review_date desc) as rnum, review_no,product_no,id,title,content,review_date,hit,grade,thumbnail 
       from review  where thumbnail is not null and content like '%'|| #{search}||'%'
-       order by review_no desc)
+       order by review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>   
  

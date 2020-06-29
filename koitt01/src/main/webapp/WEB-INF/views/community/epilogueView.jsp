@@ -204,7 +204,7 @@ $(document).ready(function() {
 
 								<tr>
 									<th class="next">NEXT</th>
-									<td>다음 글이 없습니다 .${epilogueView.thumbnail}</td>
+									<td>다음 글이 없습니다 .</td>
 									<td>&nbsp;</td>
 								</tr>
 							</tbody>

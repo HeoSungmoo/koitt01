@@ -29,17 +29,6 @@ public interface BoardDAO {
 	// 1:1문의
 	public void inquiryWrite(InquiryDTO iDto);
 
-	// FAQ전체 리스트
-	public List<FaqDTO> faq();
-
-	// FAQ회원가입 리스트
-	public List<FaqDTO> faqJoin();
-
-	// FAQ상품 리스트
-	public List<FaqDTO> faqProduct();
-
-	// FAQ주문 리스트
-	public List<FaqDTO> faqOrder();
 
 	// FAQ검색
 	public List<FaqDTO> faqSearch(String search);

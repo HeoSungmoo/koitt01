@@ -1,7 +1,6 @@
 package com.koitt.jardin.service.board;
 
 import java.io.File;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,13 +47,13 @@ public class BoardServiceImpl implements BoardService {
 
 	// 1:1문의
 	@Override
-	public void inquiryWrite(String id,String category,String title,String content,
-			MultipartFile file_name) throws Exception {
-		InquiryDTO iDto=new InquiryDTO();
-		String path="C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/inquiryUpload/";
-		String origin_Name=file_name.getOriginalFilename();
-		UUID uuid= UUID.randomUUID();
-		String file_Name=uuid.toString()+"_"+origin_Name;
+	public void inquiryWrite(String id, String category, String title, String content, MultipartFile file_name)
+			throws Exception {
+		InquiryDTO iDto = new InquiryDTO();
+		String path = "C:/Users/yohan/git/koitt01/koitt01/src/main/webapp/resources/inquiryUpload/";
+		String origin_Name = file_name.getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		String file_Name = uuid.toString() + "_" + origin_Name;
 		file_name.transferTo(new File(path + file_Name));
 		System.out.println("보드 서비스 파일첨부");
 		iDto.setId(id);
@@ -64,11 +63,11 @@ public class BoardServiceImpl implements BoardService {
 		iDto.setFile_name(file_Name);
 		boardDao.inquiryWrite(iDto);
 	}
-	//1:1문의 파일 업로드 없을때
+
+	// 1:1문의 파일 업로드 없을때
 	@Override
-	public void inquiryWrite1(String id,String category,String title,String content
-			) throws Exception {
-		InquiryDTO iDto=new InquiryDTO();
+	public void inquiryWrite1(String id, String category, String title, String content) throws Exception {
+		InquiryDTO iDto = new InquiryDTO();
 		System.out.println("보드 서비스 파일첨부 안함");
 		iDto.setId(id);
 		iDto.setCategory(category);
@@ -77,33 +76,33 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.inquiryWrite(iDto);
 	}
 
-	// FAQ 전체 리스트
-	@Override
-	public List<FaqDTO> faq() {
-
-		return boardDao.faq();
-	}
-
-	// FAQ 회원가입 리스트
-	@Override
-	public List<FaqDTO> faqJoin() {
-
-		return boardDao.faqJoin();
-	}
-
-	// FAQ 상품 리스트
-	@Override
-	public List<FaqDTO> faqProduct() {
-
-		return boardDao.faqProduct();
-	}
-
-	// FAQ 주문 리스트
-	@Override
-	public List<FaqDTO> faqOrder() {
-
-		return boardDao.faqOrder();
-	}
+//	// FAQ 전체 리스트
+//	@Override
+//	public List<FaqDTO> faq() {
+//
+//		return boardDao.faq();
+//	}
+//
+//	// FAQ 회원가입 리스트
+//	@Override
+//	public List<FaqDTO> faqJoin() {
+//
+//		return boardDao.faqJoin();
+//	}
+//
+//	// FAQ 상품 리스트
+//	@Override
+//	public List<FaqDTO> faqProduct() {
+//
+//		return boardDao.faqProduct();
+//	}
+//
+//	// FAQ 주문 리스트
+//	@Override
+//	public List<FaqDTO> faqOrder() {
+//
+//		return boardDao.faqOrder();
+//	}
 
 	// FAQ 검색
 	@Override
@@ -124,9 +123,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<NoticeDTO> pageNationList(SearchValue sv) {
 		System.out.println("-----------노티스 서비스-----------------");
-		System.out.println("현재페이지다: "+sv.getCurPage());
-		System.out.println("옵션이다: "+sv.getOption());
-		System.out.println("검색어다: "+sv.getSearch());
+		System.out.println("현재페이지다: " + sv.getCurPage());
+		System.out.println("옵션이다: " + sv.getOption());
+		System.out.println("검색어다: " + sv.getSearch());
 		System.out.println("-----------노티스 서비스-----------------");
 		return boardDao.pageNationList(sv);
 	}

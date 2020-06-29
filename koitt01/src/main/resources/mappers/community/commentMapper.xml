@@ -26,11 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- comment페이징 글 리스트 가져오기 -->
 	<select id="commentPageNationList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 		select * 
-      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from(select p.title productTitle, row_number() over(order by review_date desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
       from product p
       inner join review r
 	  on r.product_no=p.product_no
-      where r.thumbnail is null order by r.review_no desc)
+      where r.thumbnail is null order by r.review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
@@ -38,12 +38,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="commentPageNationToList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 
 		select * 
-      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from(select p.title productTitle, row_number() over(order by review_date desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
       from product p
       inner join review r
 	  on r.product_no=p.product_no
       where r.thumbnail is null and r.title like '%'|| #{search}||'%' or r.content like '%'|| #{search}||'%' 
-       order by r.review_no desc)
+       order by r.review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
 
    </select>
@@ -51,24 +51,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- comment 제목 검색 글 리스트 가져오기 -->
    <select id="commentPageNationTiList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 			select * 
-      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from(select p.title productTitle, row_number() over(order by review_date desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
       from product p
       inner join review r
 	  on r.product_no=p.product_no
       where r.thumbnail is null and r.title like '%'|| #{search}||'%' 
-       order by r.review_no desc)
+       order by r.review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    
    <!-- comment 내용 검색 페이징 글 리스트 가져오기 -->
    <select id="commentPageNationCoList" resultType="com.koitt.jardin.dto.product.ReviewDTO">
 		select * 
-      from(select p.title productTitle, row_number() over(order by review_no desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
+      from(select p.title productTitle, row_number() over(order by review_date desc) as rnum, r.review_no,r.product_no,r.id,r.title,r.content,r.review_date,r.hit,r.grade,r.thumbnail
       from product p
       inner join review r
 	  on r.product_no=p.product_no
       where r.thumbnail is null and r.content like '%'|| #{search}||'%' 
-       order by r.review_no desc)
+       order by r.review_date desc)
       where rnum between #{curPage}*10-9 and #{curPage}*10
    </select>
    	 

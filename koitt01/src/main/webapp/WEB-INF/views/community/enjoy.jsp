@@ -123,7 +123,7 @@ $(document).ready(function() {
 							<!-- List -->
 							<c:forEach var="enjoy" items="${eDto}">
 							<li>
-								<div class="img"><img src="images/img/sample_epil.jpg" width="155" height="160" alt="" /></div>
+								<div class="img"><img src="enjoyUpload/${enjoy.thumbnail }" width="155" height="160" alt="" /></div>
 								<div class="txt">
 									<div class="subject">
 										<a href="enjoyView?no=${enjoy.no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}">${enjoy.title }</a>

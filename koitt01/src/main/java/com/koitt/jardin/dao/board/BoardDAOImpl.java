@@ -61,31 +61,6 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 	}
 
-	// FAQ 글 리스트 가져오기
-	@Override
-	public List<FaqDTO> faq() {
-		return sqlSession.selectList("board.faq");
-
-	}
-
-	@Override
-	public List<FaqDTO> faqJoin() {
-
-		return sqlSession.selectList("board.faqJoin");
-	}
-
-	@Override
-	public List<FaqDTO> faqProduct() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("board.faqProduct");
-	}
-
-	@Override
-	public List<FaqDTO> faqOrder() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("board.faqOrder");
-	}
-
 	// FAQ검색
 	public List<FaqDTO> faqSearch(String search) {
 		return sqlSession.selectList("board.faqSearch", search);
@@ -142,16 +117,14 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public PageNationDTO faqPageNation(SearchValue sv) {
 		PageNationDTO pDto = new PageNationDTO();
-
+System.out.println("왜 안되는거지");
 		if (sv.getCategory().equals("")) {
 			pDto = sqlSession.selectOne("board.faqPageNation", sv);
-
-		} else if (sv.getCategory().equals("회원가입")) {
-
+		} else if (sv.getCategory().equals("교환반품")) {
 			pDto = sqlSession.selectOne("board.faqJoinPageNation", sv);
-		} else if (sv.getCategory().equals("상품")) {
+		} else if (sv.getCategory().equals("취소환불")) {
 			pDto = sqlSession.selectOne("board.faqProductPageNation", sv);
-		} else if (sv.getCategory().equals("주문")) {
+		} else if (sv.getCategory().equals("주문결제")) {
 			pDto = sqlSession.selectOne("board.faqOrderPageNation", sv);
 		}
 		System.out.println("faq글 리스트 개수" + pDto.getListCnt());
@@ -164,11 +137,11 @@ public class BoardDAOImpl implements BoardDAO {
 		List<FaqDTO> pDto = null;
 		if (sv.getCategory().equals("")) {
 			pDto = sqlSession.selectList("board.faqPageNationList", sv);
-		} else if (sv.getCategory().equals("회원가입")) {
+		} else if (sv.getCategory().equals("교환반품")) {
 			pDto = sqlSession.selectList("board.faqJoinPageNationList", sv);
-		} else if (sv.getCategory().equals("상품")) {
+		} else if (sv.getCategory().equals("취소환불")) {
 			pDto = sqlSession.selectList("board.faqProductPageNationList", sv);
-		} else if (sv.getCategory().equals("주문")) {
+		} else if (sv.getCategory().equals("주문결제")) {
 			pDto = sqlSession.selectList("board.faqOrderPageNationList", sv);
 		}
 		return pDto;

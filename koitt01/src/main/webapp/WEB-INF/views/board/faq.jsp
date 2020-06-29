@@ -125,9 +125,9 @@ $(document).ready(function() {
 					<div class="faqTab">
 						<ul>
 							<li><a href="faq" class="on">전체</a></li>
-							<li class="dep"><a href="faq?category=회원가입">회원가입</a></li>
-							<li><a href="faq?category=상품">상품</a></li>
-							<li class="last"><a href="faq?category=주문">주문</a></li>
+							<li class="dep"><a href="faq?category=교환반품">교환/반품</a></li>
+							<li><a href="faq?category=취소환불">취소/환불</a></li>
+							<li class="last"><a href="faq?category=주문결제">주문/결제</a></li>
 						</ul>						
 					</div>	
 					

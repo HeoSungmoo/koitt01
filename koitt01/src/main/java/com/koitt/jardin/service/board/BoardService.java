@@ -1,6 +1,5 @@
 package com.koitt.jardin.service.board;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -8,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.koitt.jardin.dto.board.FaqDTO;
 import com.koitt.jardin.dto.board.GuideDTO;
 import com.koitt.jardin.dto.board.NoticeDTO;
-import com.koitt.jardin.dto.member.InquiryDTO;
 import com.koitt.jardin.dto.page.PageNationDTO;
 import com.koitt.jardin.dto.search.SearchValue;
 
@@ -27,27 +25,24 @@ public interface BoardService {
 	public NoticeDTO noticeViewNext(int no);
 
 	// 1:1문의
-	public void inquiryWrite(String id,String category,String title,String content,
-			MultipartFile file_name) throws Exception;
+	public void inquiryWrite(String id, String category, String title, String content, MultipartFile file_name)
+			throws Exception;
 
 	// 1:1문의 파일 없을때
-		public void inquiryWrite1(String id,String category,String title,String content
-				) throws Exception;
+	public void inquiryWrite1(String id, String category, String title, String content) throws Exception;
 
-	
-	
-	// FAQ전체 리스트
-	public List<FaqDTO> faq();
-
-	// FAQ회원가입 리스트
-	public List<FaqDTO> faqJoin();
-
-	// FAQ상품 리스트
-	public List<FaqDTO> faqProduct();
-
-	// FAQ주문 리스트
-	public List<FaqDTO> faqOrder();
-
+//	// FAQ전체 리스트
+//	public List<FaqDTO> faq();
+//
+//	// FAQ회원가입 리스트
+//	public List<FaqDTO> faqJoin();
+//
+//	// FAQ상품 리스트
+//	public List<FaqDTO> faqProduct();
+//
+//	// FAQ주문 리스트
+//	public List<FaqDTO> faqOrder();
+//
 	// FAQ검색
 	public List<FaqDTO> faqSearch(String search);
 

@@ -90,7 +90,7 @@ public class BoardController {
 	// FAQ 리스트 출력 및 검색페이징
 	@RequestMapping("faq")
 	public String faq(SearchValue sv, Model model) {
-
+		System.out.println("faq카테고리 확인: "+sv.getCategory());
 		PageNationDTO PDto = boardService.faqPageNation(sv); // 게시글 수 저장
 		List<FaqDTO> list = boardService.faqPageNationList(sv);
 		model.addAttribute("faq", list);

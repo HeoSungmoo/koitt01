@@ -153,7 +153,7 @@ $(document).ready(function() {
 						<tbody>
 							<c:forEach var="comment" items="${eDto}">
 							<tr>
-								<td class="tnone">1</td>
+								<td class="tnone">${comment.review_no }</td>
 								<td>${comment.productTitle}</td>
 								<td class="left">
 									<a href="commentView?review_no=${comment.review_no}&curPage=${sv.curPage}&option=${sv.option}&search=${sv.search}" >

@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/content.css?v=Y" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}../js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/top_navi.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/left_navi.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
@@ -570,7 +570,7 @@ $(document).ready(function() {
 						<a href="detail?curPage2=1&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="n"><img src="images/btn/btn_pre2.gif" alt="처음으로"/></a>
 						<c:if test="${rDto.getPrev_page2()}">
 						
-           				 <a href="detail?curPage2=${rDto.getStart_page2()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=3" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
+           				 <a href="detail?curPage2=${rDto.getStart_page2()-1}&search=${sv.search}&product_no=${sv.product_no}&initVal=2" class="pre"><img src="images/btn/btn_pre1.gif" alt="앞페이지로"/></a>
          					</c:if>
          					
 						 <c:forEach begin="${rDto.getStart_page2()}" end="${rDto.getEnd_page2()}" step="1" var="index">

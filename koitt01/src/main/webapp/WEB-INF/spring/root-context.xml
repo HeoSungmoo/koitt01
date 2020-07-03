@@ -28,8 +28,5 @@
 	</bean>
 	
 
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.koitt.jardin.batis"/>
-	</bean>
-	
+
 </beans>
